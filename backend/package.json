@@ -7,9 +7,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx tsc",
-    "prestart": "npx tsc",
+    "prestart": "npm run build",
     "start": "node dist/index.js",
-    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\""
+    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
+    "clean": "rimraf dist"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +20,7 @@
     "@types/node": "^18.16.0",
     "concurrently": "^8.0.1",
     "nodemon": "^2.0.22",
+    "rimraf": "^5.0.0",
     "typescript": "^5.0.4"
   },
   "dependencies": {
