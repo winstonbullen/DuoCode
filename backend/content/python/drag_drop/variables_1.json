@@ -1,0 +1,4 @@
+{
+    "prompt": "Drag and drop the following blocks to create a variable named foo and initialize it to 1.",
+    "correct_ordering": ["foo", "=", "1"]
+}
