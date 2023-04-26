@@ -28,7 +28,7 @@
 
     - Jason Xu: 
 
-    - Jason Hua: 
+    - Jason Hua: Worked on frontend components, prototypes of the navBar and multiple choice have been completed. 
 
     - Evan Kim: Worked on risk assessment and project schedule for the living doc. 
 
@@ -42,7 +42,7 @@
 
     - Jason Xu: 
 
-    - Jason Hua: 
+    - Jason Hua: Finish question design components such as drag and drop and short answer questions. Develop a UI Design for all questions
 
     - Evan Kim: Working on finishing front end question components (drag and drop + short answer). Work on question submit/verify answer logic. 
 
