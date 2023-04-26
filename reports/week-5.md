@@ -8,11 +8,12 @@
 
 2. Progress
 
-    - 
+    - During this week, we updated our living doc and made necessary additions and edits. Likewise, we have also all individually advanced towards our schedule including implementing a couple of the front end components, creating the template for content, and discussing the infrastructure for backend (individual contributions can be referenced below).
+
 
 3. Next Week's Agenda
 
-    - 
+    - Next week will include multiple individual contributions. For front end, the team is going to be working on implementing all of the question templates and components. Likewise, we will also have a preliminary design done for UI that the front end team will reference once the component functionality is completed. Content will also start being written that the front end team will utilize in the form of static fake data. The backend team will begin implementation of the infrastructure mentioned in living doc.
 
 ## Team Member Contributions
 
@@ -26,7 +27,7 @@
 
     - Jason Gao: 
 
-    - Jason Xu: 
+    - Jason Xu: Pair programmed with Jason Hua and started creating some react components. We started a testing environment and implemented react-router. We then completed the components and pages necessary for multiple choice.
 
     - Jason Hua: Worked on frontend components, prototypes of the navBar and multiple choice have been completed. 
 
@@ -40,7 +41,7 @@
 
     - Jason Gao: 
 
-    - Jason Xu: 
+    - Jason Xu: Programming other components (Drag and Drag + Short Answer) with Jason Hua and Evan.
 
     - Jason Hua: Finish question design components such as drag and drop and short answer questions. Develop a UI Design for all questions
 
