@@ -30,7 +30,7 @@
 
     - Jason Hua: 
 
-    - Evan Kim: 
+    - Evan Kim: Worked on risk assessment and project schedule for the living doc. 
 
     - Winston Bullen: Decided content formatting with the team. Content will be stored in json files for now. They will have a flexible structure to account for different types of questions. This structure is pre-determined according to what front end would like to receive.
 
@@ -44,6 +44,6 @@
 
     - Jason Hua: 
 
-    - Evan Kim: 
+    - Evan Kim: Working on finishing front end question components (drag and drop + short answer). Work on question submit/verify answer logic. 
 
     - Winston Bullen: Draft several versions of these json files to start skeleton testing. This ensures the format is adequate for front end. Once the format is finalized, draft the rest of the content for release.
