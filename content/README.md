@@ -62,6 +62,10 @@ Drag & Drop
 
 ```
 {
+    "language": "<language text here>",
+    "subject": "<subject text here>",
+    "type": "drag_drop",
+    "difficulty": <difficulty integer here (1-3)>,
     "prompt": "<prompt text here>",
     "correct_ordering": ["<block 1 text here>", "<block 2 text here>", ...]
 }
@@ -71,6 +75,10 @@ Multiple Choice
 
 ```
 {
+    "language": "<language text here>",
+    "subject": "<subject text here>",
+    "type": "multiple_choice",
+    "difficulty": <difficulty integer here (1-3)>,
     "prompt": "<prompt text here>",
     "correct_answer": "<answer text here>",
     "distractors": ["<distractor 1 text here>", "<distractor 2 text here>", ..."]
@@ -81,6 +89,10 @@ Short Response
 
 ```
 {
+    "language": "<language text here>",
+    "subject": "<subject text here>",
+    "type": "short_response",
+    "difficulty": <difficulty integer here (1-3)>,
     "prompt": "<prompt text here>",
     "correct_answer": "<answer text here>"
 }
