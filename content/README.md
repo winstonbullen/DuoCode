@@ -46,7 +46,7 @@ These three question types have their own sub-directories within the language ca
 
 Each question is contained within a single ```.json``` file. These files are named with the following convention:
 
-- ```dx_y.json``` where ```x``` is the difficulty level (1-5) and ```y``` is that question's id relative to its difficulty level. 
+- ```dx_y.json``` where ```x``` is the difficulty level (1-3) and ```y``` is that question's id relative to its difficulty level. 
 
 For example, two questions both of difficulty 1 would be represented the following way:
 
