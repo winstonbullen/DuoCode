@@ -23,7 +23,7 @@
 
 2. Progress
 
-    - JP Gabriel:
+    - JP Gabriel: Worked on risk assessment and team structure for the living doc. Researched for implementing a user creation and login system. 
 
     - Jason Gao: Wrote out the project architecture section of the living doc, with input from other team members. Created a diagram with the help of Jason Xu.
     Set up initial Node.js backend with Express, and set up build scripts for compiling, cleaning, and running the backend with hot-reloads.
@@ -38,7 +38,7 @@
 
 3. Next Week's Agenda
 
-    - JP Gabriel:
+    - JP Gabriel: Develop UI design for content and login. Create a skeleton for user login and add a database for storing user accounts.
 
     - Jason Gao: Design the API for clients to receive content and authenticate and implement it in Node. Write interfaces and basic classes
     including the interface between the business layer and database layer.
