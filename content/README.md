@@ -24,7 +24,7 @@ There are 10 exercise categories per language. These vary slightly between langu
 
 8. Collections
 
-9. File IO
+9. File I/O
 
 10. Algorithms
 
