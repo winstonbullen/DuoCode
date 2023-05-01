@@ -98,11 +98,9 @@ app.post("/login", async (req, res, next) => {
     // load does not happen before session is saved
     req.session.save(function (err) {
       if (err) return next(err);
-      res.redirect("/");
+      res.redirect("/"); // TODO this sets the cookie on the response, but manually sending a response doesn't
     })
   })
-
-  // res.status(201).send("Login success, session created");
 });
 
 
