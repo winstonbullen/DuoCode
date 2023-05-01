@@ -6,11 +6,15 @@ Existing resources fail to make coding practice exciting and accessible across a
 
 ## Layout
 
-The repository has three top-level folders detailed below.
+The repository has five top-level directories detailed below.
 
 - ```/backend/```: Contains all of the backend code and data. 
 
+- ```/content/```: Contains all of the content data.
+
 - ```/frontend/```: Contains all of the frontend code and prototypes.
+
+- ```/reports/```: Contains all of the weekly status reports.
 
 - ```/ui/```: Contains all of the interface versions and drafts.
 

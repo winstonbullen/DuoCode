@@ -1,0 +1,8 @@
+{
+    "language": "python",
+    "subject": "variables",
+    "type": "short_response",
+    "difficulty": 1,
+    "prompt": "Create a variable named foo and initialize it to 1 using the code box below.",
+    "correct_answer": "foo = 1"
+}
