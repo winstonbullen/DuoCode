@@ -1,0 +1,8 @@
+{
+    "language": "java",
+    "subject": "conditions",
+    "type": "short_response",
+    "difficulty": 1,
+    "prompt": "Declare an if statement that tests whether i is less than 0 using the code box below (do not include any statement body nor curly braces).",
+    "correct_answer": "if (i < 0)"
+}

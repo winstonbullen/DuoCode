@@ -1,0 +1,8 @@
+{
+    "language": "java",
+    "subject": "conditions",
+    "type": "drag_drop",
+    "difficulty": 1,
+    "prompt": "Drag and drop the following blocks to declare an if statement that tests whether i is less than 0.",
+    "correct_ordering": ["if", "(", "i", "<", "0", ")"]
+}

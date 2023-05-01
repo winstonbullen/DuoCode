@@ -1,0 +1,9 @@
+{
+    "language": "java",
+    "subject": "arrays",
+    "type": "multiple_choice",
+    "difficulty": 1,
+    "prompt": "Which of the following creates an empty int array of length 8 called myInts?",
+    "correct_answer": "int[] myInts = new int[8];",
+    "distractors": ["int[8] myInts = new int[];", "int[] myInts = {};", "int[] myInts = int[8];"]
+}

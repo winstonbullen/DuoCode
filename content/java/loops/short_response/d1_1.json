@@ -1,0 +1,8 @@
+{
+    "language": "java",
+    "subject": "loops",
+    "type": "short_response",
+    "difficulty": 1,
+    "prompt": "Declare a for loop with control variable int i that starts at 1 and increments by 2 up to 25 (inclusive) using the code box below (do not include any loop body nor curly braces).",
+    "correct_answer": "for (int i = 1; i <= 25; i += 2)"
+}

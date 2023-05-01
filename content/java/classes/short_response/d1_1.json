@@ -1,0 +1,8 @@
+{
+    "language": "java",
+    "subject": "classes",
+    "type": "short_response",
+    "difficulty": 1,
+    "prompt": "Declare a private class called Test using the code box below (do not include any class body nor curly braces).",
+    "correct_answer": "private class Test"
+}
