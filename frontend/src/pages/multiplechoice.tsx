@@ -15,7 +15,7 @@ const Multiplechoice = () => {
     const [error, setError] = React.useState(false);
     const [helperText, setHelperText] = React.useState('Choose the correct answer above');
 
-    function shuffle(array) {
+    function shuffle(array: any[]) {
         let currentIndex = array.length,  randomIndex;
 
         // While there remain elements to shuffle.
@@ -50,13 +50,13 @@ const Multiplechoice = () => {
         randomizeAnswers();
     }, []);
 
-    const handleRadioChange = (event) => {
+    const handleRadioChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
         setValue(event.target.value);
         setHelperText(' ');
         setError(false);
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = (event: { preventDefault: () => void; }) => {
         event.preventDefault();
         if (value === correct_answer) {
             setHelperText("That is correct!")

@@ -7,13 +7,13 @@ const Navbar = () => {
         <>
             <Nav>
                 <NavMenu>
-                    <NavLink to="/dnd" activeStyle>
+                    <NavLink to="/dnd">
                         Drag and Drop
                     </NavLink>
-                    <NavLink to="/multiplechoice" activeStyle>
+                    <NavLink to="/multiplechoice">
                         Multiple Choice
                     </NavLink>
-                    <NavLink to="/shortanswer" activeStyle>
+                    <NavLink to="/shortanswer">
                         Short Answer
                     </NavLink>
                 </NavMenu>
