@@ -23,8 +23,8 @@ const ShortAnswer: React.FC<ShortAnswerProps> = () => {
         <div>
             {question && (
                 <form onSubmit={handleSubmit}>
-                    <label>{question.prompt}</label>
-                    <input type="text" value={text} onChange={(e) => setText(e.target.value)} />
+                    <label htmlFor="short-answer-input">{question.prompt}</label>
+                    <input id="short-answer-input" type="text" value={text} onChange={(e) => setText(e.target.value)} />
                     <button type="submit">Submit</button>
                 </form>
             )}
