@@ -66,7 +66,7 @@ const Multiplechoice = () => {
     const [totalAnswers, setAllAnswers] = React.useState(allAnswers)
     const randomizeAnswers = () => {
         const shuffledAnswers = [...totalAnswers].sort(() => Math.random() - 0.5);
-        setAllAnswers(allAnswers); //fix this back to shuffle
+        setAllAnswers(shuffledAnswers);
     };
 
     useEffect(() => {
