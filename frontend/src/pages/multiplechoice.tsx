@@ -35,7 +35,7 @@ const Multiplechoice = () => {
 
 
     const { questions }  = quiz
-    const { prompt, correct_answer, distractors } = questions[1]
+    const { prompt, correct_answer, distractors = [] } = questions[1];
     const allAnswers = [correct_answer]
     for (let i = 0; i < distractors.length; i++) {
         allAnswers.push(distractors[i])

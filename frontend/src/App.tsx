@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Routes, Route}
 import Home from './pages';
 import Dnd from './pages/dnd';
 import Choice from './pages/multiplechoice';
-import Shortanswer from './pages/shortanswer';
+import ShortAnswer from "./pages/shortanswer";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/dnd' element={<Dnd/>} />
           <Route path='/multiplechoice' element={<Choice/>} />
-          <Route path='/shortanswer' element={<Shortanswer/>} />
+          <Route path='/shortanswer' element={<ShortAnswer/>} />
         </Routes>
       </Router>
   );
