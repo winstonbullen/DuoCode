@@ -37,7 +37,7 @@ const useStyles = makeStyles()(theme => ({
 const Multiplechoice = () => {
     const [value, setValue] = React.useState('');
     const [error, setError] = React.useState(false);
-    const [helperText, setHelperText] = React.useState('Choose the correct answer above');
+    const [helperText, setHelperText] = React.useState(' ');
 
     function shuffle(array: any[]) {
         let currentIndex = array.length,  randomIndex;
