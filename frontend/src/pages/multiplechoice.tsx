@@ -26,7 +26,7 @@ const useStyles = makeStyles()(theme => ({
             borderRight: 'none',
         },
         '&:hover': {
-            backgroundColor: theme.palette.primary.main,
+            backgroundColor: 'rgba(100,100,100,0.5)',
             color: theme.palette.common.white,
         },
     },
