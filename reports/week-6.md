@@ -41,7 +41,7 @@
 
     - Jason Xu: 
 
-    - Jason Hua: 
+    - Jason Hua: Short answer component completed, styling for multiple choice was updated. Implemented CI for frontend using github action
 
     - Evan Kim: Basic question components completed, some styling was done as well. Finished pro-con matrix on living doc for CI/CL frameworks.
 
@@ -55,7 +55,7 @@
 
     - Jason Xu: 
 
-    - Jason Hua: 
+    - Jason Hua: Update UI design of components. Establish a connection between frontend and backend. 
 
     - Evan Kim: Incorporate UI design to components and pages. Flesh out question answer verification logic.
 
