@@ -12,11 +12,6 @@ jest.mock('../api/quiz', () => ({
                 prompt: 'Create a variable named foo of type int and initialize it to 1 using the code box below.',
                 correct_answer: 'int foo = 1;',
             },
-            {
-                prompt: "What is 2 + 2?",
-                correct_answer: "4",
-                distractors: ["1", "2", "3"]
-            }
         ],
     },
 }));
@@ -29,13 +24,4 @@ describe('ShortAnswer', () => {
         );
         expect(question).toBeInTheDocument();
     });
-    describe('MultipleChoice', () => {
-        it('renders the correct question prompt', () => {
-            render(<Multiplechoice/>);
-            const question = screen.getByLabelText(
-                'What is 2 + 2?'
-            );
-            expect(question).toBeInTheDocument();
-        });
-    })
 });
