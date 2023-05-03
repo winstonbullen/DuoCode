@@ -7,7 +7,30 @@ import FormControl from '@mui/material/FormControl';
 import FormHelperText from '@mui/material/FormHelperText';
 import FormLabel from '@mui/material/FormLabel';
 import Button from '@mui/material/Button';
+import Box from '@mui/material/Box'
+import {makeStyles} from "tss-react/mui";
 import {useEffect, useState} from "react";
+
+const useStyles = makeStyles()(theme => ({
+    buttonGroup: {
+        display: 'flex',
+        flexDirection: 'column',
+        borderRadius: theme.shape.borderRadius,
+        overflow: 'hidden',
+        backgroundColor: theme.palette.grey[100],
+    },
+    buttonLabel: {
+        padding: theme.spacing(1, 2),
+        borderRight: `1px solid ${theme.palette.grey[300]}`,
+        '&:last-of-type': {
+            borderRight: 'none',
+        },
+        '&:hover': {
+            backgroundColor: theme.palette.primary.main,
+            color: theme.palette.common.white,
+        },
+    },
+}));
 
 
 const Multiplechoice = () => {
@@ -33,9 +56,8 @@ const Multiplechoice = () => {
         return array;
     }
 
-
     const { questions }  = quiz
-    const { prompt, correct_answer, distractors } = questions[1]
+    const { prompt, correct_answer, distractors = [] } = questions[1];
     const allAnswers = [correct_answer]
     for (let i = 0; i < distractors.length; i++) {
         allAnswers.push(distractors[i])
@@ -43,7 +65,7 @@ const Multiplechoice = () => {
     const [totalAnswers, setAllAnswers] = React.useState(allAnswers)
     const randomizeAnswers = () => {
         const shuffledAnswers = [...totalAnswers].sort(() => Math.random() - 0.5);
-        setAllAnswers(shuffledAnswers);
+        setAllAnswers(allAnswers); //fix this back to shuffle
     };
 
     useEffect(() => {
@@ -66,29 +88,39 @@ const Multiplechoice = () => {
         }
     };
 
+    const { classes } = useStyles()
+
     return (
         <form onSubmit={handleSubmit}>
-            <FormControl sx={{ m: 3 }} error={error} variant="standard">
-                <FormLabel id="question-title">{prompt}</FormLabel>
-                <RadioGroup
-                    name="quiz"
-                    value={value}
-                    onChange={handleRadioChange}
-                >
-                {totalAnswers.map((answer, index) => (
-                    <FormControlLabel
-                        key={index}
-                        value={answer}
-                        control={<Radio />}
-                        label={answer}
-                    />
-                ))}
-                </RadioGroup>
-                <FormHelperText>{helperText}</FormHelperText>
-                <Button sx={{ mt: 1, mr: 1 }} type="submit" variant="outlined">
-                    Check Answer
-                </Button>
-            </FormControl>
+            <Box display="flex"
+                 justifyContent="center"
+                 alignItems="center"
+                 minHeight="20vh">
+                <FormControl sx={{ m: 3}} error={error} variant="standard">
+                    <FormLabel id="question-title">{prompt}</FormLabel>
+                    <RadioGroup
+                        className = {classes.buttonGroup}
+                        name="quiz"
+                        value={value}
+                        onChange={handleRadioChange}
+                    >
+                    {totalAnswers.map((answer, index) => (
+                        <FormControlLabel
+                            className = {classes.buttonLabel}
+                            key={index}
+                            value={answer}
+                            control={<Radio />}
+                            label={answer}
+
+                        />
+                    ))}
+                    </RadioGroup>
+                    <FormHelperText>{helperText}</FormHelperText>
+                    <Button sx={{ mt: 1, mr: 1 }} type="submit" variant="outlined">
+                        Submit
+                    </Button>
+                </FormControl>
+            </Box>
         </form>
     );
 }
