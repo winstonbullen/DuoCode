@@ -1,0 +1,54 @@
+.short-answer-container {
+    margin: 20px;
+}
+
+.short-answer-prompt {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.short-answer-input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+.short-answer-button {
+    background-color: #7f8fa6;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.short-answer-button:hover {
+    background-color: #57606f;
+}
+
+.short-answer-validation {
+    font-size: 20px;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    text-align: center;
+}
+
+.short-answer-correct {
+    background-color: #d1e7dd;
+    color: #2c3e50;
+}
+
+.short-answer-incorrect {
+    background-color: #f8d7da;
+    color: #721c24;
+}

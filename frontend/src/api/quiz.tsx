@@ -1,9 +1,12 @@
 export const quiz = {
     questions: [
         {
-            prompt: "Which of the following creates a variable named foo of type int and initialize it to 1?",
-            correct_answer: "int foo = 1;",
-            distractors: ["int foo;", "int bar = 1;", "int foo = 100;"]
+            language: "java",
+            subject: "variables",
+            type: "drag_drop",
+            difficulty: 1,
+            prompt: "Drag and drop the following blocks to create a variable named foo of type int and initialize it to 1.",
+            correct_ordering: ["int", "foo", "=", "1", ";"]
         },
         {
             prompt: "What is 2 + 2?",

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { quiz } from '../api/quiz';
+import './shortanswer.css';
 
 interface ShortAnswerProps {}
 
@@ -20,16 +21,16 @@ const ShortAnswer: React.FC<ShortAnswerProps> = () => {
     };
 
     return (
-        <div>
+        <div className="short-answer-container">
             {question && (
                 <form onSubmit={handleSubmit}>
-                    <label htmlFor="short-answer-input">{question.prompt}</label>
-                    <input id="short-answer-input" type="text" value={text} onChange={(e) => setText(e.target.value)} />
-                    <button type="submit">Submit</button>
+                    <label htmlFor="short-answer-input" className="short-answer-prompt">{question.prompt}</label>
+                    <input id="short-answer-input" type="text" value={text} onChange={(e) => setText(e.target.value)} className="short-answer-input" />
+                    <button type="submit" className="short-answer-button">Submit</button>
                 </form>
             )}
-            {showValidation && isValid && <div>Correct!</div>}
-            {showValidation && !isValid && text !== '' && <div>Incorrect!</div>}
+            {showValidation && isValid && <div className="short-answer-validation short-answer-correct">Correct!</div>}
+            {showValidation && !isValid && text !== '' && <div className="short-answer-validation short-answer-incorrect">Incorrect!</div>}
         </div>
     );
 };

@@ -1,7 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import React from 'react';
 import ShortAnswer from '../pages/shortanswer';
-import Multiplechoice from "../pages/multiplechoice";
 
 // Mock the quiz data
 jest.mock('../api/quiz', () => ({
