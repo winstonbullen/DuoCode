@@ -37,7 +37,9 @@
 
     - JP Gabriel: 
 
-    - Jason Gao: 
+    - Jason Gao: Ported JP's login and signup implementation from JS to TS. Wrote interface for user info database adapter and implemented a simple in-memory store for user login info.
+    Set up Jest with TS (with `ts-jest`) for backend testing, wrote simple tests for the in-memory store.
+    Added handling for user sessions and basic authentication through `express-session`. Adjusted starter Node.js Actions template to work for our repository, and set it up to run backend tests.
 
     - Jason Xu: 
 
@@ -51,7 +53,7 @@
 
     - JP Gabriel: 
 
-    - Jason Gao: 
+    - Jason Gao: Create content endpoint(s) to deliver question content to the front end app. Implement persistent storage for user information. Deliver the front end app's actual page content to user.
 
     - Jason Xu: 
 
