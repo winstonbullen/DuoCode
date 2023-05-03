@@ -18,6 +18,7 @@ const useStyles = makeStyles()(theme => ({
         borderRadius: theme.shape.borderRadius,
         overflow: 'hidden',
         backgroundColor: theme.palette.grey[100],
+        width: '200px'
     },
     buttonLabel: {
         padding: theme.spacing(1, 2),
