@@ -43,7 +43,7 @@
 
     - Jason Hua: 
 
-    - Evan Kim: 
+    - Evan Kim: Basic question components completed, some styling was done as well. Finished pro-con matrix on living doc for CI/CL frameworks.
 
     - Winston Bullen: Drafted and finalized the json formats for content. Currently have at least one question per  subject per question type for Java. The only subject currently incomplete is algorithms due to the difficult nature of algorithms content (to be discussed).
 
@@ -57,6 +57,6 @@
 
     - Jason Hua: 
 
-    - Evan Kim: 
+    - Evan Kim: Incorporate UI design to components and pages. Flesh out question answer verification logic.
 
     - Winston Bullen: Finalize the algorithms content formats, possibly replace with a different subject depending on team feedback. Then, add more questions for all categories at variable difficulty levels. Then, copy these over to Python editing prompts and answers accordingly.
