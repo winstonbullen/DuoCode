@@ -4,5 +4,5 @@
     "type": "drag_drop",
     "difficulty": 1,
     "prompt": "Drag and drop the following blocks to declare a private class called Test.",
-    "correct_ordering": ["public", "class", "Test"]
+    "correct_ordering": ["private", "class", "Test"]
 }

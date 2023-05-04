@@ -3,7 +3,7 @@
     "subject": "variables",
     "type": "multiple_choice",
     "difficulty": 1,
-    "prompt": "Which of the following creates a variable named foo of type int and initialize it to 1?",
+    "prompt": "Which of the following creates a variable named foo of type int and initializes it to 1?",
     "correct_answer": "int foo = 1;",
     "distractors": ["int foo;", "int bar = 1;", "int foo = 100;"]
 }

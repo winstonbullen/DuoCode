@@ -3,6 +3,6 @@
     "subject": "fileio",
     "type": "short_response",
     "difficulty": 1,
-    "prompt": "Sreate a File variable named myFile that opens log.txt using the code box below.",
+    "prompt": "Create a File variable named myFile that opens log.txt using the code box below.",
     "correct_answer": "File myFile = new File(\"log.txt\");"
 }
