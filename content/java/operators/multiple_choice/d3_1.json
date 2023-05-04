@@ -3,7 +3,7 @@
     "subject": "operators",
     "type": "multiple_choice",
     "difficulty": 3,
-    "prompt": "Which of the following sets the existing variable named cond3 equal to the boolean value of cond1 AND cond2?",
-    "correct_answer": "cond3 = cond1 && cond2;",
-    "distractors": ["cond3 = cond1 AND cond2;", "cond3 = cond1 & cond2;", "cond3 = cond1 == cond2;"]
+    "prompt": "Which of the following sets the existing variable named left equal to the remainder of total divided by count?",
+    "correct_answer": "left = total % count;",
+    "distractors": ["left = total / count;", "left = total / count + count;", "left = count % total;"]
 }
