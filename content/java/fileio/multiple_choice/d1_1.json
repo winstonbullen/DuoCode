@@ -1,9 +1,0 @@
-{
-    "language": "java",
-    "subject": "fileio",
-    "type": "multiple_choice",
-    "difficulty": 1,
-    "prompt": "Which of the following creates a File variable named myFile that opens log.txt?",
-    "correct_answer": "File myFile = new File(\"log.txt\");",
-    "distractors": ["File myFile = new File(log.txt);", "File myFile = File(\"log.txt\");", "File myFile = \"log.txt\";"]
-}
