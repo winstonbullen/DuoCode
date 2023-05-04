@@ -1,0 +1,8 @@
+{
+    "language": "java",
+    "subject": "classes",
+    "type": "drag_drop",
+    "difficulty": 2,
+    "prompt": "Drag and drop the following blocks to declare a public class called Student that is a subclass of Person.",
+    "correct_ordering": ["public", "class", "Student", "extends", "Person"]
+}
