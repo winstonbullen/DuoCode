@@ -35,7 +35,7 @@
 
 2. Progress
 
-    - JP Gabriel: 
+    - JP Gabriel: Developed UI design drag and drop, multiple choice, and short answer. Created a skeleton for user login that stored an encrypted password using bcrypt to mongoDB.
 
     - Jason Gao: Ported JP's login and signup implementation from JS to TS. Wrote interface for user info database adapter and implemented a simple in-memory store for user login info.
     Set up Jest with TS (with `ts-jest`) for backend testing, wrote simple tests for the in-memory store.
@@ -51,7 +51,7 @@
 
 3. Next Week's Agenda
 
-    - JP Gabriel: 
+    - JP Gabriel: Develop UI for other website pages such as login, homepage, and level page. Will edit current UI designs to changes suggested by the team.
 
     - Jason Gao: Create content endpoint(s) to deliver question content to the front end app. Implement persistent storage for user information. Deliver the front end app's actual page content to user.
 
