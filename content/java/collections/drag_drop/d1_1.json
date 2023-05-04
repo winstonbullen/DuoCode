@@ -4,5 +4,5 @@
     "type": "drag_drop",
     "difficulty": 1,
     "prompt": "Drag and drop the following blocks to create an ArrayList called myList that stores Strings.",
-    "correct_ordering": ["ArrayList<>", "myList", "=", "new", "ArrayList<String>()", ";"]
+    "correct_ordering": ["ArrayList<String>", "myList", "=", "new", "ArrayList<String>()", ";"]
 }

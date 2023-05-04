@@ -1,0 +1,9 @@
+{
+    "language": "java",
+    "subject": "collections",
+    "type": "multiple_choice",
+    "difficulty": 3,
+    "prompt": "Which of the following creates a Queue called line that stores Strings and is implemented with a LinkedList?",
+    "correct_answer": "Queue<String> line = new LinkedList<String>();",
+    "distractors": ["LinkedList<String> line = new Queue<String>();", "Queue<> line = new LinkedList<String>();", "LinkedList<> line = new Queue<String>();"]
+}

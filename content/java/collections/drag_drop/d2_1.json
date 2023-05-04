@@ -1,0 +1,8 @@
+{
+    "language": "java",
+    "subject": "collections",
+    "type": "drag_drop",
+    "difficulty": 2,
+    "prompt": "Drag and drop the following blocks to create a HashMap called users that contains keys of type int and values of type String.",
+    "correct_ordering": ["HashMap<int, String>", "users", "=", "new", "HashMap<int, String>()", ";"]
+}
