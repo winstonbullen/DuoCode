@@ -1,8 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
 .short-answer-container {
     margin: 20px;
 }
 
+
+@font-face {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/nunito/v25/XRXI3I6Li01BKofiOc5wtlZ2di8HDLshdTk3j77e.woff2) format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
 .short-answer-prompt {
+    font-family:Nunito, serif;
     font-size: 20px;
     margin-bottom: 10px;
 }
