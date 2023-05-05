@@ -4,5 +4,5 @@
     "type": "short_response",
     "difficulty": 3,
     "prompt": "Create a variable named cost of type double and initialize it to the variable named price using the code box below.",
-    "correct_answer": "String greeting = \"Hello\";"
+    "correct_answer": "double cost = price;"
 }

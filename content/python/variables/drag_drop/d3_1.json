@@ -1,0 +1,8 @@
+{
+    "language": "python",
+    "subject": "variables",
+    "type": "drag_drop",
+    "difficulty": 3,
+    "prompt": "Drag and drop the following blocks to create a variable named cost and initialize it to the variable named price.",
+    "correct_ordering": ["cost", "=", "price"]
+}
