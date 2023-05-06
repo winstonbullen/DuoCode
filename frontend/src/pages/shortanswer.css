@@ -1,43 +1,52 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
 .short-answer-container {
-    margin: 20px;
+    position: absolute;
+    text-align: center;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-
-@font-face {
-    font-family: 'Nunito';
-    font-style: normal;
-    font-weight: 400;
-    src: url(https://fonts.gstatic.com/s/nunito/v25/XRXI3I6Li01BKofiOc5wtlZ2di8HDLshdTk3j77e.woff2) format('woff2');
-    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+input::placeholder{
+    color:gray;
+    font-family: Nunito, serif;
 }
 
 .short-answer-prompt {
     font-family:Nunito, serif;
-    font-size: 20px;
+    font-weight: bold;
+    font-size: 22px;
     margin-bottom: 10px;
 }
 
 .short-answer-input {
     padding: 10px;
-    border: none;
+    border: 2px solid lightgray;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-    margin-bottom: 20px;
+    margin-top: 4%;
+    margin-bottom: 4%;
     font-size: 16px;
-    width: 100%;
+    width: 60%;
+    max-width: 60%;
+    height: 40%;
     box-sizing: border-box;
     background-color: #fff;
 }
 
 .short-answer-button {
+    font-family: Nunito, serif;
+    font-weight: bold;
+    margin-left: 70%;
+    display: flex;
+    flex-direction: column;
     background-color: #7f8fa6;
     color: #fff;
-    padding: 10px 20px;
+    padding: 10px 40px;
     border: none;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 22px;
     cursor: pointer;
     transition: background-color 0.2s;
 }
@@ -56,11 +65,15 @@
 }
 
 .short-answer-correct {
+    font-family: Nunito, serif;
+    font-weight: bold;
     background-color: #d1e7dd;
     color: #2c3e50;
 }
 
 .short-answer-incorrect {
+    font-family: Nunito, serif;
+    font-weight: bold;
     background-color: #f8d7da;
     color: #721c24;
 }
