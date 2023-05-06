@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import data from '../data/variables/multiple_choice/d1_1.json';
 import './multiplechoice.css';
 
@@ -19,10 +19,14 @@ type Option = {
 
 const MultipleChoice = () => {
     const [question, setQuestion] = useState<Question>(data);
-    const [options, setOptions] = useState<Option[]>(getShuffledOptions());
+    const [options, setOptions] = useState<Option[]>([]);
     const [selectedOption, setSelectedOption] = useState<string>('');
     const [showResult, setShowResult] = useState<boolean>(false);
     const [isCorrect, setIsCorrect] = useState<boolean>(false);
+
+    useEffect(() => {
+        setOptions(getShuffledOptions());
+    }, []);
 
     function getShuffledOptions() {
         const options = [
@@ -36,13 +40,6 @@ const MultipleChoice = () => {
         return options;
     }
 
-    function shuffleArray(array: Option[]) {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-        }
-    }
-
     function handleOptionChange(event: React.ChangeEvent<HTMLInputElement>) {
         setSelectedOption(event.target.value);
     }
@@ -51,8 +48,12 @@ const MultipleChoice = () => {
         event.preventDefault();
         setShowResult(true);
         setIsCorrect(selectedOption === question.correct_answer);
-        if (selectedOption !== question.correct_answer) {
-            setOptions(getShuffledOptions());
+    }
+
+    function shuffleArray(array: Option[]) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
         }
     }
 
@@ -80,9 +81,9 @@ const MultipleChoice = () => {
             {showResult && (
                 <div className="result-message">
                     {isCorrect ? (
-                        <p className="correct-answer short-answer-correct">Correct!</p>
+                        <p className="correct-answer">Correct!</p>
                     ) : (
-                        <p className="incorrect-answer short-answer-incorrect">Incorrect.</p>
+                        <p className="incorrect-answer">Incorrect.</p>
                     )}
                 </div>
             )}
