@@ -1,0 +1,9 @@
+{
+    "language": "python",
+    "subject": "loops",
+    "type": "multiple_choice",
+    "difficulty": 3,
+    "prompt": "Which of the following declares a for loop with control variable i that starts at 0 and increments by 1 up to 6 (exclusive)?",
+    "correct_answer": "for i in range(6):",
+    "distractors": ["for (i = 0; i < 6; i++)", "while (i < 6)", "for i in 6:"]
+}
