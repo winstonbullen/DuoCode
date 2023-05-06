@@ -1,0 +1,8 @@
+{
+    "language": "python",
+    "subject": "classes",
+    "type": "drag_drop",
+    "difficulty": 1,
+    "prompt": "Drag and drop the following blocks to declare a class called Test.",
+    "correct_ordering": ["class", "Test", ":"]
+}
