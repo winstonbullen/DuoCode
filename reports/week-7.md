@@ -25,7 +25,7 @@
 
     - Jason Xu: Finalize UI design and front end components with Jason Hua and Evan. Help the team with alpha release.
 
-    - Jason Hua: Update UI design of components. Establish a connection between frontend and backend. 
+    - Jason Hua: Update UI design of components. Establish a connection between frontend and backend.
 
     - Evan Kim: Incorporate UI design to components and pages. Flesh out question answer verification logic.
 
