@@ -20,17 +20,20 @@ const ShortAnswer: React.FC<ShortAnswerProps> = () => {
     };
 
     return (
-        <div className="short-answer-container">
+        <div>
+            <div className="short-answer-container">
             {shortAnswerData && (
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="short-answer-input" className="short-answer-prompt">{shortAnswerData.prompt}</label>
-                    <input id="short-answer-input" type="text" value={text} onChange={(e) => setText(e.target.value)} className="short-answer-input" />
+                    <input placeholder="Type your code here..." id="short-answer-input" type="text" value={text} onChange={(e) => setText(e.target.value)} className="short-answer-input" />
                     <button type="submit" className="short-answer-button">Submit</button>
                 </form>
             )}
+            </div>
             {showValidation && isValid && <div className="short-answer-validation short-answer-correct">Correct!</div>}
             {showValidation && !isValid && text !== '' && <div className="short-answer-validation short-answer-incorrect">Incorrect!</div>}
         </div>
+
     );
 };
 
