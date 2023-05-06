@@ -1,0 +1,8 @@
+{
+    "language": "java",
+    "subject": "loops",
+    "type": "short_response",
+    "difficulty": 3,
+    "prompt": "Declare a for-each loop that iterates through every element of int[] nums with the loop variable current using the code box below (do not include any loop body nor curly braces).",
+    "correct_answer": "for (int current : nums)"
+}

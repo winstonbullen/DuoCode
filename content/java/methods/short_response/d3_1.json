@@ -1,0 +1,8 @@
+{
+    "language": "java",
+    "subject": "methods",
+    "type": "short_response",
+    "difficulty": 3,
+    "prompt": "Declare the typical main method using the code box below (do not include any method body nor curly braces).",
+    "correct_answer": "public static void main (String[] args)"
+}

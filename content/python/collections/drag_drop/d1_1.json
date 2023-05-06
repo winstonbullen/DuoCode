@@ -1,0 +1,8 @@
+{
+    "language": "python",
+    "subject": "collections",
+    "type": "drag_drop",
+    "difficulty": 1,
+    "prompt": "Drag and drop the following blocks to create a set called students and initialize it to \"John\" and \"Jane\" (in that order).",
+    "correct_ordering": ["students", "=", "{", "\"John\"", ",", "\"Jane\"", "}"]
+}

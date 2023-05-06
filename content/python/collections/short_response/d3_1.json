@@ -1,0 +1,8 @@
+{
+    "language": "python",
+    "subject": "collections",
+    "type": "short_response",
+    "difficulty": 3,
+    "prompt": "Create a dictionary called car with the key \"type\" initialized to the value \"truck\" using the code box below.",
+    "correct_answer": "car = {\"type\": \"truck\"}"
+}

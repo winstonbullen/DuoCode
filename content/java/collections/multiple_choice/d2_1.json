@@ -1,0 +1,9 @@
+{
+    "language": "java",
+    "subject": "collections",
+    "type": "multiple_choice",
+    "difficulty": 2,
+    "prompt": "Which of the following creates a HashMap called users that contains keys of type int and values of type String?",
+    "correct_answer": "HashMap<int, String> users = new HashMap<int, String>();",
+    "distractors": ["HashMap<int -> String> users = new HashMap<int -> String>();", "HashMap<> users = new HashMap<int, String>();", "HashMap<String, int> users = new HashMap<String, int>();"]
+}

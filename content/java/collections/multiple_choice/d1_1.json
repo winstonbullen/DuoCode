@@ -1,0 +1,9 @@
+{
+    "language": "java",
+    "subject": "collections",
+    "type": "multiple_choice",
+    "difficulty": 1,
+    "prompt": "Which of the following creates an ArrayList called myList that stores Strings?",
+    "correct_answer": "ArrayList<String> myList = new ArrayList<String>();",
+    "distractors": ["ArrayList<> myList = new ArrayList<String>();", "List<> myList = new List<String>();", "ArrayList<String> myList = new List<>();"]
+}

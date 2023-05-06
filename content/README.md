@@ -6,7 +6,7 @@ Every supported programming language has its own sub-directory within this direc
 
 ## Categories
 
-There are 10 exercise categories per language. These vary slightly between languages. The 10 categories for Java are as follows:
+There are eight exercise categories per language. These vary slightly between languages. The eight categories for Java are as follows:
 
 1. Variables
 
@@ -23,10 +23,6 @@ There are 10 exercise categories per language. These vary slightly between langu
 7. Classes
 
 8. Collections
-
-9. File I/O
-
-10. Algorithms
 
 These categories have their own sub-directories within the language directories.
 

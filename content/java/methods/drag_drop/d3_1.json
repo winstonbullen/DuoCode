@@ -1,0 +1,8 @@
+{
+    "language": "java",
+    "subject": "methods",
+    "type": "drag_drop",
+    "difficulty": 3,
+    "prompt": "Drag and drop the following blocks to declare the typical main method.",
+    "correct_ordering": ["public", "static", "void", "main", "(String[] args)"]
+}

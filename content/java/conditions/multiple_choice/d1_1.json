@@ -1,0 +1,9 @@
+{
+    "language": "java",
+    "subject": "conditions",
+    "type": "multiple_choice",
+    "difficulty": 1,
+    "prompt": "Which of the following declares an if statement that tests whether i is less than 0?",
+    "correct_answer": "if (i < 0)",
+    "distractors": ["if i < 0", "if (i less_than 0)", "if (i > 0)"]
+}

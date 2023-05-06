@@ -1,0 +1,8 @@
+{
+    "language": "python",
+    "subject": "lists",
+    "type": "drag_drop",
+    "difficulty": 3,
+    "prompt": "Drag and drop the following blocks to create a 2D list called points and initialize it to the values [1, 2] and [3, 4] (in that order).",
+    "correct_ordering": ["points", "=", "[", "[1, 2]", ",", "[3, 4]", "]"]
+}

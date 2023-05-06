@@ -1,0 +1,8 @@
+{
+    "language": "java",
+    "subject": "operators",
+    "type": "drag_drop",
+    "difficulty": 1,
+    "prompt": "Drag and drop the following blocks to set the existing variable named num3 equal to the result of num1 subtract num2.",
+    "correct_ordering": ["num3", "=", "num1", "-", "num2", ";"]
+}

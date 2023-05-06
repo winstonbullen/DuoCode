@@ -1,0 +1,8 @@
+{
+    "language": "java",
+    "subject": "collections",
+    "type": "drag_drop",
+    "difficulty": 3,
+    "prompt": "Drag and drop the following blocks to create a Queue called line that stores Strings and is implemented with a LinkedList.",
+    "correct_ordering": ["Queue<String>", "line", "=", "new", "LinkedList<String>()", ";"]
+}

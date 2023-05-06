@@ -1,0 +1,8 @@
+{
+    "language": "java",
+    "subject": "operators",
+    "type": "drag_drop",
+    "difficulty": 2,
+    "prompt": "Drag and drop the following blocks to set the existing variable named fraction equal to sum divided by total.",
+    "correct_ordering": ["fraction", "=", "sum", "/", "total", ";"]
+}

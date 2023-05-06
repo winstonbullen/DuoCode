@@ -1,0 +1,9 @@
+{
+    "language": "python",
+    "subject": "operators",
+    "type": "multiple_choice",
+    "difficulty": 2,
+    "prompt": "Which of the following sets the variable named fraction equal to sum divided by total?",
+    "correct_answer": "fraction = sum / total",
+    "distractors": ["fraction = sum divide_by total", "fraction == sum / total", "fraction = total / sum"]
+}

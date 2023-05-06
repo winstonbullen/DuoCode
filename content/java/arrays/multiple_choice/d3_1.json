@@ -1,0 +1,9 @@
+{
+    "language": "java",
+    "subject": "arrays",
+    "type": "multiple_choice",
+    "difficulty": 3,
+    "prompt": "Which of the following creates a double array of length 4 called readings and initializes it to 2.0, 3.5, 5.0, and 6.5 (in that order)?",
+    "correct_answer": "double[] readings = {2.0, 3.5, 5.0, 6.5};",
+    "distractors": ["double[4] readings = {2.0, 3.5, 5.0, 6.5};", "double[] readings = [2.0, 3.5, 5.0, 6.5];", "double[] readings = new double[4];"]
+}
