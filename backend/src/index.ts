@@ -125,7 +125,7 @@ app.get('/logout', function (req, res, next) {
 });
 
 
-app.use(express.static("../content"));
+app.use("/content", express.static("../content"));
 
 
 // start listening on specified port
