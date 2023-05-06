@@ -1,0 +1,8 @@
+{
+    "language": "python",
+    "subject": "lists",
+    "type": "short_response",
+    "difficulty": 1,
+    "prompt": "Create an empty list called empty_list using the code box below.",
+    "correct_answer": "empty_list = []"
+}
