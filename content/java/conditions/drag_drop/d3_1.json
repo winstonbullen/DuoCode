@@ -1,0 +1,8 @@
+{
+    "language": "java",
+    "subject": "conditions",
+    "type": "drag_drop",
+    "difficulty": 3,
+    "prompt": "Drag and drop the following blocks to declare an if statement that tests whether left is not equal to right.",
+    "correct_ordering": ["if", "(", "left", "!=", "right", ")"]
+}

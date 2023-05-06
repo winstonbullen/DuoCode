@@ -1,0 +1,8 @@
+{
+    "language": "python",
+    "subject": "classes",
+    "type": "drag_drop",
+    "difficulty": 3,
+    "prompt": "Drag and drop the following blocks to declare the init function for a class that takes no arguments other than its own reference.",
+    "correct_ordering": ["def", "__init__", "(", "self", ")", ":"]
+}

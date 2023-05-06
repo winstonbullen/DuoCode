@@ -1,0 +1,9 @@
+{
+    "language": "python",
+    "subject": "classes",
+    "type": "multiple_choice",
+    "difficulty": 2,
+    "prompt": "Which of the following declares a class called Student that is a subclass of Person?",
+    "correct_answer": "class Student (Person):",
+    "distractors": ["class Student subclass Person:", "class Student extends Person:", "class Person (Student):"]
+}

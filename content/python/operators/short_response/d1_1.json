@@ -1,0 +1,8 @@
+{
+    "language": "python",
+    "subject": "operators",
+    "type": "short_response",
+    "difficulty": 1,
+    "prompt": "Set the variable named num3 equal to the result of num1 subtract num2 using the code box below.",
+    "correct_answer": "num3 = num1 - num2"
+}

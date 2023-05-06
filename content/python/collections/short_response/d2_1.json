@@ -1,0 +1,8 @@
+{
+    "language": "python",
+    "subject": "collections",
+    "type": "short_response",
+    "difficulty": 2,
+    "prompt": "Create a tuple called foods and initialize it to \"burger\" using the code box below.",
+    "correct_answer": "foods = (\"burger\",)"
+}

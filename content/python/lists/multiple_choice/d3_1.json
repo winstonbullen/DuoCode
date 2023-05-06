@@ -1,0 +1,9 @@
+{
+    "language": "python",
+    "subject": "lists",
+    "type": "multiple_choice",
+    "difficulty": 3,
+    "prompt": "Which of the following creates a 2D list called points and initializes it to the values [1, 2] and [3, 4] (in that order)?",
+    "correct_answer": "points = [[1, 2], [3, 4]]",
+    "distractors": ["points = {[1, 2], [3, 4]}", "points = [1, 2, 3, 4]", "points = list((1, 2), (3, 4))"]
+}

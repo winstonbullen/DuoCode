@@ -1,0 +1,9 @@
+{
+    "language": "python",
+    "subject": "operators",
+    "type": "multiple_choice",
+    "difficulty": 1,
+    "prompt": "Which of the following sets the variable named num3 equal to the result of num1 subtract num2?",
+    "correct_answer": "num3 = num1 - num2",
+    "distractors": ["num3 = num1 + num2", "num 3 = num 1 - num 2", "num3 = num2 - num1"]
+}

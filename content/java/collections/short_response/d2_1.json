@@ -1,0 +1,8 @@
+{
+    "language": "java",
+    "subject": "collections",
+    "type": "short_response",
+    "difficulty": 2,
+    "prompt": "Create a HashMap called users that contains keys of type int and values of type String using the code box below.",
+    "correct_answer": "HashMap<int, String> users = new HashMap<int, String>();"
+}

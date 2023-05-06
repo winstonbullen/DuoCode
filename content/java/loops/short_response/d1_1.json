@@ -1,0 +1,8 @@
+{
+    "language": "java",
+    "subject": "loops",
+    "type": "short_response",
+    "difficulty": 1,
+    "prompt": "Declare a while loop that executes as long as the variable named sum is less than 80 using the code box below (do not include any loop body nor curly braces).",
+    "correct_answer": "while (sum < 80)"
+}

@@ -1,0 +1,8 @@
+{
+    "language": "java",
+    "subject": "loops",
+    "type": "drag_drop",
+    "difficulty": 3,
+    "prompt": "Drag and drop the following blocks to declare a for-each loop that iterates through every element of int[] nums with the loop variable current.",
+    "correct_ordering": ["for", "(", "int current", ":", "nums", ")"]
+}

@@ -1,0 +1,9 @@
+{
+    "language": "java",
+    "subject": "operators",
+    "type": "multiple_choice",
+    "difficulty": 3,
+    "prompt": "Which of the following sets the existing variable named left equal to the remainder of total divided by count?",
+    "correct_answer": "left = total % count;",
+    "distractors": ["left = total / count;", "left = total / count + count;", "left = count % total;"]
+}

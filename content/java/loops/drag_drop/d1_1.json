@@ -1,0 +1,8 @@
+{
+    "language": "java",
+    "subject": "loops",
+    "type": "drag_drop",
+    "difficulty": 1,
+    "prompt": "Drag and drop the following blocks to declare a while loop that executes as long as the variable named sum is less than 80.",
+    "correct_ordering": ["while", "(", "sum", "<", "80", ")"]
+}

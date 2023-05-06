@@ -1,0 +1,8 @@
+{
+    "language": "python",
+    "subject": "functions",
+    "type": "drag_drop",
+    "difficulty": 3,
+    "prompt": "Drag and drop the following blocks to declare a function called info that takes an arbitrary number of keyword arguments called item.",
+    "correct_ordering": ["def", "info", "(", "**item", ")", ":"]
+}

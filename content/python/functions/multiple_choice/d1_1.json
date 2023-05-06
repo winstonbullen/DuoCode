@@ -1,0 +1,9 @@
+{
+    "language": "python",
+    "subject": "functions",
+    "type": "multiple_choice",
+    "difficulty": 1,
+    "prompt": "Which of the following declares a function called foo that takes bar as its only argument?",
+    "correct_answer": "def foo (bar):",
+    "distractors": ["foo (bar):", "public foo (bar):", "def foo (bar);"]
+}

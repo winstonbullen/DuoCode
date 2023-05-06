@@ -1,0 +1,8 @@
+{
+    "language": "java",
+    "subject": "arrays",
+    "type": "drag_drop",
+    "difficulty": 1,
+    "prompt": "Drag and drop the following blocks to create an empty int array of length 8 called myInts.",
+    "correct_ordering": ["int[]", "myInts", "=", "new", "int[8]", ";"]
+}

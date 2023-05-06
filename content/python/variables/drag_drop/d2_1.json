@@ -1,0 +1,8 @@
+{
+    "language": "python",
+    "subject": "variables",
+    "type": "drag_drop",
+    "difficulty": 2,
+    "prompt": "Drag and drop the following blocks to create a variable named greeting and initialize it to \"Hello\".",
+    "correct_ordering": ["greeting", "=", "\"Hello\""]
+}

@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
-import { quiz } from '../api/quiz';
+import shortAnswerData from '../data/variables/short_response/d1_1.json';
 import './shortanswer.css';
 
 interface ShortAnswerProps {}
 
 const ShortAnswer: React.FC<ShortAnswerProps> = () => {
-    const question = quiz.questions.find(q => q.type === 'short_response');
     const [text, setText] = useState('');
     const [isValid, setIsValid] = useState(false);
     const [showValidation, setShowValidation] = useState(false);
 
     const validateAnswer = () => {
-        return text.toLowerCase() === question?.correct_answer?.toLowerCase();
+        return text.toLowerCase() === shortAnswerData.correct_answer.toLowerCase();
     };
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -21,17 +20,14 @@ const ShortAnswer: React.FC<ShortAnswerProps> = () => {
     };
 
     return (
-        <div>
-            <div className="short-answer-container">
-                {question && (
-                    <form id="short-answer-form" onSubmit={handleSubmit}>
-                        <label htmlFor="short-answer-input" className="short-answer-prompt">{question.prompt}</label>
-                        <input id="short-answer-input" type="text" placeholder = "Your code goes here..." value={text}
-                               autoComplete="off" onChange={(e) => setText(e.target.value)} className="short-answer-input" />
-                        <button type="submit" className="short-answer-button">Submit</button>
-                    </form>
-                )}
-            </div>
+        <div className="short-answer-container">
+            {shortAnswerData && (
+                <form onSubmit={handleSubmit}>
+                    <label htmlFor="short-answer-input" className="short-answer-prompt">{shortAnswerData.prompt}</label>
+                    <input id="short-answer-input" type="text" value={text} onChange={(e) => setText(e.target.value)} className="short-answer-input" />
+                    <button type="submit" className="short-answer-button">Submit</button>
+                </form>
+            )}
             {showValidation && isValid && <div className="short-answer-validation short-answer-correct">Correct!</div>}
             {showValidation && !isValid && text !== '' && <div className="short-answer-validation short-answer-incorrect">Incorrect!</div>}
         </div>

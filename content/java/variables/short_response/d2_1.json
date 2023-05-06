@@ -1,0 +1,8 @@
+{
+    "language": "java",
+    "subject": "variables",
+    "type": "short_response",
+    "difficulty": 2,
+    "prompt": "Create a variable named greeting of type String and initialize it to \"Hello\" using the code box below.",
+    "correct_answer": "String greeting = \"Hello\";"
+}

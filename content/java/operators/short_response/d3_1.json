@@ -1,0 +1,8 @@
+{
+    "language": "java",
+    "subject": "operators",
+    "type": "short_response",
+    "difficulty": 3,
+    "prompt": "Set the existing variable named left equal to the remainder of total divided by count using the code box below.",
+    "correct_answer": "left = total % count;"
+}

@@ -1,0 +1,8 @@
+{
+    "language": "python",
+    "subject": "operators",
+    "type": "short_response",
+    "difficulty": 2,
+    "prompt": "Set the variable named fraction equal to sum divided by total using the code box below.",
+    "correct_answer": "fraction = sum / total"
+}

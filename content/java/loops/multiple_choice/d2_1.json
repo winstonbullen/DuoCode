@@ -1,0 +1,9 @@
+{
+    "language": "java",
+    "subject": "loops",
+    "type": "multiple_choice",
+    "difficulty": 2,
+    "prompt": "Which of the following declares a for loop with control variable int i that starts at 1 and increments by 2 up to 25 (inclusive)?",
+    "correct_answer": "for (int i = 1; i <= 25; i += 2)",
+    "distractors": ["for (int i = 1; i += 2; i <= 25)", "while (int i = 1; i <= 25; i += 2)", "for (int i = 1; i < 25; i += 2)"]
+}

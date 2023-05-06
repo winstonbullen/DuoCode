@@ -1,0 +1,9 @@
+{
+    "language": "python",
+    "subject": "loops",
+    "type": "multiple_choice",
+    "difficulty": 2,
+    "prompt": "Which of the following declares a for-each loop that iterates through every element of nums with the loop variable current?",
+    "correct_answer": "for current in nums:",
+    "distractors": ["for current in range(nums):", "for-each current in nums:", "while current in nums:"]
+}

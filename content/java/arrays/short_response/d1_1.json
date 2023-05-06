@@ -1,0 +1,8 @@
+{
+    "language": "java",
+    "subject": "arrays",
+    "type": "short_response",
+    "difficulty": 1,
+    "prompt": "Create an empty int array of length 8 called myInts using the code box below.",
+    "correct_answer": "int[] myInts = new int[8];"
+}

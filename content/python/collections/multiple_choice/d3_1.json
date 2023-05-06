@@ -1,0 +1,9 @@
+{
+    "language": "python",
+    "subject": "collections",
+    "type": "multiple_choice",
+    "difficulty": 3,
+    "prompt": "Which of the following creates a dictionary called car with the key \"type\" initialized to the value \"truck\"?",
+    "correct_answer": "car = {\"type\": \"truck\"}",
+    "distractors": ["car = {type: truck}", "car = {\"type\" = \"truck\"}", "car = [\"type\": \"truck\"]"]
+}

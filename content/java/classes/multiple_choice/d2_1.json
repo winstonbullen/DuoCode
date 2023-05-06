@@ -1,0 +1,9 @@
+{
+    "language": "java",
+    "subject": "classes",
+    "type": "multiple_choice",
+    "difficulty": 2,
+    "prompt": "Which of the following declares a public class called Student that is a subclass of Person?",
+    "correct_answer": "public class Student extends Person",
+    "distractors": ["public class Student subclass Person", "public class Person extends Student", "public class Student (Person)"]
+}

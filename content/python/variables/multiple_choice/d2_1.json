@@ -1,0 +1,9 @@
+{
+    "language": "python",
+    "subject": "variables",
+    "type": "multiple_choice",
+    "difficulty": 2,
+    "prompt": "Which of the following creates a variable named greeting and initializes it to \"Hello\"?",
+    "correct_answer": "greeting = \"Hello\"",
+    "distractors": ["String greeting = \"Hello\";", "greeting = Hello", "greeting == \"Hello\""]
+}
