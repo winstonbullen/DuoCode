@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import data from '../data/variables/multiple_choice/d1_1.json';
 import './multiplechoice.css';
+import Question from './question';
 
 type Question = {
     language: string;
@@ -58,35 +59,40 @@ const MultipleChoice = () => {
     }
 
     return (
-        <div className="multiple-choice-container">
-            <form onSubmit={handleSubmit}>
-                <p className="multiple-choice-prompt">{question.prompt}</p>
-                <div className="multiple-choice-options">
-                    {options.map((option, index) => (
-                        <label key={index} className="multiple-choice-label">
-                            <input
-                                type="radio"
-                                value={option.text}
-                                checked={selectedOption === option.text}
-                                onChange={handleOptionChange}
-                            />
-                            {option.text}
-                        </label>
-                    ))}
-                </div>
-                <button type="submit" className="multiple-choice-button">
-                    Submit
-                </button>
-            </form>
-            {showResult && (
-                <div className="result-message">
-                    {isCorrect ? (
-                        <p className="correct-answer">Correct!</p>
-                    ) : (
-                        <p className="incorrect-answer">Incorrect.</p>
-                    )}
-                </div>
-            )}
+        <div>
+            <Question></Question>
+            <div className="multiple-choice-container">
+                <form onSubmit={handleSubmit}>
+                    <p className="multiple-choice-prompt">{question.prompt}</p>
+                    <div className="multiple-choice-options">
+                        {options.map((option, index) => (
+                            <label key={index} className="multiple-choice-label">
+                                <input
+                                    type="radio"
+                                    value={option.text}
+                                    checked={selectedOption === option.text}
+                                    onChange={handleOptionChange}
+                                />
+                                {option.text}
+                            </label>
+                        ))}
+                    </div>
+                    <div className="mc-line"></div>
+                    <button type="submit" className="multiple-choice-button">
+                        Submit
+                    </button>
+                </form>
+                {showResult && (
+                    <div className="result-message">
+                        {isCorrect ? (
+                            <p className="correct-answer">Correct!</p>
+                        ) : (
+                            <p className="incorrect-answer">Incorrect.</p>
+                        )}
+                    </div>
+                )}
+            </div>
+
         </div>
     );
 };
