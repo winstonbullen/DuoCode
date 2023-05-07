@@ -15,6 +15,7 @@ export default {
       'ts-jest',
       {
         useESM: true,
+        isolatedModules: true, // this disables type checking
       },
     ],
   },
