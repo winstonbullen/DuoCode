@@ -135,7 +135,7 @@ app.get("/content/:language/:subject/:type/:difficulty/:id", async (req, res) =>
     let question_json = await content_db.get_question(req.params);
     res.status(200).send(question_json);
   } catch (error: any) {
-    res.status(500).send(error.message);
+    res.status(500).send(error.message); // TODO don't actually send the error message to user
   }
 });
 
