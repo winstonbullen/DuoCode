@@ -1,6 +1,6 @@
 /** @type {import('ts-jest').JestConfigWithTsJest} */
 export default {
-  preset: 'ts-jest',
+  preset: 'ts-jest/presets/default-esm',
   testEnvironment: 'node',
   moduleDirectories: ['node_modules', 'src'],
   extensionsToTreatAsEsm: ['.ts'],
@@ -17,4 +17,5 @@ export default {
       },
     ],
   },
+  transformIgnorePatterns: [],
 };

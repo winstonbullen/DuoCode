@@ -2,11 +2,16 @@ import { QuestionContentDB, QuestionParams } from "./db.js";
 import fs from "fs/promises";
 
 export class FileContentDB implements QuestionContentDB {
+  private static instance: FileContentDB;
+
   static get_db(): FileContentDB {
-    return new FileContentDB();
+    if (!FileContentDB.instance) {
+      FileContentDB.instance = new FileContentDB();
+    }
+    return FileContentDB.instance;
   }
 
-  async get_question(p: QuestionParams): Promise<JSON> {
+  async get_question(p: QuestionParams): Promise<Object> {
     let path = `../content/${p.language}/${p.subject}/${p.type}/d${p.difficulty}_${p.id}.json`;
     let data = await fs.readFile(path)
                  .then((res) => res.toString())

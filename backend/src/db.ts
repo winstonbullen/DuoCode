@@ -9,7 +9,7 @@ export interface UserInfo {
 }
 
 export interface QuestionContentDB {
-  get_question(params: QuestionParams): Promise<JSON>;
+  get_question(params: QuestionParams): Promise<Object>;
 }
 
 export interface QuestionParams {
