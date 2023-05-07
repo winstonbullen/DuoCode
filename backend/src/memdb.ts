@@ -1,4 +1,4 @@
-import { UserInfo, UserInfoDB } from "./user_info_db.js";
+import { UserInfo, UserInfoDB } from "./db.js";
 
 // a quick in-memory database to test if the interface structure will work
 export class MemDB implements UserInfoDB {
