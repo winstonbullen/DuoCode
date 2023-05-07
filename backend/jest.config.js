@@ -1,5 +1,6 @@
 /** @type {import('ts-jest').JestConfigWithTsJest} */
 export default {
+  roots: ["<rootDir>/test"],
   preset: 'ts-jest',
   testEnvironment: 'node',
   moduleDirectories: ['node_modules', 'src'],
@@ -14,7 +15,9 @@ export default {
       'ts-jest',
       {
         useESM: true,
+        isolatedModules: true, // this disables type checking
       },
     ],
   },
+  transformIgnorePatterns: [],
 };

@@ -1,9 +1,11 @@
 import express from "express";
 import session from "express-session"; // TODO use a better session store
 import bcrypt from "bcrypt";
+import fs from "fs";
 
 import { MemDB } from "./memdb.js";
-import { UserInfoDB } from "./user_info_db.js";
+import { QuestionContentDB, UserInfoDB } from "./db.js";
+import { FileContentDB } from "./filecontentdb.js";
 
 
 // needed to make the express-session login examples work with TS, see https://akoskm.com/how-to-use-express-session-with-custom-sessiondata-typescript
@@ -21,6 +23,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 const db: UserInfoDB = MemDB.get_db();
+const content_db: QuestionContentDB = FileContentDB.get_db();
 
 
 // built in middleware - parses urlencoded and json request bodies into the req.body field
@@ -125,7 +128,19 @@ app.get('/logout', function (req, res, next) {
 });
 
 
-app.use(express.static("../content"));
+app.get("/content/:language/:subject/:type/:difficulty/:id", async (req, res) => {
+  console.log(req.params);
+
+  try {
+    let question_json = await content_db.get_question(req.params);
+    res.status(200).send(question_json);
+  } catch (error: any) {
+    res.status(500).send(error.message); // TODO don't actually send the error message to user
+  }
+});
+
+
+app.use("/content", express.static("../content"));
 
 
 // start listening on specified port

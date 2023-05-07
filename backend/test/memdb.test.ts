@@ -5,7 +5,7 @@ test("mem DB is a singleton", () => {
   let i2 = MemDB.get_db();
 
   expect(i1).toBe(i2);
-  });
+});
 
 test("get values back after putting them in", () => {
   const input = { user: "foo", pass_hash: "bar" };
