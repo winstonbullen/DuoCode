@@ -48,20 +48,13 @@ const Question: React.FC<QuestionProps> = () => {
                 {currentQ === 3 && <ShortAnswer submitRef={submitRef} />}
             </div>
             <div className="question-footer">
-<<<<<<< HEAD
-                <hr></hr>
-                <button type="submit" className="" onClick={handleSubmitRef}>Submit</button>
-                <button type="submit" className="" onClick={handleNextQ}>Next</button>
-=======
                 <hr style={{
                     background: "lightgrey",
                     height: "3px",
                     border: "none",
-                }}
-                ></hr>
+                }}></hr>
                 <button type="submit" className="question-submit" onClick={handleSubmitRef}>Submit</button>
-                <button type="submit" className="question-next">Next</button>
->>>>>>> 63b6c94b5eb12a45914221dcefcffaf6ec2b89f5
+                <button type="submit" className="question-next" onClick={handleNextQ}>Next</button>
             </div>
         </div>
     );
