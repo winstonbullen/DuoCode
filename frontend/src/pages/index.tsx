@@ -8,7 +8,7 @@ const Home = () => {
     return (
         <div>
             <h1>Welcome to DuoCode</h1>
-            <Link to="/multiplechoice">
+            <Link to="/question">
                 <Button variant="outlined">
                     Start
                 </Button>
