@@ -3,7 +3,7 @@
 .short-answer-container {
     position: absolute;
     text-align: center;
-    top: 30%;
+    top: 25%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -16,7 +16,8 @@ input::placeholder{
 .short-answer-prompt {
     font-family:Nunito, serif;
     font-weight: bold;
-    font-size: 22px;
+    font-size: 32px;
+    white-space: nowrap;
     margin-bottom: 10px;
 }
 
@@ -27,26 +28,28 @@ input::placeholder{
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     margin-top: 4%;
     margin-bottom: 4%;
-    font-size: 16px;
+    font-size: 18px;
     width: 60%;
     max-width: 60%;
-    height: 40%;
+    height: 30%;
     box-sizing: border-box;
     background-color: #fff;
 }
 
 .short-answer-button {
+    position: fixed;
+    margin-top: 33.1%;
     font-family: Nunito, serif;
     font-weight: bold;
-    margin-left: 70%;
+    margin-left: 65%;
     display: flex;
     flex-direction: column;
     background-color: #7f8fa6;
     color: #fff;
-    padding: 10px 40px;
+    padding: 15px 70px;
     border: none;
-    border-radius: 5px;
-    font-size: 22px;
+    border-radius: 10px;
+    font-size: 32px;
     cursor: pointer;
     transition: background-color 0.2s;
 }
@@ -57,7 +60,8 @@ input::placeholder{
 
 .short-answer-validation {
     font-size: 20px;
-    margin-top: 20px;
+    position: fixed;
+    bottom: 0;
     padding: 10px;
     border-radius: 5px;
     width: 100%;
@@ -76,4 +80,9 @@ input::placeholder{
     font-weight: bold;
     background-color: #f8d7da;
     color: #721c24;
+}
+
+.line{
+    border-bottom: 3px solid lightgrey; /* 1px solid grey border on the bottom of the element */
+    margin-top: 30%;
 }

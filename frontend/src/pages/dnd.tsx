@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import data from '../data/variables/drag_drop/d1_1.json';
 import './dnd.css';
+import Question from './question';
 
 type DragDrop = {
     language: string;
@@ -70,44 +71,48 @@ const DragDrop: React.FC = () => {
     };
 
     return (
-        <div className="drag-drop-container">
-            <div className="drag-drop-prompt">{dragDrop.prompt}</div>
-            <div className="drag-drop-horizontal-container">
-                <div className="drag-drop-dragzone">
-                    {dragDrop.correct_ordering.map((item, index) => (
-                        <div
-                            key={index}
-                            className="drag-drop-draggable"
-                            id={`drag-${index}`}
-                            draggable
-                            onDragStart={(event) =>
-                                handleDragStart(event, { id: `drag-${index}`, text: item })
-                            }
-                        >
-                            {item}
-                        </div>
-                    ))}
-                </div>
-                <div className="drag-drop-dropzone" onDragOver={handleDragOver} onDrop={handleDrop}>
-                    {Array.from({ length: dragDrop.correct_ordering.length }).map((_, index) => (
-                        <div key={index} className="drag-drop-placeholder"></div>
-                    ))}
-                </div>
-            </div>
-            <button className="drag-drop-button" onClick={handleSubmit}>
-                Submit
-            </button>
+       <div>
+           <Question></Question>
+           <div className="drag-drop-container">
+               <div className="drag-drop-prompt">{dragDrop.prompt}</div>
+               <div className="drag-drop-horizontal-container">
+                   <div className="drag-drop-dragzone">
+                       {dragDrop.correct_ordering.map((item, index) => (
+                           <div
+                               key={index}
+                               className="drag-drop-draggable"
+                               id={`drag-${index}`}
+                               draggable
+                               onDragStart={(event) =>
+                                   handleDragStart(event, { id: `drag-${index}`, text: item })
+                               }
+                           >
+                               {item}
+                           </div>
+                       ))}
+                   </div>
+                   <div className="drag-drop-dropzone" onDragOver={handleDragOver} onDrop={handleDrop}>
+                       {Array.from({ length: dragDrop.correct_ordering.length }).map((_, index) => (
+                           <div key={index} className="drag-drop-placeholder"></div>
+                       ))}
+                   </div>
+               </div>
+               <button className="drag-drop-button" onClick={handleSubmit}>
+                   Submit
+               </button>
+               {showResult && (
+                   <div className="result-message">
+                       {isCorrect ? (
+                           <p className="correct-answer drag-drop-correct">Correct!</p>
+                       ) : (
+                           <p className="incorrect-answer drag-drop-incorrect">Incorrect.</p>
+                       )}
+                   </div>
+               )}
+           </div>
+           <div className="dnd-line"></div>
+       </div>
 
-            {showResult && (
-                <div className="result-message">
-                    {isCorrect ? (
-                        <p className="correct-answer drag-drop-correct">Correct!</p>
-                    ) : (
-                        <p className="incorrect-answer drag-drop-incorrect">Incorrect.</p>
-                    )}
-                </div>
-            )}
-        </div>
     );
 };
 
