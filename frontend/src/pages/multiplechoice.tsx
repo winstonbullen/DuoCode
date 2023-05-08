@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import data from '../data/variables/multiple_choice/d1_1.json';
 import './multiplechoice.css';
-import Question from './question';
 
 type Question = {
     language: string;
@@ -18,7 +17,11 @@ type Option = {
     isCorrect: boolean;
 };
 
-const MultipleChoice = () => {
+interface MultipleChoiceProps {
+    submitRef : React.RefObject<HTMLButtonElement>;
+}
+
+const MultipleChoice: React.FC<MultipleChoiceProps> = ({submitRef}) => {
     const [question, setQuestion] = useState<Question>(data);
     const [options, setOptions] = useState<Option[]>([]);
     const [selectedOption, setSelectedOption] = useState<string>('');
@@ -60,7 +63,6 @@ const MultipleChoice = () => {
 
     return (
         <div>
-            <Question></Question>
             <div className="multiple-choice-container">
                 <form onSubmit={handleSubmit}>
                     <p className="multiple-choice-prompt">{question.prompt}</p>
@@ -77,8 +79,7 @@ const MultipleChoice = () => {
                             </label>
                         ))}
                     </div>
-                    <div className="mc-line"></div>
-                    <button type="submit" className="multiple-choice-button">
+                    <button ref={ submitRef } type="submit" className="" style={{ display: 'none' }}>
                         Submit
                     </button>
                 </form>

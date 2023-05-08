@@ -14,8 +14,8 @@ function App() {
         <Router>
             <Routes>
                 <Route path='/' element={<Home />} />
-                <Route path='/dnd' element={<DragDrop/>} />
-                <Route path='/multiplechoice' element={<Choice />} />
+                {/* <Route path='/dnd' element={<DragDrop/>} /> */}
+                {/* <Route path='/multiplechoice' element={<Choice />} /> */}
                 {/* <Route path='/shortanswer' element={<ShortAnswer />} /> */}
                 <Route path='/question' element={<Question />} />
             </Routes>

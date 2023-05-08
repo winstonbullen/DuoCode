@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import data from '../data/variables/drag_drop/d1_1.json';
 import './dnd.css';
-import Question from './question';
 
 type DragDrop = {
     language: string;
@@ -17,7 +16,12 @@ type DragItem = {
     text: string;
 };
 
-const DragDrop: React.FC = () => {
+interface DragDropProps {
+    submitRef : React.RefObject<HTMLButtonElement>;
+}
+
+
+const DragDrop: React.FC<DragDropProps> = ({submitRef}) => {
     const [dragDrop, setDragDrop] = useState<DragDrop>(data);
     const [draggingElement, setDraggingElement] = useState<HTMLElement | null>(null);
     const [showResult, setShowResult] = useState<boolean>(false);
@@ -72,7 +76,6 @@ const DragDrop: React.FC = () => {
 
     return (
        <div>
-           <Question></Question>
            <div className="drag-drop-container">
                <div className="drag-drop-prompt">{dragDrop.prompt}</div>
                <div className="drag-drop-horizontal-container">
@@ -97,7 +100,7 @@ const DragDrop: React.FC = () => {
                        ))}
                    </div>
                </div>
-               <button className="drag-drop-button" onClick={handleSubmit}>
+               <button ref={ submitRef } className="" style={{ display: 'none' }} onClick={handleSubmit}>
                    Submit
                </button>
                {showResult && (
@@ -110,7 +113,6 @@ const DragDrop: React.FC = () => {
                    </div>
                )}
            </div>
-           <div className="dnd-line"></div>
        </div>
 
     );
