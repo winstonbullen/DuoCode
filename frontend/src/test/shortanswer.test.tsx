@@ -17,7 +17,7 @@ jest.mock('../api/quiz', () => ({
 
 describe('ShortAnswer', () => {
     it('renders the correct question prompt', () => {
-        render(<ShortAnswer />);
+        // render(<ShortAnswer submitRef={} />);
         const question = screen.getByLabelText(
             'Create a variable named foo of type int and initialize it to 1 using the code box below.'
         );

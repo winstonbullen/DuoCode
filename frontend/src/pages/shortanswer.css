@@ -1,31 +1,55 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
 .short-answer-container {
-    margin: 20px;
+    position: absolute;
+    text-align: center;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+input::placeholder{
+    color:gray;
+    font-family: Nunito, serif;
 }
 
 .short-answer-prompt {
-    font-size: 20px;
+    font-family:Nunito, serif;
+    font-weight: bold;
+    font-size: 32px;
+    white-space: nowrap;
     margin-bottom: 10px;
 }
 
 .short-answer-input {
     padding: 10px;
-    border: none;
+    border: 2px solid lightgray;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-    margin-bottom: 20px;
-    font-size: 16px;
-    width: 100%;
+    margin-top: 4%;
+    margin-bottom: 4%;
+    font-size: 18px;
+    width: 60%;
+    max-width: 60%;
+    height: 30%;
     box-sizing: border-box;
     background-color: #fff;
 }
 
 .short-answer-button {
+    position: fixed;
+    margin-top: 33.1%;
+    font-family: Nunito, serif;
+    font-weight: bold;
+    margin-left: 65%;
+    display: flex;
+    flex-direction: column;
     background-color: #7f8fa6;
     color: #fff;
-    padding: 10px 20px;
+    padding: 15px 70px;
     border: none;
-    border-radius: 5px;
-    font-size: 16px;
+    border-radius: 10px;
+    font-size: 32px;
     cursor: pointer;
     transition: background-color 0.2s;
 }
@@ -36,19 +60,28 @@
 
 .short-answer-validation {
     font-size: 20px;
-    margin-top: 20px;
-    padding: 10px;
+    position: fixed;
+    margin-top: 36.7%;
     border-radius: 5px;
     width: 100%;
     text-align: center;
 }
 
 .short-answer-correct {
+    font-family: Nunito, serif;
+    font-weight: bold;
     background-color: #d1e7dd;
     color: #2c3e50;
 }
 
 .short-answer-incorrect {
+    font-family: Nunito, serif;
+    font-weight: bold;
     background-color: #f8d7da;
     color: #721c24;
+}
+
+.line{
+    border-bottom: 3px solid lightgrey; /* 1px solid grey border on the bottom of the element */
+    margin-top: 30%;
 }

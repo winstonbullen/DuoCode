@@ -1,0 +1,8 @@
+{
+    "language": "java",
+    "subject": "variables",
+    "type": "drag_drop",
+    "difficulty": 1,
+    "prompt": "Drag and drop the following blocks to create a variable named foo of type int and initialize it to 1.",
+    "correct_ordering": ["int", "foo", "=", "1", ";"]
+}

@@ -1,0 +1,14 @@
+.progress {
+  background: #0096FF;
+  height: 100%;
+  border-radius: 10px;
+  opacity: 1;
+}
+
+.container {
+  max-width: 910px;
+  width: 60vw;
+  height: 34px;
+  background: rgba(81,80,90, .1);
+  border-radius: 10px;
+}
