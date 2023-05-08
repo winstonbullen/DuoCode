@@ -7,6 +7,12 @@ import { MemDB } from "./memdb.js";
 import { QuestionContentDB, UserInfoDB } from "./db.js";
 import { FileContentDB } from "./filecontentdb.js";
 
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+import path from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 // needed to make the express-session login examples work with TS, see https://akoskm.com/how-to-use-express-session-with-custom-sessiondata-typescript
 type User = {
@@ -25,6 +31,8 @@ const PORT = process.env.PORT || 3000;
 
 const db: UserInfoDB = MemDB.get_db();
 const content_db: QuestionContentDB = FileContentDB.get_db();
+
+const FRONTEND_BUILD = "../frontend/build/index.html";
 
 
 // built in middleware - parses urlencoded and json request bodies into the req.body field
@@ -48,6 +56,16 @@ app.get("/", (req, res) => {
   } else {
     console.log("LOG: Got request to index from non-authenticated user");
     res.send("Hello DuoCode! Index currently has no content. You are not authenticated.");
+  }
+});
+
+
+// app
+app.get("/app", (req, res) => {
+  if (req.session.user) {
+    res.status(200).sendFile(path.resolve(FRONTEND_BUILD));
+  } else {
+    res.send(401).send("Unauthorized");
   }
 });
 
@@ -115,7 +133,7 @@ app.post("/login", async (req, res, next) => {
     // load does not happen before session is saved
     req.session.save(function (err) {
       if (err) return next(err);
-      res.redirect("/"); // TODO this sets the cookie on the response, but manually sending a response doesn't
+      res.redirect("/app"); // TODO this sets the cookie on the response, but manually sending a response doesn't
     })
   })
 });
