@@ -61,8 +61,7 @@ input::placeholder{
 .short-answer-validation {
     font-size: 20px;
     position: fixed;
-    bottom: 0;
-    padding: 10px;
+    margin-top: 36.7%;
     border-radius: 5px;
     width: 100%;
     text-align: center;

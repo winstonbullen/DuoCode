@@ -83,17 +83,16 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({submitRef}) => {
                         Submit
                     </button>
                 </form>
-                {showResult && (
-                    <div className="result-message">
-                        {isCorrect ? (
-                            <p className="correct-answer">Correct!</p>
-                        ) : (
-                            <p className="incorrect-answer">Incorrect.</p>
-                        )}
-                    </div>
-                )}
             </div>
-
+            {showResult && (
+                <div className="result-message">
+                    {isCorrect ? (
+                        <p className="correct-answer">Correct!</p>
+                    ) : (
+                        <p className="incorrect-answer">Incorrect.</p>
+                    )}
+                </div>
+            )}
         </div>
     );
 };

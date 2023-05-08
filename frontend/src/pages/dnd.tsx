@@ -103,16 +103,16 @@ const DragDrop: React.FC<DragDropProps> = ({submitRef}) => {
                <button ref={ submitRef } className="" style={{ display: 'none' }} onClick={handleSubmit}>
                    Submit
                </button>
-               {showResult && (
-                   <div className="result-message">
-                       {isCorrect ? (
-                           <p className="correct-answer drag-drop-correct">Correct!</p>
-                       ) : (
-                           <p className="incorrect-answer drag-drop-incorrect">Incorrect.</p>
-                       )}
-                   </div>
-               )}
            </div>
+           {showResult && (
+               <div className="result-message">
+                   {isCorrect ? (
+                       <p className="correct-answer drag-drop-correct">Correct!</p>
+                   ) : (
+                       <p className="incorrect-answer drag-drop-incorrect">Incorrect.</p>
+                   )}
+               </div>
+           )}
        </div>
 
     );
