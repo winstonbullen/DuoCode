@@ -55,6 +55,7 @@ flexible to changes in the way that question content is hosted.
   - Retrieve a list with information about which lessons the user has completed
   - Response:
     - 200 - successfuly retrieval of completion information
+    - 401 - the user making the request is not authenticated
 - Method `POST`
   - Update the progress of the user by specifying a lesson which has been completed,
   adding that lesson to the list of lessons the user has completed.
@@ -63,3 +64,4 @@ flexible to changes in the way that question content is hosted.
   that subject
   - Response:
     - 200 - successfully added to list of completed lessons for the user
+    - 401 - if the user making the request is not authenticated
