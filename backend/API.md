@@ -4,6 +4,13 @@
 - Method: `GET`
 - returns placeholder text which is different depending on if the user is authenticated
 
+#### `/app` - the app itself
+- Method: `GET`
+- returns the app's web content!
+- Response:
+  - 200 - success
+  - 401 - user is unauthorized
+
 #### `/signup` - signup endpoint
 - Method: `POST`
 - Can handle url-encoded form data or JSON body data
