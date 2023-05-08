@@ -30,4 +30,10 @@ export class MemDB implements UserInfoDB {
   get_entry(user: string): UserInfo {
     return this.db[user];
   }
+
+  append_completion(user: string, completion: string): void {
+    // TODO if this question mark is anything like rust this can throw an error
+    // but it should be an invariant that every entry has an empty completed list
+    this.db[user].completed?.push(completion);
+  }
 }
