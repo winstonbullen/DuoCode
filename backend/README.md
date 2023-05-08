@@ -10,4 +10,4 @@ Helper scripts for building have been set up.
 - `npm run start` will start the server from the last build in `dist/`
 - `npm run build` will just run the Typescript compiler to build into `dist/`
 - `npm run clean` will remove the `dist/` directory
-- `npm run build` will make sure the backend builds, then will run the Jest test suite in `test/`.
+- `npm run test` will make sure the backend builds, then will run the Jest test suite in `test/`.

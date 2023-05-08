@@ -27,7 +27,7 @@
 - Response:
   - 300 - redirect to `/` endpoint
 
-#### `/content/` - content endpoint
+#### `/content` - content endpoint
 - Method: `GET`
 - Serve question JSON content either through static URL path or through route parameters
 - Response:
@@ -49,3 +49,19 @@
 ```
 Note: the first way (route parameters) may be preferable since it is more
 flexible to changes in the way that question content is hosted.
+
+#### `/completion` - completion/progress endpoint
+- Method: `GET`
+  - Retrieve a list with information about which lessons the user has completed
+  - Response:
+    - 200 - successfuly retrieval of completion information
+    - 401 - the user making the request is not authenticated
+- Method `POST`
+  - Update the progress of the user by specifying a lesson which has been completed,
+  adding that lesson to the list of lessons the user has completed.
+  - Expects a body with `language`, `subject` fields, and optionally a `level` field.
+  If there is no `level` field, it will be treated as the milestone completion for
+  that subject
+  - Response:
+    - 200 - successfully added to list of completed lessons for the user
+    - 401 - if the user making the request is not authenticated
