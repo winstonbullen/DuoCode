@@ -134,19 +134,19 @@
     font-family: Nunito, serif;
 }
 
-.progress-bar {
-    width: 200px;
-    height: 10px;
-    background-color: #e8e8e8;
-    border-radius: 5px;
-    position: relative;
-}
+/*.progress-bar {*/
+/*    width: 200px;*/
+/*    height: 10px;*/
+/*    background-color: #e8e8e8;*/
+/*    border-radius: 5px;*/
+/*    position: relative;*/
+/*}*/
 
-.progress {
-    height: 100%;
-    border-radius: 5px;
-    background-color: #40b9ff;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
+/*.progress {*/
+/*    height: 100%;*/
+/*    border-radius: 5px;*/
+/*    background-color: #40b9ff;*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*}*/
