@@ -6,7 +6,22 @@ interface ShortAnswerProps {
     submitRef : React.RefObject<HTMLButtonElement>;
 }
 
+const fetchData = () => {
+    return fetch("http://localhost:3000/content/java/arrays/short_response/1/1")
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+        })
+        .catch(error => console.error('Could not fetch data', error));
+}
+
 const ShortAnswer: React.FC<ShortAnswerProps> = ({submitRef}) => {
+    fetchData();
     const [text, setText] = useState('');
     const [isValid, setIsValid] = useState(false);
     const [showValidation, setShowValidation] = useState(false);

@@ -22,7 +22,7 @@ interface MultipleChoiceProps {
 }
 
 const fetchData = () => {
-    return fetch("http://localhost:3000/content/java/arrays/drag_drop/1/1")
+    return fetch("http://localhost:3000/content/java/arrays/multiple_choice/1/1")
         .then((response) => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');

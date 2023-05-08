@@ -20,8 +20,24 @@ interface DragDropProps {
     submitRef : React.RefObject<HTMLButtonElement>;
 }
 
+const fetchData = () => {
+    return fetch("http://localhost:3000/content/java/arrays/drag_drop/1/1")
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+        })
+        .catch(error => console.error('Could not fetch data', error));
+}
+
+
 
 const DragDrop: React.FC<DragDropProps> = ({submitRef}) => {
+    fetchData();
     const [dragDrop, setDragDrop] = useState<DragDrop>(data);
     const [draggingElement, setDraggingElement] = useState<HTMLElement | null>(null);
     const [showResult, setShowResult] = useState<boolean>(false);
