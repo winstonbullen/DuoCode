@@ -27,7 +27,7 @@ declare module "express-session" {
 
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 const db: UserInfoDB = MemDB.get_db();
 const content_db: QuestionContentDB = FileContentDB.get_db();
@@ -175,6 +175,8 @@ app.get("/content/:language/:subject/:type/:difficulty/:id", async (req, res) =>
 
 
 app.use(express.static("public"));
+
+app.use(express.static("../frontend/build"));
 
 app.get("/completion", (req, res) => {
   if (req.session.user) {
