@@ -76,6 +76,8 @@ app.post("/signup", async (req, res) => {
   }
 });
 
+
+
 // express-session code from the examples at https://www.npmjs.com/package/express-session
 
 // log in endppoint - authenticate and then create session
@@ -154,7 +156,7 @@ app.get("/content/:language/:subject/:type/:difficulty/:id", async (req, res) =>
 });
 
 
-app.use("/content", express.static("../content"));
+app.use(express.static("public"));
 
 app.get("/completion", (req, res) => {
   if (req.session.user) {
