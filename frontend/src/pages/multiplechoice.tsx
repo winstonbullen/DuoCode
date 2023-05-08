@@ -21,7 +21,23 @@ interface MultipleChoiceProps {
     submitRef : React.RefObject<HTMLButtonElement>;
 }
 
+const fetchData = () => {
+    return fetch("http://localhost:3000/content/java/arrays/drag_drop/1/1")
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+        })
+        .catch(error => console.error('Could not fetch data', error));
+}
+
+
 const MultipleChoice: React.FC<MultipleChoiceProps> = ({submitRef}) => {
+    fetchData();
     const [question, setQuestion] = useState<Question>(data);
     const [options, setOptions] = useState<Option[]>([]);
     const [selectedOption, setSelectedOption] = useState<string>('');
