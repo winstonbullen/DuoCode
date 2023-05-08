@@ -32,9 +32,14 @@ const Question: React.FC<QuestionProps> = () => {
                 <ShortAnswer submitRef={submitRef}/>
             </div>
             <div className="question-footer">
-                <hr></hr>
-                <button type="submit" className="" onClick={handleSubmitRef}>Submit</button>
-                <button type="submit" className="">Skip</button>
+                <hr style={{
+                    background: "lightgrey",
+                    height: "3px",
+                    border: "none",
+                }}
+                ></hr>
+                <button type="submit" className="question-submit" onClick={handleSubmitRef}>Submit</button>
+                <button type="submit" className="question-next">Next</button>
             </div>
         </div>
     );
