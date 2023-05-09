@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import data from '../data/variables/drag_drop/d1_1.json';
 import './dnd.css';
 
-type DragDrop = {
+type dragDrop = {
     language: string;
     subject: string;
     type: string;
@@ -11,7 +11,7 @@ type DragDrop = {
     correct_ordering: string[];
 };
 
-const emptyDragDrop: DragDrop = {
+const emptyDragDrop: dragDrop = {
     language: '',
     subject: '',
     type: '',
@@ -33,7 +33,7 @@ interface DragDropProps {
 
 
 const DragDrop: React.FC<DragDropProps> = ({submitRef}) => {
-    const [dragDrop, setDragDrop] = useState<DragDrop>(emptyDragDrop);
+    const [dragDrop, setDragDrop] = useState<dragDrop>(emptyDragDrop);
     const [draggingElement, setDraggingElement] = useState<HTMLElement | null>(null);
     const [showResult, setShowResult] = useState<boolean>(false);
     const [isCorrect, setIsCorrect] = useState<boolean>(false);
@@ -55,6 +55,7 @@ const DragDrop: React.FC<DragDropProps> = ({submitRef}) => {
             correct_ordering: shuffledOrdering,
         });
     }, []);
+
 
     const handleDragStart = (event: React.DragEvent<HTMLElement>, item: DragItem) => {
         setDraggingElement(event.currentTarget);
