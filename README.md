@@ -14,7 +14,7 @@ The web app is currently in Alpha release. The steps to deploy the web app are l
 
 - try the demo questions under `app/questions` once they have logged in by clicking on their desired lesson.
 
-- only the first lesson is available for Alpha but questions are fully functional for correctness and content.
+    - only the first lesson is available for Alpha but questions are fully functional for correctness and content.
 
 ## Deployment
 
