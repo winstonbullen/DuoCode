@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import data from '../data/variables/drag_drop/d1_1.json';
 import './dnd.css';
 
 type dragDrop = {
@@ -84,7 +83,7 @@ const DragDrop: React.FC<DragDropProps> = ({submitRef}) => {
         const ordering: string[] = [];
         draggableElements.forEach((element) => ordering.push(element.textContent || ''));
         setShowResult(true);
-        setIsCorrect(ordering.join('') === data.correct_ordering.join(''));
+        setIsCorrect(ordering.join('') === dragDrop.correct_ordering.join(''));
     };
 
     const shuffleArray = (array: string[]) => {
@@ -141,4 +140,3 @@ const DragDrop: React.FC<DragDropProps> = ({submitRef}) => {
 };
 
 export default DragDrop;
-

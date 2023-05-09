@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import data from '../data/variables/multiple_choice/d1_1.json';
 import './multiplechoice.css';
 
 type Question = {
