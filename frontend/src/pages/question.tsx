@@ -12,6 +12,7 @@ interface QuestionProps {}
 
 const Question: React.FC<QuestionProps> = () => {
     const [currentQ, setCurrentQ] = useState(1);
+    const [currentProgress, setCurrentProgress] = useState(0);
 
 
     // create ref to submit question-content
@@ -26,10 +27,14 @@ const Question: React.FC<QuestionProps> = () => {
     const handleNextQ = () => {
         if (currentQ == 3) {
             setCurrentQ(1)
+            setCurrentProgress(0);
         } else {
             setCurrentQ(currentQ + 1);
+            setCurrentProgress(currentProgress + 33);
         }
     };
+
+
 
     return (
         <div className='page'>
@@ -39,7 +44,7 @@ const Question: React.FC<QuestionProps> = () => {
                     <SettingBtn/>
                 </div>
                 <div className='mg-sm'>
-                    <ProgressBar completed={10}/>
+                    <ProgressBar completed= {currentProgress}/>
                 </div>
             </div>
             <div className='question-content'>

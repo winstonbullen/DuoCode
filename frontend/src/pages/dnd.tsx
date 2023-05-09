@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import data from '../data/variables/drag_drop/d1_1.json';
 import './dnd.css';
 
-type DragDrop = {
+type dragDrop = {
     language: string;
     subject: string;
     type: string;
@@ -10,6 +9,16 @@ type DragDrop = {
     prompt: string;
     correct_ordering: string[];
 };
+
+const emptyDragDrop: dragDrop = {
+    language: '',
+    subject: '',
+    type: '',
+    difficulty: 0,
+    prompt: '',
+    correct_ordering: [],
+};
+
 
 type DragItem = {
     id: string;
@@ -21,11 +30,22 @@ interface DragDropProps {
 }
 
 
+
 const DragDrop: React.FC<DragDropProps> = ({submitRef}) => {
-    const [dragDrop, setDragDrop] = useState<DragDrop>(data);
+    const [dragDrop, setDragDrop] = useState<dragDrop>(emptyDragDrop);
     const [draggingElement, setDraggingElement] = useState<HTMLElement | null>(null);
     const [showResult, setShowResult] = useState<boolean>(false);
     const [isCorrect, setIsCorrect] = useState<boolean>(false);
+
+    useEffect(() => {
+        async function fetchData() {
+            const response = await fetch("http://localhost:3001/content/java/arrays/drag_drop/1/1")
+            const data = await response.json();
+            setDragDrop(data)
+            console.log(data)
+        }
+        fetchData();
+    }, []);
 
     useEffect(() => {
         const shuffledOrdering = shuffleArray(dragDrop.correct_ordering);
@@ -34,6 +54,7 @@ const DragDrop: React.FC<DragDropProps> = ({submitRef}) => {
             correct_ordering: shuffledOrdering,
         });
     }, []);
+
 
     const handleDragStart = (event: React.DragEvent<HTMLElement>, item: DragItem) => {
         setDraggingElement(event.currentTarget);
@@ -62,7 +83,7 @@ const DragDrop: React.FC<DragDropProps> = ({submitRef}) => {
         const ordering: string[] = [];
         draggableElements.forEach((element) => ordering.push(element.textContent || ''));
         setShowResult(true);
-        setIsCorrect(ordering.join('') === data.correct_ordering.join(''));
+        setIsCorrect(ordering.join('') === dragDrop.correct_ordering.join(''));
     };
 
     const shuffleArray = (array: string[]) => {
@@ -119,4 +140,3 @@ const DragDrop: React.FC<DragDropProps> = ({submitRef}) => {
 };
 
 export default DragDrop;
-

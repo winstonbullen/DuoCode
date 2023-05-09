@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import data from '../data/variables/multiple_choice/d1_1.json';
 import './multiplechoice.css';
 
 type Question = {
@@ -12,6 +11,17 @@ type Question = {
     distractors: string[];
 };
 
+const emptyQuestion: Question = {
+    language: "",
+    subject: "",
+    type: "",
+    difficulty: 0,
+    prompt: "",
+    correct_answer: "",
+    distractors: []
+};
+
+
 type Option = {
     text: string;
     isCorrect: boolean;
@@ -21,16 +31,28 @@ interface MultipleChoiceProps {
     submitRef : React.RefObject<HTMLButtonElement>;
 }
 
+
+
 const MultipleChoice: React.FC<MultipleChoiceProps> = ({submitRef}) => {
-    const [question, setQuestion] = useState<Question>(data);
+    const [question, setQuestion] = useState<Question>(emptyQuestion);
     const [options, setOptions] = useState<Option[]>([]);
     const [selectedOption, setSelectedOption] = useState<string>('');
     const [showResult, setShowResult] = useState<boolean>(false);
     const [isCorrect, setIsCorrect] = useState<boolean>(false);
 
     useEffect(() => {
-        setOptions(getShuffledOptions());
+        async function fetchData() {
+            const response = await fetch("http://localhost:3001/content/java/arrays/multiple_choice/1/1")
+            const data = await response.json();
+            console.log(data)
+            setQuestion(data)
+        }
+        fetchData();
     }, []);
+
+    useEffect(() => {
+        setOptions(getShuffledOptions());
+    }, [question]);
 
     function getShuffledOptions() {
         const options = [
