@@ -200,7 +200,7 @@ app.post("/completion", (req, res) => {
 
 app.use("/content", express.static("../content"));
 app.use(express.static("public"));
-app.use(express.static("../frontend/build"));
+app.use("/app", express.static("../frontend/build"));
 app.use("/*", (req, res) => {
   console.error("Unknown endpoint was hit, sending app");
   res.redirect("/app");
