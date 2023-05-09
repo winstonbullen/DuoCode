@@ -6,13 +6,15 @@ Existing resources fail to make coding practice exciting and accessible across a
 
 ## Release
 
-The web app is currently in Alpha release. The steps to deploy the web app are listed below. This will start a localhost on port 3001. Please visit [localhost:3001/login.html](http://localhost:3001/login.html) once the server has started. The current release specifically allows users to:
+The web app is currently in Alpha release. The steps to deploy the web app are listed below. This will start a localhost on port 3001. Please visit [localhost:3001/signup.html](http://localhost:3001/signup.html) once the server has started. The current release specifically allows users to:
 
-- sign up using the username and password boxes on `login.html`.
+- sign up using the name and password boxes on `signup.html`.
 
-- log in using the username and password boxes on `login.html` once they have signed up.
+- log in using the name and password boxes on `login.html` once they have signed up.
 
-- try the demo questions under `app/questions` once they have logged in.
+- try the demo questions under `app/questions` once they have logged in by clicking on their desired lesson.
+
+- only the first lesson is available for Alpha but questions are fully functional for correctness and content.
 
 ## Deployment
 
