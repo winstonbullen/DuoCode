@@ -37,10 +37,9 @@ const Question: React.FC<QuestionProps> = () => {
         }
     };
 
-    let navigate = useNavigate();
+
     const handleComplete = () => {
-        let path = '/'
-        navigate(path)
+        window.location.href = 'http://localhost:3001/app'
     }
 
     return (
