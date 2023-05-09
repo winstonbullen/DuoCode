@@ -1,5 +1,7 @@
 # API Specification
+
 ### For DuoCode Server
+
 #### `/` - testing endpoint
 - Method: `GET`
 - returns placeholder text which is different depending on if the user is authenticated
