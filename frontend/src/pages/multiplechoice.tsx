@@ -12,6 +12,17 @@ type Question = {
     distractors: string[];
 };
 
+const emptyQuestion: Question = {
+    language: "",
+    subject: "",
+    type: "",
+    difficulty: 0,
+    prompt: "",
+    correct_answer: "",
+    distractors: []
+};
+
+
 type Option = {
     text: string;
     isCorrect: boolean;
@@ -21,32 +32,28 @@ interface MultipleChoiceProps {
     submitRef : React.RefObject<HTMLButtonElement>;
 }
 
-const fetchData = () => {
-    return fetch("http://localhost:3000/content/java/arrays/multiple_choice/1/1")
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log(data);
-        })
-        .catch(error => console.error('Could not fetch data', error));
-}
 
 
 const MultipleChoice: React.FC<MultipleChoiceProps> = ({submitRef}) => {
-    fetchData();
-    const [question, setQuestion] = useState<Question>(data);
+    const [question, setQuestion] = useState<Question>(emptyQuestion);
     const [options, setOptions] = useState<Option[]>([]);
     const [selectedOption, setSelectedOption] = useState<string>('');
     const [showResult, setShowResult] = useState<boolean>(false);
     const [isCorrect, setIsCorrect] = useState<boolean>(false);
 
     useEffect(() => {
-        setOptions(getShuffledOptions());
+        async function fetchData() {
+            const response = await fetch("http://localhost:3001/content/java/arrays/multiple_choice/1/1")
+            const data = await response.json();
+            console.log(data)
+            setQuestion(data)
+        }
+        fetchData();
     }, []);
+
+    useEffect(() => {
+        setOptions(getShuffledOptions());
+    }, [question]);
 
     function getShuffledOptions() {
         const options = [

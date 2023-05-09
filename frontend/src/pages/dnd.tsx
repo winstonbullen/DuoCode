@@ -11,6 +11,16 @@ type DragDrop = {
     correct_ordering: string[];
 };
 
+const emptyDragDrop: DragDrop = {
+    language: '',
+    subject: '',
+    type: '',
+    difficulty: 0,
+    prompt: '',
+    correct_ordering: [],
+};
+
+
 type DragItem = {
     id: string;
     text: string;
@@ -20,28 +30,23 @@ interface DragDropProps {
     submitRef : React.RefObject<HTMLButtonElement>;
 }
 
-const fetchData = () => {
-    return fetch("http://localhost:3000/content/java/arrays/drag_drop/1/1")
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log(data);
-        })
-        .catch(error => console.error('Could not fetch data', error));
-}
-
 
 
 const DragDrop: React.FC<DragDropProps> = ({submitRef}) => {
-    fetchData();
-    const [dragDrop, setDragDrop] = useState<DragDrop>(data);
+    const [dragDrop, setDragDrop] = useState<DragDrop>(emptyDragDrop);
     const [draggingElement, setDraggingElement] = useState<HTMLElement | null>(null);
     const [showResult, setShowResult] = useState<boolean>(false);
     const [isCorrect, setIsCorrect] = useState<boolean>(false);
+
+    useEffect(() => {
+        async function fetchData() {
+            const response = await fetch("http://localhost:3001/content/java/arrays/drag_drop/1/1")
+            const data = await response.json();
+            setDragDrop(data)
+            console.log(data)
+        }
+        fetchData();
+    }, []);
 
     useEffect(() => {
         const shuffledOrdering = shuffleArray(dragDrop.correct_ordering);

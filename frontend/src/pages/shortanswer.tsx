@@ -1,27 +1,42 @@
-import React, { useState } from 'react';
-import shortAnswerData from '../data/variables/short_response/d1_1.json';
+import React, {useEffect, useState} from 'react';
 import './shortanswer.css';
 
 interface ShortAnswerProps {
     submitRef : React.RefObject<HTMLButtonElement>;
 }
 
-const fetchData = () => {
-    return fetch("http://localhost:3000/content/java/arrays/short_response/1/1")
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log(data);
-        })
-        .catch(error => console.error('Could not fetch data', error));
-}
+type shortAnswerData = {
+    language: string;
+    subject: string;
+    type: string;
+    difficulty: number;
+    prompt: string;
+    correct_answer: string;
+};
+
+const emptyShortAnswerData: shortAnswerData = {
+    language: '',
+    subject: '',
+    type: '',
+    difficulty: 0,
+    prompt: '',
+    correct_answer: '',
+};
+
+
 
 const ShortAnswer: React.FC<ShortAnswerProps> = ({submitRef}) => {
-    fetchData();
+    const [shortAnswerData, setshortAnwswer] = useState<shortAnswerData>(emptyShortAnswerData);
+    useEffect(() => {
+        async function fetchData() {
+            const response = await fetch("http://localhost:3001/content/java/arrays/short_response/1/1")
+            const data = await response.json();
+            setshortAnwswer(data)
+            console.log(data)
+        }
+        fetchData();
+    }, []);
+
     const [text, setText] = useState('');
     const [isValid, setIsValid] = useState(false);
     const [showValidation, setShowValidation] = useState(false);
