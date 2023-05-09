@@ -54,7 +54,7 @@ const DragDrop: React.FC<DragDropProps> = ({submitRef}) => {
             ...dragDrop,
             correct_ordering: shuffledOrdering,
         });
-    }, [dragDrop]);
+    }, []);
 
 
     const handleDragStart = (event: React.DragEvent<HTMLElement>, item: DragItem) => {
