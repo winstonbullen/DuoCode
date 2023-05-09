@@ -174,9 +174,6 @@ app.get("/content/:language/:subject/:type/:difficulty/:id", async (req, res) =>
 });
 
 
-app.use(express.static("public"));
-
-app.use(express.static("../frontend/build"));
 
 app.get("/completion", (req, res) => {
   if (req.session.user) {
@@ -201,6 +198,13 @@ app.post("/completion", (req, res) => {
   }
 });
 
+app.use("/content", express.static("../content"));
+app.use(express.static("public"));
+app.use("/app", express.static("../frontend/build"));
+app.use("/*", (req, res) => {
+  console.error("Unknown endpoint was hit, sending app");
+  res.redirect("/app");
+});
 
 // start listening on specified port
 app.listen(PORT, () => {
