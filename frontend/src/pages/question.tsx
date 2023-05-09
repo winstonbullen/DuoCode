@@ -12,7 +12,7 @@ interface QuestionProps {}
 
 const Question: React.FC<QuestionProps> = () => {
     const [currentQ, setCurrentQ] = useState(1);
-    const [currentProgress, setCurrentProgress] = useState(0);
+    const [currentProgress, setCurrentProgress] = useState(33);
 
 
     // create ref to submit question-content
@@ -27,7 +27,7 @@ const Question: React.FC<QuestionProps> = () => {
     const handleNextQ = () => {
         if (currentQ == 3) {
             setCurrentQ(1)
-            setCurrentProgress(0);
+            setCurrentProgress(33);
         } else {
             setCurrentQ(currentQ + 1);
             setCurrentProgress(currentProgress + 33);

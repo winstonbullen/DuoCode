@@ -1,15 +1,15 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
-import ShortAnswer from '../pages/shortanswer';
+import DragDrop from '../pages/dnd';
 
 describe('ShortAnswer component with mock data', () => {
     const mockData = {
-        language: 'java',
-        subject: 'variables',
-        type: 'short_response',
-        difficulty: 1,
-        prompt: 'Create a variable named foo of type int and initialize it to 1 using the code box below.',
-        correct_answer: 'int foo = 1;',
+        "language": "java",
+        "subject": "variables",
+        "type": "drag_drop",
+        "difficulty": 1,
+        "prompt": "Drag and drop the following blocks to create a variable named foo of type int and initialize it to 1.",
+        "correct_ordering": ["int", "foo", "=", "1", ";"]
     };
 
     beforeEach(() => {
@@ -26,7 +26,7 @@ describe('ShortAnswer component with mock data', () => {
 
     it('should render the prompt received from the server', async () => {
         const buttonRef = React.createRef<HTMLButtonElement>();
-        render(<ShortAnswer submitRef={buttonRef} />);
+        render(<DragDrop submitRef={buttonRef} />);
 
         await waitFor(() => expect(screen.getByText(mockData.prompt)).toBeInTheDocument());
     });

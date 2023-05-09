@@ -55,9 +55,20 @@ app.get("/", (req, res) => {
     res.send("Hello DuoCode! Index currently has no content. You are authenticated.");
   } else {
     console.log("LOG: Got request to index from non-authenticated user");
-    res.send("Hello DuoCode! Index currently has no content. You are not authenticated.");
+    res.send(`
+      <html>
+        <head>
+          <title>Index</title>
+        </head>
+        <body>
+          <h1>Hello DuoCode! Index currently has no content. You are not authenticated.</h1>
+          <button onclick="location.href='/signup.html'">Sign Up Here</button>
+        </body>
+      </html>
+    `);
   }
 });
+
 
 
 // app
@@ -88,7 +99,10 @@ app.post("/signup", async (req, res) => {
     };
 
     db.insert_entry(data);
-    res.status(201).send("Account created");
+    res.status(201).send(`
+      <h1>Account created successfully!</h1>
+      <button onclick="window.location.href='/login.html'">Go to login page</button>
+    `);
   } else {
     res.type("text/plain").status(400).send("User already exists");
   }
