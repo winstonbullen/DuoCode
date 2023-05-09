@@ -7,6 +7,7 @@ import ProgressBar from '../components/ProgressBar';
 import ShortAnswer from './shortanswer';
 import MultipleChoice from './multiplechoice';
 import DragDrop from './dnd';
+import Completed from './completed';
 
 interface QuestionProps {}
 
@@ -25,12 +26,12 @@ const Question: React.FC<QuestionProps> = () => {
 
     // swap question for next one
     const handleNextQ = () => {
-        if (currentQ == 3) {
+        if (currentQ == 4) {
             setCurrentQ(1)
             setCurrentProgress(0);
         } else {
             setCurrentQ(currentQ + 1);
-            setCurrentProgress(currentProgress + 33);
+            setCurrentProgress(currentProgress + 33.33333);
         }
     };
 
@@ -51,6 +52,7 @@ const Question: React.FC<QuestionProps> = () => {
                 {currentQ === 1 && <MultipleChoice submitRef={submitRef} />}
                 {currentQ === 2 && <DragDrop submitRef={submitRef} />}
                 {currentQ === 3 && <ShortAnswer submitRef={submitRef} />}
+                {currentQ === 4 && <Completed />}
             </div>
             <div className="question-footer">
                 <hr style={{
@@ -58,8 +60,12 @@ const Question: React.FC<QuestionProps> = () => {
                     height: "3px",
                     border: "none",
                 }}></hr>
-                <button type="submit" className="question-submit" onClick={handleSubmitRef}>Submit</button>
-                <button type="submit" className="question-next" onClick={handleNextQ}>Next</button>
+                {currentQ != 4 ? (
+                    <button type="submit" className="question-submit" onClick={handleSubmitRef}>Submit</button>
+                    ) : null}
+                {currentQ != 4 ? (
+                    <button type="submit" className="question-next" onClick={handleNextQ}>Next</button>
+                ) : <button type="submit" className="question-next" onClick={handleNextQ}>Reset</button>}
             </div>
         </div>
     );
