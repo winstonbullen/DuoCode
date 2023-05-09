@@ -8,6 +8,8 @@ import ShortAnswer from './shortanswer';
 import MultipleChoice from './multiplechoice';
 import DragDrop from './dnd';
 import Completed from './completed';
+import { useNavigate } from 'react-router-dom';
+
 
 interface QuestionProps {}
 
@@ -35,7 +37,11 @@ const Question: React.FC<QuestionProps> = () => {
         }
     };
 
-
+    let navigate = useNavigate();
+    const handleComplete = () => {
+        let path = '/'
+        navigate(path)
+    }
 
     return (
         <div className='page'>
@@ -65,7 +71,7 @@ const Question: React.FC<QuestionProps> = () => {
                     ) : null}
                 {currentQ != 4 ? (
                     <button type="submit" className="question-next" onClick={handleNextQ}>Next</button>
-                ) : <button type="submit" className="question-next" onClick={handleNextQ}>Reset</button>}
+                ) : <button type="submit" className="question-next" onClick={handleComplete}>Go Back</button>}
             </div>
         </div>
     );
