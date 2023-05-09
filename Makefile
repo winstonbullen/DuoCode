@@ -1,4 +1,4 @@
-.PHONY: install deploy test
+.PHONY: install deploy test clean
 
 install:
 	cd ./frontend/ && npm install
@@ -14,3 +14,7 @@ deploy:
 test:
 	cd ./frontend/ && npm run test
 	cd ./backend/ && npm run test
+
+clean:
+	cd ./frontend/ && npm run clean
+	cd ./backend/ && npm run clean

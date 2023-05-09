@@ -27,3 +27,5 @@ The repository has a single ```Makefile``` in the top-level directory.
 - ```make deploy```: runs npm build & start commands to deploy the web app.
 
 - ```make test```: runs npm test commands for both frontend and backend.
+
+- ```make clean```: runs npm clean commands to delete distributions.
