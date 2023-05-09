@@ -1,0 +1,16 @@
+.complete-container {
+    position: absolute;
+    text-align: center;
+    top: 38%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 20px;
+}
+
+.complete-prompt {
+    text-align: center;
+    font-family: Nunito, serif;
+    font-weight: bold;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
