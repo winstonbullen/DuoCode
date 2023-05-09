@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+.form-container {
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 20px;
+    font-family: Nunito, serif;
+}
+
+.form-label {
+    display: block;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-input {
+    display: block;
+    padding: 10px;
+    border: 3px solid lightgrey;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    margin-bottom: 20px;
+    font-size: 24px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #fff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-input:focus {
+    border-color: #0096FF;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgba(0, 150, 255, 0.4) 0px 0px 0px 3px;
+}
+
+.form-submit {
+    display: block;
+    margin-top: 20px;
+    background-color: #7f8fa6;
+    color: #fff;
+    padding: 15px 70px;
+    border: none;
+    border-radius: 10px;
+    font-size: 32px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.form-submit:hover {
+    background-color: #57606f;
+}
+

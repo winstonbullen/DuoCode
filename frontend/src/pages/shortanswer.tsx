@@ -51,6 +51,8 @@ const ShortAnswer: React.FC<ShortAnswerProps> = ({submitRef}) => {
         setShowValidation(true);
     };
 
+    const isCorrect = showValidation && isValid;
+
     return (
         <div>
             <div className="short-answer-container">
@@ -62,8 +64,15 @@ const ShortAnswer: React.FC<ShortAnswerProps> = ({submitRef}) => {
                 </form>
             )}
             </div>
-            {showValidation && isValid && <div className="short-answer-validation short-answer-correct">Correct!</div>}
-            {showValidation && !isValid && <div className="short-answer-validation short-answer-incorrect">Incorrect!</div>}
+            {showValidation && (
+                <div className="result-message">
+                    {isCorrect ? (
+                        <p className="correct-answer">Correct!</p>
+                    ) : (
+                        <p className="incorrect-answer">Incorrect.</p>
+                    )}
+                </div>
+            )}
         </div>
 
     );

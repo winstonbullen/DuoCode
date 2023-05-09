@@ -36,25 +36,19 @@ const DragDrop: React.FC<DragDropProps> = ({submitRef}) => {
     const [draggingElement, setDraggingElement] = useState<HTMLElement | null>(null);
     const [showResult, setShowResult] = useState<boolean>(false);
     const [isCorrect, setIsCorrect] = useState<boolean>(false);
+    const [originalOrdering, setOriginalOrdering] = useState<string[]>([]);
 
     useEffect(() => {
         async function fetchData() {
             const response = await fetch("http://localhost:3001/content/java/arrays/drag_drop/1/1")
             const data = await response.json();
-            setDragDrop(data)
+            const shuffledOrdering = shuffleArray(data.correct_ordering);
+            setDragDrop({...data, correct_ordering: shuffledOrdering});
+            setOriginalOrdering(data.correct_ordering)
             console.log(data)
         }
         fetchData();
     }, []);
-
-    useEffect(() => {
-        const shuffledOrdering = shuffleArray(dragDrop.correct_ordering);
-        setDragDrop({
-            ...dragDrop,
-            correct_ordering: shuffledOrdering,
-        });
-    }, []);
-
 
     const handleDragStart = (event: React.DragEvent<HTMLElement>, item: DragItem) => {
         setDraggingElement(event.currentTarget);
@@ -77,15 +71,19 @@ const DragDrop: React.FC<DragDropProps> = ({submitRef}) => {
             draggableElement.style.display = 'inline-block';
         }
     };
-
     const handleSubmit = () => {
         const draggableElements = document.querySelectorAll('.drag-drop-draggable');
         const ordering: string[] = [];
         draggableElements.forEach((element) => ordering.push(element.textContent || ''));
-        setShowResult(true);
-        setIsCorrect(ordering.join('') === dragDrop.correct_ordering.join(''));
-    };
 
+        setShowResult(true);
+
+        if (JSON.stringify(ordering) === JSON.stringify(originalOrdering)) {
+            setIsCorrect(true);
+        } else {
+            setIsCorrect(false);
+        }
+    };
     const shuffleArray = (array: string[]) => {
         const shuffled = array.slice();
         for (let i = shuffled.length - 1; i > 0; i--) {

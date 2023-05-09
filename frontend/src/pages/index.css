@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+.home-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    background-color: #40b9ff;
+    color: white;
+    padding: 0 20px;
+}
+
+.duocode-title {
+    font-size: 24px;
+    font-weight: bold;
+    font-family: Nunito, serif;
+}
+
+.navbar-links {
+    display: flex;
+}
+
+.navbar-links > a {
+    color: white;
+    margin-left: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    font-family: Nunito, serif;
+}
+
+.user-info {
+    font-weight: bold;
+    font-family: Nunito, serif;
+    display: flex;
+    align-items: center;
+
+}
+
+.profile-pic {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.unit-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid #e8e8e8;
+    border-radius: 10px;
+    padding: 20px;
+    width: 500px;
+    margin-bottom: 20px;
+}
+
+.unit h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-family: Nunito, serif;
+}
+
+.unit p {
+    font-size: 16px;
+    color: #666;
+    font-family: Nunito, serif;
+}
+
+.checkpoints {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.checkpoint {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    background-color: #e8e8e8;
+    border-radius: 50%;
+    margin: 0 10px;
+}
+
+.checkpoint span {
+    font-family: Nunito, serif;
+}
+
+.checkpoint.complete {
+    background-color: #40b9ff;
+    color: white;
+}
+
+.checkpoint.complete span {
+    font-weight: bold;
+    font-family: Nunito, serif;
+}
+
+.language-dropdown {
+    margin-top: 40px;
+}
+
+.language-dropdown select {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    font-family: Nunito, serif;
+}
+
+.daily-challenge {
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.daily-challenge p {
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: 20px;
+    font-family: Nunito, serif;
+}
+
+/*.progress-bar {*/
+/*    width: 200px;*/
+/*    height: 10px;*/
+/*    background-color: #e8e8e8;*/
+/*    border-radius: 5px;*/
+/*    position: relative;*/
+/*}*/
+
+/*.progress {*/
+/*    height: 100%;*/
+/*    border-radius: 5px;*/
+/*    background-color: #40b9ff;*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*}*/
