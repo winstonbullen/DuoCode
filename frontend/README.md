@@ -9,6 +9,6 @@ First run `npm install` and `npm install --save-dev` to get the project dependen
 The following development commands can be run:
 
 - `npm run build` will just run the Typescript compiler to build into `build/`.
-- `npm run test` will run the Jest test suite in `src/test/`.
+- `npm run test` will run the Jest test suite in `test/`.
 
 All UI design can be found [here](https://www.figma.com/file/pJaO1w3OTs6tgY3BPKu7yl/DuoCode?type=design&node-id=90-736).

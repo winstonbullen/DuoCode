@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
-import ShortAnswer from '../pages/shortanswer';
+import ShortAnswer from '../src/pages/shortanswer';
 
 describe('ShortAnswer component with mock data', () => {
     const mockData = {

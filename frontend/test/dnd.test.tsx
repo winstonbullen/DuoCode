@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
-import DragDrop from '../pages/dnd';
+import DragDrop from '../src/pages/dnd';
 
 describe('ShortAnswer component with mock data', () => {
     const mockData = {
