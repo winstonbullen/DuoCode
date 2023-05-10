@@ -34,7 +34,7 @@
 
 2. Progress
 
-    - JP Gabriel: 
+    - JP Gabriel: Developed UI and protopying for other website pages such as login, homepage, and level page. Edited current UI designs to changes suggested by the team. Created script for alpha release demo.
 
     - Jason Gao: Implemented content endpoint to serve static question content from the backend server. Implemented progress endpoint to to track users' completed lessons. Worked on making the frontend and
     be hosted on the same server, with the backend server serving the built output of the frontend. Integrating the build output of the React app with the backend Express server required special handling since React
@@ -50,7 +50,7 @@
 
 3. Next Week's Agenda
 
-    - JP Gabriel: 
+    - JP Gabriel: Produce more UI designs for other small components for the project. Will look into creating a dark mode version for UI in preparation for our stretch goal.
 
     - Jason Gao: Still need to implement persistent storage of user data. Will either use relational DB or collaborate with Winston to store user information in a MongoDB instance. Look into testing the API provided by the backend Express server.
 
