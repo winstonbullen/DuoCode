@@ -8,12 +8,12 @@
 
 2. Progress
 
-    - 
+    - There was a lot of progress this week for all groups. Front end improved the design and flow of the question pages for the demo. Front end also implemented endpoint calls for user data and content from the back end. The back end created the content endpoints and improved the user data endpoints to fully define the API. Back end also added a large suite of tests. Content was finished for the demo and is being read by back end. The whole team collaborated to launch the demo and present it.
 
 
 3. Next Week's Agenda
 
-    - 
+    - Front end will fully implement use of user data including milestone tracking. Front end will also implement more of the UI design in parallel. Front end will also make question loading more dynamic. Back end will create a cloud MongoDB store for persistent user and content data. Back end will also expand the test suite to cover endpoints as well as data storage. Content will also be expanded, perhaps by templating, but this could be pushed to week after next depending on completion of other tasks.
 
 ## Team Member Contributions
 
@@ -36,9 +36,7 @@
 
     - JP Gabriel: Developed UI and protopying for other website pages such as login, homepage, and level page. Edited current UI designs to changes suggested by the team. Created script for alpha release demo.
 
-    - Jason Gao: Implemented content endpoint to serve static question content from the backend server. Implemented progress endpoint to to track users' completed lessons. Worked on making the frontend and
-    be hosted on the same server, with the backend server serving the built output of the frontend. Integrating the build output of the React app with the backend Express server required special handling since React
-    makes some default assumptions about how it will be hosted which aren't true for our project structure.
+    - Jason Gao: Implemented content endpoint to serve static question content from the backend server. Implemented progress endpoint to to track users' completed lessons. Worked on making the frontend and be hosted on the same server, with the backend server serving the built output of the frontend. Integrating the build output of the React app with the backend Express server required special handling since React makes some default assumptions about how it will be hosted which aren't true for our project structure.
 
     - Jason Xu: 
 
