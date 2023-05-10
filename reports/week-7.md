@@ -42,7 +42,7 @@
 
     - Jason Xu: 
 
-    - Jason Hua: 
+    - Jason Hua: Implemented the use of GET endpoints to grab data from backend and UI designs created by JP for all question types. Helped improve the progress bar to scale depending on how far user is in the level. 
 
     - Evan Kim: Created a question component that wraps all the question types we have (multiple choice, short answer, and drag and drop). This included a progress bar and next/submit buttons. 
 
@@ -56,7 +56,7 @@
 
     - Jason Xu: 
 
-    - Jason Hua: 
+    - Jason Hua: Implement UI design to fit on laptops instead of only on monitors with high resolutions. Make fetch requests able to grab any of the json's from backend rather than a hard coded URL. 
 
     - Evan Kim: Work on creating a functioning menu as a landing page after user login to select a lesson to learn.
 
