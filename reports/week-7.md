@@ -42,7 +42,7 @@
 
     - Jason Hua: 
 
-    - Evan Kim: 
+    - Evan Kim: Created a question component that wraps all the question types we have (multiple choice, short answer, and drag and drop). This included a progress bar and next/submit buttons. 
 
     - Winston Bullen: Finished all content data for the initial releases. This includes both Java and Python having one question per difficulty level for each question type under each subject. Removed algorithms content due to its difficult nature in content representation for this project. Removed file io content due to it being out of place in the curriculum. Contributed to team deliverables and cleaned up the repo/doc.
 
@@ -56,6 +56,6 @@
 
     - Jason Hua: 
 
-    - Evan Kim: 
+    - Evan Kim: Work on creating a functioning menu as a landing page after user login to select a lesson to learn.
 
     - Winston Bullen: Port the content to MongoDB. Since content was finished early enough, the stretch goal of having content being served on a cloud database can be done. This involves working with the back end and adding such a service to the existing architecture.
