@@ -36,7 +36,9 @@
 
     - JP Gabriel: 
 
-    - Jason Gao: 
+    - Jason Gao: Implemented content endpoint to serve static question content from the backend server. Implemented progress endpoint to to track users' completed lessons. Worked on making the frontend and
+    be hosted on the same server, with the backend server serving the built output of the frontend. Integrating the build output of the React app with the backend Express server required special handling since React
+    makes some default assumptions about how it will be hosted which aren't true for our project structure.
 
     - Jason Xu: 
 
@@ -50,7 +52,7 @@
 
     - JP Gabriel: 
 
-    - Jason Gao: 
+    - Jason Gao: Still need to implement persistent storage of user data. Will either use relational DB or collaborate with Winston to store user information in a MongoDB instance. Look into testing the API provided by the backend Express server.
 
     - Jason Xu: 
 
