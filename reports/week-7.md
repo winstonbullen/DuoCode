@@ -8,12 +8,12 @@
 
 2. Progress
 
-    - 
+    - There was a lot of progress this week for all groups. Front end improved the design and flow of the question pages for the demo. Front end also implemented endpoint calls for user data and content from the back end. The back end created the content endpoints and improved the user data endpoints to fully define the API. Back end also added a large suite of tests. Content was finished for the demo and is being read by back end. The whole team collaborated to launch the demo and present it.
 
 
 3. Next Week's Agenda
 
-    - 
+    - Front end will fully implement use of user data including milestone tracking. Front end will also implement more of the UI design in parallel. Front end will also make question loading more dynamic. Back end will create a cloud MongoDB store for persistent user and content data. Back end will also expand the test suite to cover endpoints as well as data storage. Content will also be expanded, perhaps by templating, but this could be pushed to week after next depending on completion of other tasks.
 
 ## Team Member Contributions
 
@@ -34,28 +34,28 @@
 
 2. Progress
 
-    - JP Gabriel: 
+    - JP Gabriel: Developed UI and protopying for other website pages such as login, homepage, and level page. Edited current UI designs to changes suggested by the team. Created script for alpha release demo.
 
-    - Jason Gao: 
+    - Jason Gao: Implemented content endpoint to serve static question content from the backend server. Implemented progress endpoint to to track users' completed lessons. Worked on making the frontend and be hosted on the same server, with the backend server serving the built output of the frontend. Integrating the build output of the React app with the backend Express server required special handling since React makes some default assumptions about how it will be hosted which aren't true for our project structure.
 
     - Jason Xu: Finished components for front end. Added in some UI and navigation for signup and login. Added testing for updated components.
 
-    - Jason Hua: 
+    - Jason Hua: Implemented the use of GET endpoints to grab data from backend and UI designs created by JP for all question types. Helped improve the progress bar to scale depending on how far user is in the level. 
 
-    - Evan Kim: 
+    - Evan Kim: Created a question component that wraps all the question types we have (multiple choice, short answer, and drag and drop). This included a progress bar and next/submit buttons. 
 
     - Winston Bullen: Finished all content data for the initial releases. This includes both Java and Python having one question per difficulty level for each question type under each subject. Removed algorithms content due to its difficult nature in content representation for this project. Removed file io content due to it being out of place in the curriculum. Contributed to team deliverables and cleaned up the repo/doc.
 
 3. Next Week's Agenda
 
-    - JP Gabriel: 
+    - JP Gabriel: Produce more UI designs for other small components for the project. Will look into creating a dark mode version for UI in preparation for our stretch goal.
 
-    - Jason Gao: 
+    - Jason Gao: Still need to implement persistent storage of user data. Will either use relational DB or collaborate with Winston to store user information in a MongoDB instance. Look into testing the API provided by the backend Express server.
 
     - Jason Xu: Work on homepage and make sure it follows the styling from the Figma. Also potentially will work on styling the sign up and login pages.
 
-    - Jason Hua: 
+    - Jason Hua: Implement UI design to fit on laptops instead of only on monitors with high resolutions. Make fetch requests able to grab any of the json's from backend rather than a hard coded URL. 
 
-    - Evan Kim: 
+    - Evan Kim: Work on creating a functioning menu as a landing page after user login to select a lesson to learn.
 
     - Winston Bullen: Port the content to MongoDB. Since content was finished early enough, the stretch goal of having content being served on a cloud database can be done. This involves working with the back end and adding such a service to the existing architecture.
