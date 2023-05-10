@@ -38,7 +38,7 @@
 
     - Jason Gao: 
 
-    - Jason Xu: 
+    - Jason Xu: Finished components for front end. Added in some UI and navigation for signup and login. Added testing for updated components.
 
     - Jason Hua: 
 
@@ -52,7 +52,7 @@
 
     - Jason Gao: 
 
-    - Jason Xu: 
+    - Jason Xu: Work on homepage and make sure it follows the styling from the Figma. Also potentially will work on styling the sign up and login pages.
 
     - Jason Hua: 
 
