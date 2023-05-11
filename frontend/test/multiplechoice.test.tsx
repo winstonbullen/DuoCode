@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
-import MultipleChoice from '../pages/multiplechoice';
+import MultipleChoice from '../src/pages/multiplechoice';
 
 describe('ShortAnswer component with mock data', () => {
     const mockData = {
