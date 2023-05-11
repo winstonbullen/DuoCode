@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
-import DragDrop from '../src/pages/dnd';
+import DragDrop from '../src/pages/dnd.js';
 
 describe('ShortAnswer component with mock data', () => {
     const mockData = {
@@ -28,6 +28,6 @@ describe('ShortAnswer component with mock data', () => {
         const buttonRef = React.createRef<HTMLButtonElement>();
         render(<DragDrop submitRef={buttonRef} />);
 
-        await waitFor(() => expect(screen.getByText(mockData.prompt)).toBeInTheDocument());
+        await screen.findByText(mockData.prompt);
     });
 });

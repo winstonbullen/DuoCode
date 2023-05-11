@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
-import ShortAnswer from '../src/pages/shortanswer';
+import ShortAnswer from '../src/pages/shortanswer.js';
 
 describe('ShortAnswer component with mock data', () => {
     const mockData = {
@@ -28,6 +28,6 @@ describe('ShortAnswer component with mock data', () => {
         const buttonRef = React.createRef<HTMLButtonElement>();
         render(<ShortAnswer submitRef={buttonRef} />);
 
-        await waitFor(() => expect(screen.getByText(mockData.prompt)).toBeInTheDocument());
+        await screen.findByText(mockData.prompt);
     });
 });
