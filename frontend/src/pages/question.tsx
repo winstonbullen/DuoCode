@@ -8,15 +8,18 @@ import ShortAnswer from './shortanswer';
 import MultipleChoice from './multiplechoice';
 import DragDrop from './dnd';
 import Completed from './completed';
-import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 
 interface QuestionProps {}
 
+
+
 const Question: React.FC<QuestionProps> = () => {
     const [currentQ, setCurrentQ] = useState(1);
     const [currentProgress, setCurrentProgress] = useState(0);
-
+    const location = useLocation();
+    console.log(location.state.unitName)
 
     // create ref to submit question-content
     const submitRef = useRef<HTMLButtonElement>(null);
@@ -54,9 +57,9 @@ const Question: React.FC<QuestionProps> = () => {
                 </div>
             </div>
             <div className='question-content'>
-                {currentQ === 1 && <MultipleChoice submitRef={submitRef} />}
-                {currentQ === 2 && <DragDrop submitRef={submitRef} />}
-                {currentQ === 3 && <ShortAnswer submitRef={submitRef} />}
+                {currentQ === 1 && <MultipleChoice unit={location.state.unitName} difficulty={location.state.difficulty} submitRef={submitRef} />}
+                {currentQ === 2 && <DragDrop unit={location.state.unitName} difficulty={location.state.difficulty} submitRef={submitRef} />}
+                {currentQ === 3 && <ShortAnswer unit={location.state.unitName} difficulty={location.state.difficulty} submitRef={submitRef} />}
                 {currentQ === 4 && <Completed />}
             </div>
             <div className="question-footer">

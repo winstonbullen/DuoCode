@@ -8,6 +8,8 @@ type Language = 'Java' | 'Python';
 const HomePage: React.FC = () => {
     const [language, setLanguage] = useState<Language>('Java');
     const [dailyChallengeProgress, setDailyChallengeProgress] = useState<number>(70);
+    const[unit, setUnitState] = useState("");
+    const[difficulty, setDiffState] = useState("");
 
     const handleLanguageChange = (selectedLanguage: Language) => {
         setLanguage(selectedLanguage);
@@ -20,7 +22,7 @@ const HomePage: React.FC = () => {
                     <h2>DuoCode</h2>
                 </div>
                 <div className="navbar-links">
-                    <Link to="/">Learn</Link>
+                    <Link to="/" >Learn</Link>
                     <Link to="/">Shop</Link>
                     <Link to="/">Profile</Link>
                     <Link to="/">More</Link>
@@ -37,10 +39,10 @@ const HomePage: React.FC = () => {
                 </div>
                 <div className="checkpoints">
                     <div className="checkpoint complete">
-                        <Link to='/question'>1</Link>
+                        <Link to ="/question" state={{unitName: "variables", difficulty: "1"}}>1</Link>
                     </div>
-                    <div className="checkpoint">
-                        <span>2</span>
+                    <div className="checkpoint complete">
+                        <Link to ="/question" state={{unitName: "variables", difficulty: "2"}}>2</Link>
                     </div>
                     <div className="checkpoint">
                         <span>3</span>

@@ -3,6 +3,8 @@ import './shortanswer.css';
 
 interface ShortAnswerProps {
     submitRef : React.RefObject<HTMLButtonElement>;
+    unit: string
+    difficulty: string
 }
 
 type shortAnswerData = {
@@ -25,11 +27,11 @@ const emptyShortAnswerData: shortAnswerData = {
 
 
 
-const ShortAnswer: React.FC<ShortAnswerProps> = ({submitRef}) => {
+const ShortAnswer: React.FC<ShortAnswerProps> = ({submitRef, unit, difficulty}) => {
     const [shortAnswerData, setshortAnwswer] = useState<shortAnswerData>(emptyShortAnswerData);
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch("http://localhost:3001/content/java/arrays/short_response/1/1")
+            const response = await fetch("http://localhost:3001/content/java/" + unit + "/short_response/" + difficulty + "/1")
             const data = await response.json();
             setshortAnwswer(data)
             console.log(data)
