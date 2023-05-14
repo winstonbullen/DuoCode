@@ -2,7 +2,7 @@
 const jestcfg = {
   roots: ["<rootDir>/test"],
   preset: 'ts-jest',
-  testEnvironment: './FixJSDOMEnvironment.ts',
+  testEnvironment: '<rootDir>/FixJSDOMEnvironment.ts',
   moduleDirectories: ['node_modules', 'src'],
   extensionsToTreatAsEsm: ['.ts', '.tsx'],
   moduleNameMapper: {
