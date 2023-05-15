@@ -50,6 +50,7 @@ const DragDrop: React.FC<DragDropProps> = ({submitRef, unit, difficulty}) => {
             console.log(data)
         }
         fetchData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const handleDragStart = (event: React.DragEvent<HTMLElement>, item: DragItem) => {

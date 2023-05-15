@@ -12,8 +12,6 @@ const HomePage: React.FC = () => {
     const handleLanguageChange = (selectedLanguage: Language) => {
         setLanguage(selectedLanguage);
     };*/
-    const[unitName, setUnitState] = useState("");
-    const[difficulty, setDiffState] = useState("");
 
     return (
         <div className="container">
