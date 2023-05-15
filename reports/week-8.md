@@ -44,7 +44,7 @@
 
     - Evan Kim: 
 
-    - Winston Bullen: 
+    - Winston Bullen: Refactored the front end testing architecture to be more consistent with back end. Cleaned up front end styling and contributed to fixing the front end tests. Wrote developer and user documentation.
 
 3. Next Week's Agenda
 
@@ -58,4 +58,4 @@
 
     - Evan Kim: 
 
-    - Winston Bullen: 
+    - Winston Bullen: Implement content templating so details of questions are randomized. This means questions pull from a bank of variable names to make content more unique.
