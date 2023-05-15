@@ -29,11 +29,13 @@ type Option = {
 
 interface MultipleChoiceProps {
     submitRef : React.RefObject<HTMLButtonElement>;
+    unit: string
+    difficulty: string
 }
 
 
 
-const MultipleChoice: React.FC<MultipleChoiceProps> = ({submitRef}) => {
+const MultipleChoice: React.FC<MultipleChoiceProps> = ({submitRef, unit, difficulty}) => {
     const [question, setQuestion] = useState<Question>(emptyQuestion);
     const [options, setOptions] = useState<Option[]>([]);
     const [selectedOption, setSelectedOption] = useState<string>('');
@@ -42,12 +44,13 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({submitRef}) => {
 
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch("http://localhost:3001/content/java/arrays/multiple_choice/1/1")
+            const response = await fetch("http://localhost:3001/content/java/" + unit + "/multiple_choice/" + difficulty + "/1")
             const data = await response.json();
             console.log(data)
             setQuestion(data)
         }
         fetchData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {

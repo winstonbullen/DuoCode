@@ -58,16 +58,16 @@ const HomePage: React.FC = () => {
                 </div>
                 <div className="checkpoints">
                     <div className="checkpoint1">
-                        <Link to='/question'>
+                        <Link to='/question' state={{unitName: "variables", difficulty: "1"}}>
                         <img src={require("./images/whitestar.png")} alt="whitestar" /></Link>
                     </div>
                     <div className="checkpoint2">
-                        <Link to='/'>
-                        <img src={require("./images/lock.png")} alt="lock" /></Link>
+                        <Link to='/question' state={{unitName: "variables", difficulty: "2"}}>
+                            <img src={require("./images/whitestar.png")} alt="whitestar" /></Link>
                     </div>
                     <div className="checkpoint3">
-                        <Link to='/'>
-                        <img src={require("./images/lock.png")} alt="lock" /></Link>
+                        <Link to='/question' state={{unitName: "variables", difficulty: "3"}}>
+                            <img src={require("./images/whitestar.png")} alt="whitestar" /></Link>
                     </div>
                     <div className="checkpoint4">
                         <Link to='/'>

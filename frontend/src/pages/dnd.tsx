@@ -27,11 +27,13 @@ type DragItem = {
 
 interface DragDropProps {
     submitRef : React.RefObject<HTMLButtonElement>;
+    unit: string
+    difficulty: string
 }
 
 
 
-const DragDrop: React.FC<DragDropProps> = ({submitRef}) => {
+const DragDrop: React.FC<DragDropProps> = ({submitRef, unit, difficulty}) => {
     const [dragDrop, setDragDrop] = useState<dragDrop>(emptyDragDrop);
     const [draggingElement, setDraggingElement] = useState<HTMLElement | null>(null);
     const [showResult, setShowResult] = useState<boolean>(false);
@@ -40,7 +42,7 @@ const DragDrop: React.FC<DragDropProps> = ({submitRef}) => {
 
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch("http://localhost:3001/content/java/arrays/drag_drop/1/1")
+            const response = await fetch("http://localhost:3001/content/java/" + unit + "/drag_drop/" + difficulty + "/1")
             const data = await response.json();
             const shuffledOrdering = shuffleArray(data.correct_ordering);
             setDragDrop({...data, correct_ordering: shuffledOrdering});
@@ -48,6 +50,7 @@ const DragDrop: React.FC<DragDropProps> = ({submitRef}) => {
             console.log(data)
         }
         fetchData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const handleDragStart = (event: React.DragEvent<HTMLElement>, item: DragItem) => {
