@@ -1,13 +1,13 @@
 import React, { useRef, useState }from 'react';
 import './question.css';
 
-import CloseBtn from '../components/CloseBtn.js'
-import SettingBtn from '../components/SettingBtn.js';
-import ProgressBar from '../components/ProgressBar.js';
-import ShortAnswer from './shortanswer.js';
-import MultipleChoice from './multiplechoice.js';
-import DragDrop from './dnd.js';
-import Completed from './completed.js';
+import CloseBtn from '../components/CloseBtn'
+import SettingBtn from '../components/SettingBtn';
+import ProgressBar from '../components/ProgressBar';
+import ShortAnswer from './shortanswer';
+import MultipleChoice from './multiplechoice';
+import DragDrop from './dnd';
+import Completed from './completed';
 import { useNavigate } from 'react-router-dom';
 
 
