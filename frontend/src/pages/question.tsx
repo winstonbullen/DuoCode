@@ -1,4 +1,4 @@
-import React, { useRef, useState }from 'react';
+import React, { useRef, useState } from 'react';
 import './question.css';
 
 import CloseBtn from '../components/CloseBtn'
@@ -8,7 +8,6 @@ import ShortAnswer from './shortanswer';
 import MultipleChoice from './multiplechoice';
 import DragDrop from './dnd';
 import Completed from './completed';
-import { useNavigate } from 'react-router-dom';
 
 
 interface QuestionProps {}
@@ -28,7 +27,7 @@ const Question: React.FC<QuestionProps> = () => {
 
     // swap question for next one
     const handleNextQ = () => {
-        if (currentQ == 4) {
+        if (currentQ === 4) {
             setCurrentQ(1)
             setCurrentProgress(0);
         } else {
@@ -65,10 +64,10 @@ const Question: React.FC<QuestionProps> = () => {
                     height: "3px",
                     border: "none",
                 }}></hr>
-                {currentQ != 4 ? (
+                {currentQ !== 4 ? (
                     <button type="submit" className="question-submit" onClick={handleSubmitRef}>Submit</button>
                     ) : null}
-                {currentQ != 4 ? (
+                {currentQ !== 4 ? (
                     <button type="submit" className="question-next" onClick={handleNextQ}>Next</button>
                 ) : <button type="submit" className="question-next" onClick={handleComplete}>Go Back</button>}
             </div>

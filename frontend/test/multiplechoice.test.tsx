@@ -1,6 +1,6 @@
 import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
-import MultipleChoice from '../pages/multiplechoice';
+import { render, screen } from '@testing-library/react';
+import MultipleChoice from '../src/pages/multiplechoice';
 
 describe('ShortAnswer component with mock data', () => {
     const mockData = {
@@ -23,12 +23,10 @@ describe('ShortAnswer component with mock data', () => {
         jest.restoreAllMocks();
     });
 
-
-
     it('should render the prompt received from the server', async () => {
         const buttonRef = React.createRef<HTMLButtonElement>();
         render(<MultipleChoice submitRef={buttonRef} />);
 
-        await waitFor(() => expect(screen.getByText(mockData.prompt)).toBeInTheDocument());
+        await screen.findByText(mockData.prompt);
     });
 });

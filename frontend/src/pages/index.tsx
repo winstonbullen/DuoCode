@@ -7,7 +7,8 @@ type Language = 'Java' | 'Python';
 
 const HomePage: React.FC = () => {
     const [language, setLanguage] = useState<Language>('Java');
-    const [dailyChallengeProgress, setDailyChallengeProgress] = useState<number>(70);
+    // const [dailyChallengeProgress, setDailyChallengeProgress] = useState<number>(70);
+    const [dailyChallengeProgress, ] = useState<number>(70);
 
     const handleLanguageChange = (selectedLanguage: Language) => {
         setLanguage(selectedLanguage);
@@ -26,7 +27,7 @@ const HomePage: React.FC = () => {
                     <Link to="/">More</Link>
                 </div>
                 <div className="user-info">
-                    <img src="profile-pic.png" alt="Picture" className="profile-pic" />
+                    <img src="profile-pic.png" alt="User Profile" className="profile-pic" />
                     <p className="username">John Doe</p>
                 </div>
             </div>
