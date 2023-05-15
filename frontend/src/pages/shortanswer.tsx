@@ -4,7 +4,7 @@ import './shortanswer.css';
 interface ShortAnswerProps {
     submitRef : React.RefObject<HTMLButtonElement>;
     unit: string
-    difficulty: string
+    difficulty: number
 }
 
 type shortAnswerData = {

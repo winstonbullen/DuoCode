@@ -30,7 +30,7 @@ type Option = {
 interface MultipleChoiceProps {
     submitRef : React.RefObject<HTMLButtonElement>;
     unit: string
-    difficulty: string
+    difficulty: number
 }
 
 
