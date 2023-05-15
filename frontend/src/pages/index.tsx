@@ -3,15 +3,15 @@ import { Link } from 'react-router-dom';
 
 import './index.css';
 
-type Language = 'Java' | 'Python';
+/*type Language = 'Java' | 'Python';*/
 
 const HomePage: React.FC = () => {
-    const [language, setLanguage] = useState<Language>('Java');
+    /*const [language, setLanguage] = useState<Language>('Java');
     const [dailyChallengeProgress, setDailyChallengeProgress] = useState<number>(70);
 
     const handleLanguageChange = (selectedLanguage: Language) => {
         setLanguage(selectedLanguage);
-    };
+    };*/
 
     return (
         <div className="container">
