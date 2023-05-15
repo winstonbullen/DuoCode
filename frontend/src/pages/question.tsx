@@ -1,4 +1,4 @@
-import React, { useRef, useState }from 'react';
+import React, { useRef, useState } from 'react';
 import './question.css';
 
 import CloseBtn from '../components/CloseBtn'
@@ -8,7 +8,6 @@ import ShortAnswer from './shortanswer';
 import MultipleChoice from './multiplechoice';
 import DragDrop from './dnd';
 import Completed from './completed';
-// import { useNavigate } from 'react-router-dom';
 
 
 interface QuestionProps {}

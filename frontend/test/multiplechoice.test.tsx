@@ -1,6 +1,6 @@
 import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
-import MultipleChoice from '../src/pages/multiplechoice.js';
+import { render, screen } from '@testing-library/react';
+import MultipleChoice from '../src/pages/multiplechoice';
 
 describe('ShortAnswer component with mock data', () => {
     const mockData = {
@@ -22,8 +22,6 @@ describe('ShortAnswer component with mock data', () => {
     afterEach(() => {
         jest.restoreAllMocks();
     });
-
-
 
     it('should render the prompt received from the server', async () => {
         const buttonRef = React.createRef<HTMLButtonElement>();

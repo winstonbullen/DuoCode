@@ -1,8 +1,6 @@
 import React from 'react';
 import './App.css';
-// import Navbar from './components';
-import { BrowserRouter as Router, Routes, Route}
-  from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages';
 import Question from "./pages/question";
 

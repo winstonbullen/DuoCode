@@ -1,6 +1,6 @@
 import React from 'react';
 import { act, render } from '@testing-library/react';
-import Question from '../src/pages/question.js'
+import Question from '../src/pages/question'
 
 describe('Question component', () => {
     const mockData = {
@@ -21,6 +21,7 @@ describe('Question component', () => {
     afterEach(() => {
         jest.restoreAllMocks();
     });
+    
     it('should render without error', () => {
         // eslint-disable-next-line testing-library/no-unnecessary-act
         act(() => { render(<Question />) });
