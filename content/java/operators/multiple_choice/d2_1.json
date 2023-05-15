@@ -2,7 +2,8 @@
     "language": "java",
     "subject": "operators",
     "type": "multiple_choice",
-    "difficulty": 2,
+    "difficulty": "2",
+    "id": "1",
     "prompt": "Which of the following sets the existing variable named fraction equal to sum divided by total?",
     "correct_answer": "fraction = sum / total;",
     "distractors": ["fraction = sum divide_by total;", "fraction == sum / total;", "fraction = total / sum;"]

@@ -2,7 +2,8 @@
     "language": "java",
     "subject": "variables",
     "type": "multiple_choice",
-    "difficulty": 2,
+    "difficulty": "2",
+    "id": "1",
     "prompt": "Which of the following creates a variable named greeting of type String and initializes it to \"Hello\"?",
     "correct_answer": "String greeting = \"Hello\";",
     "distractors": ["String greeting = Hello;", "greeting = \"Hello\";", "String greeting = 'Hello';"]

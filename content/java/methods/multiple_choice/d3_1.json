@@ -2,7 +2,8 @@
     "language": "java",
     "subject": "methods",
     "type": "multiple_choice",
-    "difficulty": 3,
+    "difficulty": "3",
+    "id": "1",
     "prompt": "Which of the following declares the typical main method?",
     "correct_answer": "public static void main (String[] args)",
     "distractors": ["public static void main (String args)", "public void main (String[] args)", "public static main (String[] args)"]

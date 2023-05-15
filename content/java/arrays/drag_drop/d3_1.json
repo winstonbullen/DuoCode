@@ -2,7 +2,8 @@
     "language": "java",
     "subject": "arrays",
     "type": "drag_drop",
-    "difficulty": 3,
+    "difficulty": "3",
+    "id": "1",
     "prompt": "Drag and drop the following blocks to create a double array of length 4 called readings and initialize it to 2.0, 3.5, 5.0, and 6.5 (in that order).",
     "correct_ordering": ["double[]", "readings", "=", "{2.0, 3.5, 5.0, 6.5}", ";"]
 }

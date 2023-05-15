@@ -2,7 +2,8 @@
     "language": "java",
     "subject": "loops",
     "type": "drag_drop",
-    "difficulty": 2,
+    "difficulty": "2",
+    "id": "1",
     "prompt": "Drag and drop the following blocks to declare a for loop with control variable int i that starts at 1 and increments by 2 up to 25 (inclusive).",
     "correct_ordering": ["for", "(", "int i = 1;", "i <= 25;", "i += 2", ")"]
 }

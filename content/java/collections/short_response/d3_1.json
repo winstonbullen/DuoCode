@@ -2,7 +2,8 @@
     "language": "java",
     "subject": "collections",
     "type": "short_response",
-    "difficulty": 3,
+    "difficulty": "3",
+    "id": "1",
     "prompt": "Create a Queue called line that stores Strings and is implemented with a LinkedList using the code box below.",
     "correct_answer": "Queue<String> line = new LinkedList<String>();"
 }

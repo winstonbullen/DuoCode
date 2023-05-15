@@ -2,7 +2,8 @@
     "language": "java",
     "subject": "methods",
     "type": "short_response",
-    "difficulty": 2,
+    "difficulty": "2",
+    "id": "1",
     "prompt": "Declare a private non-static method called add that does not return anything and takes two ints num1 and num2 as its parameters using the code box below (do not include any method body nor curly braces).",
     "correct_answer": "private void add (int num1, int num2)"
 }

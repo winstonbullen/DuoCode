@@ -2,7 +2,8 @@
     "language": "java",
     "subject": "conditions",
     "type": "multiple_choice",
-    "difficulty": 3,
+    "difficulty": "3",
+    "id": "1",
     "prompt": "Which of the following declares an if statement that tests whether left is not equal to right?",
     "correct_answer": "if (left != right)",
     "distractors": ["if (!(left || right))", "if !(left && right)", "if (!left == !right)"]
