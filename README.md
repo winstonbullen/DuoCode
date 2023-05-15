@@ -14,18 +14,14 @@ Existing resources fail to make coding practice exciting and accessible across a
 
 ## Directories
 
-This repository has four top-level directories detailed below.
+There are four top-level sub-directories detailed below that each have a `README.md` explaining their respective file structure.
 
 - `/backend/` contains all of the backend files including code and documentation. 
 - `/content/` contains all of the content data comprising the content database.
 - `/frontend/` contains all of the frontend files including code and documentation.
 - `/reports/` contains all of the weekly status reports.
 
-Each directory has a `README.md` explaining their respective file structure and architecture.
-
-## Makefile
-
-This repository has a single `Makefile` in the top-level directory.
+There is a `Makefile` in the top-level directory that makes developing easier.
 
 - `make install` runs npm install commands for both frontend and backend. This manages package dependencies automatically.
 - `make deploy` runs npm build and start commands to deploy the web app. The build and start commands are separated into `make build` and `make run`, respectively.
@@ -33,18 +29,18 @@ This repository has a single `Makefile` in the top-level directory.
 
 ## Build
 
-The `Makefile` contains all of the commands necessary to build. From the top-level directory, run the following:
+Run the following from the top-level directory to build the web app:
 
-```shell
+```
 make install
 make build
 ```
 
 ## Test
 
-The `Makefile` contains all of the commands necessary to test once the app has been built. From the top-level directory, run the following:
+Run the following from the top-level directory to test the web app after building:
 
-```shell
+```
 make test
 ```
 
@@ -52,11 +48,11 @@ Add frontend tests under `/frontend/test/`. Name the test file `{file_name}.test
 
 ## Release
 
-The `Makefile` contains all of the commands necessary to deploy the web app. From the top-level directory, run the following:
+Run the following from the top-level directory to release the web app:
 
-```shell
+```
 make install
 make deploy
 ```
 
-This will start a localhost on port 3001. Please visit [localhost:3001](http://localhost:3001) once the server has started to begin using DuoCode!
+This hosts DuoCode at [http://localhost:3001](http://localhost:3001) for local use.
