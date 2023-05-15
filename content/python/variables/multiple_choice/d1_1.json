@@ -2,7 +2,8 @@
     "language": "python",
     "subject": "variables",
     "type": "multiple_choice",
-    "difficulty": 1,
+    "difficulty": "1",
+    "id": "1",
     "prompt": "Which of the following creates a variable named foo and initialize it to 1?",
     "correct_answer": "foo = 1",
     "distractors": ["int foo = 1", "bar = 1", "foo == 1"]

@@ -2,7 +2,8 @@
     "language": "python",
     "subject": "classes",
     "type": "multiple_choice",
-    "difficulty": 1,
+    "difficulty": "1",
+    "id": "1",
     "prompt": "Which of the following declares a class called Test?",
     "correct_answer": "class Test:",
     "distractors": ["class: Test", "Test class:", "Test: class"]

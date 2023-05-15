@@ -2,7 +2,8 @@
     "language": "python",
     "subject": "variables",
     "type": "multiple_choice",
-    "difficulty": 3,
+    "difficulty": "3",
+    "id": "1",
     "prompt": "Which of the following creates a variable named cost and initializes it to the variable named price?",
     "correct_answer": "cost = price",
     "distractors": ["int cost = price", "cost (price)", "cost == price"]

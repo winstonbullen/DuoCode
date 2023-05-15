@@ -2,7 +2,8 @@
     "language": "python",
     "subject": "collections",
     "type": "short_response",
-    "difficulty": 1,
+    "difficulty": "1",
+    "id": "1",
     "prompt": "Create a set called students and initialize it to \"John\" and \"Jane\" (in that order) using the code box below.",
     "correct_answer": "students = {\"John\", \"Jane\"}"
 }

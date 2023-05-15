@@ -2,7 +2,8 @@
     "language": "python",
     "subject": "classes",
     "type": "short_response",
-    "difficulty": 3,
+    "difficulty": "3",
+    "id": "1",
     "prompt": "Declare the init function for a class that takes no arguments other than its own reference using the code box below (do not include any function body).",
     "correct_answer": "def __init__ (self):"
 }

@@ -2,7 +2,8 @@
     "language": "python",
     "subject": "classes",
     "type": "multiple_choice",
-    "difficulty": 3,
+    "difficulty": "3",
+    "id": "1",
     "prompt": "Which of the following declares the init function for a class that takes no arguments other than its own reference?",
     "correct_answer": "def __init__ (self):",
     "distractors": ["def init (self):", "def __init__ (this):", "def init (this):"]

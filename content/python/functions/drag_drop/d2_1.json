@@ -2,7 +2,8 @@
     "language": "python",
     "subject": "functions",
     "type": "drag_drop",
-    "difficulty": 2,
+    "difficulty": "2",
+    "id": "1",
     "prompt": "Drag and drop the following blocks to declare a function called add that takes an arbitrary number of arguments called nums.",
     "correct_ordering": ["def",  "add",  "(", "*nums", ")", ":"]
 }

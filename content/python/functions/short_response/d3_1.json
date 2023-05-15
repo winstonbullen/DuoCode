@@ -2,7 +2,8 @@
     "language": "python",
     "subject": "functions",
     "type": "short_response",
-    "difficulty": 3,
+    "difficulty": "3",
+    "id": "1",
     "prompt": "Declare a function called info that takes an arbitrary number of keyword arguments called item using the code box below (do not include any function body).",
     "correct_answer": "def info (**item):"
 }

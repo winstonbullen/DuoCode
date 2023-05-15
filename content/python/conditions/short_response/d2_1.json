@@ -2,7 +2,8 @@
     "language": "python",
     "subject": "conditions",
     "type": "short_response",
-    "difficulty": 2,
+    "difficulty": "2",
+    "id": "1",
     "prompt": "Set the variable named cond3 equal to the boolean value of cond1 AND cond2 using the code box below.",
     "correct_answer": "cond3 = cond1 and cond2"
 }

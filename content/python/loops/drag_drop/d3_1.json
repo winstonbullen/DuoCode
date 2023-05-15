@@ -2,7 +2,8 @@
     "language": "python",
     "subject": "loops",
     "type": "drag_drop",
-    "difficulty": 3,
+    "difficulty": "3",
+    "id": "1",
     "prompt": "Drag and drop the following blocks to declare a for loop with control variable i that starts at 0 and increments by 1 up to 6 (exclusive).",
     "correct_ordering": ["for", "i", "in", "range", "(6)", ":"]
 }

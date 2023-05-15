@@ -2,7 +2,8 @@
     "language": "python",
     "subject": "functions",
     "type": "multiple_choice",
-    "difficulty": 2,
+    "difficulty": "2",
+    "id": "1",
     "prompt": "Which of the following declares a function called add that takes an arbitrary number of arguments called nums?",
     "correct_answer": "def add (*nums):",
     "distractors": ["def add (nums):", "def add (**nums):", "def add (nums[]):"]

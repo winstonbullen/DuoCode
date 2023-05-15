@@ -2,7 +2,8 @@
     "language": "python",
     "subject": "classes",
     "type": "short_response",
-    "difficulty": 2,
+    "difficulty": "2",
+    "id": "1",
     "prompt": "Declare a class called Student that is a subclass of Person using the code box below (do not include any class body).",
     "correct_answer": "class Student (Person):"
 }

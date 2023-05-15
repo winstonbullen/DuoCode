@@ -2,7 +2,8 @@
     "language": "python",
     "subject": "variables",
     "type": "short_response",
-    "difficulty": 2,
+    "difficulty": "2",
+    "id": "1",
     "prompt": "Create a variable named greeting and initialize it to \"Hello\" using the code box below.",
     "correct_answer": "greeting = \"Hello\""
 }
