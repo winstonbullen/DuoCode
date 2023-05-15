@@ -8,7 +8,7 @@ import ShortAnswer from './shortanswer';
 import MultipleChoice from './multiplechoice';
 import DragDrop from './dnd';
 import Completed from './completed';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 
 interface QuestionProps {}
