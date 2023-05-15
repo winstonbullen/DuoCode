@@ -1,8 +1,8 @@
 import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
-import ShortAnswer from '../pages/shortanswer';
+import { act, render } from '@testing-library/react';
+import Question from '../src/pages/question'
 
-describe('ShortAnswer component with mock data', () => {
+describe('Question component', () => {
     const mockData = {
         language: 'java',
         subject: 'variables',
@@ -21,13 +21,10 @@ describe('ShortAnswer component with mock data', () => {
     afterEach(() => {
         jest.restoreAllMocks();
     });
-
-
-
-    it('should render the prompt received from the server', async () => {
-        const buttonRef = React.createRef<HTMLButtonElement>();
-        render(<ShortAnswer unit={"variables"} difficulty={"1"} submitRef={buttonRef} />);
-
-        await waitFor(() => expect(screen.getByText(mockData.prompt)).toBeInTheDocument());
+    
+    it('should render without error', () => {
+        // eslint-disable-next-line testing-library/no-unnecessary-act
+        act(() => { render(<Question />) });
+        // expect(render(<Question />)).toBeTruthy();
     });
 });

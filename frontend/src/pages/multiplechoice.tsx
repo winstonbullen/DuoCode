@@ -54,6 +54,7 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({submitRef, unit, difficu
 
     useEffect(() => {
         setOptions(getShuffledOptions());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [question]);
 
     function getShuffledOptions() {

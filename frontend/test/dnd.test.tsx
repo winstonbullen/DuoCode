@@ -1,6 +1,6 @@
 import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
-import DragDrop from '../pages/dnd';
+import { render, screen } from '@testing-library/react';
+import DragDrop from '../src/pages/dnd';
 
 describe('ShortAnswer component with mock data', () => {
     const mockData = {
@@ -22,12 +22,10 @@ describe('ShortAnswer component with mock data', () => {
         jest.restoreAllMocks();
     });
 
-
-
     it('should render the prompt received from the server', async () => {
         const buttonRef = React.createRef<HTMLButtonElement>();
         render(<DragDrop unit={"variables"} difficulty={"1"} submitRef={buttonRef} />);
 
-        await waitFor(() => expect(screen.getByText(mockData.prompt)).toBeInTheDocument());
+        await screen.findByText(mockData.prompt);
     });
 });

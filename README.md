@@ -32,7 +32,7 @@ The repository has a single ```Makefile``` in the top-level directory.
 
 - ```make install``` runs npm install commands for both frontend and backend. This manages package dependencies automatically.
 - ```make deploy``` runs npm build and start commands to deploy the web app. The build and start commands are separated into ```make build``` and ```make run```, respectively.
-- ```make test``` runs npm test commands for both frontend and backend. This runs all tests which can be found under ```/frontend/src/test``` and ```/backend/test```.
+- ```make test``` runs npm test commands for both frontend and backend. This runs all tests which can be found under ```/frontend/test``` and ```/backend/test```.
 
 ## Directories
 
