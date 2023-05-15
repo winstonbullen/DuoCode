@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
-import Navbar from './components';
+// import Navbar from './components';
 import { BrowserRouter as Router, Routes, Route}
   from 'react-router-dom';
 import Home from './pages';
-import Choice from './pages/multiplechoice';
-import ShortAnswer from "./pages/shortanswer";
-import DragDrop from "./pages/dnd";
-import Question from "./pages/question";
+// import Choice from './pages/multiplechoice';
+// import ShortAnswer from "./pages/shortanswer";
+// import DragDrop from "./pages/";
+import Question from "./pages";
 
 function App() {
     return (
