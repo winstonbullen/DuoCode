@@ -45,7 +45,7 @@ const HomePage: React.FC = () => {
                         <Link to ="/question" state={{unitName: "variables", difficulty: "2"}}>2</Link>
                     </div>
                     <div className="checkpoint">
-                        <span>3</span>
+                        <Link to ="/question" state={{unitName: "variables", difficulty: "3"}}>3</Link>
                     </div>
                     <div className="checkpoint">
                         <span>4</span>
