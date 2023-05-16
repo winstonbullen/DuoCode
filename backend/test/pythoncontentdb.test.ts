@@ -1,5 +1,9 @@
 import { ContentDB } from "../src/contentdb.js";
 
+afterAll(async () => {
+  await ContentDB.close();
+});
+
 test("file content DB is a singleton", () => {
   let i1 = ContentDB.get_db();
   let i2 = ContentDB.get_db();
@@ -7,7 +11,7 @@ test("file content DB is a singleton", () => {
   expect(i1).toBe(i2);
 });
 
-/* 
+/*
   These next eight tests specifically test that every subject is accessible
 */
 
@@ -203,7 +207,7 @@ test("content db reads the first drag & drop python variables question of diffic
   expect(q1).toEqual(q2);
 });
 
-/* 
+/*
   These next two tests specifically test that every difficulty level is accessible
 */
 
@@ -255,7 +259,7 @@ test("content db reads the first drag & drop python variables question of diffic
   expect(q1).toEqual(q2);
 });
 
-/* 
+/*
   These next two tests specifically test that every question type is accessible
 */
 
@@ -308,7 +312,7 @@ test("content db reads the first short response python variables question of dif
   expect(q1).toEqual(q2);
 });
 
-/* 
+/*
   These next three tests specifically test that random combinations of all attributes are accessible
 */
 

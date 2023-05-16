@@ -1,6 +1,8 @@
 import express from "express";
 import session from "express-session"; // TODO use a better session store
 import bcrypt from "bcrypt";
+import dotenv from "dotenv";
+dotenv.config(); // load .env file
 import fs from "fs";
 
 import { MemDB } from "./memdb.js";
@@ -10,6 +12,7 @@ import { FileContentDB } from "./filecontentdb.js";
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import path from "path";
+import { ContentDB } from "./contentdb.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -30,7 +33,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 const db: UserInfoDB = MemDB.get_db();
-const content_db: QuestionContentDB = FileContentDB.get_db();
+const content_db: QuestionContentDB = ContentDB.get_db();
 
 const FRONTEND_BUILD = "../frontend/build/index.html";
 
@@ -223,4 +226,8 @@ app.use("/*", (req, res) => {
 // start listening on specified port
 app.listen(PORT, () => {
   console.log(`DuoCode server started on port ${PORT}...`)
+});
+
+process.on("exit", async () => {
+  ContentDB.close();
 });
