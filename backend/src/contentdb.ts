@@ -1,5 +1,5 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
-const uri = "mongodb+srv://duocodedev:<PASSWORD HERE>@cluster0.saszn4a.mongodb.net/?retryWrites=true&w=majority";
+const uri = "mongodb+srv://duocodedev:<PASSWORD_HERE>@cluster0.saszn4a.mongodb.net/?retryWrites=true&w=majority";
 import { QuestionContentDB, QuestionParams } from "./db.js";
 
 export class ContentDB implements QuestionContentDB {
@@ -27,7 +27,7 @@ export class ContentDB implements QuestionContentDB {
             await this.client.connect();
 
             const db = this.client.db("duocode");
-            const collection = db.collection('JavaQuestions');
+            const collection = db.collection("Content");
 
             const options = { projection: { _id: 0 } };
             const result = await collection.find(query, options);
