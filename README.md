@@ -42,7 +42,7 @@ Run the following from the top-level directory to test the web app after buildin
 make test
 ```
 
-Add frontend tests under `/frontend/test/{file_name}.test.tsx` where `{file_name}` is the name of the component being tested. Add backend tests under `/backend/test/{file_name}.test.ts` where `{file_name}` is the name of the class being tested. If the test file does not exist, add it using the existing test files as examples. [Jest](https://jestjs.io/) should be used for testing and is automatically installed with `make install`.
+To add new tests, please refer to the [frontend](./frontend/README.md) and [backend](./backend/README.md) `README.md` files.
 
 ## Release
 
