@@ -59,6 +59,13 @@
     background-color: #5bb5f8;
 }
 
+.question-close{
+    padding: 0;
+    border: none;
+    background: 0;
+    cursor: pointer;
+}
+
 
 .mg-sm {
     margin-left: 10px;
