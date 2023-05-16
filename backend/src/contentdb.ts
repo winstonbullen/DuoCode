@@ -1,8 +1,8 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
 const uri = "mongodb+srv://duocodedev:<PASSWORD HERE>@cluster0.saszn4a.mongodb.net/?retryWrites=true&w=majority";
-import { QuestionParams } from "./db.js";
+import { QuestionContentDB, QuestionParams } from "./db.js";
 
-export class ContentDB {
+export class ContentDB implements QuestionContentDB {
 
     // Create a MongoClient with a MongoClientOptions object to set the Stable API version
     client: any = new MongoClient(uri, {
@@ -12,6 +12,15 @@ export class ContentDB {
         deprecationErrors: true,
     }
     });
+
+    private static instance: ContentDB;
+
+    static get_db(): ContentDB {
+        if (!ContentDB.instance) {
+            ContentDB.instance = new ContentDB();
+        }
+        return ContentDB.instance;
+    }
 
     async get_question(query: QuestionParams): Promise<Object> {
         try {
