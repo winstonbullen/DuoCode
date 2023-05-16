@@ -1,6 +1,8 @@
 import { QuestionContentDB, UserInfoDB } from "./db.js";
 import { UsersDB } from "./usersdb.js";
 import { ContentDB } from "./contentdb.js";
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
 import path from "path";
 import express from "express";
@@ -9,6 +11,9 @@ import bcrypt from "bcrypt";
 import dotenv from "dotenv";
 
 dotenv.config(); // load .env file
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 // needed to make the express-session login examples work with TS, see https://akoskm.com/how-to-use-express-session-with-custom-sessiondata-typescript
 type User = {
