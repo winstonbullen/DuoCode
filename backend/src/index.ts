@@ -114,7 +114,7 @@ app.post("/login", async (req, res, next) => {
     res.status(400).send("Bad request");
     return;
   }
-  const check = db.get_entry(req.body.name);
+  const check = await db.get_entry(req.body.name);
   console.log("user body name and user " + req.body.name + " - " + req.body.user);
   console.log("check is " + JSON.stringify(check));
 
@@ -185,9 +185,9 @@ app.get("/content/:language/:subject/:type/:difficulty/:id", async (req, res) =>
 
 
 
-app.get("/completion", (req, res) => {
+app.get("/completion", async (req, res) => {
   if (req.session.user) {
-    res.status(200).send(db.get_entry(req.session.user.name).completed);
+    res.status(200).send((await db.get_entry(req.session.user.name)).completed);
   } else {
     res.status(401).send("Unauthorized"); // client must be authenticated to get their completion
   }

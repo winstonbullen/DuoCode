@@ -1,4 +1,4 @@
-import { MongoClient, ServerApiVersion } from "mongodb";
+import { MongoClient, ServerApiVersion, Collection, FindOneAndReplaceOptions } from "mongodb";
 import { UserInfo, UserInfoDB } from "./db.js";
 import dotenv from "dotenv";
 
@@ -19,42 +19,41 @@ export class UsersDB implements UserInfoDB {
 
 	private static instance: UsersDB;
 
+	private collection?: Collection<UserInfo>;
+
 	static get_db(): UsersDB {
 		if (!UsersDB.instance) {
 			UsersDB.client.connect();
 			UsersDB.instance = new UsersDB();
+			UsersDB.instance.collection = UsersDB.client.db("duocode").collection<UserInfo>("Users");
 		}
 		return UsersDB.instance;
 	}
 
 	async insert_entry(info: UserInfo): Promise<UserInfo> {
-		const db = UsersDB.client.db("duocode");
-        const collection = db.collection("Users");
+		const options: FindOneAndReplaceOptions = { projection: { _id: 0}, upsert: true };
 
-		const result = await collection.insertOne(info);
+		const result = (await this.collection?.findOneAndReplace({ user: info.user }, info, options))?.value as UserInfo;
 
-		// TODO check if this can be null or none
-		return result; // if old entry existed it will be returned, else this should be null?
+		// TODO check if this can be null or none, or above type cast fails?
+		// if old entry existed it will be returned, else this should be null?
+		return result;
 	}
 
 	async get_entry(user: string): Promise<UserInfo> {
-		const db = UsersDB.client.db("duocode");
-        const collection = db.collection("Users");
-		
 		const options = { projection: { _id: 0 } };
 
-        // just get and return first one
-        const result = await collection.findOne({ username: user }, options);
-        return result; // TODO: Type check fails
+		// just get and return first one
+		// TODO: Type cast might fail?
+		const result = await this.collection?.findOne({ user: user }, options) as UserInfo;
+		return result;
 	}
 
-	append_completion(user: string, completion: string): void {
-		// TODO if this question mark is anything like rust this can throw an error
-		// but it should be an invariant that every entry has an empty completed list
-		
+	async append_completion(user: string, completion: string): Promise<void> {
+		await this.collection?.findOneAndUpdate({ user: user }, {$push: {completed: completion}});
 	}
 
 	static async close() {
-        await UsersDB.client.close();
-    }
+    await UsersDB.client.close();
+  }
 }
