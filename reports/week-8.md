@@ -42,7 +42,7 @@
 
     - Jason Hua: 
 
-    - Evan Kim: 
+    - Evan Kim: Updated app page navigation to operate without reloading the page and also edited questions to recieve information about the lesson unit and difficulty through props. 
 
     - Winston Bullen: Refactored the front end testing architecture to be more consistent with back end. Cleaned up front end styling and contributed to fixing the front end tests. Wrote developer and user documentation.
 
@@ -56,6 +56,6 @@
 
     - Jason Hua: 
 
-    - Evan Kim: 
+    - Evan Kim: add frontend logic to handle when questions are completed and track lesson progression. reach goal: add a baby shark animated to the home page.
 
     - Winston Bullen: Implement content templating so details of questions are randomized. This means questions pull from a bank of variable names to make content more unique.
