@@ -21,9 +21,9 @@ export class UsersDB implements UserInfoDB {
 
 	private collection?: Collection<UserInfo>;
 
-	static get_db(): UsersDB {
+	static async get_db(): Promise<UsersDB> {
 		if (!UsersDB.instance) {
-			UsersDB.client.connect();
+			await UsersDB.client.connect();
 			UsersDB.instance = new UsersDB();
 			UsersDB.instance.collection = UsersDB.client.db("duocode").collection<UserInfo>("Users");
 		}

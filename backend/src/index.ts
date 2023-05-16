@@ -7,6 +7,7 @@ import express from "express";
 import session from "express-session"; // TODO use a better session store
 import bcrypt from "bcrypt";
 import dotenv from "dotenv";
+import { UsersDB } from "./usersdb.js";
 
 dotenv.config(); // load .env file
 
@@ -25,8 +26,8 @@ declare module "express-session" {
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-const db: UserInfoDB = MemDB.get_db();
-const content_db: QuestionContentDB = ContentDB.get_db();
+const db: UserInfoDB = await UsersDB.get_db();
+const content_db: QuestionContentDB = await ContentDB.get_db();
 
 const FRONTEND_BUILD = "../frontend/build/index.html";
 

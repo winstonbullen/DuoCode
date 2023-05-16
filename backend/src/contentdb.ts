@@ -18,9 +18,9 @@ export class ContentDB implements QuestionContentDB {
 
     private static instance: ContentDB;
 
-    static get_db(): ContentDB {
+    static async get_db(): Promise<ContentDB> {
         if (!ContentDB.instance) {
-            ContentDB.client.connect();
+            await ContentDB.client.connect();
             ContentDB.instance = new ContentDB();
         }
         return ContentDB.instance;
