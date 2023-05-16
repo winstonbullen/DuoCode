@@ -5,7 +5,6 @@ import dotenv from "dotenv";
 dotenv.config();
 const uri = process.env.MONGODB_INSTANCE as string;
 
-// a quick in-memory database to test if the interface structure will work
 export class UsersDB implements UserInfoDB {
 
 	// Create a MongoClient with a MongoClientOptions object to set the Stable API version
@@ -31,7 +30,7 @@ export class UsersDB implements UserInfoDB {
 	}
 
 	async insert_entry(info: UserInfo): Promise<UserInfo> {
-		const options: FindOneAndReplaceOptions = { projection: { _id: 0}, upsert: true };
+		const options: FindOneAndReplaceOptions = { projection: { _id: 0 }, upsert: true };
 
 		const result = (await this.collection?.findOneAndReplace({ user: info.user }, info, options))?.value as UserInfo;
 
@@ -54,6 +53,6 @@ export class UsersDB implements UserInfoDB {
 	}
 
 	static async close() {
-    await UsersDB.client.close();
-  }
+    	await UsersDB.client.close();
+  	}
 }
