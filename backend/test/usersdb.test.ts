@@ -28,10 +28,10 @@ describe("UsersDB Atlas database", () => {
   it("has values that don't change between gets", async () => {
     const input = { user: "foo", pass_hash: "bar" };
 
-    db.insert_entry(input);
-    let output1 = db.get_entry("foo");
-    let output2 = db.get_entry("foo");
-    let output3 = db.get_entry("foo");
+    await db.insert_entry(input);
+    let output1 = await db.get_entry("foo");
+    let output2 = await db.get_entry("foo");
+    let output3 = await db.get_entry("foo");
     expect(output1).toEqual(output2);
     expect(output2).toEqual(output3);
   });
@@ -40,7 +40,7 @@ describe("UsersDB Atlas database", () => {
     const i1 = { user: "foo", pass_hash: "abc" };
     const i2 = { user: "foo", pass_hash: "xyz" }
 
-    db.insert_entry(i1);
+    await db.insert_entry(i1);
 
     const output1 = await db.insert_entry(i2);
     const output2 = await db.get_entry("foo");
