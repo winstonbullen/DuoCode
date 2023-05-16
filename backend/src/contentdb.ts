@@ -1,6 +1,6 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
-import dotenv from "dotenv";
 import { QuestionContentDB, QuestionParams } from "./db.js";
+import dotenv from "dotenv";
 
 dotenv.config();
 const uri = process.env.MONGODB_INSTANCE as string;

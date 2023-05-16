@@ -1,21 +1,14 @@
+import { MemDB } from "./memdb.js";
+import { QuestionContentDB, UserInfoDB } from "./db.js";
+import { ContentDB } from "./contentdb.js";
+
+import path from "path";
 import express from "express";
 import session from "express-session"; // TODO use a better session store
 import bcrypt from "bcrypt";
 import dotenv from "dotenv";
+
 dotenv.config(); // load .env file
-import fs from "fs";
-
-import { MemDB } from "./memdb.js";
-import { QuestionContentDB, UserInfoDB } from "./db.js";
-import { FileContentDB } from "./filecontentdb.js";
-
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
-import path from "path";
-import { ContentDB } from "./contentdb.js";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
 // needed to make the express-session login examples work with TS, see https://akoskm.com/how-to-use-express-session-with-custom-sessiondata-typescript
 type User = {
