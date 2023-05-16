@@ -8,12 +8,12 @@
 
 2. Progress
 
-    - 
+    - Front end primarily focused on UI design and basic app logic per the TA's advice. Front end did not get to fully implementing milestone tracking, but this is documented in the user documentation. Such a change is intended for final release now. Back end created the cloud MongoDB store which means user and content data is now persistent. Content was slightly adjusted to fit new requirements by the MongoDB database. Content templating is intended for final release as well.
 
 
 3. Next Week's Agenda
 
-    - 
+    - Front end will complete implementation of milestone tracking and associated UI updates for completion. Back end will implement question templating randomization to serve front end. Content will implement question templating to increase the bank of questions dramatically. The entire team will respond to peer review feedback as well.
 
 ## Team Member Contributions
 
