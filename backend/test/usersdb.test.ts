@@ -1,21 +1,24 @@
 import { UsersDB } from "../src/usersdb.js";
 
+let db: UsersDB;
+
+beforeAll(async () => {
+  db = await UsersDB.get_db();
+});
+
 afterAll(async () => {
   await UsersDB.close();
 });
 
 describe("UsersDB Atlas database", () => {
   it("is a singleton", async () => {
-    let i1 = await UsersDB.get_db();
     let i2 = await UsersDB.get_db();
 
-    expect(i1).toBe(i2);
+    expect(db).toBe(i2);
   });
 
   it("can get values back after putting them in", async () => {
     const input = { user: "foo", pass_hash: "bar" };
-
-    let db = await UsersDB.get_db();
 
     await db.insert_entry(input);
     let output = await db.get_entry("foo");
@@ -24,8 +27,6 @@ describe("UsersDB Atlas database", () => {
 
   it("has values that don't change between gets", async () => {
     const input = { user: "foo", pass_hash: "bar" };
-
-    let db = await UsersDB.get_db();
 
     db.insert_entry(input);
     let output1 = db.get_entry("foo");
@@ -38,7 +39,6 @@ describe("UsersDB Atlas database", () => {
   it("has only one of each key", async () => {
     const i1 = { user: "foo", pass_hash: "abc" };
     const i2 = { user: "foo", pass_hash: "xyz" }
-    const db = await UsersDB.get_db();
 
     db.insert_entry(i1);
 
