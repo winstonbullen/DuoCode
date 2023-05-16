@@ -28,7 +28,7 @@ type DragItem = {
 interface DragDropProps {
     submitRef : React.RefObject<HTMLButtonElement>;
     unit: string
-    difficulty: string
+    difficulty: number
 }
 
 

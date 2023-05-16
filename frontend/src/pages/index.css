@@ -144,6 +144,7 @@
     margin-top: 30px;
     margin-left: 35%;
     box-shadow: 3px 3px 8px #858585;
+    cursor: pointer;
   }
 
   .middlepane .unit1-container .checkpoint2 {
@@ -155,6 +156,7 @@
     margin-top: 30px;
     margin-left: 50%;
     box-shadow: 3px 3px 8px #858585;
+    cursor: pointer;
   }
 
   .middlepane .unit1-container .checkpoint3 {
@@ -166,6 +168,7 @@
     margin-top: 30px;
     margin-left: 55%;
     box-shadow: 3px 3px 8px #858585;
+    cursor: pointer;
   }
 
   .middlepane .unit1-container .checkpoint4 {

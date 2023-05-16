@@ -8,18 +8,20 @@ import ShortAnswer from './shortanswer';
 import MultipleChoice from './multiplechoice';
 import DragDrop from './dnd';
 import Completed from './completed';
-import { useLocation } from 'react-router-dom';
 
 
-interface QuestionProps {}
+interface QuestionProps {
+    unitName: string;
+    difficulty: number;
+    onComplete: () => void;
+}
 
 
 
-const Question: React.FC<QuestionProps> = () => {
-    const [currentQ, setCurrentQ] = useState(1);
+const Question: React.FC<QuestionProps> = ({unitName, difficulty, onComplete} : QuestionProps) => {
+    const [currentQ, setCurrentQ] = useState<number>(1);
     const [currentProgress, setCurrentProgress] = useState(0);
-    const location = useLocation();
-    console.log(location.state.unitName)
+    console.log(unitName);
 
     // create ref to submit question-content
     const submitRef = useRef<HTMLButtonElement>(null);
@@ -42,7 +44,7 @@ const Question: React.FC<QuestionProps> = () => {
 
 
     const handleComplete = () => {
-        window.location.href = 'http://localhost:3001/app'
+        onComplete();
     }
 
     return (
@@ -57,9 +59,9 @@ const Question: React.FC<QuestionProps> = () => {
                 </div>
             </div>
             <div className='question-content'>
-                {currentQ === 1 && <MultipleChoice unit={location.state.unitName} difficulty={location.state.difficulty} submitRef={submitRef} />}
-                {currentQ === 2 && <DragDrop unit={location.state.unitName} difficulty={location.state.difficulty} submitRef={submitRef} />}
-                {currentQ === 3 && <ShortAnswer unit={location.state.unitName} difficulty={location.state.difficulty} submitRef={submitRef} />}
+                {currentQ === 1 && <MultipleChoice unit={unitName} difficulty={difficulty} submitRef={submitRef} />}
+                {currentQ === 2 && <DragDrop unit={unitName} difficulty={difficulty} submitRef={submitRef} />}
+                {currentQ === 3 && <ShortAnswer unit={unitName} difficulty={difficulty} submitRef={submitRef} />}
                 {currentQ === 4 && <Completed />}
             </div>
             <div className="question-footer">
