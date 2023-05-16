@@ -2,7 +2,8 @@
     "language": "java",
     "subject": "collections",
     "type": "short_response",
-    "difficulty": 1,
+    "difficulty": "1",
+    "id": "1",
     "prompt": "Create an ArrayList called myList that stores Strings using the code box below.",
     "correct_answer": "ArrayList<String> myList = new ArrayList<String>();"
 }

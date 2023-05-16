@@ -2,7 +2,8 @@
     "language": "java",
     "subject": "arrays",
     "type": "short_response",
-    "difficulty": 2,
+    "difficulty": "2",
+    "id": "1",
     "prompt": "Create an empty 2D int array of size 8x8 called board using the code box below.",
     "correct_answer": "int[][] board = new int[8][8];"
 }

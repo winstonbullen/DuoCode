@@ -2,7 +2,8 @@
     "language": "python",
     "subject": "lists",
     "type": "short_response",
-    "difficulty": 2,
+    "difficulty": "2",
+    "id": "1",
     "prompt": "Create a list called readings and initialize it to 2.0 using the code box below.",
     "correct_answer": "readings = [2.0]"
 }

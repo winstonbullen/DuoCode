@@ -2,7 +2,8 @@
     "language": "python",
     "subject": "collections",
     "type": "multiple_choice",
-    "difficulty": 2,
+    "difficulty": "2",
+    "id": "1",
     "prompt": "Which of the following creates a tuple called foods and initializes it to \"burger\"?",
     "correct_answer": "foods = (\"burger\",)",
     "distractors": ["foods = {\"burger\",}", "foods = (\"burger\")", "foods = [\"burger\"]"]

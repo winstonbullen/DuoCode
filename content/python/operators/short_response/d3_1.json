@@ -2,7 +2,8 @@
     "language": "python",
     "subject": "operators",
     "type": "short_response",
-    "difficulty": 3,
+    "difficulty": "3",
+    "id": "1",
     "prompt": "Set the variable named left equal to the remainder of total divided by count using the code box below.",
     "correct_answer": "left = total % count"
 }

@@ -2,7 +2,8 @@
     "language": "python",
     "subject": "classes",
     "type": "short_response",
-    "difficulty": 1,
+    "difficulty": "1",
+    "id": "1",
     "prompt": "Declare a class called Test using the code box below (do not include any class body).",
     "correct_answer": "class Test:"
 }

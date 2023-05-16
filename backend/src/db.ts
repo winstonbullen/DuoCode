@@ -1,6 +1,6 @@
 export interface UserInfoDB {
-  insert_entry(info: UserInfo): UserInfo;
-  get_entry(user: string): UserInfo;
+  insert_entry(info: UserInfo): Promise<UserInfo>;
+  get_entry(user: string): Promise<UserInfo>;
   append_completion(user: string, completion: string): void;
 }
 

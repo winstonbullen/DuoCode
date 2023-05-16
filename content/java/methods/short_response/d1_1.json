@@ -2,7 +2,8 @@
     "language": "java",
     "subject": "methods",
     "type": "short_response",
-    "difficulty": 1,
+    "difficulty": "1",
+    "id": "1",
     "prompt": "Declare a public static method called foo that returns an int and takes a String called bar as its only parameter using the code box below (do not include any method body nor curly braces).",
     "correct_answer": "public static int foo (String bar)"
 }

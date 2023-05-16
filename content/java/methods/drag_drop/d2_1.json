@@ -2,7 +2,8 @@
     "language": "java",
     "subject": "methods",
     "type": "drag_drop",
-    "difficulty": 2,
+    "difficulty": "2",
+    "id": "1",
     "prompt": "Drag and drop the following blocks to declare a private non-static method called add that does not return anything and takes two ints num1 and num2 as its parameters.",
     "correct_ordering": ["private",  "void",  "add", "(", "int num1, int num2", ")"]
 }

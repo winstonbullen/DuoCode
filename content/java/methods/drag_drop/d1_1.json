@@ -2,7 +2,8 @@
     "language": "java",
     "subject": "methods",
     "type": "drag_drop",
-    "difficulty": 1,
+    "difficulty": "1",
+    "id": "1",
     "prompt": "Drag and drop the following blocks to declare a public static method called foo that returns an int and takes a String called bar as its only parameter.",
     "correct_ordering": ["public", "static", "int", "foo", "(String bar)"]
 }

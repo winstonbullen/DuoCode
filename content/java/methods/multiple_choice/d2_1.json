@@ -2,7 +2,8 @@
     "language": "java",
     "subject": "methods",
     "type": "multiple_choice",
-    "difficulty": 2,
+    "difficulty": "2",
+    "id": "1",
     "prompt": "Which of the following declares a private non-static method called add that does not return anything and takes two ints num1 and num2 as its parameters?",
     "correct_answer": "private void add (int num1, int num2)",
     "distractors": ["private non-static void add (int num1, int num2)", "public void add (int num1, int num2)", "private void add (int num1), (int num2)"]

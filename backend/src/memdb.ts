@@ -18,7 +18,7 @@ export class MemDB implements UserInfoDB {
     return MemDB.instance;
   }
 
-  insert_entry(info: UserInfo): UserInfo {
+  async insert_entry(info: UserInfo): Promise<UserInfo> {
     let entry_exists = this.db[info.user];
 
     this.db[info.user] = info;
@@ -27,7 +27,7 @@ export class MemDB implements UserInfoDB {
     return entry_exists; // if old entry existed it will be returned, else this should be null?
   }
 
-  get_entry(user: string): UserInfo {
+  async get_entry(user: string): Promise<UserInfo> {
     return this.db[user];
   }
 

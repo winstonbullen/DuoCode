@@ -2,7 +2,8 @@
     "language": "python",
     "subject": "lists",
     "type": "multiple_choice",
-    "difficulty": 2,
+    "difficulty": "2",
+    "id": "1",
     "prompt": "Which of the following creates a list called readings and initializes it to 2.0?",
     "correct_answer": "readings = [2.0]",
     "distractors": ["readings = {2.0}", "readings = 2.0", "readings = new list(2.0)"]

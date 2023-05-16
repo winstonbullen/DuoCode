@@ -2,7 +2,8 @@
     "language": "python",
     "subject": "functions",
     "type": "short_response",
-    "difficulty": 1,
+    "difficulty": "1",
+    "id": "1",
     "prompt": "Declare a function called foo that takes bar as its only argument using the code box below (do not include any function body).",
     "correct_answer": "def foo (bar):"
 }

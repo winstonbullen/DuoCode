@@ -2,7 +2,8 @@
     "language": "python",
     "subject": "conditions",
     "type": "drag_drop",
-    "difficulty": 2,
+    "difficulty": "2",
+    "id": "1",
     "prompt": "Drag and drop the following blocks to set the variable named cond3 equal to the boolean value of cond1 AND cond2.",
     "correct_ordering": ["cond3", "=", "cond1", "and", "cond2"]
 }

@@ -1,18 +1,14 @@
+import { QuestionContentDB, UserInfoDB } from "./db.js";
+import { UsersDB } from "./usersdb.js";
+import { ContentDB } from "./contentdb.js";
+
+import path from "path";
 import express from "express";
 import session from "express-session"; // TODO use a better session store
 import bcrypt from "bcrypt";
-import fs from "fs";
+import dotenv from "dotenv";
 
-import { MemDB } from "./memdb.js";
-import { QuestionContentDB, UserInfoDB } from "./db.js";
-import { FileContentDB } from "./filecontentdb.js";
-
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
-import path from "path";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+dotenv.config(); // load .env file
 
 // needed to make the express-session login examples work with TS, see https://akoskm.com/how-to-use-express-session-with-custom-sessiondata-typescript
 type User = {
@@ -29,8 +25,8 @@ declare module "express-session" {
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-const db: UserInfoDB = MemDB.get_db();
-const content_db: QuestionContentDB = FileContentDB.get_db();
+const db: UserInfoDB = await UsersDB.get_db();
+const content_db: QuestionContentDB = await ContentDB.get_db();
 
 const FRONTEND_BUILD = "../frontend/build/index.html";
 
@@ -77,7 +73,8 @@ app.post("/signup", async (req, res) => {
     res.status(400).send("Bad request");
     return;
   }
-  const check = db.get_entry(req.body.name);
+  const check = await db.get_entry(req.body.name);
+  console.log("Log: signup check " + check);
 
   if (!check) {
     const hash = await bcrypt.hash(req.body.password, 13);
@@ -88,7 +85,7 @@ app.post("/signup", async (req, res) => {
       completed: [],
     };
 
-    db.insert_entry(data);
+    await db.insert_entry(data);
     res.status(201).send(`
       <h1>Account created successfully!</h1>
       <button onclick="window.location.href='/login.html'">Go to login page</button>
@@ -108,7 +105,7 @@ app.post("/login", async (req, res, next) => {
     res.status(400).send("Bad request");
     return;
   }
-  const check = db.get_entry(req.body.name);
+  const check = await db.get_entry(req.body.name);
   console.log("user body name and user " + req.body.name + " - " + req.body.user);
   console.log("check is " + JSON.stringify(check));
 
@@ -179,15 +176,15 @@ app.get("/content/:language/:subject/:type/:difficulty/:id", async (req, res) =>
 
 
 
-app.get("/completion", (req, res) => {
+app.get("/completion", async (req, res) => {
   if (req.session.user) {
-    res.status(200).send(db.get_entry(req.session.user.name).completed);
+    res.status(200).send((await db.get_entry(req.session.user.name)).completed);
   } else {
     res.status(401).send("Unauthorized"); // client must be authenticated to get their completion
   }
 });
 
-app.post("/completion", (req, res) => {
+app.post("/completion", async (req, res) => {
   if (req.session.user) {
     if (!req.body.language || !req.body.subject) {
       res.status(400).send("Bad request");
@@ -213,4 +210,8 @@ app.use("/*", (req, res) => {
 // start listening on specified port
 app.listen(PORT, () => {
   console.log(`DuoCode server started on port ${PORT}...`)
+});
+
+process.on("exit", async () => {
+  await ContentDB.close();
 });

@@ -2,7 +2,8 @@
     "language": "java",
     "subject": "loops",
     "type": "multiple_choice",
-    "difficulty": 3,
+    "difficulty": "3",
+    "id": "1",
     "prompt": "Which of the following declares a for-each loop that iterates through every element of int[] nums with the loop variable current?",
     "correct_answer": "for (int current : nums)",
     "distractors": ["for (int[] current : nums)", "for-each (int current : nums)", "for (int current = 0; current < nums.length; current++)"]

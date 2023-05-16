@@ -2,7 +2,8 @@
     "language": "python",
     "subject": "lists",
     "type": "multiple_choice",
-    "difficulty": 1,
+    "difficulty": "1",
+    "id": "1",
     "prompt": "Which of the following creates an empty list called empty_list?",
     "correct_answer": "empty_list = []",
     "distractors": ["empty_list = {}", "empty_list = [null]", "empty_list = new list()"]

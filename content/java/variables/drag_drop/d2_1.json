@@ -2,7 +2,8 @@
     "language": "java",
     "subject": "variables",
     "type": "drag_drop",
-    "difficulty": 2,
+    "difficulty": "2",
+    "id": "1",
     "prompt": "Drag and drop the following blocks to create a variable named greeting of type String and initialize it to \"Hello\".",
     "correct_ordering": ["String", "greeting", "=", "\"Hello\"", ";"]
 }

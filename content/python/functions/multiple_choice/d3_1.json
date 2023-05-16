@@ -2,7 +2,8 @@
     "language": "python",
     "subject": "functions",
     "type": "multiple_choice",
-    "difficulty": 3,
+    "difficulty": "3",
+    "id": "1",
     "prompt": "Which of the following declares a function called info that takes an arbitrary number of keyword arguments called item?",
     "correct_answer": "def info (**item):",
     "distractors": ["def info (item):", "def info (*item):", "def info (item[]):"]

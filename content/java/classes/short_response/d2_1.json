@@ -2,7 +2,8 @@
     "language": "java",
     "subject": "classes",
     "type": "short_response",
-    "difficulty": 2,
+    "difficulty": "2",
+    "id": "1",
     "prompt": "Declare a public class called Student that is a subclass of Person using the code box below (do not include any class body nor curly braces).",
     "correct_answer": "public class Student extends Person"
 }

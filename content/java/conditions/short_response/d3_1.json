@@ -2,7 +2,8 @@
     "language": "java",
     "subject": "conditions",
     "type": "short_response",
-    "difficulty": 3,
+    "difficulty": "3",
+    "id": "1",
     "prompt": "Declare an if statement that tests whether left is not equal to right using the code box below (do not include any statement body nor curly braces).",
     "correct_answer": "if (left != right)"
 }

@@ -2,7 +2,8 @@
     "language": "java",
     "subject": "arrays",
     "type": "drag_drop",
-    "difficulty": 2,
+    "difficulty": "2",
+    "id": "1",
     "prompt": "Drag and drop the following blocks to create an empty 2D int array of size 8x8 called board.",
     "correct_ordering": ["int[][]", "board", "=", "new", "int[8][8]", ";"]
 }

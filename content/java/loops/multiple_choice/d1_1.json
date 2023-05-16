@@ -2,7 +2,8 @@
     "language": "java",
     "subject": "loops",
     "type": "multiple_choice",
-    "difficulty": 1,
+    "difficulty": "1",
+    "id": "1",
     "prompt": "Which of the following declares a while loop that executes as long as the variable named sum is less than 80?",
     "correct_answer": "while (sum < 80)",
     "distractors": ["while sum < 80", "while (sum < 80; sum++)", "while (sum > 80)"]

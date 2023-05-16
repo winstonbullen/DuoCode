@@ -2,7 +2,8 @@
     "language": "python",
     "subject": "collections",
     "type": "drag_drop",
-    "difficulty": 3,
+    "difficulty": "3",
+    "id": "1",
     "prompt": "Drag and drop the following blocks to create a dictionary called car with the key \"type\" initialized to the value \"truck\".",
     "correct_ordering": ["car", "=", "{", "\"type\"", ":", "\"truck\"", "}"]
 }
