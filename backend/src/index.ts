@@ -83,7 +83,8 @@ app.post("/signup", async (req, res) => {
     res.status(400).send("Bad request");
     return;
   }
-  const check = db.get_entry(req.body.name);
+  const check = await db.get_entry(req.body.name);
+  console.log("Log: signup check " + check);
 
   if (!check) {
     const hash = await bcrypt.hash(req.body.password, 13);
@@ -94,7 +95,7 @@ app.post("/signup", async (req, res) => {
       completed: [],
     };
 
-    db.insert_entry(data);
+    await db.insert_entry(data);
     res.status(201).send(`
       <h1>Account created successfully!</h1>
       <button onclick="window.location.href='/login.html'">Go to login page</button>
@@ -193,7 +194,7 @@ app.get("/completion", async (req, res) => {
   }
 });
 
-app.post("/completion", (req, res) => {
+app.post("/completion", async (req, res) => {
   if (req.session.user) {
     if (!req.body.language || !req.body.subject) {
       res.status(400).send("Bad request");
@@ -222,5 +223,5 @@ app.listen(PORT, () => {
 });
 
 process.on("exit", async () => {
-  ContentDB.close();
+  await ContentDB.close();
 });
