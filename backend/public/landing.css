@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Viga');
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+.login-signup {
+    text-align: center;
+}
+
+body {
+    text-align: center;
+    font-family: Nunito, serif;
+}
+
+h1 {
+    font-family: Viga, serif;
+    font-size: 50px;
+    text-align: center;
+    color: #0096FF;
+  }
