@@ -15,6 +15,9 @@ jobs:
       run:
         working-directory: 'backend'
 
+    env:
+      MONGODB_INSTANCE: ${{ secrets.MONGODB_INSTANCE }}
+
     strategy:
       matrix:
         node-version: [ 18.x ]
