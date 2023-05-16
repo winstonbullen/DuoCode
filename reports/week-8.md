@@ -40,7 +40,7 @@
 
     - Jason Xu: 
 
-    - Jason Hua: 
+    - Jason Hua: Fetch requests are now able to grab from any of the json's rather than being hard coded. Also added functionality to some frontend components(Close button). 
 
     - Evan Kim: Updated app page navigation to operate without reloading the page and also edited questions to recieve information about the lesson unit and difficulty through props. 
 
@@ -54,7 +54,7 @@
 
     - Jason Xu: 
 
-    - Jason Hua: 
+    - Jason Hua: Add more functionality to front end components, such as next button only being able to be clicked when answering a question at least once. Attempt to implement solutions for questions after answering.
 
     - Evan Kim: add frontend logic to handle when questions are completed and track lesson progression. reach goal: add a baby shark animated to the home page.
 
