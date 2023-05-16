@@ -10,6 +10,8 @@ DuoCode is a code learning app that is inspired by Duolingo. It makes learning c
 
 3. [Make](https://www.gnu.org/software/make/manual/make.html) must be installed to run the commands outlined in the `Makefile`. This makes building, testing, and releasing easier.
 
+4. There must be a `.env` file created alongside `.template.env` in `/backend/` containing the secret key for the cloud MongoDB database. Please ask the dev team for the key.
+
 ## Directories
 
 There are four top-level sub-directories detailed below that each have a `README.md` explaining their respective file structure.
