@@ -53,6 +53,6 @@ export class UsersDB implements UserInfoDB {
 	}
 
 	static async close() {
-    	await UsersDB.client.close();
+		await UsersDB.client.close();
   	}
 }
