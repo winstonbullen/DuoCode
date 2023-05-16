@@ -7,52 +7,52 @@ const uri = process.env.MONGODB_INSTANCE as string;
 
 export class UsersDB implements UserInfoDB {
 
-	// Create a MongoClient with a MongoClientOptions object to set the Stable API version
-	private static client = new MongoClient(uri, {
-		serverApi: {
-			version: ServerApiVersion.v1,
-			strict: true,
-			deprecationErrors: true,
-		}
-	});
+    // Create a MongoClient with a MongoClientOptions object to set the Stable API version
+    private static client = new MongoClient(uri, {
+        serverApi: {
+            version: ServerApiVersion.v1,
+            strict: true,
+            deprecationErrors: true,
+        }
+    });
 
-	private static instance: UsersDB;
+    private static instance: UsersDB;
 
-	private collection?: Collection<UserInfo>;
+    private collection?: Collection<UserInfo>;
 
-	static async get_db(): Promise<UsersDB> {
-		if (!UsersDB.instance) {
-			await UsersDB.client.connect();
-			UsersDB.instance = new UsersDB();
-			UsersDB.instance.collection = UsersDB.client.db("duocode").collection<UserInfo>("Users");
-		}
-		return UsersDB.instance;
-	}
+    static async get_db(): Promise<UsersDB> {
+        if (!UsersDB.instance) {
+            await UsersDB.client.connect();
+            UsersDB.instance = new UsersDB();
+            UsersDB.instance.collection = UsersDB.client.db("duocode").collection<UserInfo>("Users");
+        }
+        return UsersDB.instance;
+    }
 
-	async insert_entry(info: UserInfo): Promise<UserInfo> {
-		const options: FindOneAndReplaceOptions = { projection: { _id: 0 }, upsert: true };
+    async insert_entry(info: UserInfo): Promise<UserInfo> {
+        const options: FindOneAndReplaceOptions = { projection: { _id: 0 }, upsert: true };
 
-		const result = (await this.collection?.findOneAndReplace({ user: info.user }, info, options))?.value as UserInfo;
+        const result = (await this.collection?.findOneAndReplace({ user: info.user }, info, options))?.value as UserInfo;
 
-		// TODO check if this can be null or none, or above type cast fails?
-		// if old entry existed it will be returned, else this should be null?
-		return result;
-	}
+        // TODO check if this can be null or none, or above type cast fails?
+        // if old entry existed it will be returned, else this should be null?
+        return result;
+    }
 
-	async get_entry(user: string): Promise<UserInfo> {
-		const options = { projection: { _id: 0 } };
+    async get_entry(user: string): Promise<UserInfo> {
+        const options = { projection: { _id: 0 } };
 
-		// just get and return first one
-		// TODO: Type cast might fail?
-		const result = await this.collection?.findOne({ user: user }, options) as UserInfo;
-		return result;
-	}
+        // just get and return first one
+        // TODO: Type cast might fail?
+        const result = await this.collection?.findOne({ user: user }, options) as UserInfo;
+        return result;
+    }
 
-	async append_completion(user: string, completion: string): Promise<void> {
-		await this.collection?.findOneAndUpdate({ user: user }, {$push: {completed: completion}});
-	}
+    async append_completion(user: string, completion: string): Promise<void> {
+        await this.collection?.findOneAndUpdate({ user: user }, { $push: { completed: completion } });
+    }
 
-	static async close() {
-		await UsersDB.client.close();
-  	}
+    static async close() {
+        await UsersDB.client.close();
+    }
 }

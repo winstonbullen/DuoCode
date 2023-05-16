@@ -1,5 +1,5 @@
-import { MemDB } from "./memdb.js";
 import { QuestionContentDB, UserInfoDB } from "./db.js";
+import { UsersDB } from "./usersdb.js";
 import { ContentDB } from "./contentdb.js";
 
 import path from "path";
@@ -7,7 +7,6 @@ import express from "express";
 import session from "express-session"; // TODO use a better session store
 import bcrypt from "bcrypt";
 import dotenv from "dotenv";
-import { UsersDB } from "./usersdb.js";
 
 dotenv.config(); // load .env file
 
