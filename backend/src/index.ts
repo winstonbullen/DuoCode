@@ -55,17 +55,7 @@ app.get("/", (req, res) => {
     res.send("Hello DuoCode! Index currently has no content. You are authenticated.");
   } else {
     console.log("LOG: Got request to index from non-authenticated user");
-    res.send(`
-      <html>
-        <head>
-          <title>Index</title>
-        </head>
-        <body>
-          <h1>Hello DuoCode! Index currently has no content. You are not authenticated.</h1>
-          <button onclick="location.href='/signup.html'">Sign Up Here</button>
-        </body>
-      </html>
-    `);
+    res.sendFile(path.join(__dirname, '../../public/landing.html'));
   }
 });
 
