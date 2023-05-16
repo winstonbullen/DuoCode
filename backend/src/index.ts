@@ -67,7 +67,7 @@ app.get("/app", (req, res) => {
   if (req.session.user) {
     res.status(200).sendFile(path.resolve(FRONTEND_BUILD));
   } else {
-    res.send(401).send("Unauthorized");
+    res.status(401).send("Unauthorized");
   }
 });
 
