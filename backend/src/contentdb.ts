@@ -5,12 +5,12 @@ import { QuestionContentDB, QuestionParams } from "./db.js";
 export class ContentDB implements QuestionContentDB {
 
     // Create a MongoClient with a MongoClientOptions object to set the Stable API version
-    client: any = new MongoClient(uri, {
-    serverApi: {
-        version: ServerApiVersion.v1,
-        strict: true,
-        deprecationErrors: true,
-    }
+    private static client: any = new MongoClient(uri, {
+        serverApi: {
+            version: ServerApiVersion.v1,
+            strict: true,
+            deprecationErrors: true,
+        }
     });
 
     private static instance: ContentDB;
@@ -24,9 +24,9 @@ export class ContentDB implements QuestionContentDB {
 
     async get_question(query: QuestionParams): Promise<Object> {
         try {
-            await this.client.connect();
+            await ContentDB.client.connect();
 
-            const db = this.client.db("duocode");
+            const db = ContentDB.client.db("duocode");
             const collection = db.collection("Content");
 
             const options = { projection: { _id: 0 } };
@@ -36,7 +36,7 @@ export class ContentDB implements QuestionContentDB {
                 return doc;
             }
         } finally {
-            await this.client.close();
+            await ContentDB.client.close();
         }
         return {};
     }
