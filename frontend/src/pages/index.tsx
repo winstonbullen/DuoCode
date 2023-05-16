@@ -87,7 +87,7 @@ const HomePage: React.FC = () => {
                     <div className="unit2">
                         <h3>Unit 2</h3>
                         <p className="resources">Resources</p>
-                        <p className="method-headers">Method Headers</p>
+                        <p className="operators">Operators</p>
                     </div>
                     <div className="checkpoints">
                         <div className="checkpoint1">
