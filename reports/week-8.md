@@ -34,7 +34,7 @@
 
 2. Progress
 
-    - JP Gabriel: 
+    - JP Gabriel: Created and styled homepage to more accurately follow Figma design. Created and styled basic landing page in backend. Fixed issues with progress bar. 
 
     - Jason Gao: Adjusted frontend config to fix frontend CI. Implemented persistent storage for user data in collaboration with Winston by using a MongoDB instance, adjusting the existing code, tests, and CI. Alongside that we also added a .env for storing secrets, then deployed the app to Render.
 
@@ -48,7 +48,7 @@
 
 3. Next Week's Agenda
 
-    - JP Gabriel: 
+    - JP Gabriel: Finish styling login and signup to more accurately reflect Figma design. Clean up issues on homepage and update homepage to enable more intended features.
 
     - Jason Gao: Implement user information deletion on server or explore using MongoDB transactions to have a non-lasting effect on the DB when testing. Take care of other outstanding issues related to the backend. Continue to examine testing the Express app.
 
