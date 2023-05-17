@@ -1,8 +1,41 @@
-<link rel="stylesheet" type="text/css" href="signup.css">
-<form action="/signup" method="post" class="form-container">
-  <label class="form-label">Name:</label>
-  <input type="text" name="name" class="form-input"/>
-  <label class="form-label">Password:</label>
-  <input type="password" id="password" name="password" autocomplete="off" class="form-input"/>
-  <input type="submit" value="Signup" class="form-submit" />
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="signup.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class = "login-page-container">
+        <div class="image-section">
+            <img src="./images/coder.svg" alt="coder">
+        </div>
+        <div class = "login">
+            <div class = "form">
+                <h1>Create an Account</h1>
+                <form action="/signup" method="post" class="form-container">
+                    <div class="input">
+                        <span>Username</span>
+                        <input type="text" name="name" class="form-input"/>
+                    </div>
+                    <div class="input">
+                        <span>Password</span>
+                        <input type="password" id="password" name="password" autocomplete="off" class="form-input"/>
+                    </div>
+                    <div class="input">
+                        <input type="submit" value="Sign Up" class="form-submit" />
+                    </div>
+                    <div class="line">
+                    </div>
+                    <div class="input">
+                        <p>Already have an account?</p>
+                        <a href="login.html">Log In</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
