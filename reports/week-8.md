@@ -38,7 +38,7 @@
 
     - Jason Gao: Adjusted frontend config to fix frontend CI. Implemented persistent storage for user data in collaboration with Winston by using a MongoDB instance, adjusting the existing code, tests, and CI. Alongside that we also added a .env for storing secrets, then deployed the app to Render.
 
-    - Jason Xu: 
+    - Jason Xu: Started development of some final release features like drag and drop refresh and worked on expanding frontend tests.
 
     - Jason Hua: Fetch requests are now able to grab from any of the json's rather than being hard coded. Also added functionality to some frontend components(Close button). 
 
@@ -52,7 +52,7 @@
 
     - Jason Gao: Implement user information deletion on server or explore using MongoDB transactions to have a non-lasting effect on the DB when testing. Take care of other outstanding issues related to the backend. Continue to examine testing the Express app.
 
-    - Jason Xu: 
+    - Jason Xu: Add more functionality with Jason Hua.
 
     - Jason Hua: Add more functionality to front end components, such as next button only being able to be clicked when answering a question at least once. Attempt to implement solutions for questions after answering.
 
