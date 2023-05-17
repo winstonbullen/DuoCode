@@ -135,8 +135,8 @@
 }
 
 .login-page-container .login .form .input a {
-    color: blue;
-    text-decoration: underline;
+    color: #0096FF;
+    text-decoration: none;
 }
 
 .login-page-container .login .form .line {
