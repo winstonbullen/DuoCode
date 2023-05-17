@@ -36,7 +36,7 @@
 
     - JP Gabriel: 
 
-    - Jason Gao: 
+    - Jason Gao: Adjusted frontend config to fix frontend CI. Implemented persistent storage for user data in collaboration with Winston by using a MongoDB instance, adjusting the existing code, tests, and CI. Alongside that we also added a .env for storing secrets, then deployed the app to Render.
 
     - Jason Xu: 
 
@@ -50,7 +50,7 @@
 
     - JP Gabriel: 
 
-    - Jason Gao: 
+    - Jason Gao: Implement user information deletion on server or explore using MongoDB transactions to have a non-lasting effect on the DB when testing. Take care of other outstanding issues related to the backend. Continue to examine testing the Express app.
 
     - Jason Xu: 
 
