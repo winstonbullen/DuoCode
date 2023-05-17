@@ -44,7 +44,7 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({submitRef, unit, difficu
 
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch("http://localhost:3001/content/java/" + unit + "/multiple_choice/" + difficulty + "/1")
+            const response = await fetch("/content/java/" + unit + "/multiple_choice/" + difficulty + "/1")
             const data = await response.json();
             console.log(data)
             setQuestion(data)

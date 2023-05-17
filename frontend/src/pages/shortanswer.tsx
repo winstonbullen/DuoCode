@@ -31,7 +31,7 @@ const ShortAnswer: React.FC<ShortAnswerProps> = ({submitRef, unit, difficulty}) 
     const [shortAnswerData, setshortAnwswer] = useState<shortAnswerData>(emptyShortAnswerData);
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch("http://localhost:3001/content/java/" + unit + "/short_response/" + difficulty + "/1")
+            const response = await fetch("/content/java/" + unit + "/short_response/" + difficulty + "/1")
             const data = await response.json();
             setshortAnwswer(data)
             console.log(data)
