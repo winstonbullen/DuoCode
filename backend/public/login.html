@@ -17,12 +17,12 @@
                 <h1>Log In</h1>
                 <form action="/login" method="post" class="form-container">
                     <div class="input">
+                        <input type="text" required="required" name="name" class="form-input"/>
                         <span>Username</span>
-                        <input type="text" name="name" class="form-input"/>
                     </div>
                     <div class="input">
+                        <input type="password" required="required" id="password" name="password" autocomplete="off" class="form-input"/>
                         <span>Password</span>
-                        <input type="password" id="password" name="password" autocomplete="off" class="form-input"/>
                     </div>
                     <div class="input">
                         <input type="submit" value="Login" class="form-submit" />
