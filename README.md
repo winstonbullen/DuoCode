@@ -1,6 +1,10 @@
 # DuoCode
 
-DuoCode is a code learning app that is inspired by Duolingo. It makes learning code more fun and accessible than ever. It caters to a diverse range of skill levels and needs. Start learning today! 
+[DuoCode](https://duocode.onrender.com) is a code learning app that is inspired by Duolingo. It makes learning code more fun and accessible than ever. It caters to a diverse range of skill levels and needs. [Start learning today](https://duocode.onrender.com)! 
+
+## Users
+
+Please visit the DuoCode [homepage](https://duocode.onrender.com) for more information and user documentation.
 
 ## Setup
 
@@ -9,6 +13,8 @@ DuoCode is a code learning app that is inspired by Duolingo. It makes learning c
 2. [Node.js](https://nodejs.org/en/download) (18.x) must be installed to build, test, and release the web app. The default install instructions and options should suffice. 
 
 3. [Make](https://www.gnu.org/software/make/manual/make.html) must be installed to run the commands outlined in the `Makefile`. This makes building, testing, and releasing easier.
+
+4. There must be a `.env` file created alongside `.template.env` in `/backend/` containing the secret key for the cloud MongoDB database. Please ask the dev team for the key.
 
 ## Directories
 
@@ -46,7 +52,9 @@ To add new tests, please refer to the [frontend](./frontend/README.md) and [back
 
 ## Release
 
-Run the following from the top-level directory to release the web app:
+Commits to `main` automatically deploy the web app through [render.com](https://render.com/) at [this](https://duocode.onrender.com) url. Pushes to main are disabled, so this is only possible through pull requests that require at least one other collaborator to code review.
+
+Run the following from the top-level directory to run the web app locally:
 
 ```
 make install
