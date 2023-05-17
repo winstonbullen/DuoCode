@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700');
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Nunito, serif;
 }
 
 .login-page-container {
@@ -35,6 +37,120 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.login-page-container .login {
+    display: flex;
+    width: 50%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-page-container .login .form {
+    text-align: center;
+    width: 50%;
+}
+
+.login-page-container .login .form h1 {
+    color: black;
+    font-family: Nunito, serif;
+    font-weight: 600;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    display: inline-block;
+    letter-spacing: 1px;
+}
+
+.login-page-container .login .form .input {
+    margin-bottom: 5px;
+}
+
+.login-page-container .login .form .input span {
+    font-size: 16px;
+    margin-bottom: 5px;
+    display: inline-block;
+    color: black;
+    font-weight: 300;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+.login-page-container .login .form .input input {
+    width: 90%;
+    padding: 10px 10px;
+    outline: none;
+    font-weight: 400;
+    border: 1px solid black;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color:black;
+    background: transparent;
+    border-radius: 5px;
+}
+
+.login-page-container .login .form .input .form-input {
+    background: #F5F5F5;
+}
+
+.login-page-container .login .form .input input[type="submit"] {
+    margin-top: 20px;
+    width: 50%;
+    background: #0096FF;
+    border: 1px solid transparent;
+    color: #fff;
+    outline: none;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.login-page-container .login .form .input input[type="submit"]:hover {
+    background: #69BFFC;
+    border: 1px solid #0096FF;
+}
+
+.login-page-container .login .form .input p {
+    color: black;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.login-page-container .login .form .input a {
+    color: blue;
+    text-decoration: underline;
+}
+
+.login-page-container .login .form .line {
+    margin-top: 30px;
+    width: 100%;
+    height: 3px;
+    background: #D9D9D9;
+}
+
+@media (max-width: 768px) {
+    .login-page-container .image-section {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .login-page-container .login {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    .login-page-container .login .form {
+        width: 100%;
+        padding: 40px;
+        background: rgb(255 255 255 / 0.9);
+        margin: 50px;
+    }
 }
 
 /*.form-container {
