@@ -27,38 +27,33 @@ const HomePage: React.FC = () => {
         {activeComponent === 'home' && 
             <div className="container">
                 <div className="sidebar">
-                    <div className="duocode-title">
-                        <h2>DuoCode</h2>
-                    </div>
-                    <div className="navbar-links">
-                        <ul>
-                            <li>
-                            <Link to="/">
-                            <img src={require("./images/learn.png")} alt="learn" /></Link>
-                            <p>Learn</p>
-                            </li>
-                            <li>
-                            <Link to="/">
-                            <img src={require("./images/shop.png")} alt="shop" /></Link>
-                            <p>Shop</p>
-                            </li>
-                            <li>
-                            <Link to="/">
-                            <img src={require("./images/profile.png")} alt="profile" /></Link>
-                            <p>Profile</p>
-                            </li>
-                            <li>
-                            <Link to="/">
-                            <img src={require("./images/more.png")} alt="more" /></Link>
-                            <p>More</p>
-                            </li>
-                        </ul>
-                    </div>
+                    <h2>DuoCode</h2>
+                    <ul>
+                        <li>
+                        <Link to="/">
+                        <img src={require("./images/learn.png")} alt="learn" /></Link>
+                        <p>Learn</p>
+                        </li>
+                        <li>
+                        <Link to="/">
+                        <img src={require("./images/shop.png")} alt="shop" /></Link>
+                        <p>Shop</p>
+                        </li>
+                        <li>
+                        <Link to="/">
+                        <img src={require("./images/profile.png")} alt="profile" /></Link>
+                        <p>Profile</p>
+                        </li>
+                        <li>
+                        <Link to="/">
+                        <img src={require("./images/more.png")} alt="more" /></Link>
+                        <p>More</p>
+                        </li>
+                    </ul>
                     <div className="account">
-                        <h3><img src={require("./images/account.png")} alt="account" />CoolCoder123</h3>
+                        <img src={require("./images/account.png")} alt="account" />
+                        <p>CoolCoder123</p>
                     </div>
-                </div>
-                <div className="grayline" style={{ background: 'lightgrey', width: '.3vh', marginLeft: '24.7%', height: '100vh' }}>
                 </div>
                 <div className="middlepane">
                 <div className="unit1-container">

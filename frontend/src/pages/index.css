@@ -8,27 +8,74 @@
     background-color: #fff;
   }
 
-  .sidebar h2 {
+  .container .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 24.8vw;
+    height: 100vh;
+    background-color: #fff;
+    border-right: 2px solid #D9D9D9;
+  }
+
+  .container .sidebar h2 {
     font-family: Viga, serif;
     font-size: 50px;
     text-align: center;
     color: #0096FF;
   }
+  .container .sidebar ul li {
+    list-style: none;
+    padding: 5px;
+    border: 2px solid transparent;
+    width: 80%;
+    height: 60px;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    color: #000;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: Nunito, serif;
+    text-align: center;
+  }
 
-  .sidebar h3 {
-    margin-left: 5vh;
-    margin-top: 20vh;
+  .container .sidebar ul li:hover {
+    border: 2px solid #0096FF;
+    background-color:#D3ECFD;
+    border-radius:20px;
+  }
+
+  .container .sidebar img {
+    margin-right: 10px;
+    margin-top: 10px;
+    width: 50px;
+    padding: 10px;
+  }
+
+  .container .sidebar .account {
     display: flex;
     align-items: center;
+    margin-top: 20vh;
     font-family: Nunito, serif;
     font-weight: 100;
     font-size: 20px;
     color: #000;
-    text-align: center;
   }
 
-  .sidebar h3 img {
-    padding-right: 20px;
+  .container .sidebar .account img{
+    width: 80px;
+    margin-left: 20px;
+  }
+
+
+  
+  /*.sidebar h2 {
+    font-family: Viga, serif;
+    font-size: 50px;
+    text-align: center;
+    color: #0096FF;
   }
 
   .sidebar .navbar-links ul li{
@@ -59,28 +106,28 @@
     width: 50px;
     padding: 10px;
   }
-  
-  .sidebar {
-    position:fixed;
+
+  .account {
+    display: flex;
     align-items: center;
-    width: 24.7%;
-    height: 100vh;
-    background-color: #fff;
+    margin-top: 20vh;
+    margin-left: 20px;
+    font-family: Nunito, serif;
+    font-weight: 100;
+    font-size: 20px;
+    color: #000;
   }
 
-
-  .grayline {
-    position: fixed;
-    width: 1wh;
-    background-color: #D9D9D9;
-  }
+  .account p {
+    margin-left: 20px;
+  }*/
   
   .middlepane {
-    position: absolute;
-    margin-left: 25%;
-    text-align: center;
-    width: 50%;
     height: 155vh;
+    position: absolute;
+    margin-left: 25vw;
+    text-align: center;
+    width: 50vw;
     background-color: #fff;
   }
 
@@ -99,7 +146,7 @@
 
   .middlepane .unit1 {
     width: 80%;
-    height: 11vh;
+    height: 75px;
     position: relative;
     color: #fff;
     text-align: left;
@@ -121,7 +168,7 @@
     text-decoration: underline;
     position: absolute;
     margin-top: 30px;
-    margin-left: 85%;
+    margin-left: 80%;
     font-family: Nunito, serif;
     font-size: 15px;
   }
@@ -184,7 +231,7 @@
 
   .middlepane .unit2 {
     width: 80%;
-    height: 11vh;
+    height: 75px;
     position: relative;
     color: #fff;
     text-align: left;
