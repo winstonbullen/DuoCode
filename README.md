@@ -1,6 +1,10 @@
 # DuoCode
 
-DuoCode is a code learning app that is inspired by Duolingo. It makes learning code more fun and accessible than ever. It caters to a diverse range of skill levels and needs. Start learning today! 
+[DuoCode](https://duocode.onrender.com) is a code learning app that is inspired by Duolingo. It makes learning code more fun and accessible than ever. It caters to a diverse range of skill levels and needs. Start learning today! 
+
+## Users
+
+Please visit [duocode.onrender.com](https://duocode.onrender.com) for more information and user documentation.
 
 ## Setup
 
@@ -48,7 +52,9 @@ To add new tests, please refer to the [frontend](./frontend/README.md) and [back
 
 ## Release
 
-Run the following from the top-level directory to release the web app:
+Commits to `main` automatically deploy the web app through [render.com](https://render.com/) at the DuoCode website URL. Pushes to main are disabled, so this is only possible through pull requests that require at least one other collaborator to code review.
+
+Run the following from the top-level directory to run the web app locally:
 
 ```
 make install
