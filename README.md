@@ -4,7 +4,7 @@
 
 ## Users
 
-Please visit the DuoCode [homepage](https://duocode.onrender.com) for more information and user documentation.
+Please visit the DuoCode [homepage](https://duocode.onrender.com) for more information and user documentation. Please allow the website some time to load.
 
 ## Setup
 
