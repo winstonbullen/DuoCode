@@ -42,7 +42,7 @@ const DragDrop: React.FC<DragDropProps> = ({submitRef, unit, difficulty}) => {
 
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch("http://localhost:3001/content/java/" + unit + "/drag_drop/" + difficulty + "/1")
+            const response = await fetch("/content/java/" + unit + "/drag_drop/" + difficulty + "/1")
             const data = await response.json();
             const shuffledOrdering = shuffleArray(data.correct_ordering);
             setDragDrop({...data, correct_ordering: shuffledOrdering});
