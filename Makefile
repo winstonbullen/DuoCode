@@ -1,10 +1,8 @@
 .PHONY: install build run deploy test
 
 install:
-	cd ./frontend/ && npm install
-	cd ./frontend/ && npm install --save-dev
-	cd ./backend/ && npm install
-	cd ./backend/ && npm install --save-dev
+	cd ./frontend/ && npm ci
+	cd ./backend/ && npm ci
 
 build:
 	cd ./frontend/ && npm run build
