@@ -53,7 +53,8 @@ app.get("/", (req, res) => {
   console.log(req.session);
   if (req.session.user) {
     console.log("LOG: Got request to index from authenticated user " + req.session.user);
-    res.send("Hello DuoCode! Index currently has no content. You are authenticated.");
+    // res.send("Hello DuoCode! Index currently has no content. You are authenticated.");
+    res.redirect("/app");
   } else {
     console.log("LOG: Got request to index from non-authenticated user");
     res.sendFile(path.join(__dirname, '../../public/landing.html'));
