@@ -14,7 +14,7 @@ Please visit the DuoCode [homepage](https://duocode.onrender.com) for more infor
 
 3. [Make](https://www.gnu.org/software/make/manual/make.html) must be installed to run the commands outlined in the `Makefile`. This makes building, testing, and releasing easier.
 
-4. There must be a `.env` file created alongside `.env.template` in `/backend/` containing some secret keys. Please ask the dev team for this file.
+4. There must be a `.env` file created in `/backend/` containing some secret keys. Please ask the dev team for this.
 
 ## Directories
 
@@ -42,7 +42,7 @@ make build
 
 ## Test
 
-Run the following from the top-level directory to test the web app after building:
+Run the following from the top-level directory to test the web app:
 
 ```
 make test
