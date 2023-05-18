@@ -1,5 +1,17 @@
 ## DuoCode Backend
 
+### API
+
+See [API.md](API.md) for the API documentation.
+
+### Directories
+
+There are three sub-directories detailed below.
+
+- `/public/` contains some served frontend pages.
+- `/src/` contains the backend source code.
+- `/test/` contains the backend tests.
+
 ### Development
 
 Project is Node.js (v18.16.0) with Express and Typescript.
@@ -13,8 +25,6 @@ The following development commands can be run:
 - `npm run dev` will start a hot-reloading development server.
 - `npm run test` will make sure the backend builds, then will run the Jest test suite in `test/`.
 - `npm run clean` will remove the `dist/` directory.
-
-See [API.md](API.md) for the API documentation.
 
 ### Adding Tests
 

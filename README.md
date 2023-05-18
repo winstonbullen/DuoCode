@@ -8,13 +8,9 @@ Please visit the DuoCode [homepage](https://duocode.onrender.com) for more infor
 
 ## Setup
 
-1. [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) must be installed to clone and contribute to this repository. This repository contains all of the source code for DuoCode.
+The [Node.js](https://nodejs.org/en/download) (v18.16.0) runtime must be installed before continuing. [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) must also be installed to obtain the source code and contribute. [Make](https://www.gnu.org/software/make/manual/make.html) should also be installed to streamline development. The default installation instructions should suffice for all of the above.
 
-2. [Node.js](https://nodejs.org/en/download) (18.x) must be installed to build, test, and release the web app. The default install instructions and options should suffice. 
-
-3. [Make](https://www.gnu.org/software/make/manual/make.html) must be installed to run the commands outlined in the `Makefile`. This makes building, testing, and releasing easier.
-
-4. There must be a `.env` file created in `/backend/` containing some secret keys. Please ask the dev team for this.
+There must also be a `.env` file created in `/backend/` containing some secret keys. Please ask the dev team for this. The `.env` file is included in the `.gitignore` and should thus never be pushed to the repository. It must be kept an absolute secret.
 
 ## Directories
 
@@ -25,40 +21,17 @@ There are four top-level sub-directories detailed below that each have a `README
 - `/frontend/` contains all of the frontend files including code and documentation.
 - `/reports/` contains all of the weekly status reports.
 
-There is a `Makefile` in the top-level directory that makes developing easier.
+## Development
 
-- `make install` runs npm install commands for both frontend and backend. This manages package dependencies automatically.
-- `make deploy` runs npm build and start commands to deploy the web app. The build and start commands are separated into `make build` and `make run`, respectively.
-- `make test` runs npm test commands for both frontend and backend. This runs all tests which can be found under `/frontend/test/` and `/backend/test/`.
+There is a `Makefile` in the top-level directory that streamlines development. The following commands can be run in the top-level directory.
 
-## Build
+- `make install` runs npm install commands for both frontend and backend. This manages package dependencies automatically. Installations are placed under `/frontend/node_modules/` and `/backend/node_modules/`.
+- `make build` runs npm build commands for both frontend and backend. Builds are placed under `/frontend/build` and `/backend/dist/`.
+- `make test` runs npm test commands for both frontend and backend. This runs all tests under `/frontend/test/` and `/backend/test/`.
+- `make run` runs the npm start command for backend. This starts the local host web app at [http://localhost:3001](http://localhost:3001).
 
-Run the following from the top-level directory to build the web app:
-
-```
-make install
-make build
-```
-
-## Test
-
-Run the following from the top-level directory to test the web app:
-
-```
-make test
-```
-
-To add new tests, please refer to the [frontend](./frontend/README.md) and [backend](./backend/README.md) `README.md` files.
+The repository has GitHub CI set up to automatically run the test suite on pull requests and pushes to `main`. To add new tests for both local and CI testing, please refer to the [frontend](./frontend/README.md) and [backend](./backend/README.md) `README.md` files.
 
 ## Release
 
-Commits to `main` automatically deploy the web app through [render.com](https://render.com/) at [this](https://duocode.onrender.com) url. Pushes to main are disabled, so this is only possible through pull requests that require at least one other collaborator to code review.
-
-Run the following from the top-level directory to run the web app locally:
-
-```
-make install
-make deploy
-```
-
-This hosts DuoCode at [http://localhost:3001](http://localhost:3001) for local use.
+The repository has [render.com](https://render.com/) set up to automatically deploy the [website](https://duocode.onrender.com) on pull requests and pushes to `main`. Direct pushes to main are disabled, so this is only possible through pull requests that require at least one other collaborator to code review. 
