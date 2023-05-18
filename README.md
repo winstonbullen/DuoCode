@@ -4,7 +4,7 @@
 
 ## Users
 
-Please visit the DuoCode [homepage](https://duocode.onrender.com) for more information and user documentation. Please allow the website some time to load.
+Please visit the DuoCode [homepage](https://duocode.onrender.com) for more information and user documentation. 
 
 ## Setup
 
@@ -14,7 +14,7 @@ Please visit the DuoCode [homepage](https://duocode.onrender.com) for more infor
 
 3. [Make](https://www.gnu.org/software/make/manual/make.html) must be installed to run the commands outlined in the `Makefile`. This makes building, testing, and releasing easier.
 
-4. There must be a `.env` file created alongside `.template.env` in `/backend/` containing the secret key for the cloud MongoDB database. Please ask the dev team for the key.
+4. There must be a `.env` file created alongside `.env.template` in `/backend/` containing some secret keys. Please ask the dev team for this file.
 
 ## Directories
 
