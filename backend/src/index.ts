@@ -4,13 +4,17 @@ import { ContentDB } from "./contentdb.js";
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
-import path from "path";
 import express from "express";
-import session from "express-session"; // TODO use a better session store
+import session from "express-session";
+import MongoStore from "connect-mongo";
+
+import path from "path";
 import bcrypt from "bcrypt";
 import dotenv from "dotenv";
 
-dotenv.config(); // load .env file
+dotenv.config();
+const db_uri = process.env.MONGODB_INSTANCE as string;
+const cookie_secret = process.env.COOKIE_SECRET as string;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -42,11 +46,11 @@ app.use(express.json());
 
 // express-session middleware
 app.use(session({
-  secret: 'keyboard cat', // TODO read this secret for cookie generation from ENV/more secure location
+  store: MongoStore.create({ mongoUrl: db_uri }),
+  secret: cookie_secret,
   resave: false,
   saveUninitialized: false
 }))
-
 
 // index
 app.get("/", (req, res) => {
@@ -61,8 +65,6 @@ app.get("/", (req, res) => {
   }
 });
 
-
-
 // app
 app.get("/app", (req, res) => {
   if (req.session.user) {
@@ -71,7 +73,6 @@ app.get("/app", (req, res) => {
     res.status(401).send("Unauthorized");
   }
 });
-
 
 // sign up endpoint
 app.post("/signup", async (req, res) => {
@@ -100,8 +101,6 @@ app.post("/signup", async (req, res) => {
     res.type("text/plain").status(400).send("User already exists");
   }
 });
-
-
 
 // express-session code from the examples at https://www.npmjs.com/package/express-session
 
@@ -147,7 +146,6 @@ app.post("/login", async (req, res, next) => {
   })
 });
 
-
 // log out endpoint - end session
 app.get('/logout', (req, res, next) => {
   // logout logic
@@ -168,7 +166,6 @@ app.get('/logout', (req, res, next) => {
   })
 });
 
-
 app.get("/content/:language/:subject/:type/:difficulty/:id", async (req, res) => {
   console.log(req.params);
 
@@ -179,8 +176,6 @@ app.get("/content/:language/:subject/:type/:difficulty/:id", async (req, res) =>
     res.status(500).send(error.message); // TODO don't actually send the error message to user
   }
 });
-
-
 
 app.get("/completion", async (req, res) => {
   if (req.session.user) {
