@@ -27,13 +27,16 @@
                     <div class="input">
                         <input type="submit" value="Sign Up" class="form-submit" />
                     </div>
-                    <div class="line">
-                    </div>
-                    <div class="input">
-                        <p>Already have an account?</p>
-                        <a href="login.html">Log In</a>
-                    </div>
                 </form>
+                <% if (error){ %>
+                <div class="error-text">Username Already Taken</div>
+                <%}%>
+                <div class="line">
+                </div>
+                <div class="input">
+                    <p>Already have an account?</p>
+                    <a href="/login">Log In</a>
+                </div>
             </div>
         </div>
     </div>

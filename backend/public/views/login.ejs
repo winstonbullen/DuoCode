@@ -27,13 +27,15 @@
                     <div class="input">
                         <input type="submit" value="Login" class="form-submit" />
                     </div>
-                    <div class="line">
-                    </div>
-                    <div class="input">
-                        <p>Don't have an account yet?</p>
-                        <a href="signup.html">Create an account</a>
-                    </div>
                 </form>
+                <% if (error){ %>
+                <div class="error-text">Login Failed</div>
+                <%}%>
+                <div class="line"></div>
+                <div class="input">
+                    <p>Don't have an account yet?</p>
+                    <a href="/signup">Create an account</a>
+                </div>
             </div>
         </div>
     </div>

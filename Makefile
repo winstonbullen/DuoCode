@@ -1,4 +1,4 @@
-.PHONY: install build run deploy test
+.PHONY: install build test run
 
 install:
 	cd ./frontend/ && npm ci
