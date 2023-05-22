@@ -10,15 +10,14 @@ import DragDrop from './dnd';
 import Completed from './completed';
 
 
-interface QuestionProps {
+interface MilestoneProps {
     unitName: string;
-    difficulty: number;
     onComplete: () => void;
 }
 
 
 
-const Question: React.FC<QuestionProps> = ({unitName, difficulty, onComplete} : QuestionProps) => {
+const Milestone: React.FC<MilestoneProps> = ({unitName, onComplete} : MilestoneProps) => {
     const [currentQ, setCurrentQ] = useState<number>(1);
     const [currentProgress, setCurrentProgress] = useState(0);
     console.log(unitName);
@@ -43,12 +42,6 @@ const Question: React.FC<QuestionProps> = ({unitName, difficulty, onComplete} : 
     };
 
 
-    const handleSolutionClick = (): void => {
-        window.alert("This is an alert message!");
-    };
-
-
-
     const handleComplete = () => {
         onComplete();
     }
@@ -65,9 +58,9 @@ const Question: React.FC<QuestionProps> = ({unitName, difficulty, onComplete} : 
                 </div>
             </div>
             <div className='question-content'>
-                {currentQ === 1 && <MultipleChoice unit={unitName} difficulty={difficulty} submitRef={submitRef} />}
-                {currentQ === 2 && <DragDrop unit={unitName} difficulty={difficulty} submitRef={submitRef} />}
-                {currentQ === 3 && <ShortAnswer unit={unitName} difficulty={difficulty} submitRef={submitRef} />}
+                {currentQ === 1 && <ShortAnswer unit={unitName} difficulty={1} submitRef={submitRef} />}
+                {currentQ === 2 && <ShortAnswer unit={unitName} difficulty={2} submitRef={submitRef} />}
+                {currentQ === 3 && <ShortAnswer unit={unitName} difficulty={3} submitRef={submitRef} />}
                 {currentQ === 4 && <Completed />}
             </div>
             <div className="question-footer">
@@ -76,20 +69,15 @@ const Question: React.FC<QuestionProps> = ({unitName, difficulty, onComplete} : 
                     height: "3px",
                     border: "none",
                 }}></hr>
-                <div className = "button-group">
-                {currentQ !== 4 ? (
-                    <button className="question-solution" onClick={handleSolutionClick}>Solution</button>
-                ) : null}
                 {currentQ !== 4 ? (
                     <button type="submit" className="question-submit" onClick={handleSubmitRef}>Submit</button>
-                    ) : null}
+                ) : null}
                 {currentQ !== 4 ? (
                     <button type="submit" className="question-next" onClick={handleNextQ}>Next</button>
                 ) : <button type="submit" className="question-next" onClick={handleComplete}>Go Back</button>}
-                </div>
             </div>
         </div>
     );
 };
 
-export default Question;
+export default Milestone;

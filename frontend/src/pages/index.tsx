@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Question from './question';
-
 import './index.css';
+import Milestone from './milestone';
 
 const HomePage: React.FC = () => {
     /*const [language, setLanguage] = useState<Language>('Java');
@@ -20,6 +20,11 @@ const HomePage: React.FC = () => {
         setCurUnit(unitName);
         setCurDifficulty(difficulty);
         setActiveComponent('question');
+    };
+
+    const handleMilestoneClick = (unitName : string) => {
+        setCurUnit(unitName);
+        setActiveComponent('milestone');
     };
  
     return (
@@ -77,9 +82,8 @@ const HomePage: React.FC = () => {
                         <div className="checkpoint3" onClick={() => handleLessonClick("variables", 3)}>
                             <img src={require("./images/whitestar.png")} alt="whitestar" />
                         </div>
-                        <div className="checkpoint4">
-                            <Link to='/'>
-                            <img src={require("./images/flag.png")} alt="flag" /></Link>
+                        <div className="checkpoint4" onClick={() => handleMilestoneClick("variables")}>
+                            <img src={require("./images/flag.png")} alt="flag" />
                         </div>
                     </div>
                 </div>
@@ -126,6 +130,7 @@ const HomePage: React.FC = () => {
             </div>
         }
         {activeComponent==='question' && <Question unitName={curUnit} difficulty={curDifficulty} onComplete={() => setActiveComponent('home')}/>}
+        {activeComponent==='milestone' && <Milestone unitName={curUnit} onComplete={() => setActiveComponent('home')}/>}
         </>
     );
 };
