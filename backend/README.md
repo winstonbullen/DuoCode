@@ -8,9 +8,9 @@ See [API.md](API.md) for the API documentation.
 
 There are three sub-directories detailed below.
 
-- `public/` contains some served frontend pages.
-- `src/` contains the backend source code.
-- `test/` contains the backend tests.
+- `public/` contains some served frontend pages
+- `src/` contains the backend source code
+- `test/` contains the backend tests
 
 ### Development
 
@@ -20,11 +20,11 @@ First run `npm install` and `npm install --save-dev` to get the project dependen
 
 The following development commands can be run:
 
-- `npm run build` will just run the Typescript compiler to build into `dist/`.
-- `npm run start` will start the server from the last build in `dist/`.
-- `npm run dev` will start a hot-reloading development server.
-- `npm run test` will make sure the backend builds, then will run the Jest test suite in `test/`.
-- `npm run clean` will remove the `dist/` directory.
+- `npm run build` will just run the Typescript compiler to build into `dist/`
+- `npm run start` will start the server from the last build in `dist/`
+- `npm run dev` will start a hot-reloading development server
+- `npm run test` will make sure the backend builds, then will run the Jest test suite in `test/`
+- `npm run clean` will remove the `dist/` directory
 
 ### Adding Tests
 

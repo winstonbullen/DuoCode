@@ -56,14 +56,7 @@ app.use(session({
 
 // serve landing page
 app.get("/", (req, res) => {
-  console.log(req.session);
-  if (req.session.user) {
-    console.log("LOG: Got request to index from authenticated user " + req.session.user);
-    res.redirect("/app");
-  } else {
-    console.log("LOG: Got request to index from non-authenticated user");
-    res.sendFile(path.join(__dirname, '../../public/landing.html'));
-  }
+  res.sendFile(path.join(__dirname, '../../public/landing.html'));
 });
 
 // serve home page
@@ -71,7 +64,25 @@ app.get("/app", (req, res) => {
   if (req.session.user) {
     res.status(200).sendFile(path.resolve(FRONTEND_BUILD));
   } else {
-    res.status(401).send("Unauthorized");
+    res.sendFile(path.join(__dirname, '../../public/login.html'));
+  }
+});
+
+// serve signup page
+app.get("/signup", (req, res) => {
+  if (req.session.user) {
+    res.redirect("/app");
+  } else {
+    res.sendFile(path.join(__dirname, '../../public/signup.html'));
+  }
+});
+
+// serve login page
+app.get("/login", (req, res) => {
+  if (req.session.user) {
+    res.redirect("/app");
+  } else {
+    res.sendFile(path.join(__dirname, '../../public/login.html'));
   }
 });
 
@@ -82,7 +93,6 @@ app.post("/signup", async (req, res) => {
     return;
   }
   const check = await db.get_entry(req.body.name);
-  console.log("Log: signup check " + check);
 
   if (!check) {
     const hash = await bcrypt.hash(req.body.password, 13);
@@ -94,10 +104,7 @@ app.post("/signup", async (req, res) => {
     };
 
     await db.insert_entry(data);
-    res.status(201).send(`
-      <h1>Account created successfully!</h1>
-      <button onclick="window.location.href='/login.html'">Go to login page</button>
-    `);
+    res.sendFile(path.join(__dirname, '../../public/login.html'));
   } else {
     res.type("text/plain").status(400).send("User already exists");
   }
@@ -110,8 +117,6 @@ app.post("/login", async (req, res, next) => {
     return;
   }
   const check = await db.get_entry(req.body.name);
-  console.log("user body name and user " + req.body.name + " - " + req.body.user);
-  console.log("check is " + JSON.stringify(check));
 
   if (!check) {
     res.send("wrong username"); // TODO bad practice to let users know why the login fails
@@ -134,7 +139,6 @@ app.post("/login", async (req, res, next) => {
     // TODO if we move to db with user IDs (like relational, store id here to easily
     //      get the user db entry when they make requests after being logged in)
     req.session.user = { name: req.body.name };
-    console.log("User logged in, their session is now " + req.session.user);
 
     // save the session before redirection to ensure page
     // load does not happen before session is saved
@@ -165,7 +169,6 @@ app.get('/logout', (req, res, next) => {
 
 // content endpoint with route parameters to specify content
 app.get("/content/:language/:subject/:type/:difficulty/:id", async (req, res) => {
-  console.log(req.params);
 
   try {
     let question_json = await content_db.get_question(req.params);
@@ -208,7 +211,6 @@ app.use("/app", express.static("../frontend/build"));
 
 // Needed to make the frontend work with React Router
 app.use("/*", (req, res) => {
-  console.error("Unknown endpoint was hit, sending app");
   res.redirect("/app");
 });
 
