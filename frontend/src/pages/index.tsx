@@ -15,46 +15,66 @@ const HomePage: React.FC = () => {
     const [activeComponent, setActiveComponent] = useState('home');
     const [curUnit, setCurUnit] = useState('');
     const [curDifficulty, setCurDifficulty] = useState(0);
+    const [isExpanded, setExpandState] = useState(false);
 
     const handleLessonClick = (unitName : string, difficulty : number) => {
         setCurUnit(unitName);
         setCurDifficulty(difficulty);
         setActiveComponent('question');
     };
- 
+
     return (
         <>
         {activeComponent === 'home' && 
             <div className="container">
-                <div className="sidebar">
-                    <h2>DuoCode</h2>
-                    <ul>
-                        <li>
-                        <Link to="/">
-                        <img src={require("./images/learn.png")} alt="learn" /></Link>
-                        <p>Learn</p>
-                        </li>
-                        <li>
-                        <Link to="/">
-                        <img src={require("./images/shop.png")} alt="shop" /></Link>
-                        <p>Shop</p>
-                        </li>
-                        <li>
-                        <Link to="/">
-                        <img src={require("./images/profile.png")} alt="profile" /></Link>
-                        <p>Profile</p>
-                        </li>
-                        <li>
-                        <Link to="/">
-                        <img src={require("./images/more.png")} alt="more" /></Link>
-                        <p>More</p>
-                        </li>
-                    </ul>
-                    <div className="account">
+                <nav className={isExpanded ? "sidebar" : "sidebar sidebar-close"}>
+                    <header>
+                        <h2>DuoCode</h2>
+                        <i className="bx bx-chevron-right toggle" onClick={() => setExpandState(!isExpanded)}></i>
+                    </header>
+                    <div className="user-account">
+                        <Link to='/'>
                         <img src={require("./images/account.png")} alt="account" />
-                        <p>CoolCoder123</p>
+                        </Link>
+                        <span className="text nav-text">CoolCoder123</span>
                     </div>
-                </div>
+                    <div className="menu-section">
+                        <div className="menu">
+                        <ul className="menu-links">
+                            <li className="nav-link">
+                            <Link to='/'>
+                                <img src={require("./images/learn.png")} alt="learn" />
+                                <span className="text nav-text">Learn</span>
+                            </Link>
+                            </li>
+                            <li className="nav-link">
+                            <Link to='/'>
+                                <img src={require("./images/shop.png")} alt="shop" />
+                                <span className="text nav-text">Shop</span>
+                            </Link>
+                            </li>
+                            <li className="nav-link">
+                            <Link to='/'>
+                                <img src={require("./images/profile.png")} alt="profile" />
+                                <span className="text nav-text">Profile</span>
+                            </Link>
+                            </li>
+                            <li className="nav-link">
+                            <Link to='/'>
+                                <img src={require("./images/more.png")} alt="more" />
+                                <span className="text nav-text">More</span>
+                            </Link>
+                            </li>
+                        </ul>
+                        </div>
+                        <div className="bottom-section">
+                        <Link to='/'>
+                            <img src={require("./images/logout.png")} alt="logout" />
+                            <span className="text nav-text">Logout</span>
+                        </Link>
+                        </div>
+                    </div>
+                </nav>
                 <div className="middlepane">
                 <div className="unit1-container">
                     <div className="unit1">

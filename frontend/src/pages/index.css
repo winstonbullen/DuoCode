@@ -1,6 +1,12 @@
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url(https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&display=swap);
 @import url('https://fonts.googleapis.com/css2?family=Viga');
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700');
+
+* {
+  font-family: Nunito, serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 .container {
     width: 100%;
@@ -8,66 +14,188 @@
     background-color: #fff;
   }
 
-  .container .sidebar {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 24.8vw;
-    height: 100vh;
-    background-color: #fff;
-    border-right: 2px solid #D9D9D9;
-  }
+:root {
+    --hover-color: #E4E9F7;
+    --theme-color: #0096FF;
+    --light-theme-color: #D3ECFD;
+    --nav-color: #FFF;
+    --text-color: #333;
 
-  .container .sidebar h2 {
+    --tran-02: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.4s ease;
+    --tran-05: all 0.5s ease;
+}
+
+.sidebar header {
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.sidebar-close header h2 {
+    opacity: 0;
+}
+
+.sidebar header h2 {
     font-family: Viga, serif;
     font-size: 50px;
     text-align: center;
-    color: #0096FF;
-  }
-  .container .sidebar ul li {
-    list-style: none;
-    padding: 5px;
-    border: 2px solid transparent;
-    width: 80%;
-    height: 60px;
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    list-style: none;
-    color: #000;
-    font-size: 20px;
-    font-weight: 700;
-    font-family: Nunito, serif;
-    text-align: center;
-  }
+    color: var(--theme-color);
+}
 
-  .container .sidebar ul li:hover {
-    border: 2px solid #0096FF;
-    background-color:#D3ECFD;
-    border-radius:20px;
-  }
-
-  .container .sidebar img {
-    margin-right: 10px;
-    margin-top: 10px;
-    width: 50px;
-    padding: 10px;
-  }
-
-  .container .sidebar .account {
+.sidebar header .toggle {
+    position: absolute;
+    top: 50%;
+    right: -25px;
+    transform: translateY(-50%) rotate(180deg);
+    height: 25px;
+    width: 25px;
+    background-color: var(--theme-color);
+    color: var(--nav-color);
+    border-radius: 50%;
     display: flex;
     align-items: center;
-    margin-top: 20vh;
-    font-family: Nunito, serif;
-    font-weight: 100;
+    justify-content: center;
     font-size: 20px;
-    color: #000;
-  }
+    transition: var(--tran-05);
+    cursor: pointer;
+}
 
-  .container .sidebar .account img{
-    width: 80px;
+.sidebar-close header .toggle{
+    transform: translateY(-50%) rotate(0deg);
+    transition: var(--tran-05);
+}
+
+
+.sidebar .user-account {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.sidebar .user-account a {
+    display: flex;
+    align-items: center;
+}
+
+.sidebar .user-account img {
+    height: 70px;
+}
+
+.sidebar .user-account span {
     margin-left: 20px;
-  }
+}
+
+.sidebar .text {
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--text-color);
+    white-space: nowrap;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    padding: 10px 14px;
+    background-color: var(--nav-color);
+    transition: var(--tran-04);
+}
+
+.sidebar-close {
+    width: 105px;
+    transition: var(--tran-04);
+}
+
+.sidebar-close .text {
+    opacity: 0;
+    white-space: nowrap;
+}
+
+.sidebar-close li Link {
+    display: flex;
+}
+
+.sidebar li {
+    height: 50px;
+    list-style: none;
+}
+
+.sidebar ul li:first-child a {
+    border: 2px solid var(--theme-color);
+    background-color:var(--light-theme-color);
+    border-radius: 10px;
+}
+
+.sidebar li:hover {
+    height: 50px;
+    border-radius: 10px;
+    background: var(--hover-color);
+}
+
+.sidebar li a {
+    height: 100%;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar li img {
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 35px;
+    width: 35px;
+}
+
+.sidebar-close li img {
+    position: absolute;
+    height: 35px;
+    width: 35px;
+}
+
+.sidebar .bottom-section a {
+    width: 50%;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebar .bottom-section img {
+    height: 20px;
+    width: 20px;
+}
+
+.sidebar-close .bottom-section {
+    display: flex;
+    justify-content: center;
+}
+
+.sidebar-close .bottom-section img {
+    position: absolute;
+    height: 20px;
+    width: 20px;
+}
+
+.sidebar .bottom-section span {
+  margin-left: 15px;
+}
+
+.sidebar-close .bottom-section span {
+  margin-left: 0px;
+}
+
+.sidebar .menu-section {
+    height: calc(100% - 220px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
 
   
