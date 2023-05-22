@@ -38,6 +38,8 @@ const content_db: QuestionContentDB = await ContentDB.get_db();
 
 const FRONTEND_BUILD = "../frontend/build/index.html";
 
+// use EJS to render web pages somewhat dynamically
+app.set("view engine", "ejs");
 
 // built in middleware - parses urlencoded and json request bodies into the req.body field
 app.use(express.urlencoded({ extended: false }));
@@ -64,7 +66,7 @@ app.get("/app", (req, res) => {
   if (req.session.user) {
     res.status(200).sendFile(path.resolve(FRONTEND_BUILD));
   } else {
-    res.sendFile(path.join(__dirname, '../../public/login.html'));
+    res.render("login", {error: false});
   }
 });
 
@@ -73,7 +75,7 @@ app.get("/signup", (req, res) => {
   if (req.session.user) {
     res.redirect("/app");
   } else {
-    res.sendFile(path.join(__dirname, '../../public/signup.html'));
+    res.render("signup", {error: false});
   }
 });
 
@@ -82,7 +84,7 @@ app.get("/login", (req, res) => {
   if (req.session.user) {
     res.redirect("/app");
   } else {
-    res.sendFile(path.join(__dirname, '../../public/login.html'));
+    res.render("login", { error: false });
   }
 });
 
@@ -104,30 +106,27 @@ app.post("/signup", async (req, res) => {
     };
 
     await db.insert_entry(data);
-    res.sendFile(path.join(__dirname, '../../public/login.html'));
+    return res.render("login", {error: false});
   } else {
-    res.type("text/plain").status(400).send("User already exists");
+    return res.render("signup", {error: true});
   }
 });
 
 // log in endppoint - authenticate and then create session
 app.post("/login", async (req, res, next) => {
   if (!req.body.name || !req.body.password) {
-    res.status(400).send("Bad request");
-    return;
+    return res.render("login", { error: true });
   }
   const check = await db.get_entry(req.body.name);
 
   if (!check) {
-    res.send("wrong username"); // TODO bad practice to let users know why the login fails
-    return;
+    return res.render("login", { error: true });
   }
 
   const isValid = await bcrypt.compare(req.body.password, check.pass_hash);
 
   if (!isValid) {
-    res.status(400).send("Incorrect password");
-    return;
+    return res.render("login", { error: true });
   }
 
   // regenerate the session, which is good practice to help
@@ -222,4 +221,5 @@ app.listen(PORT, () => {
 // Close existing connections to MongoDB
 process.on("exit", async () => {
   await ContentDB.close();
+  await UsersDB.close();
 });

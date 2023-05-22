@@ -84,7 +84,7 @@
 
 .login-page-container .login .form input:valid ~ span,
 .login-page-container .login .form input:focus ~ span  {
-    color: #A6A6A6; 
+    color: #A6A6A6;
     transform: translateX(10px) translateY(-25px);
     font-size: 0.65em;
     padding: 0 10px;
@@ -171,4 +171,13 @@
         background: white;
         margin: 50px;
     }
+}
+
+.error-text {
+    background-color: #ee8a8a;
+    color: #6f0000;
+    border-radius: 5px;
+    max-width: 60%;
+    margin: auto;
+    /* margin-top: 2vh; */
 }
