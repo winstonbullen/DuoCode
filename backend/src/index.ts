@@ -12,8 +12,8 @@ import path from "path";
 import bcrypt from "bcrypt";
 import dotenv from "dotenv";
 
-dotenv.config();
-const db_uri = process.env.MONGODB_INSTANCE as string;
+dotenv.config(); // load config from .env file
+const db_uri = process.env.MONGODB_INSTANCE as string; // for typescript, cast to string
 const cookie_secret = process.env.COOKIE_SECRET as string;
 
 const __filename = fileURLToPath(import.meta.url);
@@ -52,7 +52,9 @@ app.use(session({
   saveUninitialized: false
 }))
 
-// index
+/// Endpoints
+/// For endpoint specification see API.md
+
 app.get("/", (req, res) => {
   console.log(req.session);
   if (req.session.user) {
@@ -65,7 +67,7 @@ app.get("/", (req, res) => {
   }
 });
 
-// app
+// serve web app
 app.get("/app", (req, res) => {
   if (req.session.user) {
     res.status(200).sendFile(path.resolve(FRONTEND_BUILD));
@@ -166,6 +168,7 @@ app.get('/logout', (req, res, next) => {
   })
 });
 
+// Content endpoint with route parameters to specify content
 app.get("/content/:language/:subject/:type/:difficulty/:id", async (req, res) => {
   console.log(req.params);
 
@@ -177,6 +180,7 @@ app.get("/content/:language/:subject/:type/:difficulty/:id", async (req, res) =>
   }
 });
 
+// read the the user's completion list
 app.get("/completion", async (req, res) => {
   if (req.session.user) {
     res.status(200).send((await db.get_entry(req.session.user.name)).completed);
@@ -185,6 +189,7 @@ app.get("/completion", async (req, res) => {
   }
 });
 
+// append to the user's completion list
 app.post("/completion", async (req, res) => {
   if (req.session.user) {
     if (!req.body.language || !req.body.subject) {
@@ -200,9 +205,13 @@ app.post("/completion", async (req, res) => {
   }
 });
 
+// Static files - content also available through walking file path (discouraged since content also now hosted
+// on mongodb instance)
 app.use("/content", express.static("../content"));
 app.use(express.static("public"));
 app.use("/app", express.static("../frontend/build"));
+
+// Needed to make the frontend work with React Router
 app.use("/*", (req, res) => {
   console.error("Unknown endpoint was hit, sending app");
   res.redirect("/app");
@@ -213,6 +222,7 @@ app.listen(PORT, () => {
   console.log(`DuoCode server started on port ${PORT}...`)
 });
 
+// Close existing connections to MongoDB
 process.on("exit", async () => {
   await ContentDB.close();
 });
