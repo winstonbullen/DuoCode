@@ -38,7 +38,7 @@ describe("UsersDB Atlas database", () => {
 
   it("has only one of each key", async () => {
     const i1 = { user: "foo", pass_hash: "abc" };
-    const i2 = { user: "foo", pass_hash: "xyz" }
+    const i2 = { user: "foo", pass_hash: "xyz" };
 
     await db.insert_entry(i1);
 
