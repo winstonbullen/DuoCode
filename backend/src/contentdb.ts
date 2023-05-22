@@ -5,6 +5,10 @@ import dotenv from "dotenv";
 dotenv.config();
 const uri = process.env.MONGODB_INSTANCE as string;
 
+/**
+ * Implementation of {@link QuestionContentDB} using a remote connection to a MongoDB instance
+ * specified by the `MONGODB_INSTANCE` environment variable
+ */
 export class ContentDB implements QuestionContentDB {
 
     // Create a MongoClient with a MongoClientOptions object to set the Stable API version
@@ -16,8 +20,13 @@ export class ContentDB implements QuestionContentDB {
         }
     });
 
+    // singleton instance
     private static instance: ContentDB;
 
+    /**
+     * Lazily construct and return singleton {@link ContentDB} instance
+     * @returns Promise of singleton instance of this class
+     */
     static async get_db(): Promise<ContentDB> {
         if (!ContentDB.instance) {
             await ContentDB.client.connect();
@@ -37,6 +46,10 @@ export class ContentDB implements QuestionContentDB {
         return (result) ? result : {};
     }
 
+    /**
+     * Close this database, freeing existing MongoDB connections. Connection freeing may also
+     * happen if this isn't called but may be delayed (autmatic freeing on the MongoDB side).
+     */
     static async close() {
         await ContentDB.client.close();
     }
