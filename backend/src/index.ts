@@ -135,15 +135,13 @@ app.post("/login", async (req, res, next) => {
     if (err) next(err);
 
     // store user information in session, just name for now
-    // TODO if we move to db with user IDs (like relational, store id here to easily
-    //      get the user db entry when they make requests after being logged in)
     req.session.user = { name: req.body.name };
 
     // save the session before redirection to ensure page
     // load does not happen before session is saved
     req.session.save(function (err) {
       if (err) return next(err);
-      res.redirect("/app"); // TODO this sets the cookie on the response, but manually sending a response doesn't
+      res.redirect("/app");
     })
   })
 });
@@ -173,7 +171,7 @@ app.get("/content/:language/:subject/:type/:difficulty/:id", async (req, res) =>
     let question_json = await content_db.get_question(req.params);
     res.status(200).send(question_json);
   } catch (error: any) {
-    res.status(500).send(error.message); // TODO don't actually send the error message to user
+    res.status(500).send(error.message);
   }
 });
 
