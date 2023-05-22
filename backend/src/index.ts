@@ -91,8 +91,7 @@ app.get("/login", (req, res) => {
 // sign up endpoint
 app.post("/signup", async (req, res) => {
   if (!req.body.name || !req.body.password) {
-    res.status(400).send("Bad request");
-    return;
+    return res.render("signup", {error: true});
   }
   const check = await db.get_entry(req.body.name);
 
