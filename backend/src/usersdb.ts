@@ -64,7 +64,7 @@ export class UsersDB implements UserInfoDB {
 
     /**
      * Close this database, freeing existing MongoDB connections. Connection freeing may also
-     * happen if this isn't called but may be delayed (autmatic freeing on the MongoDB side).
+     * happen if this isn't called but may be delayed (automatic freeing on the MongoDB side).
      */
     static async close() {
         await UsersDB.client.close();

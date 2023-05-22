@@ -1,4 +1,4 @@
-/// Interfaces to defining how the business logic should interact with the database layer
+/// Interfaces defining how the business logic should interact with the database layer
 
 /**
  * User information database should implement these methods, then we can swap out concrete classes as necessary
@@ -34,14 +34,14 @@ export interface UserInfo {
 
 /**
  * Content database should implement these methods, and like above we can swap
- * out conrete implementations
+ * out concrete implementations
  */
 export interface QuestionContentDB {
   /**
    * Return (promise) of question JSON that matches specified parameters based on
    * specified {@link QuestionParams}
    * @param params - the {@link QuestionParams} that specify the question to find
-   * @returns a object which has all the question JSON information or else is empty
+   * @returns an object which has all the question JSON information or else is empty
    */
   get_question(params: QuestionParams): Promise<Object>;
 }
