@@ -8,7 +8,7 @@ See [API.md](API.md) for the API documentation.
 
 There are three sub-directories detailed below.
 
-- `public/` contains some served frontend pages
+- `public/` contains static web content and web templates
 - `src/` contains the backend source code
 - `test/` contains the backend tests
 

@@ -1,8 +1,6 @@
 import { QuestionContentDB, UserInfoDB } from "./db.js";
 import { UsersDB } from "./usersdb.js";
 import { ContentDB } from "./contentdb.js";
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
 
 import express from "express";
 import session from "express-session";
@@ -15,9 +13,6 @@ import dotenv from "dotenv";
 dotenv.config(); // load config from .env file
 const db_uri = process.env.MONGODB_INSTANCE as string; // for typescript, cast to string
 const cookie_secret = process.env.COOKIE_SECRET as string;
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
 // needed to make the express-session login examples work with TS, see https://akoskm.com/how-to-use-express-session-with-custom-sessiondata-typescript
 type User = {
@@ -41,6 +36,8 @@ const FRONTEND_BUILD = "../frontend/build/index.html";
 // use EJS to render web pages somewhat dynamically
 app.set("view engine", "ejs");
 
+app.set("views", path.resolve("public/views"));
+
 // built in middleware - parses urlencoded and json request bodies into the req.body field
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -58,7 +55,7 @@ app.use(session({
 
 // serve landing page
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, '../../public/landing.html'));
+  res.sendFile(path.resolve("public/landing.html"));
 });
 
 // serve home page
