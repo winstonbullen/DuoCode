@@ -43,6 +43,18 @@ const Question: React.FC<QuestionProps> = ({unitName, difficulty, onComplete} : 
 
 
     const handleComplete = () => {
+        async function fetchData() {
+            const requestOptions = {
+                method: 'POST',
+                headers: {},
+                // CHANGE TO LANGUAGE PASSED AS PROP ONCE LANGUAGES ARE IMPLEMENTED
+                body: JSON.stringify({ language : 'java', subject : unitName, level : difficulty})
+            };
+            const response = await fetch('https://reqres.in/api/posts', requestOptions);
+            console.log(response);
+        }
+        fetchData();
+        
         onComplete();
     }
 
