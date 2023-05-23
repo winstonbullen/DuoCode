@@ -50,10 +50,10 @@ const Milestone: React.FC<MilestoneProps> = ({unitName, onComplete} : MilestoneP
     return (
         <div className='page'>
             <div className='question-header'>
-                <CloseBtn/>
-                <div className='mg-sm'>
-                    <SettingBtn/>
-                </div>
+                <button type="submit" className="question-close" onClick={handleComplete}>
+                    <CloseBtn/>
+                </button>
+
                 <div className='mg-sm'>
                     <ProgressBar completed= {currentProgress}/>
                 </div>
