@@ -43,19 +43,19 @@
 }
 
 .multiple-choice-label:hover {
-    border: 2px solid #0096FF;
+    border: 3px solid #0096FF;
     background-color: #f5f5f5;
 }
 
 .multiple-choice-label:checked{
-    border: 2px solid #0096FF;
+    border: 3px solid #0096FF;
 }
 
 .multiple-choice-input {
     display: none;
 }
 
-input {
+.multiplechoice-option {
     visibility: hidden;
 }
 

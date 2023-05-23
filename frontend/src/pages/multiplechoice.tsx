@@ -107,6 +107,7 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({solution, updateSolution
                                     value={option.text}
                                     checked={selectedOption === option.text}
                                     onChange={handleOptionChange}
+                                    className="multiplechoice-option"
                                 />
                                 {option.text}
                             </label>
