@@ -83,7 +83,7 @@ const HomePage: React.FC = () => {
                             <img src={require("./images/whitestar.png")} alt="whitestar" />
                         </div>
                         <div className="checkpoint4" onClick={() => handleMilestoneClick("variables")}>
-                            <img src={require("./images/flag.png")} alt="flag" />
+                            <img src={require("./images/whiteflag.png")} alt="flag" />
                         </div>
                     </div>
                 </div>

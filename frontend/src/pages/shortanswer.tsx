@@ -5,6 +5,8 @@ interface ShortAnswerProps {
     submitRef : React.RefObject<HTMLButtonElement>;
     unit: string
     difficulty: number
+    solution: string
+    updateSolution: (newValue: string) => void
 }
 
 type shortAnswerData = {
@@ -27,7 +29,7 @@ const emptyShortAnswerData: shortAnswerData = {
 
 
 
-const ShortAnswer: React.FC<ShortAnswerProps> = ({submitRef, unit, difficulty}) => {
+const ShortAnswer: React.FC<ShortAnswerProps> = ({solution, updateSolution, submitRef, unit, difficulty}) => {
     const [shortAnswerData, setshortAnwswer] = useState<shortAnswerData>(emptyShortAnswerData);
     useEffect(() => {
         async function fetchData() {
@@ -39,6 +41,11 @@ const ShortAnswer: React.FC<ShortAnswerProps> = ({submitRef, unit, difficulty}) 
         fetchData();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    useEffect(() => {
+        updateSolution(shortAnswerData.correct_answer)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [shortAnswerData]);
 
     const [text, setText] = useState('');
     const [isValid, setIsValid] = useState(false);

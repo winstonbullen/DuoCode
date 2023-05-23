@@ -90,6 +90,20 @@
     cursor: pointer;
 }
 
+.popup {
+    font-family: Nunito, serif;
+    font-weight: bold;
+    text-align: center;
+    font-size: 24px;
+    position: fixed;
+    bottom: 17%;
+    left: 11%;
+    width: 20%;
+    height: 5%;
+    z-index: 9999;
+    padding: 20px;
+}
+
 .mg-sm {
     margin-left: 10px;
     margin-right: 10px;

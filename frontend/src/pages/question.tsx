@@ -20,8 +20,8 @@ interface QuestionProps {
 const Question: React.FC<QuestionProps> = ({unitName, difficulty, onComplete} : QuestionProps) => {
     const [currentQ, setCurrentQ] = useState<number>(1);
     const [currentProgress, setCurrentProgress] = useState(0);
-    const [propValue, setPropValue] = useState('No Solution Available');
-    console.log(unitName);
+    const [solution, setSolution] = useState('No Solution Available');
+    const [showSolution, setshowSolution] = useState(false);
 
     // create ref to submit question-content
     const submitRef = useRef<HTMLButtonElement>(null);
@@ -34,25 +34,27 @@ const Question: React.FC<QuestionProps> = ({unitName, difficulty, onComplete} : 
     // swap question for next one
     const handleNextQ = () => {
         if (currentQ === 4) {
+            setshowSolution(false)
             setCurrentQ(1)
             setCurrentProgress(0);
         } else {
+            setshowSolution(false)
             setCurrentQ(currentQ + 1);
             setCurrentProgress(currentProgress + 33.33333);
         }
     };
 
     const handleSolutionClick = (): void => {
-        window.alert(propValue);
+        setshowSolution(!showSolution)
+    };
+
+    const updateSolution = (newSolution: string) => {
+        setSolution(newSolution);
     };
 
     const handleComplete = () => {
         onComplete();
     }
-
-    const updatePropValue = (newValue: string) => {
-        setPropValue(newValue);
-    };
 
     return (
         <div className='page'>
@@ -66,9 +68,9 @@ const Question: React.FC<QuestionProps> = ({unitName, difficulty, onComplete} : 
                 </div>
             </div>
             <div className='question-content'>
-                {currentQ === 1 && <MultipleChoice propValue={propValue} updatePropValue={updatePropValue} unit={unitName} difficulty={difficulty} submitRef={submitRef} />}
-                {currentQ === 2 && <DragDrop unit={unitName} difficulty={difficulty} submitRef={submitRef} />}
-                {currentQ === 3 && <ShortAnswer unit={unitName} difficulty={difficulty} submitRef={submitRef} />}
+                {currentQ === 1 && <MultipleChoice solution={solution} updateSolution={updateSolution} unit={unitName} difficulty={difficulty} submitRef={submitRef} />}
+                {currentQ === 2 && <DragDrop solution={solution} updateSolution={updateSolution} unit={unitName} difficulty={difficulty} submitRef={submitRef} />}
+                {currentQ === 3 && <ShortAnswer solution={solution} updateSolution={updateSolution} unit={unitName} difficulty={difficulty} submitRef={submitRef} />}
                 {currentQ === 4 && <Completed />}
             </div>
             <div className="question-footer">
@@ -81,6 +83,11 @@ const Question: React.FC<QuestionProps> = ({unitName, difficulty, onComplete} : 
                 {currentQ !== 4 ? (
                     <button className="question-solution" onClick={handleSolutionClick}>Solution</button>
                 ) : null}
+                    {showSolution && (
+                        <div className="popup">
+                            {solution}
+                        </div>
+                    )}
                 {currentQ !== 4 ? (
                     <button type="submit" className="question-submit" onClick={handleSubmitRef}>Submit</button>
                     ) : null}

@@ -16,6 +16,8 @@ interface MilestoneProps {
 const Milestone: React.FC<MilestoneProps> = ({unitName, onComplete} : MilestoneProps) => {
     const [currentQ, setCurrentQ] = useState<number>(1);
     const [currentProgress, setCurrentProgress] = useState(0);
+    const [solution, setSolution] = useState('No Solution Available');
+    const [showSolution, setshowSolution] = useState(false);
     console.log(unitName);
 
     // create ref to submit question-content
@@ -29,16 +31,22 @@ const Milestone: React.FC<MilestoneProps> = ({unitName, onComplete} : MilestoneP
     // swap question for next one
     const handleNextQ = () => {
         if (currentQ === 4) {
+            setshowSolution(false)
             setCurrentQ(1)
             setCurrentProgress(0);
         } else {
+            setshowSolution(false)
             setCurrentQ(currentQ + 1);
             setCurrentProgress(currentProgress + 33.33333);
         }
     };
 
     const handleSolutionClick = (): void => {
-        window.alert("This is an alert message!");
+        setshowSolution(!showSolution)
+    };
+
+    const updateSolution = (newSolution: string) => {
+        setSolution(newSolution);
     };
 
     const handleComplete = () => {
@@ -57,9 +65,9 @@ const Milestone: React.FC<MilestoneProps> = ({unitName, onComplete} : MilestoneP
                 </div>
             </div>
             <div className='question-content'>
-                {currentQ === 1 && <ShortAnswer unit={unitName} difficulty={1} submitRef={submitRef} />}
-                {currentQ === 2 && <ShortAnswer unit={unitName} difficulty={2} submitRef={submitRef} />}
-                {currentQ === 3 && <ShortAnswer unit={unitName} difficulty={3} submitRef={submitRef} />}
+                {currentQ === 1 && <ShortAnswer  solution={solution} updateSolution={updateSolution} unit={unitName} difficulty={1} submitRef={submitRef} />}
+                {currentQ === 2 && <ShortAnswer  solution={solution} updateSolution={updateSolution} unit={unitName} difficulty={2} submitRef={submitRef} />}
+                {currentQ === 3 && <ShortAnswer  solution={solution} updateSolution={updateSolution} unit={unitName} difficulty={3} submitRef={submitRef} />}
                 {currentQ === 4 && <Completed />}
             </div>
             <div className="question-footer">
@@ -72,6 +80,11 @@ const Milestone: React.FC<MilestoneProps> = ({unitName, onComplete} : MilestoneP
                     {currentQ !== 4 ? (
                         <button className="question-solution" onClick={handleSolutionClick}>Solution</button>
                     ) : null}
+                    {showSolution && (
+                        <div className="popup">
+                            {solution}
+                        </div>
+                    )}
                     {currentQ !== 4 ? (
                         <button type="submit" className="question-submit" onClick={handleSubmitRef}>Submit</button>
                     ) : null}

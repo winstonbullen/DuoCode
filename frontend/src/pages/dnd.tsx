@@ -29,11 +29,13 @@ interface DragDropProps {
     submitRef : React.RefObject<HTMLButtonElement>;
     unit: string
     difficulty: number
+    solution: string
+    updateSolution: (newValue: string) => void
 }
 
 
 
-const DragDrop: React.FC<DragDropProps> = ({submitRef, unit, difficulty}) => {
+const DragDrop: React.FC<DragDropProps> = ({solution, updateSolution, submitRef, unit, difficulty}) => {
     const [dragDrop, setDragDrop] = useState<dragDrop>(emptyDragDrop);
     const [draggingElement, setDraggingElement] = useState<HTMLElement | null>(null);
     const [showResult, setShowResult] = useState<boolean>(false);
@@ -52,6 +54,11 @@ const DragDrop: React.FC<DragDropProps> = ({submitRef, unit, difficulty}) => {
         fetchData();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    useEffect(() => {
+        updateSolution(originalOrdering.join(" "))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [originalOrdering]);
 
     const handleDragStart = (event: React.DragEvent<HTMLElement>, item: DragItem) => {
         setDraggingElement(event.currentTarget);
