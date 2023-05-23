@@ -1,34 +1,16 @@
-# Content Formatting
+## Content Formatting
 
-## Languages
+### Languages
 
 Every supported programming language has its own sub-directory within this directory.
 
-## Categories
+### Categories
 
-There are eight exercise categories per language. These vary slightly between languages. The eight categories for Java are as follows:
+There are eight exercise categories per language. These vary slightly between languages. These categories have their own sub-directories within the language sub-directories.
 
-1. Variables
+### Question Types
 
-2. Operators
-
-3. Conditions
-
-4. Loops
-
-5. Arrays
-
-6. Methods
-
-7. Classes
-
-8. Collections
-
-These categories have their own sub-directories within the language directories.
-
-## Question Types
-
-There are three questions types:
+There are three question types:
 
 - **Drag & Drop**: The user is presented with a prompt and a certain number of code blocks. They are supposed to drag and drop the code blocks into the correct order according to the prompt.
 
@@ -36,59 +18,56 @@ There are three questions types:
 
 - **Short Response**: The user is presented with a prompt and an empty code box. They are supposed to type the correct code into the box according to the prompt.
 
-These three question types have their own sub-directories within the language categories sub-directories. These are respectively ```drag_drop```, ```multiple_choice```, and ```short_response```.
+These three question types have their own sub-directories within the language categories sub-directories. These are respectively `drag_drop`, `multiple_choice`, and `short_response`.
 
-## Question Filenames
+### Question Filenames
 
-Each question is contained within a single ```.json``` file. These files are named with the following convention:
+Each question is contained within a single `.json` file. These files are named with the following convention:
 
-- ```dx_y.json``` where ```x``` is the difficulty level (1-3) and ```y``` is that question's id relative to its difficulty level. 
+- `dx_y.json` where `x` is the difficulty level (1-3) and `y` is that question's unique id for that difficulty level. 
 
-For example, two questions both of difficulty 1 would be represented the following way:
+### Question Formats
 
-- ```d1_1.json```: The first question of difficulty 1.
+Each question is contained within a single `.json` file. The structure of the data within these files is as follows:
 
-- ```d1_2.json```: The second question of difficulty 1.
+**Drag & Drop**
 
-## Question Formats
-
-Each question is contained within a single ```.json``` file. The structure of the data within these files is as follows:
-
-Drag & Drop
-
-```
+```json
 {
     "language": "<language text here>",
     "subject": "<subject text here>",
     "type": "drag_drop",
-    "difficulty": <difficulty integer here (1-3)>,
+    "difficulty": "<difficulty here (1-3)>",
+    "id": "<id here>",
     "prompt": "<prompt text here>",
     "correct_ordering": ["<block 1 text here>", "<block 2 text here>", ...]
 }
 ```
 
-Multiple Choice
+**Multiple Choice**
 
-```
+```json
 {
     "language": "<language text here>",
     "subject": "<subject text here>",
     "type": "multiple_choice",
-    "difficulty": <difficulty integer here (1-3)>,
+    "difficulty": "<difficulty here (1-3)>",
+    "id": "<id here>",
     "prompt": "<prompt text here>",
     "correct_answer": "<answer text here>",
-    "distractors": ["<distractor 1 text here>", "<distractor 2 text here>", ..."]
+    "distractors": ["<distractor 1 text here>", "<distractor 2 text here>", ...]
 }
 ```
 
-Short Response
+**Short Response**
 
-```
+```json
 {
     "language": "<language text here>",
     "subject": "<subject text here>",
     "type": "short_response",
-    "difficulty": <difficulty integer here (1-3)>,
+    "difficulty": "<difficulty here (1-3)>",
+    "id": "<id here>",
     "prompt": "<prompt text here>",
     "correct_answer": "<answer text here>"
 }
