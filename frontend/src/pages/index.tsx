@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Question from './question';
 
 import './index.css';
+import GreenStar from 'components/GreenStar';
 
 const HomePage: React.FC = () => {
     /*const [language, setLanguage] = useState<Language>('Java');
@@ -16,11 +17,27 @@ const HomePage: React.FC = () => {
     const [curUnit, setCurUnit] = useState('');
     const [curDifficulty, setCurDifficulty] = useState(0);
 
+    const [completionData, setCompletionData] = useState(new Set());
+
     const handleLessonClick = (unitName : string, difficulty : number) => {
         setCurUnit(unitName);
         setCurDifficulty(difficulty);
         setActiveComponent('question');
     };
+
+    const checkCompletion = () => {
+
+    };
+
+    useEffect(() => {
+        async function fetchData() {
+            const response = await fetch("/completion")
+            const data = await response.json();
+            setCompletionData(new Set(data));
+            console.log(data)
+        }
+        fetchData();
+    }, []);
  
     return (
         <>
@@ -69,7 +86,9 @@ const HomePage: React.FC = () => {
                     </div>
                     <div className="checkpoints">
                         <div className="checkpoint1" onClick={() => handleLessonClick("variables", 1)}>
-                            <img src={require("./images/whitestar.png")} alt="whitestar" />
+                            {completionData.has("java_variables_1") ? (
+                                <GreenStar/>) : <img src={require("./images/whitestar.png")} alt="whitestar"/> 
+                            }
                         </div>
                         <div className="checkpoint2" onClick={() => handleLessonClick("variables", 2)}>
                             <img src={require("./images/whitestar.png")} alt="whitestar" />
@@ -125,7 +144,9 @@ const HomePage: React.FC = () => {
                 </div>
             </div>
         }
-        {activeComponent==='question' && <Question unitName={curUnit} difficulty={curDifficulty} onComplete={() => setActiveComponent('home')}/>}
+        {/* FIX HARD CODE LANGUAGE ONCE IMPLEMENTED */}
+        {activeComponent==='question' && <Question unitName={curUnit} difficulty={curDifficulty} onComplete={() => setActiveComponent('home')} 
+            complete={completionData.has("java_" + curUnit + "_" + curDifficulty)}/>}
         </>
     );
 };
