@@ -8,12 +8,12 @@
 
 2. Progress
 
-    - 
+    - Front end primarily focused on UI design and basic app logic per the TA's advice. Front end did not get to fully implementing milestone tracking, but this is documented in the user documentation. Such a change is intended for final release now. Back end created the cloud MongoDB store which means user and content data is now persistent. Content was slightly adjusted to fit new requirements by the MongoDB database. Content templating is intended for final release as well.
 
 
 3. Next Week's Agenda
 
-    - 
+    - Front end will complete implementation of milestone tracking and associated UI updates for completion. Back end will implement question templating randomization to serve front end. Content will implement question templating to increase the bank of questions dramatically. The entire team will respond to peer review feedback as well.
 
 ## Team Member Contributions
 
@@ -34,28 +34,28 @@
 
 2. Progress
 
-    - JP Gabriel: 
+    - JP Gabriel: Created and styled homepage to more accurately follow Figma design. Created and styled basic landing page in backend. Fixed issues with progress bar. 
 
-    - Jason Gao: 
+    - Jason Gao: Adjusted frontend config to fix frontend CI. Implemented persistent storage for user data in collaboration with Winston by using a MongoDB instance, adjusting the existing code, tests, and CI. Alongside that we also added a .env for storing secrets, then deployed the app to Render.
 
-    - Jason Xu: 
+    - Jason Xu: Started development of some final release features like drag and drop refresh and worked on expanding frontend tests.
 
-    - Jason Hua: 
+    - Jason Hua: Fetch requests are now able to grab from any of the json's rather than being hard coded. Also added functionality to some frontend components(Close button). 
 
     - Evan Kim: Updated app page navigation to operate without reloading the page and also edited questions to recieve information about the lesson unit and difficulty through props. 
 
-    - Winston Bullen: Refactored the front end testing architecture to be more consistent with back end. Cleaned up front end styling and contributed to fixing the front end tests. Wrote developer and user documentation.
+    - Winston Bullen: Refactored the front end testing architecture to be more consistent with back end. Cleaned up front end styling and contributed to fixing the front end tests. Wrote developer and user documentation. Created the persistent MongoDB Atlas instance and adjusted backend code and tests accordingly.
 
 3. Next Week's Agenda
 
-    - JP Gabriel: 
+    - JP Gabriel: Finish styling login and signup to more accurately reflect Figma design. Clean up issues on homepage and update homepage to enable more intended features.
 
-    - Jason Gao: 
+    - Jason Gao: Implement user information deletion on server or explore using MongoDB transactions to have a non-lasting effect on the DB when testing. Take care of other outstanding issues related to the backend. Continue to examine testing the Express app.
 
-    - Jason Xu: 
+    - Jason Xu: Add more functionality with Jason Hua.
 
-    - Jason Hua: 
+    - Jason Hua: Add more functionality to front end components, such as next button only being able to be clicked when answering a question at least once. Attempt to implement solutions for questions after answering.
 
     - Evan Kim: add frontend logic to handle when questions are completed and track lesson progression. reach goal: add a baby shark animated to the home page.
 
-    - Winston Bullen: Implement content templating so details of questions are randomized. This means questions pull from a bank of variable names to make content more unique.
+    - Winston Bullen: Implement content templating so details of questions are randomized. This means questions pull from a bank of variable names to make content more unique. Assist team in finishing app logic and responding to peer review feedback.

@@ -21,7 +21,6 @@ test("content DB is a singleton", async () => {
 */
 
 test("content db reads the first drag & drop java arrays question of difficulty one", async () => {
-  // let db = await ContentDB.get_db();
 
   let q1 = await db.get_question({
     language: "java",
@@ -45,7 +44,6 @@ test("content db reads the first drag & drop java arrays question of difficulty 
 });
 
 test("content db reads the first drag & drop java classes question of difficulty one", async () => {
-  // let db = await ContentDB.get_db();
 
   let q1 = await db.get_question({
     language: "java",
@@ -69,7 +67,6 @@ test("content db reads the first drag & drop java classes question of difficulty
 });
 
 test("content db reads the first drag & drop java collections question of difficulty one", async () => {
-  // let db = await ContentDB.get_db();
 
   let q1 = await db.get_question({
     language: "java",
@@ -93,7 +90,6 @@ test("content db reads the first drag & drop java collections question of diffic
 });
 
 test("content db reads the first drag & drop java conditions question of difficulty one", async () => {
-  // let db = await ContentDB.get_db();
 
   let q1 = await db.get_question({
     language: "java",
@@ -117,7 +113,6 @@ test("content db reads the first drag & drop java conditions question of difficu
 });
 
 test("content db reads the first drag & drop java loops question of difficulty one", async () => {
-  // let db = await ContentDB.get_db();
 
   let q1 = await db.get_question({
     language: "java",
@@ -141,7 +136,6 @@ test("content db reads the first drag & drop java loops question of difficulty o
 });
 
 test("content db reads the first drag & drop java methods question of difficulty one", async () => {
-  // let db = await ContentDB.get_db();
 
   let q1 = await db.get_question({
     language: "java",
@@ -165,7 +159,6 @@ test("content db reads the first drag & drop java methods question of difficulty
 });
 
 test("content db reads the first drag & drop java operators question of difficulty one", async () => {
-  // let db = await ContentDB.get_db();
 
   let q1 = await db.get_question({
     language: "java",
@@ -189,7 +182,6 @@ test("content db reads the first drag & drop java operators question of difficul
 });
 
 test("content db reads the first drag & drop java variables question of difficulty one", async () => {
-  // let db = await ContentDB.get_db();
 
   let q1 = await db.get_question({
     language: "java",
@@ -217,7 +209,6 @@ test("content db reads the first drag & drop java variables question of difficul
 */
 
 test("content db reads the first drag & drop java variables question of difficulty two", async () => {
-  // let db = await ContentDB.get_db();
 
   let q1 = await db.get_question({
     language: "java",
@@ -241,7 +232,6 @@ test("content db reads the first drag & drop java variables question of difficul
 });
 
 test("content db reads the first drag & drop java variables question of difficulty three", async () => {
-  // let db = await ContentDB.get_db();
 
   let q1 = await db.get_question({
     language: "java",
@@ -269,7 +259,6 @@ test("content db reads the first drag & drop java variables question of difficul
 */
 
 test("content db reads the first multiple choice java variables question of difficulty one", async () => {
-  // let db = await ContentDB.get_db();
 
   let q1 = await db.get_question({
     language: "java",
@@ -294,7 +283,6 @@ test("content db reads the first multiple choice java variables question of diff
 });
 
 test("content db reads the first short response java variables question of difficulty one", async () => {
-  // let db = await ContentDB.get_db();
 
   let q1 = await db.get_question({
     language: "java",
@@ -322,7 +310,6 @@ test("content db reads the first short response java variables question of diffi
 */
 
 test("content db reads the first short response java loops question of difficulty three", async () => {
-  // let db = await ContentDB.get_db();
 
   let q1 = await db.get_question({
     language: "java",
@@ -346,7 +333,6 @@ test("content db reads the first short response java loops question of difficult
 });
 
 test("content db reads the first drag & drop java operators question of difficulty two", async () => {
-  // let db = await ContentDB.get_db();
 
   let q1 = await db.get_question({
     language: "java",
@@ -370,7 +356,6 @@ test("content db reads the first drag & drop java operators question of difficul
 });
 
 test("content db reads the first multiple choice java collections question of difficulty three", async () => {
-  // let db = await ContentDB.get_db();
 
   let q1 = await db.get_question({
     language: "java",

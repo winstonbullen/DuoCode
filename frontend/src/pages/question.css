@@ -58,6 +58,7 @@
     background-color: #5bb5f8;
 }
 
+
 .question-solution {
     margin-top: 4%;
     font-family: Nunito, serif;
@@ -80,6 +81,13 @@
     margin-left: 15%;
     display: flex;
     gap: 20%;
+}
+
+.question-close{
+    padding: 0;
+    border: none;
+    background: 0;
+    cursor: pointer;
 }
 
 .mg-sm {
