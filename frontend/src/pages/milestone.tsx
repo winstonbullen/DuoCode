@@ -5,8 +5,6 @@ import CloseBtn from '../components/CloseBtn'
 import SettingBtn from '../components/SettingBtn';
 import ProgressBar from '../components/ProgressBar';
 import ShortAnswer from './shortanswer';
-import MultipleChoice from './multiplechoice';
-import DragDrop from './dnd';
 import Completed from './completed';
 
 
