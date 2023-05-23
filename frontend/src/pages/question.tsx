@@ -20,6 +20,7 @@ interface QuestionProps {
 const Question: React.FC<QuestionProps> = ({unitName, difficulty, onComplete} : QuestionProps) => {
     const [currentQ, setCurrentQ] = useState<number>(1);
     const [currentProgress, setCurrentProgress] = useState(0);
+    const [propValue, setPropValue] = useState('No Solution Available');
     console.log(unitName);
 
     // create ref to submit question-content
@@ -42,12 +43,16 @@ const Question: React.FC<QuestionProps> = ({unitName, difficulty, onComplete} : 
     };
 
     const handleSolutionClick = (): void => {
-        window.alert("This is an alert message!");
+        window.alert(propValue);
     };
 
     const handleComplete = () => {
         onComplete();
     }
+
+    const updatePropValue = (newValue: string) => {
+        setPropValue(newValue);
+    };
 
     return (
         <div className='page'>
@@ -61,7 +66,7 @@ const Question: React.FC<QuestionProps> = ({unitName, difficulty, onComplete} : 
                 </div>
             </div>
             <div className='question-content'>
-                {currentQ === 1 && <MultipleChoice unit={unitName} difficulty={difficulty} submitRef={submitRef} />}
+                {currentQ === 1 && <MultipleChoice propValue={propValue} updatePropValue={updatePropValue} unit={unitName} difficulty={difficulty} submitRef={submitRef} />}
                 {currentQ === 2 && <DragDrop unit={unitName} difficulty={difficulty} submitRef={submitRef} />}
                 {currentQ === 3 && <ShortAnswer unit={unitName} difficulty={difficulty} submitRef={submitRef} />}
                 {currentQ === 4 && <Completed />}

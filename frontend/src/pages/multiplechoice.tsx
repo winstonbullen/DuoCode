@@ -31,11 +31,13 @@ interface MultipleChoiceProps {
     submitRef : React.RefObject<HTMLButtonElement>;
     unit: string
     difficulty: number
+    propValue: string
+    updatePropValue: (newValue: string) => void;
 }
 
 
 
-const MultipleChoice: React.FC<MultipleChoiceProps> = ({submitRef, unit, difficulty}) => {
+const MultipleChoice: React.FC<MultipleChoiceProps> = ({propValue, updatePropValue, submitRef, unit, difficulty}) => {
     const [question, setQuestion] = useState<Question>(emptyQuestion);
     const [options, setOptions] = useState<Option[]>([]);
     const [selectedOption, setSelectedOption] = useState<string>('');
@@ -57,6 +59,11 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({submitRef, unit, difficu
         setOptions(getShuffledOptions());
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [question]);
+
+    useEffect(() => {
+        updatePropValue(question.correct_answer)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     function getShuffledOptions() {
         const options = [
@@ -106,7 +113,7 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({submitRef, unit, difficu
                         ))}
                     </div>
                     <button ref={ submitRef } type="submit" className="" style={{ display: 'none' }}>
-                        Submit
+                        Solution
                     </button>
                 </form>
             </div>
