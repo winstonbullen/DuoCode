@@ -25,7 +25,10 @@ describe('ShortAnswer component with mock data', () => {
 
     it('should render the prompt received from the server', async () => {
         const buttonRef = React.createRef<HTMLButtonElement>();
-        render(<MultipleChoice unit={"variables"} difficulty={"1"} submitRef={buttonRef} />);
+        render(<MultipleChoice solution={"int foo = 1;"} unit={"variables"} difficulty={1} submitRef={buttonRef}
+                               updateSolution={function (newValue: string): void {
+                                   "int foo = 1;"
+                               }} />);
 
         await screen.findByText(mockData.prompt);
     });
