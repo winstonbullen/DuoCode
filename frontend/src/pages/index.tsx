@@ -25,14 +25,20 @@ const HomePage: React.FC = () => {
         setActiveComponent('question');
     };
 
+    const handleReload = () => {
+        setActiveComponent('home');
+        fetchCompletionData();
+    }
+
+    async function fetchCompletionData() {
+        const response = await fetch("/completion")
+        const data = await response.json();
+        setCompletionData(new Set(data));
+        console.log(data)
+    }
+
     useEffect(() => {
-        async function fetchData() {
-            const response = await fetch("/completion")
-            const data = await response.json();
-            setCompletionData(new Set(data));
-            console.log(data)
-        }
-        fetchData();
+        fetchCompletionData();
     }, []);
  
     return (
@@ -142,7 +148,7 @@ const HomePage: React.FC = () => {
             </div>
         }
         {/* FIX HARD CODE LANGUAGE ONCE IMPLEMENTED */}
-        {activeComponent==='question' && <Question unitName={curUnit} difficulty={curDifficulty} onComplete={() => setActiveComponent('home')} 
+        {activeComponent==='question' && <Question unitName={curUnit} difficulty={curDifficulty} onComplete={() => handleReload()} 
             complete={completionData.has("java_" + curUnit + "_" + curDifficulty)}/>}
         </>
     );
