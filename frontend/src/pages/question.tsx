@@ -21,6 +21,7 @@ interface QuestionProps {
 const Question: React.FC<QuestionProps> = ({unitName, difficulty, onComplete} : QuestionProps) => {
     const [currentQ, setCurrentQ] = useState<number>(1);
     const [currentProgress, setCurrentProgress] = useState(0);
+    const [currentSolution, setCurrentSolution] = useState('');
     console.log(unitName);
 
     // create ref to submit question-content
@@ -42,12 +43,9 @@ const Question: React.FC<QuestionProps> = ({unitName, difficulty, onComplete} : 
         }
     };
 
-
     const handleSolutionClick = (): void => {
         window.alert("This is an alert message!");
     };
-
-
 
     const handleComplete = () => {
         onComplete();

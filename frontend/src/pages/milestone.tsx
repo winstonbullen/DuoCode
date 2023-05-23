@@ -41,6 +41,9 @@ const Milestone: React.FC<MilestoneProps> = ({unitName, onComplete} : MilestoneP
         }
     };
 
+    const handleSolutionClick = (): void => {
+        window.alert("This is an alert message!");
+    };
 
     const handleComplete = () => {
         onComplete();
@@ -69,12 +72,17 @@ const Milestone: React.FC<MilestoneProps> = ({unitName, onComplete} : MilestoneP
                     height: "3px",
                     border: "none",
                 }}></hr>
-                {currentQ !== 4 ? (
-                    <button type="submit" className="question-submit" onClick={handleSubmitRef}>Submit</button>
-                ) : null}
-                {currentQ !== 4 ? (
-                    <button type="submit" className="question-next" onClick={handleNextQ}>Next</button>
-                ) : <button type="submit" className="question-next" onClick={handleComplete}>Go Back</button>}
+                <div className = "button-group">
+                    {currentQ !== 4 ? (
+                        <button className="question-solution" onClick={handleSolutionClick}>Solution</button>
+                    ) : null}
+                    {currentQ !== 4 ? (
+                        <button type="submit" className="question-submit" onClick={handleSubmitRef}>Submit</button>
+                    ) : null}
+                    {currentQ !== 4 ? (
+                        <button type="submit" className="question-next" onClick={handleNextQ}>Next</button>
+                    ) : <button type="submit" className="question-next" onClick={handleComplete}>Go Back</button>}
+                </div>
             </div>
         </div>
     );
