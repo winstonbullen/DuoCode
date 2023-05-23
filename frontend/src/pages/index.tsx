@@ -25,10 +25,6 @@ const HomePage: React.FC = () => {
         setActiveComponent('question');
     };
 
-    const checkCompletion = () => {
-
-    };
-
     useEffect(() => {
         async function fetchData() {
             const response = await fetch("/completion")
@@ -86,6 +82,7 @@ const HomePage: React.FC = () => {
                     </div>
                     <div className="checkpoints">
                         <div className="checkpoint1" onClick={() => handleLessonClick("variables", 1)}>
+                            {/* FIX THIS TO NOT HARD CODE */}
                             {completionData.has("java_variables_1") ? (
                                 <GreenStar/>) : <img src={require("./images/whitestar.png")} alt="whitestar"/> 
                             }
