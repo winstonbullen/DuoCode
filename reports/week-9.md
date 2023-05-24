@@ -36,7 +36,7 @@
 
     - JP Gabriel: 
 
-    - Jason Gao: 
+    - Jason Gao: Worked with Winston to remove a memory leak (by using MongoDB as a session store) and improve login/signup flow (by switching to EJS templating instead of sending bare http responses). Added JS/TSDoc style documentation comments to most of the backend code.
 
     - Jason Xu: Tried some iterations with the drag and drop refresh button and ran into a couple of bugs that I will continue to work on. Made some progress on next button logic but nothing extremely notable.
 
@@ -50,7 +50,7 @@
 
     - JP Gabriel: 
 
-    - Jason Gao: 
+    - Jason Gao: Contribute to overall polish and deliverables, communicate with frontend team members to support their integration of the backend API into the frontend functionality.
 
     - Jason Xu: Will make sure drag and drop refresh logic is functional and polished. Will collaborate with Jason Hua to get the next logic working in conjunction with solutions button. Adding more tests for front end components and then picking up any other tasks that may need to be done by final release.
 
