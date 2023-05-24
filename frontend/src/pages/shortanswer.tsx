@@ -34,12 +34,12 @@ const emptyShortAnswerData: shortAnswerData = {
  */
 const ShortAnswer: React.FC<ShortAnswerProps> = ({submitRef, unit, difficulty}) => {
     /**
-     * track the short answer data
+     * Tracks the short answer data.
      */
     const [shortAnswerData, setshortAnwswer] = useState<shortAnswerData>(emptyShortAnswerData);
 
     /**
-     * load in the short answer question data from backend api
+     * Loads in the short answer question data from backend api.
      */
     useEffect(() => {
         async function fetchData() {
@@ -52,31 +52,31 @@ const ShortAnswer: React.FC<ShortAnswerProps> = ({submitRef, unit, difficulty}) 
     }, []);
 
     /**
-     * tracks text written
+     * Tracks text written.
      */
     const [text, setText] = useState('');
 
     /**
-     * flag for checking valid answers
+     * Flag for checking valid answers.
      */
     const [isValid, setIsValid] = useState(false);
 
     /**
-     * flag for showing validation
+     * Flag for showing validation.
      */
     const [showValidation, setShowValidation] = useState(false);
 
     /**
-     * Validates the answer by checking it with the correct answer
-     * @returns boolean - wether answer is correct
+     * Validates the answer by checking it with the correct answer.
+     * @returns boolean - whether answer is correct.
      */
     const validateAnswer = () => {
         return text.toLowerCase() === shortAnswerData.correct_answer.toLowerCase();
     };
 
     /**
-     * handles the form submission
-     * @param e - submit event
+     * Handles the form submission.
+     * @param e - submit event.
      */
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -85,7 +85,7 @@ const ShortAnswer: React.FC<ShortAnswerProps> = ({submitRef, unit, difficulty}) 
     };
 
     /**
-     * tracks if answer is correct
+     * Tracks if answer is correct.
      */
     const isCorrect = showValidation && isValid;
 

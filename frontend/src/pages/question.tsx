@@ -43,7 +43,7 @@ const Question: React.FC<QuestionProps> = ({unitName, difficulty, onComplete, co
 
     /**
      * Handle swapping to the next question and on completion of lesson
-     * posts completion to backend api
+     * post completion to backend api.
      */
     const handleNextQ = () => {
         setCurrentQ(currentQ + 1);
@@ -69,7 +69,7 @@ const Question: React.FC<QuestionProps> = ({unitName, difficulty, onComplete, co
     };
 
     /**
-     * Sends prop indicating lesson completion to homepage
+     * Sends prop indicating lesson completion to homepage.
      */
     const handleComplete = () => {
         onComplete();

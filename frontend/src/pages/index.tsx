@@ -39,7 +39,6 @@ const HomePage: React.FC = () => {
 
     /**
      * Handles the click event for the lesson component.
-     * 
      * @param unitName - The name of the unit.
      * @param difficulty - The difficulty level.
      */

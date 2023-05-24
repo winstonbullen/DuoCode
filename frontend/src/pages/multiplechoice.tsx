@@ -83,7 +83,7 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({submitRef, unit, difficu
     }, []);
 
     /**
-     * Sets the options when new question is loaded
+     * Sets the options when new question is loaded.
      */
     useEffect(() => {
         setOptions(getShuffledOptions());
@@ -91,7 +91,6 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({submitRef, unit, difficu
 
     /**
      * Retrieves shuffled options for the current question.
-     *
      * @returns Shuffled options.
      */
     function getShuffledOptions() {
@@ -108,7 +107,6 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({submitRef, unit, difficu
 
     /**
      * Handles the change event of the option selection.
-     *
      * @param event - The change event.
      */
     function handleOptionChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -117,7 +115,6 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({submitRef, unit, difficu
 
     /**
      * Handles the form submission event.
-     *
      * @param event - The form submission event.
      */
     function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -128,7 +125,6 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({submitRef, unit, difficu
 
     /**
      * Shuffles an array in place using the Fisher-Yates algorithm.
-     *
      * @param array - The array to be shuffled.
      */
     function shuffleArray(array: Option[]) {

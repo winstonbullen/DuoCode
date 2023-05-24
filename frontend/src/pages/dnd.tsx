@@ -67,7 +67,7 @@ const DragDrop: React.FC<DragDropProps> = ({submitRef, unit, difficulty}) => {
     const [originalOrdering, setOriginalOrdering] = useState<string[]>([]);
 
     /**
-     * Fetches content data for drag and drop
+     * Fetches content data for drag and drop.
      */
     useEffect(() => {
         async function fetchData() {
@@ -82,7 +82,7 @@ const DragDrop: React.FC<DragDropProps> = ({submitRef, unit, difficulty}) => {
     }, []);
 
     /**
-     * Handles the drag start event for an item
+     * Handles the drag start event for an item.
      * @param event - The drag event.
      * @param item - The item being dragged.
      */
@@ -94,7 +94,7 @@ const DragDrop: React.FC<DragDropProps> = ({submitRef, unit, difficulty}) => {
 
     /**
      * Handles the drag over event for a target element.
-     * @param event - The drag event
+     * @param event - The drag event.
      */
     const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
         event.preventDefault();
@@ -103,7 +103,6 @@ const DragDrop: React.FC<DragDropProps> = ({submitRef, unit, difficulty}) => {
 
     /**
      * Handles the drop event for a target element.
-     * 
      * @param event - The drag event.
      */
     const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
@@ -136,7 +135,6 @@ const DragDrop: React.FC<DragDropProps> = ({submitRef, unit, difficulty}) => {
 
     /**
      * Shuffles the elements of an array.
-     * 
      * @param array - The array to be shuffled.
      * @returns The shuffled array.
      */
