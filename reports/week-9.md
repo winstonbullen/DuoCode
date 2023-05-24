@@ -38,7 +38,7 @@
 
     - Jason Gao: 
 
-    - Jason Xu: 
+    - Jason Xu: Tried some iterations with the drag and drop refresh button and ran into a couple of bugs that I will continue to work on. Made some progress on next button logic but nothing extremely notable.
 
     - Jason Hua: Solutions button works properly and milestone question format has also been implemented. Also focused on fixing various minor bugs throughout the question component.
 
@@ -52,7 +52,7 @@
 
     - Jason Gao: 
 
-    - Jason Xu: 
+    - Jason Xu: Will make sure drag and drop refresh logic is functional and polished. Will collaborate with Jason Hua to get the next logic working in conjunction with solutions button. Adding more tests for front end components and then picking up any other tasks that may need to be done by final release.
 
     - Jason Hua: Polish remaining bugs that exist in question component. Work on styling for laptops with smaller resolutions. 
 
