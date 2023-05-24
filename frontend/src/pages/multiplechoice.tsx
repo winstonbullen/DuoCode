@@ -80,6 +80,7 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({submitRef, unit, difficu
             setQuestion(data)
         }
         fetchData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     /**
@@ -87,6 +88,7 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({submitRef, unit, difficu
      */
     useEffect(() => {
         setOptions(getShuffledOptions());
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [question]);
 
     /**
