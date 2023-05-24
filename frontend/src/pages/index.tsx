@@ -6,6 +6,10 @@ import './index.css';
 import Milestone from './milestone';
 import GreenStar from 'components/GreenStar';
 
+/**
+ * HomePage component.
+ * Renders the homepage and sidebar.
+ */
 const HomePage: React.FC = () => {
     /*const [language, setLanguage] = useState<Language>('Java');
     const [dailyChallengeProgress, setDailyChallengeProgress] = useState<number>(70);
@@ -14,12 +18,31 @@ const HomePage: React.FC = () => {
         setLanguage(selectedLanguage);
     };*/
 
+    /**
+     * The currently active component.
+     */
     const [activeComponent, setActiveComponent] = useState('home');
+
+    /**
+     * The currently selected unit.
+     */
     const [curUnit, setCurUnit] = useState('');
+
+    /**
+     * The currently selected difficulty.
+     */
     const [curDifficulty, setCurDifficulty] = useState(0);
 
+    /**
+     * Set of completion data.
+     */
     const [completionData, setCompletionData] = useState(new Set());
 
+    /**
+     * Handles the click event for the lesson component.
+     * @param unitName - The name of the unit.
+     * @param difficulty - The difficulty level.
+     */
     const handleLessonClick = (unitName : string, difficulty : number) => {
         setCurUnit(unitName);
         setCurDifficulty(difficulty);
@@ -31,11 +54,17 @@ const HomePage: React.FC = () => {
         setActiveComponent('milestone');
     };
 
+    /**
+     * Handles the reload action updating the completed lessons.
+     */
     const handleReload = () => {
         setActiveComponent('home');
         fetchCompletionData();
     }
 
+    /**
+     * Fetches completion data from the server.
+     */
     async function fetchCompletionData() {
         const response = await fetch("/completion")
         const data = await response.json();
@@ -43,6 +72,9 @@ const HomePage: React.FC = () => {
         console.log(data)
     }
 
+    /**
+     * Fetches completion data on component mount.
+     */
     useEffect(() => {
         fetchCompletionData();
     }, []);
