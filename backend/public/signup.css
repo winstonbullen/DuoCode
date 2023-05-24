@@ -180,3 +180,12 @@
     max-width: 60%;
     margin: auto;
 }
+
+.valid-reqs {
+    margin-left: 7%;
+    text-align: left;
+}
+
+.valid-reqs ul {
+    margin-left: 20px;
+}

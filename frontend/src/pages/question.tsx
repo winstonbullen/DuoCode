@@ -13,11 +13,10 @@ interface QuestionProps {
     unitName: string;
     difficulty: number;
     onComplete: () => void;
+    complete: boolean;
 }
 
-
-
-const Question: React.FC<QuestionProps> = ({unitName, difficulty, onComplete} : QuestionProps) => {
+const Question: React.FC<QuestionProps> = ({unitName, difficulty, onComplete, complete} : QuestionProps) => {
     const [currentQ, setCurrentQ] = useState<number>(1);
     const [currentProgress, setCurrentProgress] = useState(0);
     const [solution, setSolution] = useState('No Solution Available');
@@ -33,6 +32,7 @@ const Question: React.FC<QuestionProps> = ({unitName, difficulty, onComplete} : 
 
     // swap question for next one
     const handleNextQ = () => {
+
         if (currentQ === 4) {
             setshowSolution(false)
             setCurrentQ(1)
@@ -42,6 +42,28 @@ const Question: React.FC<QuestionProps> = ({unitName, difficulty, onComplete} : 
             setCurrentQ(currentQ + 1);
             setCurrentProgress(currentProgress + 33.33333);
         }
+
+        setCurrentQ(currentQ + 1);
+        setCurrentProgress(currentProgress + 33.33333);
+
+        if (currentQ === 3) {
+            async function fetchData() {
+                const requestOptions = {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    // CHANGE TO LANGUAGE PASSED AS PROP ONCE LANGUAGES ARE IMPLEMENTED
+                    body: JSON.stringify({ language : 'java', subject : unitName, level : difficulty})
+                };
+                const response = await fetch('/completion/', requestOptions);
+                console.log(response);
+            }
+            if (!complete) {
+                fetchData();
+            } else {
+                console.log("already completed lesson");
+            }
+        } 
+
     };
 
     const handleSolutionClick = (): void => {

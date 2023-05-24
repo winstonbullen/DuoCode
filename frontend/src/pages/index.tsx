@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Question from './question';
 import './index.css';
+
 import Milestone from './milestone';
+import GreenStar from 'components/GreenStar';
 
 const HomePage: React.FC = () => {
     /*const [language, setLanguage] = useState<Language>('Java');
@@ -16,6 +18,8 @@ const HomePage: React.FC = () => {
     const [curUnit, setCurUnit] = useState('');
     const [curDifficulty, setCurDifficulty] = useState(0);
 
+    const [completionData, setCompletionData] = useState(new Set());
+
     const handleLessonClick = (unitName : string, difficulty : number) => {
         setCurUnit(unitName);
         setCurDifficulty(difficulty);
@@ -26,6 +30,22 @@ const HomePage: React.FC = () => {
         setCurUnit(unitName);
         setActiveComponent('milestone');
     };
+
+    const handleReload = () => {
+        setActiveComponent('home');
+        fetchCompletionData();
+    }
+
+    async function fetchCompletionData() {
+        const response = await fetch("/completion")
+        const data = await response.json();
+        setCompletionData(new Set(data));
+        console.log(data)
+    }
+
+    useEffect(() => {
+        fetchCompletionData();
+    }, []);
  
     return (
         <>
@@ -74,7 +94,10 @@ const HomePage: React.FC = () => {
                     </div>
                     <div className="checkpoints">
                         <div className="checkpoint1" onClick={() => handleLessonClick("variables", 1)}>
-                            <img src={require("./images/whitestar.png")} alt="whitestar" />
+                            {/* FIX THIS TO NOT HARD CODE */}
+                            {completionData.has("java_variables_1") ? (
+                                <GreenStar/>) : <img src={require("./images/whitestar.png")} alt="whitestar"/> 
+                            }
                         </div>
                         <div className="checkpoint2" onClick={() => handleLessonClick("variables", 2)}>
                             <img src={require("./images/whitestar.png")} alt="whitestar" />
@@ -129,7 +152,10 @@ const HomePage: React.FC = () => {
                 </div>
             </div>
         }
-        {activeComponent==='question' && <Question unitName={curUnit} difficulty={curDifficulty} onComplete={() => setActiveComponent('home')}/>}
+
+        {/* FIX HARD CODE LANGUAGE ONCE IMPLEMENTED */}
+        {activeComponent==='question' && <Question unitName={curUnit} difficulty={curDifficulty} onComplete={() => handleReload()} 
+            complete={completionData.has("java_" + curUnit + "_" + curDifficulty)}/>}
         {activeComponent==='milestone' && <Milestone unitName={curUnit} onComplete={() => setActiveComponent('home')}/>}
         </>
     );

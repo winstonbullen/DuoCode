@@ -15,14 +15,23 @@
         <div class = "login">
             <div class = "form">
                 <h1>Create an Account</h1>
-                <form action="/signup" method="post" class="form-container">
+                <form action="/signup" method="post" class="form-container" onsubmit="return validate()">
                     <div class="input">
                         <input type="text" required="required" name="name" class="form-input"/>
                         <span>Username</span>
                     </div>
                     <div class="input">
-                        <input type="password" required="required" id="password" name="password" autocomplete="off" class="form-input"/>
+                        <input type="password" required="required" id="password" name="password" autocomplete="off" class="form-input" onkeyup="return checkPass()"/>
                         <span>Password</span>
+                    </div>
+                    <div class="valid-reqs ">
+                        <ul>
+                            <li id="upper">At least one uppercase</li>
+                            <li id="lower">At least one lowercase</li>
+                            <li id="special_char">At least one special symbol</li>
+                            <li id="number">At least one number</li>
+                            <li id="length">At least 8 characters</li>
+                        </ul>
                     </div>
                     <div class="input">
                         <input type="submit" value="Sign Up" class="form-submit" />
@@ -40,5 +49,73 @@
             </div>
         </div>
     </div>
+    <script>
+        function validate() {
+            var pass = document.getElementById("password");
+            var upper = document.getElementById("upper");
+            var lower = document.getElementById("lower");
+            var num = document.getElementById("number");
+            var length = document.getElementById("length");
+            var sp_ch = document.getElementById("special_char");
+
+            if (pass.value.length  < 8){
+                return false;
+            } else if (!pass.value.match(/[0-9]/)){
+                return false;
+            } else if (!pass.value.match(/[A-Z]/)){
+                return false;
+            } else if (!pass.value.match(/[a-z]/)){
+                return false;
+            } else if (!pass.value.match(/[!\@\#\$\%\^\&\*\(\)\_\-\+\=\?\>\<\.\,]/)){
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        function checkPass() {
+            var pass = document.getElementById("password");
+            var upper = document.getElementById("upper");
+            var lower = document.getElementById("lower");
+            var num = document.getElementById("number");
+            var length = document.getElementById("length");
+            var sp_ch = document.getElementById("special_char");
+            
+            // check for number
+            if (pass.value.match(/[0-9]/)){
+                num.style.color = "green"
+            } else {
+                num.style.color = "red"
+            }
+
+            // check for uppercase
+            if (pass.value.match(/[A-Z]/)){
+                upper.style.color = "green"
+            } else {
+                upper.style.color = "red"
+            }
+
+            // check for lowercase
+            if (pass.value.match(/[a-z]/)){
+                lower.style.color = "green"
+            } else {
+                lower.style.color = "red"
+            }
+
+            // check for special characters
+            if (pass.value.match(/[!\@\#\$\%\^\&\*\(\)\_\-\+\=\?\>\<\.\,]/)){
+                sp_ch.style.color = "green"
+            } else {
+                sp_ch.style.color = "red"
+            }
+
+            // check for length
+            if (pass.value.length >= 8){
+                length.style.color = "green"
+            } else {
+                length.style.color = "red"
+            }
+        }
+    </script>
 </body>
 </html>
