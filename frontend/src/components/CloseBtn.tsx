@@ -2,6 +2,11 @@ import React from 'react';
 import '../pages/question.css';
 
 interface CloseBtnProps {}
+
+/**
+ * Close button component.
+ * Renders a close icon as an SVG.
+ */
 const CloseBtn: React.FC<CloseBtnProps> = () => {
     return (
         <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">

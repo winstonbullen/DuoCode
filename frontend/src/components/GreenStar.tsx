@@ -1,6 +1,11 @@
 import React from 'react';
 
 interface GreenStarProps {}
+
+/**
+ * Green star component.
+ * Renders a green star icon as an SVG.
+ */
 const GreenStar: React.FC<GreenStarProps> = () => {
     return (
       <svg width="51" height="60" viewBox="0 0 51 60" fill="none" xmlns="http://www.w3.org/2000/svg">

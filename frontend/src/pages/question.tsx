@@ -16,12 +16,24 @@ interface QuestionProps {
     complete: boolean;
 }
 
+/**
+ * Question component.
+ * Wraps all the different types of questions.
+ */
 const Question: React.FC<QuestionProps> = ({unitName, difficulty, onComplete, complete} : QuestionProps) => {
+    /**
+     * The current question number.
+     */
     const [currentQ, setCurrentQ] = useState<number>(1);
+    
+    /**
+     * The current progress of the quiz.
+     */
     const [currentProgress, setCurrentProgress] = useState(0);
-    console.log(unitName);
 
-    // create ref to submit question-content
+    /**
+     * Creates ref to handle question submission. 
+     */
     const submitRef = useRef<HTMLButtonElement>(null);
     const handleSubmitRef = () => {
         if (submitRef.current) {
@@ -29,7 +41,10 @@ const Question: React.FC<QuestionProps> = ({unitName, difficulty, onComplete, co
         }
     };
 
-    // swap question for next one
+    /**
+     * Handle swapping to the next question and on completion of lesson
+     * post completion to backend api.
+     */
     const handleNextQ = () => {
         setCurrentQ(currentQ + 1);
         setCurrentProgress(currentProgress + 33.33333);
@@ -53,7 +68,9 @@ const Question: React.FC<QuestionProps> = ({unitName, difficulty, onComplete, co
         } 
     };
 
-
+    /**
+     * Sends prop indicating lesson completion to homepage.
+     */
     const handleComplete = () => {
         onComplete();
     }

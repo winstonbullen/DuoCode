@@ -7,6 +7,9 @@ interface ShortAnswerProps {
     difficulty: number
 }
 
+/**
+ * Interface representing the short answer data.
+ */
 type shortAnswerData = {
     language: string;
     subject: string;
@@ -25,10 +28,19 @@ const emptyShortAnswerData: shortAnswerData = {
     correct_answer: '',
 };
 
-
-
+/**
+ * Short Answer component.
+ * Renders a short answer component that allows free response.
+ */
 const ShortAnswer: React.FC<ShortAnswerProps> = ({submitRef, unit, difficulty}) => {
+    /**
+     * Tracks the short answer data.
+     */
     const [shortAnswerData, setshortAnwswer] = useState<shortAnswerData>(emptyShortAnswerData);
+
+    /**
+     * Loads in the short answer question data from backend api.
+     */
     useEffect(() => {
         async function fetchData() {
             const response = await fetch("/content/java/" + unit + "/short_response/" + difficulty + "/1")
@@ -40,20 +52,42 @@ const ShortAnswer: React.FC<ShortAnswerProps> = ({submitRef, unit, difficulty}) 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    /**
+     * Tracks text written.
+     */
     const [text, setText] = useState('');
+
+    /**
+     * Flag for checking valid answers.
+     */
     const [isValid, setIsValid] = useState(false);
+
+    /**
+     * Flag for showing validation.
+     */
     const [showValidation, setShowValidation] = useState(false);
 
+    /**
+     * Validates the answer by checking it with the correct answer.
+     * @returns boolean - whether answer is correct.
+     */
     const validateAnswer = () => {
         return text.toLowerCase() === shortAnswerData.correct_answer.toLowerCase();
     };
 
+    /**
+     * Handles the form submission.
+     * @param e - submit event.
+     */
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setIsValid(validateAnswer());
         setShowValidation(true);
     };
 
+    /**
+     * Tracks if answer is correct.
+     */
     const isCorrect = showValidation && isValid;
 
     return (
