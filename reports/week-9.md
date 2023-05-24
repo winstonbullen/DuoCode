@@ -44,7 +44,7 @@
 
     - Evan Kim: 
 
-    - Winston Bullen: Addressed some back end TODOs including adding all environment variables to .env and upgrading the express session. This means back end no longer leaks memory nor exposes secret cookie generation. Began drafting and writing content templating for question pool expansion. 
+    - Winston Bullen: Addressed some back end TODOs including adding all environment variables to .env and upgrading the express session. This means back end no longer leaks memory nor exposes secret cookie generation. Decided to postpone content templating to respond to peer review feedback and enhance other features. 
 
 3. Next Week's Agenda
 
@@ -58,4 +58,4 @@
 
     - Evan Kim: 
 
-    - Winston Bullen: Finish content templating and update the corresponding documentation and testing to reflect this. Assist team in finalizing improvements to user experience and peer review. Polish the final release with the team and complete the final deliverables. 
+    - Winston Bullen: Assist team in finalizing improvements to user experience and peer review. Polish the final release with the team and complete the final deliverables. 
