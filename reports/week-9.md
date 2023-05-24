@@ -34,7 +34,7 @@
 
 2. Progress
 
-    - JP Gabriel: 
+    - JP Gabriel: Finished up styling login and signup to more accurately reflect Figma design. Adding password requirements to signup. Changed UI on homepage, specifically the side bar. 
 
     - Jason Gao: Worked with Winston to remove a memory leak (by using MongoDB as a session store) and improve login/signup flow (by switching to EJS templating instead of sending bare http responses). Added JS/TSDoc style documentation comments to most of the backend code.
 
@@ -48,7 +48,7 @@
 
 3. Next Week's Agenda
 
-    - JP Gabriel: 
+    - JP Gabriel: Working on finishing homepage. Add logout end point to the logout button, revamping UI for homepage, and adding drop-down feature for language choices.
 
     - Jason Gao: Contribute to overall polish and deliverables, communicate with frontend team members to support their integration of the backend API into the frontend functionality.
 
