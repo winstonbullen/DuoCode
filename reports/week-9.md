@@ -40,7 +40,7 @@
 
     - Jason Xu: 
 
-    - Jason Hua: 
+    - Jason Hua: Solutions button works properly and milestone question format has also been implemented. Also focused on fixing various minor bugs throughout the question component.
 
     - Evan Kim: 
 
@@ -54,7 +54,7 @@
 
     - Jason Xu: 
 
-    - Jason Hua: 
+    - Jason Hua: Polish remaining bugs that exist in question component. Work on styling for laptops with smaller resolutions. 
 
     - Evan Kim: 
 
