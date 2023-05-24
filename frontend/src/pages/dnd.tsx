@@ -33,15 +33,35 @@ interface DragDropProps {
     updateSolution: (newValue: string) => void
 }
 
-
-
+/**
+ * Drag and Drop component.
+ * Renders a drag and drop interaction with a prompt and draggable items.
+ */
 const DragDrop: React.FC<DragDropProps> = ({solution, updateSolution, submitRef, unit, difficulty}) => {
+    /**
+     * State variables for drag and drop functionality.
+     */
     const [dragDrop, setDragDrop] = useState<dragDrop>(emptyDragDrop);
+    /**
+     * The currently dragging element.
+     */
     const [draggingElement, setDraggingElement] = useState<HTMLElement | null>(null);
+    /**
+     * Flag indicating whether to show the result.
+     */
     const [showResult, setShowResult] = useState<boolean>(false);
+    /**
+     * Flag indicating whether the ordering is correct.
+     */
     const [isCorrect, setIsCorrect] = useState<boolean>(false);
+    /**
+     * The original ordering of the elements.
+     */
     const [originalOrdering, setOriginalOrdering] = useState<string[]>([]);
 
+    /**
+     * Fetches content data for drag and drop.
+     */
     useEffect(() => {
         async function fetchData() {
             const response = await fetch("/content/java/" + unit + "/drag_drop/" + difficulty + "/1")
@@ -60,17 +80,31 @@ const DragDrop: React.FC<DragDropProps> = ({solution, updateSolution, submitRef,
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [originalOrdering]);
 
+    /**
+     * Handles the drag start event for an item.
+     * @param event - The drag event.
+     * @param item - The item being dragged.
+     */
+
     const handleDragStart = (event: React.DragEvent<HTMLElement>, item: DragItem) => {
         setDraggingElement(event.currentTarget);
         event.dataTransfer!.setData('text/plain', item.id);
         event.dataTransfer!.effectAllowed = 'move';
     };
 
+    /**
+     * Handles the drag over event for a target element.
+     * @param event - The drag event.
+     */
     const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
         event.preventDefault();
         event.dataTransfer!.dropEffect = 'move';
     };
 
+    /**
+     * Handles the drop event for a target element.
+     * @param event - The drag event.
+     */
     const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
         event.preventDefault();
         const itemId = event.dataTransfer!.getData('text/plain');
@@ -81,6 +115,10 @@ const DragDrop: React.FC<DragDropProps> = ({solution, updateSolution, submitRef,
             draggableElement.style.display = 'inline-block';
         }
     };
+
+    /**
+     * Handles the form submission.
+     */
     const handleSubmit = () => {
         const draggableElements = document.querySelectorAll('.drag-drop-draggable');
         const ordering: string[] = [];
@@ -94,6 +132,12 @@ const DragDrop: React.FC<DragDropProps> = ({solution, updateSolution, submitRef,
             setIsCorrect(false);
         }
     };
+
+    /**
+     * Shuffles the elements of an array.
+     * @param array - The array to be shuffled.
+     * @returns The shuffled array.
+     */
     const shuffleArray = (array: string[]) => {
         const shuffled = array.slice();
         for (let i = shuffled.length - 1; i > 0; i--) {
