@@ -42,7 +42,7 @@
 
     - Jason Hua: Solutions button works properly and milestone question format has also been implemented. Also focused on fixing various minor bugs throughout the question component.
 
-    - Evan Kim: 
+    - Evan Kim: Implemented progression tracking on the frontend by connecting to the completions endpoint. Added some logic to prevent duplicates in the completed lessons data. Added comments throughout frontend code.
 
     - Winston Bullen: Addressed some back end TODOs including adding all environment variables to .env and upgrading the express session. This means back end no longer leaks memory nor exposes secret cookie generation. Decided to postpone content templating to respond to peer review feedback and enhance other features. 
 
@@ -56,6 +56,6 @@
 
     - Jason Hua: Polish remaining bugs that exist in question component. Work on styling for laptops with smaller resolutions. 
 
-    - Evan Kim: 
+    - Evan Kim: Work on styling for different screen sizes and also finish styling the homepage for tracking completion of lessons.
 
     - Winston Bullen: Assist team in finalizing improvements to user experience and peer review. Polish the final release with the team and complete the final deliverables. 
