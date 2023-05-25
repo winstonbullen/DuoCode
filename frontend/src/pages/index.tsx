@@ -22,6 +22,8 @@ const HomePage: React.FC = () => {
         setCurDifficulty(difficulty);
         setActiveComponent('question');
     };
+    const currentUrl = window.location.href;
+    const logOutUrl = currentUrl.replace("/app", "/logout")
 
     return (
         <>
@@ -68,7 +70,7 @@ const HomePage: React.FC = () => {
                         </ul>
                         </div>
                         <div className="bottom-section">
-                        <Link to='/'>
+                        <Link to={logOutUrl}>
                             <img src={require("./images/logout.png")} alt="logout" />
                             <span className="text nav-text">Logout</span>
                         </Link>
