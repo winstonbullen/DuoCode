@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="signup.css">
+    <title>DuoCode</title>
+</head>
+<body>
+    <div class = "login-page-container">
+        <div class="image-section">
+            <img src="./images/coder.svg" alt="coder">
+        </div>
+        <div class = "login">
+            <div class = "form">
+                <h1>Log In</h1>
+                <form action="/login" method="post" class="form-container">
+                    <div class="input">
+                        <input type="text" required="required" name="name" class="form-input"/>
+                        <span>Username</span>
+                    </div>
+                    <div class="input">
+                        <input type="password" required="required" id="password" name="password" autocomplete="off" class="form-input"/>
+                        <span>Password</span>
+                    </div>
+                    <div class="input">
+                        <input type="submit" value="Login" class="form-submit" />
+                    </div>
+                </form>
+                <% if (error){ %>
+                <div class="error-text">Login Failed</div>
+                <%}%>
+                <div class="line"></div>
+                <div class="input">
+                    <p>Don't have an account yet?</p>
+                    <a href="/signup">Create an account</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Question from './question';
-
 import './index.css';
+import Milestone from './milestone';
+import GreenStar from 'components/GreenStar';
 
+/**
+ * HomePage component.
+ * Renders the homepage and sidebar.
+ */
 const HomePage: React.FC = () => {
     /*const [language, setLanguage] = useState<Language>('Java');
     const [dailyChallengeProgress, setDailyChallengeProgress] = useState<number>(70);
@@ -12,19 +17,71 @@ const HomePage: React.FC = () => {
         setLanguage(selectedLanguage);
     };*/
 
+    /**
+     * The currently active component.
+     */
     const [activeComponent, setActiveComponent] = useState('home');
+
+    /**
+     * The currently selected unit.
+     */
     const [curUnit, setCurUnit] = useState('');
+
+    /**
+     * The currently selected difficulty.
+     */
     const [curDifficulty, setCurDifficulty] = useState(0);
     const [isExpanded, setExpandState] = useState(false);
 
+    /**
+     * Set of completion data.
+     */
+    const [completionData, setCompletionData] = useState(new Set());
+
+    /**
+     * Handles the click event for the lesson component.
+     * @param unitName - The name of the unit.
+     * @param difficulty - The difficulty level.
+     */
     const handleLessonClick = (unitName : string, difficulty : number) => {
         setCurUnit(unitName);
         setCurDifficulty(difficulty);
         setActiveComponent('question');
     };
+
     const currentUrl = window.location.href;
     const logOutUrl = currentUrl.replace("/app", "/logout")
 
+    const handleMilestoneClick = (unitName : string) => {
+        setCurUnit(unitName);
+        setActiveComponent('milestone');
+    };
+
+    /**
+     * Handles the reload action updating the completed lessons.
+     */
+    const handleReload = () => {
+        setActiveComponent('home');
+        fetchCompletionData();
+    }
+
+    /**
+     * Fetches completion data from the server.
+     */
+    async function fetchCompletionData() {
+        const response = await fetch("/completion")
+        const data = await response.json();
+        setCompletionData(new Set(data));
+        console.log(data)
+    }
+
+    /**
+     * Fetches completion data on component mount.
+     */
+    useEffect(() => {
+        fetchCompletionData();
+    }, []);
+ 
     return (
         <>
         {activeComponent === 'home' && 
@@ -86,7 +143,10 @@ const HomePage: React.FC = () => {
                     </div>
                     <div className="checkpoints">
                         <div className="checkpoint1" onClick={() => handleLessonClick("variables", 1)}>
-                            <img src={require("./images/whitestar.png")} alt="whitestar" />
+                            {/* FIX THIS TO NOT HARD CODE */}
+                            {completionData.has("java_variables_1") ? (
+                                <GreenStar/>) : <img src={require("./images/whitestar.png")} alt="whitestar"/> 
+                            }
                         </div>
                         <div className="checkpoint2" onClick={() => handleLessonClick("variables", 2)}>
                             <img src={require("./images/whitestar.png")} alt="whitestar" />
@@ -94,9 +154,8 @@ const HomePage: React.FC = () => {
                         <div className="checkpoint3" onClick={() => handleLessonClick("variables", 3)}>
                             <img src={require("./images/whitestar.png")} alt="whitestar" />
                         </div>
-                        <div className="checkpoint4">
-                            <Link to='/'>
-                            <img src={require("./images/flag.png")} alt="flag" /></Link>
+                        <div className="checkpoint4" onClick={() => handleMilestoneClick("variables")}>
+                            <img src={require("./images/whiteflag.png")} alt="flag" />
                         </div>
                     </div>
                 </div>
@@ -142,7 +201,10 @@ const HomePage: React.FC = () => {
                 </div>
             </div>
         }
-        {activeComponent==='question' && <Question unitName={curUnit} difficulty={curDifficulty} onComplete={() => setActiveComponent('home')}/>}
+        {/* FIX HARD CODE LANGUAGE ONCE IMPLEMENTED */}
+        {activeComponent==='question' && <Question unitName={curUnit} difficulty={curDifficulty} onComplete={() => handleReload()} 
+            complete={completionData.has("java_" + curUnit + "_" + curDifficulty)}/>}
+        {activeComponent==='milestone' && <Milestone unitName={curUnit} onComplete={() => setActiveComponent('home')}/>}
         </>
     );
 };

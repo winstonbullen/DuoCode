@@ -1,6 +1,9 @@
 import React from 'react';
 import './completed.css';
 
+/**
+ * Component for displaying completion message.
+ */
 const completed: React.FC = () => {
     return (
         <div className="complete-container">

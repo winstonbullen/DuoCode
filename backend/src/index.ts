@@ -1,23 +1,21 @@
 import { QuestionContentDB, UserInfoDB } from "./db.js";
 import { UsersDB } from "./usersdb.js";
 import { ContentDB } from "./contentdb.js";
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+
+import express from "express";
+import session from "express-session";
+import MongoStore from "connect-mongo";
 
 import path from "path";
-import express from "express";
-import session from "express-session"; // TODO use a better session store
 import bcrypt from "bcrypt";
 import dotenv from "dotenv";
 
-dotenv.config(); // load .env file
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+dotenv.config(); // load config from .env file
+const db_uri = process.env.MONGODB_INSTANCE as string; // for typescript, cast to string
+const cookie_secret = process.env.COOKIE_SECRET as string;
 
 // needed to make the express-session login examples work with TS, see https://akoskm.com/how-to-use-express-session-with-custom-sessiondata-typescript
 type User = {
-  // id: string,
   name: string,
 }
 declare module "express-session" {
@@ -35,6 +33,10 @@ const content_db: QuestionContentDB = await ContentDB.get_db();
 
 const FRONTEND_BUILD = "../frontend/build/index.html";
 
+// use EJS to render web pages somewhat dynamically
+app.set("view engine", "ejs");
+
+app.set("views", path.resolve("public/views"));
 
 // built in middleware - parses urlencoded and json request bodies into the req.body field
 app.use(express.urlencoded({ extended: false }));
@@ -42,45 +44,53 @@ app.use(express.json());
 
 // express-session middleware
 app.use(session({
-  secret: 'keyboard cat', // TODO read this secret for cookie generation from ENV/more secure location
+  store: MongoStore.create({ mongoUrl: db_uri }),
+  secret: cookie_secret,
   resave: false,
   saveUninitialized: false
 }))
 
+/// Endpoints
+/// For endpoint specification see API.md
 
-// index
+// serve landing page
 app.get("/", (req, res) => {
-  console.log(req.session);
-  if (req.session.user) {
-    console.log("LOG: Got request to index from authenticated user " + req.session.user);
-    // res.send("Hello DuoCode! Index currently has no content. You are authenticated.");
-    res.redirect("/app");
-  } else {
-    console.log("LOG: Got request to index from non-authenticated user");
-    res.sendFile(path.join(__dirname, '../../public/landing.html'));
-  }
+  res.sendFile(path.resolve("public/landing.html"));
 });
 
-
-
-// app
+// serve home page
 app.get("/app", (req, res) => {
   if (req.session.user) {
     res.status(200).sendFile(path.resolve(FRONTEND_BUILD));
   } else {
-    res.status(401).send("Unauthorized");
+    res.render("login", {error: false});
   }
 });
 
+// serve signup page
+app.get("/signup", (req, res) => {
+  if (req.session.user) {
+    res.redirect("/app");
+  } else {
+    res.render("signup", {error: false});
+  }
+});
+
+// serve login page
+app.get("/login", (req, res) => {
+  if (req.session.user) {
+    res.redirect("/app");
+  } else {
+    res.render("login", { error: false });
+  }
+});
 
 // sign up endpoint
 app.post("/signup", async (req, res) => {
   if (!req.body.name || !req.body.password) {
-    res.status(400).send("Bad request");
-    return;
+    return res.render("signup", {error: true});
   }
   const check = await db.get_entry(req.body.name);
-  console.log("Log: signup check " + check);
 
   if (!check) {
     const hash = await bcrypt.hash(req.body.password, 13);
@@ -92,39 +102,27 @@ app.post("/signup", async (req, res) => {
     };
 
     await db.insert_entry(data);
-    res.status(201).send(`
-      <h1>Account created successfully!</h1>
-      <button onclick="window.location.href='/login.html'">Go to login page</button>
-    `);
+    return res.render("login", {error: false});
   } else {
-    res.type("text/plain").status(400).send("User already exists");
+    return res.render("signup", {error: true});
   }
 });
-
-
-
-// express-session code from the examples at https://www.npmjs.com/package/express-session
 
 // log in endppoint - authenticate and then create session
 app.post("/login", async (req, res, next) => {
   if (!req.body.name || !req.body.password) {
-    res.status(400).send("Bad request");
-    return;
+    return res.render("login", { error: true });
   }
   const check = await db.get_entry(req.body.name);
-  console.log("user body name and user " + req.body.name + " - " + req.body.user);
-  console.log("check is " + JSON.stringify(check));
 
   if (!check) {
-    res.send("wrong username"); // TODO bad practice to let users know why the login fails
-    return;
+    return res.render("login", { error: true });
   }
 
   const isValid = await bcrypt.compare(req.body.password, check.pass_hash);
 
   if (!isValid) {
-    res.status(400).send("Incorrect password");
-    return;
+    return res.render("login", { error: true });
   }
 
   // regenerate the session, which is good practice to help
@@ -133,25 +131,19 @@ app.post("/login", async (req, res, next) => {
     if (err) next(err);
 
     // store user information in session, just name for now
-    // TODO if we move to db with user IDs (like relational, store id here to easily
-    //      get the user db entry when they make requests after being logged in)
     req.session.user = { name: req.body.name };
-    console.log("User logged in, their session is now " + req.session.user);
 
     // save the session before redirection to ensure page
     // load does not happen before session is saved
     req.session.save(function (err) {
       if (err) return next(err);
-      res.redirect("/app"); // TODO this sets the cookie on the response, but manually sending a response doesn't
+      res.redirect("/app");
     })
   })
 });
 
-
 // log out endpoint - end session
 app.get('/logout', (req, res, next) => {
-  // logout logic
-
   // clear the user from the session object and save.
   // this will ensure that re-using the old session id
   // does not have a logged in user
@@ -168,20 +160,18 @@ app.get('/logout', (req, res, next) => {
   })
 });
 
-
+// content endpoint with route parameters to specify content
 app.get("/content/:language/:subject/:type/:difficulty/:id", async (req, res) => {
-  console.log(req.params);
 
   try {
     let question_json = await content_db.get_question(req.params);
     res.status(200).send(question_json);
   } catch (error: any) {
-    res.status(500).send(error.message); // TODO don't actually send the error message to user
+    res.status(500).send(error.message);
   }
 });
 
-
-
+// read the user's completion list
 app.get("/completion", async (req, res) => {
   if (req.session.user) {
     res.status(200).send((await db.get_entry(req.session.user.name)).completed);
@@ -190,6 +180,7 @@ app.get("/completion", async (req, res) => {
   }
 });
 
+// append to the user's completion list
 app.post("/completion", async (req, res) => {
   if (req.session.user) {
     if (!req.body.language || !req.body.subject) {
@@ -205,11 +196,14 @@ app.post("/completion", async (req, res) => {
   }
 });
 
+// Static files - content also available through walking file path (discouraged since content also now hosted
+// on mongodb instance)
 app.use("/content", express.static("../content"));
 app.use(express.static("public"));
 app.use("/app", express.static("../frontend/build"));
+
+// Needed to make the frontend work with React Router
 app.use("/*", (req, res) => {
-  console.error("Unknown endpoint was hit, sending app");
   res.redirect("/app");
 });
 
@@ -218,6 +212,8 @@ app.listen(PORT, () => {
   console.log(`DuoCode server started on port ${PORT}...`)
 });
 
+// Close existing connections to MongoDB
 process.on("exit", async () => {
   await ContentDB.close();
+  await UsersDB.close();
 });
