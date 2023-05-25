@@ -55,6 +55,9 @@ const ShortAnswer: React.FC<ShortAnswerProps> = ({solution, updateSolution, subm
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    /**
+     * Sets the solution when new question is loaded.
+     */
     useEffect(() => {
         updateSolution(shortAnswerData.correct_answer)
         // eslint-disable-next-line react-hooks/exhaustive-deps

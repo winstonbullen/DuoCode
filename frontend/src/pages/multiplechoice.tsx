@@ -94,6 +94,9 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({solution, updateSolution
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [question]);
 
+    /**
+     * Sets the solution when new question is loaded.
+     */
     useEffect(() => {
         updateSolution(question.correct_answer)
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -151,7 +154,7 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({solution, updateSolution
                     <p className="multiple-choice-prompt">{question.prompt}</p>
                     <div className="multiple-choice-options">
                         {options.map((option, index) => (
-                            <label key={index} className="multiple-choice-label">
+                            <label key={index} className="multiple-choice-label" style={selectedOption === option.text ? { border: '3px solid #0096FF' } : {}}>
                                 <input
                                     type="radio"
                                     value={option.text}

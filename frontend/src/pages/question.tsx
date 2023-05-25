@@ -70,10 +70,17 @@ const Question: React.FC<QuestionProps> = ({unitName, difficulty, onComplete, co
             }
         } 
     };
+
+    /**
+     * Handles whether solution appears after clicking solution button
+     */
     const handleSolutionClick = (): void => {
         setshowSolution(!showSolution)
     };
 
+    /**
+     * Changes solution to the current question's solution
+     */
     const updateSolution = (newSolution: string) => {
         setSolution(newSolution);
     };

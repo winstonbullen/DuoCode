@@ -75,6 +75,9 @@ const DragDrop: React.FC<DragDropProps> = ({solution, updateSolution, submitRef,
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    /**
+     * Sets the solution when new question is loaded.
+     */
     useEffect(() => {
         updateSolution(originalOrdering.join(" "))
         // eslint-disable-next-line react-hooks/exhaustive-deps
