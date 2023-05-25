@@ -8,12 +8,12 @@
 
 2. Progress
 
-    - 
+    - Front end implemented basic completion logic and corresponding UI updates. Some minor UI enhancements were also made to polish the website. Back end removed a memory leak in the API and added in-code documentation via comments.
 
 
 3. Next Week's Agenda
 
-    - 
+    - Front end will fully implement completion logic for all lessons and fully define the criteria to complete a problem. Some UI updates will also be made, including the menu and lesson buttons. General improvements according to peer review will also be made.
 
 ## Team Member Contributions
 
