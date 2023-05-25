@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './dnd.css';
 
+/**
+ * Interface representing the drag and drop data.
+ */
 type dragDrop = {
     language: string;
     subject: string;
@@ -19,7 +22,9 @@ const emptyDragDrop: dragDrop = {
     correct_ordering: [],
 };
 
-
+/**
+ * Interface representing a draggable item.
+ */
 type DragItem = {
     id: string;
     text: string;

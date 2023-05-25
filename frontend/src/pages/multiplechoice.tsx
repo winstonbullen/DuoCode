@@ -91,7 +91,7 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({solution, updateSolution
      */
     useEffect(() => {
         setOptions(getShuffledOptions());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [question]);
 
     /**

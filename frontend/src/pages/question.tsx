@@ -30,7 +30,9 @@ const Question: React.FC<QuestionProps> = ({unitName, difficulty, onComplete, co
      * The current progress of the quiz.
      */
     const [currentProgress, setCurrentProgress] = useState(0);
+
     const [solution, setSolution] = useState('No Solution Available');
+
     const [showSolution, setshowSolution] = useState(false);
 
     /**
@@ -68,7 +70,7 @@ const Question: React.FC<QuestionProps> = ({unitName, difficulty, onComplete, co
             } else {
                 console.log("already completed lesson");
             }
-        } 
+        }
     };
 
     /**
