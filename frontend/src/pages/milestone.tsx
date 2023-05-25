@@ -1,43 +1,26 @@
 import React, { useRef, useState }from 'react';
 import './question.css';
-
 import CloseBtn from '../components/CloseBtn'
 import ProgressBar from '../components/ProgressBar';
 import ShortAnswer from './shortanswer';
-import MultipleChoice from './multiplechoice';
-import DragDrop from './dnd';
 import Completed from './completed';
 
 
-interface QuestionProps {
+interface MilestoneProps {
     unitName: string;
-    difficulty: number;
     onComplete: () => void;
-    complete: boolean;
 }
 
-/**
- * Question component.
- * Wraps all the different types of questions.
- */
-const Question: React.FC<QuestionProps> = ({unitName, difficulty, onComplete, complete} : QuestionProps) => {
-    /**
-     * The current question number.
-     */
+
+
+const Milestone: React.FC<MilestoneProps> = ({unitName, onComplete} : MilestoneProps) => {
     const [currentQ, setCurrentQ] = useState<number>(1);
-
-    /**
-     * The current progress of the quiz.
-     */
     const [currentProgress, setCurrentProgress] = useState(0);
-
     const [solution, setSolution] = useState('No Solution Available');
-
     const [showSolution, setshowSolution] = useState(false);
+    console.log(unitName);
 
-    /**
-     * Creates ref to handle question submission.
-     */
+    // create ref to submit question-content
     const submitRef = useRef<HTMLButtonElement>(null);
     const handleSubmitRef = () => {
         if (submitRef.current) {
@@ -45,51 +28,27 @@ const Question: React.FC<QuestionProps> = ({unitName, difficulty, onComplete, co
         }
     };
 
-    /**
-     * Handle swapping to the next question and on completion of lesson
-     * post completion to backend api.
-     */
+    // swap question for next one
     const handleNextQ = () => {
-        setCurrentQ(currentQ + 1);
-        setCurrentProgress(currentProgress + 33.33333);
-        setshowSolution(false)
-
-        if (currentQ === 3) {
-            async function fetchData() {
-                const requestOptions = {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    // CHANGE TO LANGUAGE PASSED AS PROP ONCE LANGUAGES ARE IMPLEMENTED
-                    body: JSON.stringify({ language : 'java', subject : unitName, level : difficulty})
-                };
-                const response = await fetch('/completion/', requestOptions);
-                console.log(response);
-            }
-            if (!complete) {
-                fetchData();
-            } else {
-                console.log("already completed lesson");
-            }
+        if (currentQ === 4) {
+            setshowSolution(false)
+            setCurrentQ(1)
+            setCurrentProgress(0);
+        } else {
+            setshowSolution(false)
+            setCurrentQ(currentQ + 1);
+            setCurrentProgress(currentProgress + 33.33333);
         }
     };
 
-    /**
-     * Handles whether solution appears after clicking solution button
-     */
     const handleSolutionClick = (): void => {
         setshowSolution(!showSolution)
     };
 
-    /**
-     * Changes solution to the current question's solution
-     */
     const updateSolution = (newSolution: string) => {
         setSolution(newSolution);
     };
 
-    /**
-     * Sends prop indicating lesson completion to homepage.
-     */
     const handleComplete = () => {
         onComplete();
     }
@@ -106,9 +65,9 @@ const Question: React.FC<QuestionProps> = ({unitName, difficulty, onComplete, co
                 </div>
             </div>
             <div className='question-content'>
-                {currentQ === 1 && <MultipleChoice solution={solution} updateSolution={updateSolution} unit={unitName} difficulty={difficulty} submitRef={submitRef} />}
-                {currentQ === 2 && <DragDrop solution={solution} updateSolution={updateSolution} unit={unitName} difficulty={difficulty} submitRef={submitRef} />}
-                {currentQ === 3 && <ShortAnswer solution={solution} updateSolution={updateSolution} unit={unitName} difficulty={difficulty} submitRef={submitRef} />}
+                {currentQ === 1 && <ShortAnswer  solution={solution} updateSolution={updateSolution} unit={unitName} difficulty={1} submitRef={submitRef} />}
+                {currentQ === 2 && <ShortAnswer  solution={solution} updateSolution={updateSolution} unit={unitName} difficulty={2} submitRef={submitRef} />}
+                {currentQ === 3 && <ShortAnswer  solution={solution} updateSolution={updateSolution} unit={unitName} difficulty={3} submitRef={submitRef} />}
                 {currentQ === 4 && <Completed />}
             </div>
             <div className="question-footer">
@@ -138,4 +97,4 @@ const Question: React.FC<QuestionProps> = ({unitName, difficulty, onComplete, co
     );
 };
 
-export default Question;
+export default Milestone;

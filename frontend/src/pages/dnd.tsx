@@ -34,33 +34,31 @@ interface DragDropProps {
     submitRef : React.RefObject<HTMLButtonElement>;
     unit: string
     difficulty: number
+    solution: string
+    updateSolution: (newValue: string) => void
 }
 
 /**
  * Drag and Drop component.
  * Renders a drag and drop interaction with a prompt and draggable items.
  */
-const DragDrop: React.FC<DragDropProps> = ({submitRef, unit, difficulty}) => {
+const DragDrop: React.FC<DragDropProps> = ({solution, updateSolution, submitRef, unit, difficulty}) => {
     /**
      * State variables for drag and drop functionality.
      */
     const [dragDrop, setDragDrop] = useState<dragDrop>(emptyDragDrop);
-
     /**
      * The currently dragging element.
      */
     const [draggingElement, setDraggingElement] = useState<HTMLElement | null>(null);
-
     /**
      * Flag indicating whether to show the result.
      */
     const [showResult, setShowResult] = useState<boolean>(false);
-
     /**
      * Flag indicating whether the ordering is correct.
      */
     const [isCorrect, setIsCorrect] = useState<boolean>(false);
-
     /**
      * The original ordering of the elements.
      */
@@ -83,10 +81,19 @@ const DragDrop: React.FC<DragDropProps> = ({submitRef, unit, difficulty}) => {
     }, []);
 
     /**
+     * Sets the solution when new question is loaded.
+     */
+    useEffect(() => {
+        updateSolution(originalOrdering.join(" "))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [originalOrdering]);
+
+    /**
      * Handles the drag start event for an item.
      * @param event - The drag event.
      * @param item - The item being dragged.
      */
+
     const handleDragStart = (event: React.DragEvent<HTMLElement>, item: DragItem) => {
         setDraggingElement(event.currentTarget);
         event.dataTransfer!.setData('text/plain', item.id);

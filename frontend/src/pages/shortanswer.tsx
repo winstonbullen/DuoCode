@@ -5,6 +5,8 @@ interface ShortAnswerProps {
     submitRef : React.RefObject<HTMLButtonElement>;
     unit: string
     difficulty: number
+    solution: string
+    updateSolution: (newValue: string) => void
 }
 
 /**
@@ -28,11 +30,12 @@ const emptyShortAnswerData: shortAnswerData = {
     correct_answer: '',
 };
 
+
 /**
  * Short Answer component.
  * Renders a short answer component that allows free response.
  */
-const ShortAnswer: React.FC<ShortAnswerProps> = ({submitRef, unit, difficulty}) => {
+const ShortAnswer: React.FC<ShortAnswerProps> = ({solution, updateSolution, submitRef, unit, difficulty}) => {
     /**
      * Tracks the short answer data.
      */
@@ -51,6 +54,14 @@ const ShortAnswer: React.FC<ShortAnswerProps> = ({submitRef, unit, difficulty}) 
         fetchData();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    /**
+     * Sets the solution when new question is loaded.
+     */
+    useEffect(() => {
+        updateSolution(shortAnswerData.correct_answer)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [shortAnswerData]);
 
     /**
      * Tracks text written.

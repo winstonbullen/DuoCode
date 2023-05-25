@@ -37,13 +37,16 @@ interface MultipleChoiceProps {
     submitRef : React.RefObject<HTMLButtonElement>;
     unit: string
     difficulty: number
+    solution: string
+    updateSolution: (newValue: string) => void
 }
+
 
 /**
  * Multiple Choice component.
  * Renders a multiple choice question with multiple options to select.
  */
-const MultipleChoice: React.FC<MultipleChoiceProps> = ({submitRef, unit, difficulty}) => {
+const MultipleChoice: React.FC<MultipleChoiceProps> = ({solution, updateSolution, submitRef, unit, difficulty}) => {
     /**
      * The currently displayed question.
      */
@@ -88,6 +91,14 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({submitRef, unit, difficu
      */
     useEffect(() => {
         setOptions(getShuffledOptions());
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [question]);
+
+    /**
+     * Sets the solution when new question is loaded.
+     */
+    useEffect(() => {
+        updateSolution(question.correct_answer)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [question]);
 
@@ -143,19 +154,20 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({submitRef, unit, difficu
                     <p className="multiple-choice-prompt">{question.prompt}</p>
                     <div className="multiple-choice-options">
                         {options.map((option, index) => (
-                            <label key={index} className="multiple-choice-label">
+                            <label key={index} className="multiple-choice-label" style={selectedOption === option.text ? { border: '3px solid #0096FF' } : {}}>
                                 <input
                                     type="radio"
                                     value={option.text}
                                     checked={selectedOption === option.text}
                                     onChange={handleOptionChange}
+                                    className="multiplechoice-option"
                                 />
                                 {option.text}
                             </label>
                         ))}
                     </div>
                     <button ref={ submitRef } type="submit" className="" style={{ display: 'none' }}>
-                        Submit
+                        Solution
                     </button>
                 </form>
             </div>
