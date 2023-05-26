@@ -187,5 +187,7 @@
 }
 
 .valid-reqs ul {
-    margin-left: 20px;
+    margin-left: 7%;
+    list-style-type: none;
+    text-align: left;
 }
