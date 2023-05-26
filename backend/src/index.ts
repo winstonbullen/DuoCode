@@ -58,6 +58,11 @@ app.get("/", (req, res) => {
   res.sendFile(path.resolve("public/landing.html"));
 });
 
+// serve help page
+app.get("/help", (req, res) => {
+  res.sendFile(path.resolve("public/help.html"));
+});
+
 // serve home page
 app.get("/app", (req, res) => {
   if (req.session.user) {

@@ -6,6 +6,10 @@
 - Method: `GET`
 - returns placeholder text which is different depending on if the user is authenticated
 
+#### `/help` - testing endpoint
+- Method: `GET`
+- returns the help page detailing the user guide
+
 #### `/app` - the app itself
 - Method: `GET`
 - returns the app's web content!
