@@ -2,11 +2,11 @@
 
 ### For DuoCode Server
 
-#### `/` - testing endpoint
+#### `/` - landing page endpoint
 - Method: `GET`
-- returns placeholder text which is different depending on if the user is authenticated
+- returns the landing page detailing basic web app information
 
-#### `/help` - testing endpoint
+#### `/help` - help page endpoint
 - Method: `GET`
 - returns the help page detailing the user guide
 
