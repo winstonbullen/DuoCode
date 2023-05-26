@@ -196,6 +196,15 @@ app.post("/completion", async (req, res) => {
   }
 });
 
+// return information about the current user, currently just the user's name
+app.get("/userinfo", (req, res) => {
+  if (req.session.user) {
+    res.status(200).json({ user: req.session.user.name });
+  } else {
+    return res.status(401).send("Unauthorized");
+  }
+});
+
 // Static files - content also available through walking file path (discouraged since content also now hosted
 // on mongodb instance)
 app.use("/content", express.static("../content"));
