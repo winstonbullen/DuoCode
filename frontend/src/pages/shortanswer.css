@@ -83,3 +83,15 @@ input::placeholder{
     border-bottom: 3px solid lightgrey;
     margin-top: 30%;
 }
+
+.formatting-prompt {
+    text-align: center;
+    font-family: Nunito, serif;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+#format-tip:link, #format-tip:visited, #format-tip:hover, #format-tip:active {
+    color: #0096FF;
+    text-decoration: none;
+}
