@@ -31,6 +31,7 @@ const HomePage: React.FC = () => {
      * The currently selected difficulty.
      */
     const [curDifficulty, setCurDifficulty] = useState(0);
+    const [isExpanded, setExpandState] = useState(false);
 
     /**
      * Set of completion data.
@@ -47,6 +48,9 @@ const HomePage: React.FC = () => {
         setCurDifficulty(difficulty);
         setActiveComponent('question');
     };
+
+    const currentUrl = window.location.href;
+    const logOutUrl = currentUrl.replace("/app", "/logout")
 
     const handleMilestoneClick = (unitName : string) => {
         setCurUnit(unitName);
@@ -82,40 +86,54 @@ const HomePage: React.FC = () => {
         <>
         {activeComponent === 'home' && 
             <div className="container">
-                <div className="sidebar">
-                    <div className="duocode-title">
+                <nav className={isExpanded ? "sidebar" : "sidebar sidebar-close"}>
+                    <header>
                         <h2>DuoCode</h2>
+                        <i className="bx bx-chevron-right toggle" onClick={() => setExpandState(!isExpanded)}></i>
+                    </header>
+                    <div className="user-account">
+                        <Link to='/'>
+                        <img src={require("./images/account.png")} alt="account" />
+                        </Link>
+                        <span className="text nav-text">CoolCoder123</span>
                     </div>
-                    <div className="navbar-links">
-                        <ul>
-                            <li>
-                            <Link to="/">
-                            <img src={require("./images/learn.png")} alt="learn" /></Link>
-                            <p>Learn</p>
+                    <div className="menu-section">
+                        <div className="menu">
+                        <ul className="menu-links">
+                            <li className="nav-link">
+                            <Link to='/'>
+                                <img src={require("./images/learn.png")} alt="learn" />
+                                <span className="text nav-text">Learn</span>
+                            </Link>
                             </li>
-                            <li>
-                            <Link to="/">
-                            <img src={require("./images/shop.png")} alt="shop" /></Link>
-                            <p>Shop</p>
+                            <li className="nav-link">
+                            <Link to='/'>
+                                <img src={require("./images/shop.png")} alt="shop" />
+                                <span className="text nav-text">Shop</span>
+                            </Link>
                             </li>
-                            <li>
-                            <Link to="/">
-                            <img src={require("./images/profile.png")} alt="profile" /></Link>
-                            <p>Profile</p>
+                            <li className="nav-link">
+                            <Link to='/'>
+                                <img src={require("./images/profile.png")} alt="profile" />
+                                <span className="text nav-text">Profile</span>
+                            </Link>
                             </li>
-                            <li>
-                            <Link to="/">
-                            <img src={require("./images/more.png")} alt="more" /></Link>
-                            <p>More</p>
+                            <li className="nav-link">
+                            <Link to='/'>
+                                <img src={require("./images/more.png")} alt="more" />
+                                <span className="text nav-text">More</span>
+                            </Link>
                             </li>
                         </ul>
+                        </div>
+                        <div className="bottom-section">
+                        <Link to={logOutUrl}>
+                            <img src={require("./images/logout.png")} alt="logout" />
+                            <span className="text nav-text">Logout</span>
+                        </Link>
+                        </div>
                     </div>
-                    <div className="account">
-                        <h3><img src={require("./images/account.png")} alt="account" />CoolCoder123</h3>
-                    </div>
-                </div>
-                <div className="grayline" style={{ background: 'lightgrey', width: '.3vh', marginLeft: '24.7%', height: '100vh' }}>
-                </div>
+                </nav>
                 <div className="middlepane">
                 <div className="unit1-container">
                     <div className="unit1">
