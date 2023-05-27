@@ -204,7 +204,8 @@ const HomePage: React.FC = () => {
         {/* FIX HARD CODE LANGUAGE ONCE IMPLEMENTED */}
         {activeComponent==='question' && <Question unitName={curUnit} difficulty={curDifficulty} onComplete={() => handleReload()} 
             complete={completionData.has("java_" + curUnit + "_" + curDifficulty)}/>}
-        {activeComponent==='milestone' && <Milestone unitName={curUnit} onComplete={() => setActiveComponent('home')}/>}
+        {activeComponent==='milestone' && <Milestone unitName={curUnit} onComplete={() => setActiveComponent('home')}
+            complete={completionData.has("java_" + curUnit)}/>}
         </>
     );
 };
