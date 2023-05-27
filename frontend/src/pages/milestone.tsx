@@ -27,7 +27,10 @@ const Milestone: React.FC<MilestoneProps> = ({unitName, onComplete, complete} : 
         }
     };
 
-    // swap question for next one
+    /**
+     * Handle swapping to the next question and on completion of milestone
+     * post completion to backend api.
+     */
     const handleNextQ = () => {
         setshowSolution(false)
         setCurrentQ(currentQ + 1);
