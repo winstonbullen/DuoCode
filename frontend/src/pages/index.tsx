@@ -142,11 +142,9 @@ const HomePage: React.FC = () => {
                         <p className="variables">Variables</p>
                     </div>
                     <div className="checkpoints">
-                        <div className="checkpoint1" onClick={() => handleLessonClick("variables", 1)}>
-                            {/* FIX THIS TO NOT HARD CODE */}
-                            {completionData.has("java_variables_1") ? (
-                                <GreenStar/>) : <img src={require("./images/whitestar.png")} alt="whitestar"/> 
-                            }
+                        <div className="checkpoint1" onClick={() => handleLessonClick("variables", 1)}
+                            style = {completionData.has("java_variables_1") ? {backgroundColor : '#0ADD08'} : {}}>
+                            <img src={require("./images/whitestar.png")} alt="whitestar"/> 
                         </div>
                         <div className="checkpoint2" onClick={() => handleLessonClick("variables", 2)}>
                             <img src={require("./images/whitestar.png")} alt="whitestar" />
@@ -201,6 +199,7 @@ const HomePage: React.FC = () => {
                 </div>
             </div>
         }
+        
         {/* FIX HARD CODE LANGUAGE ONCE IMPLEMENTED */}
         {activeComponent==='question' && <Question unitName={curUnit} difficulty={curDifficulty} onComplete={() => handleReload()} 
             complete={completionData.has("java_" + curUnit + "_" + curDifficulty)}/>}
