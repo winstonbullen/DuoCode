@@ -4,7 +4,7 @@
 
 #### `/` - landing page endpoint
 - Method: `GET`
-- returns the landing page detailing basic web app information
+- returns the login page if the user if not logged in, otherwise the app
 
 #### `/help` - help page endpoint
 - Method: `GET`
