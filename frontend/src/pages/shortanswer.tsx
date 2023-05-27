@@ -108,6 +108,8 @@ const ShortAnswer: React.FC<ShortAnswerProps> = ({solution, updateSolution, subm
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="short-answer-input" className="short-answer-prompt">{shortAnswerData.prompt}</label>
                     <input autoComplete="off" placeholder="Type your code here..." id="short-answer-input" type="text" value={text} onChange={(e) => setText(e.target.value)} className="short-answer-input" />
+                    <br></br>
+                    <div className="formatting-prompt">Please be sure to follow the <a id="format-tip" href="/help#short-response-format" target="_blank" rel="noopener noreferrer">formatting guide</a>.</div>
                     <button ref={ submitRef } type="submit" style={{ display: 'none' }}>Submit</button>
                 </form>
             )}

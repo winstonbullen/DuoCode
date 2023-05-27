@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="landing.css">
+
+    <link rel="icon" href="./images/favicon.ico" />
+    <title>DuoCode</title>
+</head>
+<body>
+    <h1>DuoCode Help</h1>
+    <h2>Accounts</h2>
+    Accounts are necessary to track user progress. Please <a href="/signup" target="_blank" rel="noopener noreferrer">Sign up</a> to be able to <a href="/login" target="_blank" rel="noopener noreferrer">Sign in</a> and get started! After signing in, you will be directed to the <a href="#homepage">Homepage</a>.<br>
+
+    <h2>Content</h2>
+    <h3 id="homepage">Homepage</h3>
+    <img src="./images/homepage.png" alt="Homepage Image"><br>
+    The homepage is where the magic happens. It contains all of the content. This primarily includes <a href="#units">Units</a>, but also features a menu on the left-hand side, your daily challenge on the right-hand side, and a language select.<br>
+
+    <h3 id="units">Units</h3>
+    <img src="./images/unit.png" alt="Unit Image"><br>
+    Each unit is a subject in your selected programming language. For example, the first unit in Java teaches you how to declare variables, which are the building blocks of code. Units are comprised of three <a href="#lessons">Lessons</a> and one <a href="#milestones">Milestones</a>.<br>
+
+    <h3 id="lessons">Lessons</h3>
+    <img src="./images/lesson.png" alt="Lesson Image"><br>
+    Lessons are ordered by difficulty level under each unit. Each lesson is a set of practice questions at its difficulty level. These questions will be one <a href="#multiple-choice">Multiple Choice</a>, followed by a <a href="#drag-drop">Drag & Drop</a>, followed by a <a href="#short-response">Short Response</a>.<br>
+
+    <h3 id="milestones">Milestones</h3>
+    <img src="./images/milestone.png" alt="Milestone Image"><br>
+    Milestones are the final boss of a unit. There is only one per unit, as they represent the cumulative content of that unit. They are comprised of three <a href="#short-response">Short Response</a> questions of varying difficulty.<br>
+
+    <h2>Questions</h2>
+    <h3 id="multiple-choice">Multiple Choice</h3>
+    <img src="./images/multiplechoice.png" alt="Multiple Choice Image"><br>
+    Multiple Choice questions are exactly what you expect. You are presented with a list of four answer choices to the given prompt, and only one of them will be correct. Try your best to select the correct choice and submit!<br>
+
+    <h3 id="drag-drop">Drag & Drop</h3>
+    <img src="./images/dragdrop.png" alt="Drag & Drop Image"><br>
+    Drag & Drop questions are a bit trickier. You are presented with a list of code blocks that you must drag into the correct order according to the given prompt. Try your best to arrange the correct ordering and submit!<br>
+
+    <h3 id="short-response">Short Response</h3>
+    <img src="./images/shortresponse.png" alt="Short Response Image"><br>
+    Short Response questions are the hardest. You are presented with an empty text box to type in a correct answer to the given prompt. Try your best to write the desired code and submit!<br>
+    
+    <h4 id="short-response-format">Short Response Formatting</h4>
+    <a href="#short-response">Short Response</a> questions assume a certain whitespace style. In code, spacing between keywords is often flexible and is referred to as whitespace. However, our validator requires <Strong>one space between keywords and operators (except for semi-colons)</Strong>.<br>
+    <br>
+    The whitespace style in <a href="#multiple-choice">Multiple Choice</a> questions follow these requirements exactly. It is easiest to simply mimick the style of these options when it comes time to do a <a href="#short-response">Short Response</a> question.<br>
+    <br>
+    For example, the correct answer to a question might be <Strong>int foo = 1;</Strong>. The following answers might technically be correct, but they violate the whitespace style and thus our validator will mark them as <Strong>incorrect</Strong>.<br>
+    <ul>
+        <li><Strong>int foo= 1;</Strong></li>
+        <li><Strong>int foo =1;</Strong></li>
+        <li><Strong>int foo=1;</Strong></li>
+        <li><Strong>int foo = 1 ;</Strong></li>
+    </ul>
+    <br>
+</body>
+
+</html>
