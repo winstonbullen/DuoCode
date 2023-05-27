@@ -16,39 +16,35 @@
     display: flex;
 }
 
-#content-text {
-    text-align: center;
-    width: 80%;
-}
-
-#title {
+.title {
     font-family: Viga, serif;
     font-size: 700%;
     text-align: center;
     color: #0096FF;
 }
 
-#info {
+.info {
     font-size: 200%;
     text-align: center;
     font-family: Nunito, serif;
 }
 
-#info a:link, a:visited, a:hover, a:active {
+.info a:link, a:visited, a:hover, a:active {
     color: #0096FF;
     text-decoration: none;
 }
 
-.login-page-container #title-section {
+.login-page-container .title-section {
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    width: 50%;
+    width: 40%;
     height: 100%;
+    margin-left: 10%;
 }
 
-.login-page-container #title-section img {
+.login-page-container .title-section img {
     position: absolute;
     top: 0;
     left: 0;
@@ -59,10 +55,10 @@
 
 .login-page-container .login {
     display: flex;
-    width: 50%;
-    height: 100%;
+    width: 40%;
     justify-content: center;
     align-items: center;
+    margin-right: 10%;
 }
 
 .login-page-container .login .form {
@@ -165,7 +161,7 @@
 }
 
 @media (max-width: 768px) {
-    .login-page-container #title-section {
+    .login-page-container .title-section {
         position: absolute;
         left: 0;
         top: 0;
