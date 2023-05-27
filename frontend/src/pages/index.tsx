@@ -146,13 +146,16 @@ const HomePage: React.FC = () => {
                             style = {completionData.has("java_variables_1") ? {backgroundColor : '#0ADD08'} : {}}>
                             <img src={require("./images/whitestar.png")} alt="whitestar"/> 
                         </div>
-                        <div className="checkpoint2" onClick={() => handleLessonClick("variables", 2)}>
+                        <div className="checkpoint2" onClick={() => handleLessonClick("variables", 2)}
+                            style = {completionData.has("java_variables_2") ? {backgroundColor : '#0ADD08'} : {}}>
                             <img src={require("./images/whitestar.png")} alt="whitestar" />
                         </div>
-                        <div className="checkpoint3" onClick={() => handleLessonClick("variables", 3)}>
+                        <div className="checkpoint3" onClick={() => handleLessonClick("variables", 3)}
+                            style = {completionData.has("java_variables_3") ? {backgroundColor : '#0ADD08'} : {}}>
                             <img src={require("./images/whitestar.png")} alt="whitestar" />
                         </div>
-                        <div className="checkpoint4" onClick={() => handleMilestoneClick("variables")}>
+                        <div className="checkpoint4" onClick={() => handleMilestoneClick("variables")}
+                            style = {completionData.has("java_variables") ? {backgroundColor : '#0ADD08'} : {}}>
                             <img src={require("./images/whiteflag.png")} alt="flag" />
                         </div>
                     </div>
