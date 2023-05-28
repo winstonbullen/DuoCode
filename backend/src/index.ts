@@ -53,9 +53,13 @@ app.use(session({
 /// Endpoints
 /// For endpoint specification see API.md
 
-// serve landing page
+// serve login landing page if not logged in, serve the app if logged in
 app.get("/", (req, res) => {
-  res.sendFile(path.resolve("public/landing.html"));
+  if (req.session.user) {
+    res.redirect("/app");
+  } else {
+    res.render("login", {error: false});
+  }
 });
 
 // serve help page
