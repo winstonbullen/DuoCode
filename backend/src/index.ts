@@ -199,7 +199,7 @@ app.post("/completion", async (req, res) => {
 // return information about the current user, currently just the user's name
 app.get("/userinfo", (req, res) => {
   if (req.session.user) {
-    res.status(200).json({ user: req.session.user.name });
+    return res.status(200).json({ user: req.session.user.name });
   } else {
     return res.status(401).send("Unauthorized");
   }
