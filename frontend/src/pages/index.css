@@ -143,6 +143,7 @@
     margin-top: 10px;
     display: flex;
     align-items: center;
+    text-decoration: none;
 }
 
 .sidebar li img {
@@ -196,7 +197,7 @@
 }
 
 
-  
+
   /*.sidebar h2 {
     font-family: Viga, serif;
     font-size: 50px;
@@ -247,7 +248,7 @@
   .account p {
     margin-left: 20px;
   }*/
-  
+
   .middlepane {
     height: 155vh;
     position: absolute;
@@ -298,7 +299,7 @@
     font-family: Nunito, serif;
     font-size: 15px;
   }
-  
+
   .variables {
     position: absolute;
     margin-top: 45px;
@@ -375,7 +376,7 @@
     margin-left: 15px;
     font-family: Nunito, serif;
   }
-  
+
   .operators {
     position: absolute;
     margin-top: 45px;
@@ -429,7 +430,7 @@
     margin-left: 40%;
     box-shadow: 3px 3px 8px #858585;
   }
-  
+
   .rightpane {
     position: fixed;
     margin-left: 75%;
@@ -484,7 +485,7 @@
     height: 20px;
     border: 1px solid #0096FF;
   }
-  
+
   .rightpane .language {
     margin-left: 100px;
     margin-top: 10px;
@@ -518,12 +519,12 @@
   .middlepane {
     font-size: 20px;
   }
-  
-  
+
+
   body {
     margin: 0!important;
   }
-  
+
   .d-flex {
     display: flex;
   }
