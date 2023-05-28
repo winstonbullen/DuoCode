@@ -51,6 +51,7 @@ const HomePage: React.FC = () => {
 
     const currentUrl = window.location.href;
     const logOutUrl = currentUrl.replace("/app", "/logout")
+    const helpUrl = currentUrl.replace("/app", "/help")
 
     const handleMilestoneClick = (unitName : string) => {
         setCurUnit(unitName);
@@ -107,21 +108,9 @@ const HomePage: React.FC = () => {
                             </Link>
                             </li>
                             <li className="nav-link">
-                            <Link to='/'>
-                                <img src={require("./images/shop.png")} alt="shop" />
-                                <span className="text nav-text">Shop</span>
-                            </Link>
-                            </li>
-                            <li className="nav-link">
-                            <Link to='/'>
-                                <img src={require("./images/profile.png")} alt="profile" />
-                                <span className="text nav-text">Profile</span>
-                            </Link>
-                            </li>
-                            <li className="nav-link">
-                            <Link to='/'>
-                                <img src={require("./images/more.png")} alt="more" />
-                                <span className="text nav-text">More</span>
+                            <Link to={helpUrl} target="_blank" rel="noopener noreferrer">
+                                <img src={require("./images/help.png")} alt="help" />
+                                <span className="text nav-text">Help</span>
                             </Link>
                             </li>
                         </ul>
