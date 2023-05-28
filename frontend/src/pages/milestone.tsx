@@ -9,11 +9,10 @@ import Completed from './completed';
 interface MilestoneProps {
     unitName: string;
     onComplete: () => void;
+    complete: boolean;
 }
 
-
-
-const Milestone: React.FC<MilestoneProps> = ({unitName, onComplete} : MilestoneProps) => {
+const Milestone: React.FC<MilestoneProps> = ({unitName, onComplete, complete} : MilestoneProps) => {
     const [currentQ, setCurrentQ] = useState<number>(1);
     const [currentProgress, setCurrentProgress] = useState(0);
     const [solution, setSolution] = useState('No Solution Available');
@@ -28,16 +27,31 @@ const Milestone: React.FC<MilestoneProps> = ({unitName, onComplete} : MilestoneP
         }
     };
 
-    // swap question for next one
+    /**
+     * Handle swapping to the next question and on completion of milestone
+     * post completion to backend api.
+     */
     const handleNextQ = () => {
-        if (currentQ === 4) {
-            setshowSolution(false)
-            setCurrentQ(1)
-            setCurrentProgress(0);
-        } else {
-            setshowSolution(false)
-            setCurrentQ(currentQ + 1);
-            setCurrentProgress(currentProgress + 33.33333);
+        setshowSolution(false)
+        setCurrentQ(currentQ + 1);
+        setCurrentProgress(currentProgress + 33.33333);
+
+        if (currentQ === 3) {
+            async function fetchData() {
+                const requestOptions = {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    // CHANGE TO LANGUAGE PASSED AS PROP ONCE LANGUAGES ARE IMPLEMENTED
+                    body: JSON.stringify({ language : 'java', subject : unitName})
+                };
+                const response = await fetch('/completion/', requestOptions);
+                console.log(response);
+            }
+            if (!complete) {
+                fetchData();
+            } else {
+                console.log("already completed milestone");
+            }
         }
     };
 
