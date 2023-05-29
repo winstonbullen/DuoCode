@@ -34,6 +34,11 @@ const HomePage: React.FC = () => {
     const [isExpanded, setExpandState] = useState(false);
 
     /**
+     * User info
+     */
+    const [username, setUsername] = useState<string>("");
+
+    /**
      * Set of completion data.
      */
     const [completionData, setCompletionData] = useState(new Set());
@@ -76,13 +81,26 @@ const HomePage: React.FC = () => {
         console.log(data)
     }
 
+    
+    async function fetchUsername() {
+        try {
+            const response = await fetch("/userinfo");
+            const userdata = await response.json();
+            setUsername(userdata.user);
+            console.log(userdata.user);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
     /**
      * Fetches completion data on component mount.
      */
     useEffect(() => {
         fetchCompletionData();
+        fetchUsername();
     }, []);
- 
+
     return (
         <>
         {activeComponent === 'home' && 
@@ -96,7 +114,7 @@ const HomePage: React.FC = () => {
                         <Link to='/'>
                         <img src={require("./images/account.png")} alt="account" />
                         </Link>
-                        <span className="text nav-text">CoolCoder123</span>
+                        <span className="text nav-text">{username}</span>
                     </div>
                     <div className="menu-section">
                         <div className="menu">
