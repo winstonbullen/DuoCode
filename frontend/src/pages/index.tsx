@@ -219,10 +219,6 @@ const HomePage: React.FC = () => {
                             <i className="bx bxl-python"></i>
                             <span className="option-text">Python</span>
                         </li>
-                        <li className="option" onClick={() => handleOptionClick('C++')}>
-                            <i className="bx bxl-c-plus-plus"></i>
-                            <span className="option-text">C++</span>
-                        </li>
                     </ul>
                 </div>
                 <div className="daily-challenges">
