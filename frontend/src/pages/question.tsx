@@ -105,9 +105,9 @@ const Question: React.FC<QuestionProps> = ({language, unitName, difficulty, onCo
                 </div>
             </div>
             <div className='question-content'>
-                {currentQ === 1 && <MultipleChoice solution={solution} updateSolution={updateSolution} unit={unitName} difficulty={difficulty} submitRef={submitRef} />}
-                {currentQ === 2 && <DragDrop solution={solution} updateSolution={updateSolution} unit={unitName} difficulty={difficulty} submitRef={submitRef} />}
-                {currentQ === 3 && <ShortAnswer solution={solution} updateSolution={updateSolution} unit={unitName} difficulty={difficulty} submitRef={submitRef} />}
+                {currentQ === 1 && <MultipleChoice solution={solution} updateSolution={updateSolution} language={language} unit={unitName} difficulty={difficulty} submitRef={submitRef} />}
+                {currentQ === 2 && <DragDrop solution={solution} updateSolution={updateSolution} language={language} unit={unitName} difficulty={difficulty} submitRef={submitRef} />}
+                {currentQ === 3 && <ShortAnswer solution={solution} updateSolution={updateSolution} language={language} unit={unitName} difficulty={difficulty} submitRef={submitRef} />}
                 {currentQ === 4 && <Completed />}
             </div>
             <div className="question-footer">

@@ -78,9 +78,9 @@ const Milestone: React.FC<MilestoneProps> = ({language, unitName, onComplete, co
                 </div>
             </div>
             <div className='question-content'>
-                {currentQ === 1 && <ShortAnswer  solution={solution} updateSolution={updateSolution} unit={unitName} difficulty={1} submitRef={submitRef} />}
-                {currentQ === 2 && <ShortAnswer  solution={solution} updateSolution={updateSolution} unit={unitName} difficulty={2} submitRef={submitRef} />}
-                {currentQ === 3 && <ShortAnswer  solution={solution} updateSolution={updateSolution} unit={unitName} difficulty={3} submitRef={submitRef} />}
+                {currentQ === 1 && <ShortAnswer  solution={solution} updateSolution={updateSolution} language={language} unit={unitName} difficulty={1} submitRef={submitRef} />}
+                {currentQ === 2 && <ShortAnswer  solution={solution} updateSolution={updateSolution} language={language} unit={unitName} difficulty={2} submitRef={submitRef} />}
+                {currentQ === 3 && <ShortAnswer  solution={solution} updateSolution={updateSolution} language={language} unit={unitName} difficulty={3} submitRef={submitRef} />}
                 {currentQ === 4 && <Completed />}
             </div>
             <div className="question-footer">
