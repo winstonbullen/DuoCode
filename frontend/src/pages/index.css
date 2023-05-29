@@ -1,6 +1,12 @@
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url(https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&display=swap);
 @import url('https://fonts.googleapis.com/css2?family=Viga');
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700');
+
+* {
+  font-family: Nunito, serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 .container {
     width: 100%;
@@ -8,27 +14,196 @@
     background-color: #fff;
   }
 
-  .sidebar h2 {
+:root {
+    --hover-color: #E4E9F7;
+    --theme-color: #0096FF;
+    --light-theme-color: #D3ECFD;
+    --nav-color: #FFF;
+    --text-color: #333;
+
+    --tran-02: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.4s ease;
+    --tran-05: all 0.5s ease;
+}
+
+.sidebar header {
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.sidebar-close header h2 {
+    opacity: 0;
+}
+
+.sidebar header h2 {
+    font-family: Viga, serif;
+    font-size: 50px;
+    text-align: center;
+    color: var(--theme-color);
+}
+
+.sidebar header .toggle {
+    position: absolute;
+    top: 50%;
+    right: -25px;
+    transform: translateY(-50%) rotate(180deg);
+    height: 25px;
+    width: 25px;
+    background-color: var(--theme-color);
+    color: var(--nav-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    transition: var(--tran-05);
+    cursor: pointer;
+}
+
+.sidebar-close header .toggle{
+    transform: translateY(-50%) rotate(0deg);
+    transition: var(--tran-05);
+}
+
+
+.sidebar .user-account {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.sidebar .user-account a {
+    display: flex;
+    align-items: center;
+}
+
+.sidebar .user-account img {
+    height: 70px;
+}
+
+.sidebar .user-account span {
+    margin-left: 20px;
+}
+
+.sidebar .text {
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--text-color);
+    white-space: nowrap;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    padding: 10px 14px;
+    background-color: var(--nav-color);
+    transition: var(--tran-04);
+}
+
+.sidebar-close {
+    width: 105px;
+    transition: var(--tran-04);
+}
+
+.sidebar-close .text {
+    opacity: 0;
+    white-space: nowrap;
+}
+
+.sidebar-close li Link {
+    display: flex;
+}
+
+.sidebar li {
+    height: 50px;
+    list-style: none;
+}
+
+.sidebar ul li:first-child a {
+    border: 2px solid var(--theme-color);
+    background-color:var(--light-theme-color);
+    border-radius: 10px;
+}
+
+.sidebar li:hover {
+    height: 50px;
+    border-radius: 10px;
+    background: var(--hover-color);
+}
+
+.sidebar li a {
+    height: 100%;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.sidebar li img {
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 35px;
+}
+
+.sidebar-close li img {
+    position: absolute;
+    width: 35px;
+}
+
+.sidebar .bottom-section a {
+    width: 50%;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none; /* remove underline for logout button */
+}
+
+.sidebar .bottom-section img {
+    height: 20px;
+    width: 20px;
+}
+
+.sidebar-close .bottom-section {
+    display: flex;
+    justify-content: center;
+}
+
+.sidebar-close .bottom-section img {
+    position: absolute;
+    height: 20px;
+    width: 20px;
+}
+
+.sidebar .bottom-section span {
+  margin-left: 15px;
+}
+
+.sidebar-close .bottom-section span {
+  margin-left: 0px;
+}
+
+.sidebar .menu-section {
+    height: calc(100% - 220px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+
+  /*.sidebar h2 {
     font-family: Viga, serif;
     font-size: 50px;
     text-align: center;
     color: #0096FF;
-  }
-
-  .sidebar h3 {
-    margin-left: 5vh;
-    margin-top: 20vh;
-    display: flex;
-    align-items: center;
-    font-family: Nunito, serif;
-    font-weight: 100;
-    font-size: 20px;
-    color: #000;
-    text-align: center;
-  }
-
-  .sidebar h3 img {
-    padding-right: 20px;
   }
 
   .sidebar .navbar-links ul li{
@@ -59,28 +234,28 @@
     width: 50px;
     padding: 10px;
   }
-  
-  .sidebar {
-    position:fixed;
+
+  .account {
+    display: flex;
     align-items: center;
-    width: 24.7%;
-    height: 100vh;
-    background-color: #fff;
+    margin-top: 20vh;
+    margin-left: 20px;
+    font-family: Nunito, serif;
+    font-weight: 100;
+    font-size: 20px;
+    color: #000;
   }
 
+  .account p {
+    margin-left: 20px;
+  }*/
 
-  .grayline {
-    position: fixed;
-    width: 1wh;
-    background-color: #D9D9D9;
-  }
-  
   .middlepane {
-    position: absolute;
-    margin-left: 25%;
-    text-align: center;
-    width: 50%;
     height: 155vh;
+    position: absolute;
+    margin-left: 25vw;
+    text-align: center;
+    width: 50vw;
     background-color: #fff;
   }
 
@@ -99,7 +274,7 @@
 
   .middlepane .unit1 {
     width: 80%;
-    height: 11vh;
+    height: 75px;
     position: relative;
     color: #fff;
     text-align: left;
@@ -121,11 +296,11 @@
     text-decoration: underline;
     position: absolute;
     margin-top: 30px;
-    margin-left: 85%;
+    margin-left: 80%;
     font-family: Nunito, serif;
     font-size: 15px;
   }
-  
+
   .variables {
     position: absolute;
     margin-top: 45px;
@@ -185,7 +360,7 @@
 
   .middlepane .unit2 {
     width: 80%;
-    height: 11vh;
+    height: 75px;
     position: relative;
     color: #fff;
     text-align: left;
@@ -202,7 +377,7 @@
     margin-left: 15px;
     font-family: Nunito, serif;
   }
-  
+
   .operators {
     position: absolute;
     margin-top: 45px;
@@ -256,7 +431,7 @@
     margin-left: 40%;
     box-shadow: 3px 3px 8px #858585;
   }
-  
+
   .rightpane {
     position: fixed;
     margin-left: 75%;
@@ -311,7 +486,7 @@
     height: 20px;
     border: 1px solid #0096FF;
   }
-  
+
   .rightpane .language {
     margin-left: 100px;
     margin-top: 10px;
@@ -345,12 +520,12 @@
   .middlepane {
     font-size: 20px;
   }
-  
-  
+
+
   body {
     margin: 0!important;
   }
-  
+
   .d-flex {
     display: flex;
   }

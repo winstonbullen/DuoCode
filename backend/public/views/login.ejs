@@ -5,19 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="signup.css">
+
+    <link rel="icon" href="./images/favicon.ico" />
     <title>DuoCode</title>
 </head>
 <body>
     <div class = "login-page-container">
-        <div class="image-section">
-            <img src="./images/coder.svg" alt="coder">
+        <div class="title-section">
+            <div class="content-text">
+                <h1 class="title">DuoCode</h1>
+                <div class="info">
+                    DuoCode makes learning code more fun and accessible than ever. It caters to a diverse range of skill levels and needs. <a href="/signup">Start learning today</a>!
+
+                    <h2>How-to</h2>
+                    <a href="/signup">Sign up</a> or <a href="/login">Sign in</a> to get started! For a detailed user guide, please visit the <a href="/help" target="_blank" rel="noopener noreferrer">Help</a> page.<br>
+                </div>
+            </div>
         </div>
         <div class = "login">
             <div class = "form">
                 <h1>Log In</h1>
                 <form action="/login" method="post" class="form-container">
                     <div class="input">
-                        <input type="text" required="required" name="name" class="form-input"/>
+                        <input type="text" required="required" name="name" autocomplete="off" class="form-input"/>
                         <span>Username</span>
                     </div>
                     <div class="input">

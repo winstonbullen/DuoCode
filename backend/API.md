@@ -2,9 +2,13 @@
 
 ### For DuoCode Server
 
-#### `/` - testing endpoint
+#### `/` - landing page endpoint
 - Method: `GET`
-- returns placeholder text which is different depending on if the user is authenticated
+- returns the login page if the user if not logged in, otherwise the app
+
+#### `/help` - help page endpoint
+- Method: `GET`
+- returns the help page detailing the user guide
 
 #### `/app` - the app itself
 - Method: `GET`
@@ -74,3 +78,15 @@ flexible to changes in the way that question content is hosted.
   - Response:
     - 200 - successfully added to list of completed lessons for the user
     - 401 - if the user making the request is not authenticated
+
+#### `/userinfo` - user information endpoint
+- Method: `GET`
+  - Retrieve information about the current user
+  - Response:
+    - 200 - Successfully retrieved user information
+    - 401 - Requester is not authenticated/logged in
+  - Response Content:
+    - `JSON` object
+    ```json
+    { name: "..." }
+    ```

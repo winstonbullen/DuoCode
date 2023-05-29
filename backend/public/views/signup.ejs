@@ -5,30 +5,45 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="signup.css">
+
+    <link rel="icon" href="./images/favicon.ico" />
     <title>DuoCode</title>
 </head>
 <body>
     <div class = "login-page-container">
-        <div class="image-section">
-            <img src="./images/coder.svg" alt="coder">
+        <div class="title-section">
+            <div class="content-text">
+                <h1 class="title">DuoCode</h1>
+                <div class="info">
+                    DuoCode makes learning code more fun and accessible than ever. It caters to a diverse range of skill levels and needs. <a href="/signup">Start learning today</a>!
+
+                    <h2>How-to</h2>
+                    <a href="/signup">Sign up</a> or <a href="/login">Sign in</a> to get started! For a detailed user guide, please visit the <a href="/help" target="_blank" rel="noopener noreferrer">Help</a> page.<br>
+                </div>
+            </div>
         </div>
         <div class = "login">
             <div class = "form">
                 <h1>Create an Account</h1>
-                <form action="/signup" method="post" class="form-container" onsubmit="return validate()">
+                <form action="/signup" method="post" class="form-container" onsubmit="return meetsRequirements()">
                     <div class="input">
-                        <input type="text" required="required" name="name" class="form-input"/>
+                        <input type="text" required="required" id="username" name="name" autocomplete="off" class="form-input" onkeyup="return colorUsernameRequirements()"/>
                         <span>Username</span>
                     </div>
                     <div class="input">
-                        <input type="password" required="required" id="password" name="password" autocomplete="off" class="form-input" onkeyup="return checkPass()"/>
+                        <input type="password" required="required" id="password" name="password" autocomplete="off" class="form-input" onkeyup="return colorPasswordRequirements()"/>
                         <span>Password</span>
                     </div>
                     <div class="valid-reqs ">
+                        <strong>Username Requirements</strong>
+                        <ul>
+                            <li id="username-length">Must be 4-20 characters</li>
+                        </ul>
+                        <strong>Password Requirements</strong>
                         <ul>
                             <li id="upper">At least one uppercase</li>
                             <li id="lower">At least one lowercase</li>
-                            <li id="special_char">At least one special symbol</li>
+                            <li id="special-char">At least one special symbol</li>
                             <li id="number">At least one number</li>
                             <li id="length">At least 8 characters</li>
                         </ul>
@@ -50,71 +65,54 @@
         </div>
     </div>
     <script>
-        function validate() {
+        /**
+         * Returns true if all username and password requirements are met, false otherwise.
+         */
+        function meetsRequirements() {
+            var username = document.getElementById("username");
             var pass = document.getElementById("password");
-            var upper = document.getElementById("upper");
-            var lower = document.getElementById("lower");
-            var num = document.getElementById("number");
-            var length = document.getElementById("length");
-            var sp_ch = document.getElementById("special_char");
 
-            if (pass.value.length  < 8){
-                return false;
-            } else if (!pass.value.match(/[0-9]/)){
-                return false;
-            } else if (!pass.value.match(/[A-Z]/)){
-                return false;
-            } else if (!pass.value.match(/[a-z]/)){
-                return false;
-            } else if (!pass.value.match(/[!\@\#\$\%\^\&\*\(\)\_\-\+\=\?\>\<\.\,]/)){
-                return false;
-            } else {
-                return true;
-            }
+            var username_valid = username.value.length >= 4 && username.value.length <= 20;
+            var pass_valid = /[A-Z]/.test(pass.value) && /[a-z]/.test(pass.value) && /[!\@\#\$\%\^\&\*\(\)\_\-\+\=\?\>\<\.\,]/.test(pass.value) && /[0-9]/.test(pass.value) && pass.value.length >= 8;
+            return username_valid && pass_valid;
         }
 
-        function checkPass() {
+        /**
+         * For every requirement, sets the username requirement text to green if it is met, red otherwise.
+         */
+        function colorUsernameRequirements() {
+            var username = document.getElementById("username");
+            var username_length = document.getElementById("username-length");
+
+            // check for length
+            username_length.style.color = username.value.length >= 4 && username.value.length <= 20 ? "green" : "red";
+        }
+
+        /**
+         * For every requirement, sets the password requirement text to green if it is met, red otherwise.
+         */
+        function colorPasswordRequirements() {
             var pass = document.getElementById("password");
             var upper = document.getElementById("upper");
             var lower = document.getElementById("lower");
             var num = document.getElementById("number");
             var length = document.getElementById("length");
-            var sp_ch = document.getElementById("special_char");
-            
-            // check for number
-            if (pass.value.match(/[0-9]/)){
-                num.style.color = "green"
-            } else {
-                num.style.color = "red"
-            }
+            var sp_ch = document.getElementById("special-char");
 
             // check for uppercase
-            if (pass.value.match(/[A-Z]/)){
-                upper.style.color = "green"
-            } else {
-                upper.style.color = "red"
-            }
+            upper.style.color = /[A-Z]/.test(pass.value) ? "green" : "red";
 
             // check for lowercase
-            if (pass.value.match(/[a-z]/)){
-                lower.style.color = "green"
-            } else {
-                lower.style.color = "red"
-            }
+            lower.style.color = /[a-z]/.test(pass.value) ? "green" : "red";
 
             // check for special characters
-            if (pass.value.match(/[!\@\#\$\%\^\&\*\(\)\_\-\+\=\?\>\<\.\,]/)){
-                sp_ch.style.color = "green"
-            } else {
-                sp_ch.style.color = "red"
-            }
+            sp_ch.style.color = /[!\@\#\$\%\^\&\*\(\)\_\-\+\=\?\>\<\.\,]/.test(pass.value) ? "green" : "red";
+            
+            // check for number
+            num.style.color = /[0-9]/.test(pass.value) ? "green" : "red";
 
             // check for length
-            if (pass.value.length >= 8){
-                length.style.color = "green"
-            } else {
-                length.style.color = "red"
-            }
+            length.style.color = pass.value.length >= 8 ? "green" : "red";
         }
     </script>
 </body>

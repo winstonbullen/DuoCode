@@ -3,9 +3,8 @@
 .short-answer-container {
     position: absolute;
     text-align: center;
-    top: 25%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 0%);
 }
 
 input::placeholder{
@@ -18,8 +17,6 @@ input::placeholder{
     font-family: Nunito, serif;
     font-weight: bold;
     font-size: 32px;
-    margin-bottom: 10px;
-    margin-top: 30px;
 }
 
 .short-answer-input {
@@ -85,4 +82,16 @@ input::placeholder{
 .line{
     border-bottom: 3px solid lightgrey;
     margin-top: 30%;
+}
+
+.formatting-prompt {
+    text-align: center;
+    font-family: Nunito, serif;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+#format-tip:link, #format-tip:visited, #format-tip:hover, #format-tip:active {
+    color: #0096FF;
+    text-decoration: none;
 }

@@ -4,7 +4,7 @@
 }
 
 .question-header {
-    height: 150px;
+    height: 15vh;
     display: flex;
     justify-content: center;
     align-items: center; 
@@ -20,7 +20,6 @@
     width: 100%;
     height: 200px;
 }
-
 
 .question-submit{
     margin-top: 4%;

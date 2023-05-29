@@ -53,9 +53,18 @@ app.use(session({
 /// Endpoints
 /// For endpoint specification see API.md
 
-// serve landing page
+// serve login landing page if not logged in, serve the app if logged in
 app.get("/", (req, res) => {
-  res.sendFile(path.resolve("public/landing.html"));
+  if (req.session.user) {
+    res.redirect("/app");
+  } else {
+    res.render("login", {error: false});
+  }
+});
+
+// serve help page
+app.get("/help", (req, res) => {
+  res.sendFile(path.resolve("public/help.html"));
 });
 
 // serve home page
@@ -193,6 +202,15 @@ app.post("/completion", async (req, res) => {
     res.status(200).send("Success");
   } else {
     res.status(401).send("Unauthorized"); // client must be authenticated to get their completion
+  }
+});
+
+// return information about the current user, currently just the user's name
+app.get("/userinfo", (req, res) => {
+  if (req.session.user) {
+    return res.status(200).json({ user: req.session.user.name });
+  } else {
+    return res.status(401).send("Unauthorized");
   }
 });
 
