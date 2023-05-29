@@ -521,6 +521,11 @@
     font-size: 20px;
   }
 
+  .progress-bar {
+    display: flex;
+    align-items: center;
+  }
+
 
   body {
     margin: 0!important;
@@ -529,6 +534,8 @@
   .d-flex {
     display: flex;
   }
+
+
 
 /*.language-dropdown {
     margin-top: 40px;
