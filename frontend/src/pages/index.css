@@ -521,6 +521,70 @@
     font-size: 20px;
   }
 
+  .progress-bar {
+    display: flex;
+    align-items: center;
+  }
+
+  .select-menu{
+    width: 150px;
+    margin: 20px auto;
+}
+.select-menu .select-btn{
+    display: flex;
+    height: 35px;
+    background: #fff;
+    padding: 20px;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 8px;
+    align-items: center;
+    cursor: pointer;
+    justify-content: space-between;
+    border: 1px solid #0096FF;
+}
+.select-btn i{
+    font-size: 25px;
+    transition: 0.3s;
+}
+.select-menu.active .select-btn i{
+    transform: rotate(-180deg);
+}
+.select-menu .options{
+    position: relative;
+    padding: 20px;
+    margin-top: 10px;
+    border-radius: 8px;
+    background: #fff;
+    border: 1px solid #0096FF;
+    display: none;
+}
+.select-menu.active .options{
+    display: block;
+}
+.options .option{
+    display: flex;
+    height: 30px;
+    cursor: pointer;
+    padding: 0 8px;
+    border-radius: 8px;
+    align-items: center;
+    background: #fff;
+}
+.options .option:hover{
+    background: #F2F2F2;
+}
+.option i{
+    font-size: 14px;
+    margin-right: 12px;
+}
+.option .option-text{
+    font-size: 14px;
+    color: #333;
+}
+
+
+
 
   body {
     margin: 0!important;
@@ -529,6 +593,8 @@
   .d-flex {
     display: flex;
   }
+
+
 
 /*.language-dropdown {
     margin-top: 40px;

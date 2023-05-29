@@ -10,9 +10,8 @@ import GreenStar from 'components/GreenStar';
  * Renders the homepage and sidebar.
  */
 const HomePage: React.FC = () => {
-    /*const [language, setLanguage] = useState<Language>('Java');
+    /*const [language, setLanguage] = useState<string>('Java');
     const [dailyChallengeProgress, setDailyChallengeProgress] = useState<number>(70);
-
     const handleLanguageChange = (selectedLanguage: Language) => {
         setLanguage(selectedLanguage);
     };*/
@@ -32,6 +31,11 @@ const HomePage: React.FC = () => {
      */
     const [curDifficulty, setCurDifficulty] = useState(0);
     const [isExpanded, setExpandState] = useState(false);
+
+    /**
+     * User info
+     */
+    const [username, setUsername] = useState<string>("");
 
     /**
      * Set of completion data.
@@ -67,7 +71,7 @@ const HomePage: React.FC = () => {
     }
 
     /**
-     * Fetches completion data from the server.
+     * Fetches completion data from the server
      */
     async function fetchCompletionData() {
         const response = await fetch("/completion")
@@ -76,13 +80,44 @@ const HomePage: React.FC = () => {
         console.log(data)
     }
 
+
+    /**
+     * Fetches user data from the server
+     */
+    async function fetchUsername() {
+        try {
+            const response = await fetch("/userinfo");
+            const userdata = await response.json();
+            setUsername(userdata.user);
+            console.log(userdata.user);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    /**
+     * Handles logic for language dropdown
+     */
+    const [selectedOption, setSelectedOption] = useState('Java'); /* Stores selected language */
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const handleOptionClick = (option: string) => {
+        setSelectedOption(option);
+        setIsMenuOpen(false);
+    };
+
+    const toggleMenu = () => {
+        setIsMenuOpen(prevState => !prevState);
+    };
+
     /**
      * Fetches completion data on component mount.
      */
     useEffect(() => {
         fetchCompletionData();
+        fetchUsername();
     }, []);
- 
+
     return (
         <>
         {activeComponent === 'home' && 
@@ -96,7 +131,7 @@ const HomePage: React.FC = () => {
                         <Link to='/'>
                         <img src={require("./images/account.png")} alt="account" />
                         </Link>
-                        <span className="text nav-text">CoolCoder123</span>
+                        <span className="text nav-text">{username}</span>
                     </div>
                     <div className="menu-section">
                         <div className="menu">
@@ -175,20 +210,26 @@ const HomePage: React.FC = () => {
                 </div>
                 </div>
                 <div className="rightpane">
-                <div className="language">
-                    <img src={require("./images/java.png")} alt="java" />
-                    <h3 className="language-name">Java</h3>
-                </div>
-                <div className="daily-challenges">
-                    <h3>Daily Challenges</h3>
-                    <h4>Progress</h4>
-                    <div className="progress-bar">
-                        <div>0/3</div>
-                        <img src={require("./images/coin.png")} alt="coin" />
+                <div className={`select-menu${isMenuOpen ? ' active' : ''}`}>
+                    <div className="select-btn" onClick={toggleMenu}>
+                        <span className="sBtn-text">{selectedOption}</span>
+                        <i className="bx bx-chevron-down"></i>
                     </div>
+                    <ul className="options">
+                        <li className="option" value="Java" onClick={() => handleOptionClick('Java') }>
+                            <i className="bx bxl-java"></i>
+                            <span className="option-text">Java</span>
+                        </li>
+                        <li className="option" value="Java" onClick={() => handleOptionClick('Python')}>
+                            <i className="bx bxl-python"></i>
+                            <span className="option-text">Python</span>
+                        </li>
+                    </ul>
                 </div>
                 </div>
             </div>
+
+            
         }
         {/* FIX HARD CODE LANGUAGE ONCE IMPLEMENTED */}
         {activeComponent==='question' && <Question unitName={curUnit} difficulty={curDifficulty} onComplete={() => handleReload()} 
