@@ -226,14 +226,6 @@ const HomePage: React.FC = () => {
                         </li>
                     </ul>
                 </div>
-                <div className="daily-challenges">
-                    <h3>Daily Challenges</h3>
-                    <h4>Progress</h4>
-                    <div className="progress-bar">
-                        <div>0/3</div>
-                        <img src={require("./images/coin.png")} alt="coin" />
-                    </div>
-                </div>
                 </div>
             </div>
 
