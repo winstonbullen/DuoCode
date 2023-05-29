@@ -101,6 +101,18 @@ const HomePage: React.FC = () => {
         fetchUsername();
     }, []);
 
+    const [selectedOption, setSelectedOption] = useState('Language');
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const handleOptionClick = (option: string) => {
+        setSelectedOption(option);
+        setIsMenuOpen(false);
+    };
+
+    const toggleMenu = () => {
+        setIsMenuOpen(prevState => !prevState);
+    };
+
     return (
         <>
         {activeComponent === 'home' && 
@@ -193,9 +205,25 @@ const HomePage: React.FC = () => {
                 </div>
                 </div>
                 <div className="rightpane">
-                <div className="language">
-                    <img src={require("./images/java.png")} alt="java" />
-                    <h3 className="language-name">Java</h3>
+                <div className={`select-menu${isMenuOpen ? ' active' : ''}`}>
+                    <div className="select-btn" onClick={toggleMenu}>
+                        <span className="sBtn-text">{selectedOption}</span>
+                        <i className="bx bx-chevron-down"></i>
+                    </div>
+                    <ul className="options">
+                        <li className="option" onClick={() => handleOptionClick('Java')}>
+                            <i className="bx bxl-java"></i>
+                            <span className="option-text">Java</span>
+                        </li>
+                        <li className="option" onClick={() => handleOptionClick('Python')}>
+                            <i className="bx bxl-python"></i>
+                            <span className="option-text">Python</span>
+                        </li>
+                        <li className="option" onClick={() => handleOptionClick('C++')}>
+                            <i className="bx bxl-c-plus-plus"></i>
+                            <span className="option-text">C++</span>
+                        </li>
+                    </ul>
                 </div>
                 <div className="daily-challenges">
                     <h3>Daily Challenges</h3>
@@ -207,6 +235,8 @@ const HomePage: React.FC = () => {
                 </div>
                 </div>
             </div>
+
+            
         }
         {/* FIX HARD CODE LANGUAGE ONCE IMPLEMENTED */}
         {activeComponent==='question' && <Question unitName={curUnit} difficulty={curDifficulty} onComplete={() => handleReload()} 
