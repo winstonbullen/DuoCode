@@ -30,9 +30,8 @@ const Question: React.FC<QuestionProps> = ({unitName, difficulty, onComplete, co
      * The current progress of the quiz.
      */
     const [currentProgress, setCurrentProgress] = useState(0);
-
     const [solution, setSolution] = useState('No Solution Available');
-
+    const [visibleSolution, setVisibleSolution] = useState('Please submit once to see solution')
     const [showSolution, setshowSolution] = useState(false);
 
     /**
@@ -40,6 +39,7 @@ const Question: React.FC<QuestionProps> = ({unitName, difficulty, onComplete, co
      */
     const submitRef = useRef<HTMLButtonElement>(null);
     const handleSubmitRef = () => {
+        setVisibleSolution(solution)
         if (submitRef.current) {
             submitRef.current.click()
         }
@@ -52,6 +52,7 @@ const Question: React.FC<QuestionProps> = ({unitName, difficulty, onComplete, co
     const handleNextQ = () => {
         setCurrentQ(currentQ + 1);
         setCurrentProgress(currentProgress + 33.33333);
+        setVisibleSolution('Please submit once to see solution')
         setshowSolution(false)
 
         if (currentQ === 3) {
@@ -84,7 +85,7 @@ const Question: React.FC<QuestionProps> = ({unitName, difficulty, onComplete, co
      * Changes solution to the current question's solution
      */
     const updateSolution = (newSolution: string) => {
-        setSolution(newSolution);
+        setSolution(newSolution)
     };
 
     /**
@@ -123,7 +124,7 @@ const Question: React.FC<QuestionProps> = ({unitName, difficulty, onComplete, co
                     ) : null}
                     {showSolution && (
                         <div className="popup">
-                            {solution}
+                            {visibleSolution}
                         </div>
                     )}
                     {currentQ !== 4 ? (

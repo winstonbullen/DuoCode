@@ -16,12 +16,14 @@ const Milestone: React.FC<MilestoneProps> = ({unitName, onComplete, complete} : 
     const [currentQ, setCurrentQ] = useState<number>(1);
     const [currentProgress, setCurrentProgress] = useState(0);
     const [solution, setSolution] = useState('No Solution Available');
+    const [visibleSolution, setVisibleSolution] = useState('Please submit once to see solution')
     const [showSolution, setshowSolution] = useState(false);
     console.log(unitName);
 
     // create ref to submit question-content
     const submitRef = useRef<HTMLButtonElement>(null);
     const handleSubmitRef = () => {
+        setVisibleSolution(solution)
         if (submitRef.current) {
             submitRef.current.click()
         }
@@ -33,6 +35,7 @@ const Milestone: React.FC<MilestoneProps> = ({unitName, onComplete, complete} : 
      */
     const handleNextQ = () => {
         setshowSolution(false)
+        setVisibleSolution('Please submit once to see solution')
         setCurrentQ(currentQ + 1);
         setCurrentProgress(currentProgress + 33.33333);
 
@@ -96,7 +99,7 @@ const Milestone: React.FC<MilestoneProps> = ({unitName, onComplete, complete} : 
                     ) : null}
                     {showSolution && (
                         <div className="popup">
-                            {solution}
+                            {visibleSolution}
                         </div>
                     )}
                     {currentQ !== 4 ? (
