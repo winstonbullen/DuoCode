@@ -3,19 +3,12 @@ import { Link } from 'react-router-dom';
 import Question from './question';
 import './index.css';
 import Milestone from './milestone';
-import GreenStar from 'components/GreenStar';
 
 /**
  * HomePage component.
  * Renders the homepage and sidebar.
  */
 const HomePage: React.FC = () => {
-    /*const [language, setLanguage] = useState<string>('Java');
-    const [dailyChallengeProgress, setDailyChallengeProgress] = useState<number>(70);
-    const handleLanguageChange = (selectedLanguage: Language) => {
-        setLanguage(selectedLanguage);
-    };*/
-
     /**
      * The currently active component.
      */
@@ -98,11 +91,11 @@ const HomePage: React.FC = () => {
     /**
      * Handles logic for language dropdown
      */
-    const [selectedOption, setSelectedOption] = useState('Java'); /* Stores selected language */
+    const [selectedLanguage, setselectedLanguage] = useState('Java'); /* Stores selected language */
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const handleOptionClick = (option: string) => {
-        setSelectedOption(option);
+        setselectedLanguage(option);
         setIsMenuOpen(false);
     };
 
@@ -213,7 +206,7 @@ const HomePage: React.FC = () => {
                 <div className="rightpane">
                 <div className={`select-menu${isMenuOpen ? ' active' : ''}`}>
                     <div className="select-btn" onClick={toggleMenu}>
-                        <span className="sBtn-text">{selectedOption}</span>
+                        <span className="sBtn-text">{selectedLanguage}</span>
                         <i className="bx bx-chevron-down"></i>
                     </div>
                     <ul className="options">
@@ -221,7 +214,7 @@ const HomePage: React.FC = () => {
                             <i className="bx bxl-java"></i>
                             <span className="option-text">Java</span>
                         </li>
-                        <li className="option" value="Java" onClick={() => handleOptionClick('Python')}>
+                        <li className="option" value="Python" onClick={() => handleOptionClick('Python')}>
                             <i className="bx bxl-python"></i>
                             <span className="option-text">Python</span>
                         </li>
@@ -233,30 +226,12 @@ const HomePage: React.FC = () => {
             
         }
         
-        {/* FIX HARD CODE LANGUAGE ONCE IMPLEMENTED */}
-        {activeComponent==='question' && <Question unitName={curUnit} difficulty={curDifficulty} onComplete={() => handleReload()} 
-            complete={completionData.has("java_" + curUnit + "_" + curDifficulty)}/>}
-        {activeComponent==='milestone' && <Milestone unitName={curUnit} onComplete={() => setActiveComponent('home')}
-            complete={completionData.has("java_" + curUnit)}/>}
+        {activeComponent==='question' && <Question language={selectedLanguage.toLowerCase()} unitName={curUnit} difficulty={curDifficulty} onComplete={() => handleReload()} 
+            complete={completionData.has(selectedLanguage.toLowerCase() + "_" + curUnit + "_" + curDifficulty)}/>}
+        {activeComponent==='milestone' && <Milestone language={selectedLanguage.toLowerCase()} unitName={curUnit} onComplete={() => handleReload()}
+            complete={completionData.has(selectedLanguage.toLowerCase() + "_" + curUnit)}/>}
         </>
     );
 };
-
-/*
- <div className="home-page-container">
-            <div className="language-dropdown">
-                <select value={language} onChange={(e) => handleLanguageChange(e.target.value as Language)}>
-                    <option value="Java">Java</option>
-                    <option value="Python">Python</option>
-                </select>
-            </div>
-            <div className="daily-challenge">
-                <p>Daily Challenge</p>
-                <div className="progress-bar">
-                    <div className="progress" style={{ width: `${dailyChallengeProgress}%` }}></div>
-                </div>
-            </div>
-        </div>
-*/
 
 export default HomePage;

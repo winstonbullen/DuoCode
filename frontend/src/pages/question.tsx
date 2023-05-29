@@ -10,6 +10,7 @@ import Completed from './completed';
 
 
 interface QuestionProps {
+    language: string;
     unitName: string;
     difficulty: number;
     onComplete: () => void;
@@ -20,7 +21,7 @@ interface QuestionProps {
  * Question component.
  * Wraps all the different types of questions.
  */
-const Question: React.FC<QuestionProps> = ({unitName, difficulty, onComplete, complete} : QuestionProps) => {
+const Question: React.FC<QuestionProps> = ({language, unitName, difficulty, onComplete, complete} : QuestionProps) => {
     /**
      * The current question number.
      */
@@ -59,11 +60,9 @@ const Question: React.FC<QuestionProps> = ({unitName, difficulty, onComplete, co
                 const requestOptions = {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
-                    // CHANGE TO LANGUAGE PASSED AS PROP ONCE LANGUAGES ARE IMPLEMENTED
-                    body: JSON.stringify({ language : 'java', subject : unitName, level : difficulty})
+                    body: JSON.stringify({ language : language, subject : unitName, level : difficulty})
                 };
-                const response = await fetch('/completion/', requestOptions);
-                console.log(response);
+                await fetch('/completion/', requestOptions);
             }
             if (!complete) {
                 fetchData();
