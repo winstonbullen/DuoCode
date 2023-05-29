@@ -10,9 +10,8 @@ import GreenStar from 'components/GreenStar';
  * Renders the homepage and sidebar.
  */
 const HomePage: React.FC = () => {
-    /*const [language, setLanguage] = useState<Language>('Java');
+    /*const [language, setLanguage] = useState<string>('Java');
     const [dailyChallengeProgress, setDailyChallengeProgress] = useState<number>(70);
-
     const handleLanguageChange = (selectedLanguage: Language) => {
         setLanguage(selectedLanguage);
     };*/
@@ -72,7 +71,7 @@ const HomePage: React.FC = () => {
     }
 
     /**
-     * Fetches completion data from the server.
+     * Fetches completion data from the server
      */
     async function fetchCompletionData() {
         const response = await fetch("/completion")
@@ -81,7 +80,10 @@ const HomePage: React.FC = () => {
         console.log(data)
     }
 
-    
+
+    /**
+     * Fetches user data from the server
+     */
     async function fetchUsername() {
         try {
             const response = await fetch("/userinfo");
@@ -94,14 +96,9 @@ const HomePage: React.FC = () => {
     }
 
     /**
-     * Fetches completion data on component mount.
+     * Handles logic for language dropdown
      */
-    useEffect(() => {
-        fetchCompletionData();
-        fetchUsername();
-    }, []);
-
-    const [selectedOption, setSelectedOption] = useState('Language');
+    const [selectedOption, setSelectedOption] = useState('Java'); /* Stores selected language */
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const handleOptionClick = (option: string) => {
@@ -112,6 +109,14 @@ const HomePage: React.FC = () => {
     const toggleMenu = () => {
         setIsMenuOpen(prevState => !prevState);
     };
+
+    /**
+     * Fetches completion data on component mount.
+     */
+    useEffect(() => {
+        fetchCompletionData();
+        fetchUsername();
+    }, []);
 
     return (
         <>
@@ -211,11 +216,11 @@ const HomePage: React.FC = () => {
                         <i className="bx bx-chevron-down"></i>
                     </div>
                     <ul className="options">
-                        <li className="option" onClick={() => handleOptionClick('Java')}>
+                        <li className="option" value="Java" onClick={() => handleOptionClick('Java') }>
                             <i className="bx bxl-java"></i>
                             <span className="option-text">Java</span>
                         </li>
-                        <li className="option" onClick={() => handleOptionClick('Python')}>
+                        <li className="option" value="Java" onClick={() => handleOptionClick('Python')}>
                             <i className="bx bxl-python"></i>
                             <span className="option-text">Python</span>
                         </li>
