@@ -1,10 +1,9 @@
-import React, { useRef, useState }from 'react';
-import './question.css';
+import React, { useRef, useState } from 'react';
 import CloseBtn from '../components/CloseBtn'
 import ProgressBar from '../components/ProgressBar';
 import ShortAnswer from './shortanswer';
 import Completed from './completed';
-
+import './question.css';
 
 interface MilestoneProps {
     language: string;
@@ -20,7 +19,6 @@ const Milestone: React.FC<MilestoneProps> = ({language, unitName, onComplete, co
     const [visibleSolution, setVisibleSolution] = useState('Please submit once to see solution')
     const [showSolution, setshowSolution] = useState(false);
     const [isCorrect, setIsCorrect] = useState<boolean>(false);
-    console.log(unitName);
 
     // create ref to submit question-content
     const submitRef = useRef<HTMLButtonElement>(null);
@@ -54,8 +52,6 @@ const Milestone: React.FC<MilestoneProps> = ({language, unitName, onComplete, co
 
                 if (!complete) {
                     fetchData();
-                } else {
-                    console.log("already completed lesson");
                 }
                 setIsCorrect(false);
             }

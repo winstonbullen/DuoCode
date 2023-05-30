@@ -48,30 +48,4 @@ describe("UsersDB Atlas database", () => {
     expect(output1).toEqual(i1);
     expect(output2).toEqual(i2);
   });
-
-  /// --- These tests are disabled because as written they will modify the actual db
-  /// --- and will end up appending to the actual db forever, wasting space and not possible to test in the same way.
-  // it("stores and retrieves a level completion list", async () => {
-  //   const user = { user: "foo", pass_hash: "abc", completed: [] }
-  //   const db = UsersDB.get_db();
-
-  //   db.insert_entry(user);
-
-  //   db.append_completion("foo", "java_arrays_1");
-  //   db.append_completion("foo", "java_arrays_2");
-
-  //   const output_completion = (await db.get_entry("foo")).completed;
-
-  //   expect(output_completion).toBeTruthy();
-  //   expect(output_completion).toEqual(["java_arrays_1", "java_arrays_2"]);
-  // });
-
-  // it("can have an empty completion list", async () => {
-  //   const user = { user: "foo", pass_hash: "abc", completed: [] }
-  //   const db = UsersDB.get_db();
-  //   db.insert_entry(user);
-  //   const output_completion = (await db.get_entry("foo")).completed;
-  //   expect(output_completion).toHaveLength(0);
-  //   expect(output_completion).toEqual([]);
-  // });
 });

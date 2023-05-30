@@ -44,16 +44,12 @@ export class UsersDB implements UserInfoDB {
 
         const result = (await this.collection?.findOneAndReplace({ user: info.user }, info, options))?.value as UserInfo;
 
-        // TODO check if this can be null or none, or above type cast fails?
-        // if old entry existed it will be returned, else this should be null?
         return result;
     }
 
     async get_entry(user: string): Promise<UserInfo> {
         const options = { projection: { _id: 0 } };
 
-        // just get and return first one
-        // TODO: Type cast might fail?
         const result = await this.collection?.findOne({ user: user }, options) as UserInfo;
         return result;
     }
