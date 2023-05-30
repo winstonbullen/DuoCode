@@ -66,6 +66,7 @@ const DragDrop: React.FC<DragDropProps> = ({solution, updateSolution, submitRef,
      */
     const [originalOrdering, setOriginalOrdering] = useState<string[]>([]);
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const [currentQuestion, setCurrentQuestion] = useState<number>(1);
     const fetchContentData = async () => {
         const response = await fetch("/content/" + language + "/" + unit + "/drag_drop/" + difficulty + "/" + currentQuestion);
