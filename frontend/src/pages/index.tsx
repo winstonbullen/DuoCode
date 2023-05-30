@@ -133,7 +133,11 @@ const HomePage: React.FC = () => {
     const createUnit = (unitName: string, unitNum: number, link: string) => {
         // each key must be unique, so this works supposing unit names always unique
         return (<div className={`unit1-container`} key={unitName}>
-            <div className={`unit1`}>
+            <div className={`unit1`} style={completionData.has(selectedLanguage.toLowerCase() + "_" + unitName) &&
+                completionData.has(selectedLanguage.toLowerCase() + "_" + unitName + "_1") &&
+                completionData.has(selectedLanguage.toLowerCase() + "_" + unitName + "_2") &&
+                completionData.has(selectedLanguage.toLowerCase() + "_" + unitName + "_3") ? 
+                {backgroundColor: '#0ADD08'} : {}}>
                 <h3>Unit {unitNum}</h3>
                 <p className="resources"><a href={link} className="resources-link" target="_blank" rel="noopener noreferrer">Resources</a></p>
                 <p className="variables">{unitName}</p>
