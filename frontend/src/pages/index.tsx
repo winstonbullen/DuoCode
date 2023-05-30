@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Question from './question';
 import './index.css';
 import Milestone from './milestone';
+import { JAVA_CONTENT, PYTHON_CONTENT } from './contentlist';
 
 /**
  * HomePage component.
@@ -110,7 +111,7 @@ const HomePage: React.FC = () => {
         return (<div className="checkpoints">
             <div className="checkpoint1" onClick={() => handleLessonClick(unitName, 1)}
                 style = {completionData.has(selectedLanguage.toLowerCase() + "_" + unitName + "_1") ? {backgroundColor : '#0ADD08'} : {}}>
-                <img src={require("./images/whitestar.png")} alt="whitestar"/> 
+                <img src={require("./images/whitestar.png")} alt="whitestar"/>
             </div>
             <div className="checkpoint2" onClick={() => handleLessonClick(unitName, 2)}
                 style = {completionData.has(selectedLanguage.toLowerCase() + "_" + unitName + "_2") ? {backgroundColor : '#0ADD08'} : {}}>
@@ -127,6 +128,22 @@ const HomePage: React.FC = () => {
         </div> );
     }
 
+    // shouldn't these really be their own components?
+    /**
+     * create unit
+     */
+    const createUnit = (unitName: string, unitNum: number, link: string) => {
+        // each key must be unique, so this works supposing unit names always unique
+        return (<div className={`unit1-container`} key={unitName}>
+            <div className={`unit1`}>
+                <h3>Unit {unitNum}</h3>
+                <p className="resources"><a href={link} className="resources-link" target="_blank" rel="noopener noreferrer">Resources</a></p>
+                <p className="variables">{unitName}</p>
+            </div>
+            {createCheckpoints(unitName)}
+        </div>);
+    }
+
 
     /**
      * Fetches completion data on component mount.
@@ -138,7 +155,7 @@ const HomePage: React.FC = () => {
 
     return (
         <>
-        {activeComponent === 'home' && 
+        {activeComponent === 'home' &&
             <div className="container">
                 <nav className={isExpanded ? "sidebar" : "sidebar sidebar-close"}>
                     <header>
@@ -176,30 +193,15 @@ const HomePage: React.FC = () => {
                         </div>
                     </div>
                 </nav>
-
-                {selectedLanguage === 'java' ? (
-                    <div className="middlepane">
-                        <div className="unit1-container">
-                            <div className="unit1">
-                                <h3>Unit 1</h3>
-                                <p className="resources"><a href="https://www.w3schools.com/java/java_variables.asp" className="resources-link" target="_blank" rel="noopener noreferrer">Resources</a></p>
-                                <p className="variables">Variables</p>
-                            </div>
-                            {createCheckpoints('variables')}
-                        </div>
-                    </div> ) : (
-                    <div className="middlepane">
-                        <div className="unit1-container">
-                            <div className="unit1">
-                                <h3>Unit 1</h3>
-                                <p className="resources"><a href="https://www.w3schools.com/python/python_variables.asp" className="resources-link" target="_blank" rel="noopener noreferrer">Resources</a></p>
-                                <p className="variables">Variables</p>
-                            </div>
-                            {createCheckpoints('variables')}
-                        </div>
-                    </div>
+                <div className="middlepane">
+                {selectedLanguage.toLowerCase() === 'java' ? (
+                        // the i + 1 makes unit numbering start at 1
+                        JAVA_CONTENT.map((u, i) => createUnit(u.unitName, i + 1, u.resource_link))
+                    ) : (
+                        PYTHON_CONTENT.map((u, i) => createUnit(u.unitName, i + 1, u.resource_link))
                     )
                 }
+                </div>
                 <div className="rightpane">
                 <div className={`select-menu${isMenuOpen ? ' active' : ''}`}>
                     <div className="select-btn" onClick={toggleMenu}>
@@ -220,10 +222,10 @@ const HomePage: React.FC = () => {
                 </div>
             </div>
 
-            
+
         }
-        
-        {activeComponent==='question' && <Question language={selectedLanguage.toLowerCase()} unitName={curUnit} difficulty={curDifficulty} onComplete={() => handleReload()} 
+
+        {activeComponent==='question' && <Question language={selectedLanguage.toLowerCase()} unitName={curUnit} difficulty={curDifficulty} onComplete={() => handleReload()}
             complete={completionData.has(selectedLanguage.toLowerCase() + "_" + curUnit + "_" + curDifficulty)}/>}
         {activeComponent==='milestone' && <Milestone language={selectedLanguage.toLowerCase()} unitName={curUnit} onComplete={() => handleReload()}
             complete={completionData.has(selectedLanguage.toLowerCase() + "_" + curUnit)}/>}
