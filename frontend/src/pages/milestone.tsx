@@ -17,6 +17,7 @@ const Milestone: React.FC<MilestoneProps> = ({unitName, onComplete, complete} : 
     const [currentProgress, setCurrentProgress] = useState(0);
     const [solution, setSolution] = useState('No Solution Available');
     const [showSolution, setshowSolution] = useState(false);
+    const [isCorrect, setIsCorrect] = useState<boolean>(false);
     console.log(unitName);
 
     // create ref to submit question-content
@@ -32,26 +33,31 @@ const Milestone: React.FC<MilestoneProps> = ({unitName, onComplete, complete} : 
      * post completion to backend api.
      */
     const handleNextQ = () => {
-        setshowSolution(false)
-        setCurrentQ(currentQ + 1);
-        setCurrentProgress(currentProgress + 33.33333);
+        if(isCorrect) {
+            setshowSolution(false)
+            setCurrentQ(currentQ + 1);
+            setCurrentProgress(currentProgress + 33.33333);
 
-        if (currentQ === 3) {
-            async function fetchData() {
-                const requestOptions = {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    // CHANGE TO LANGUAGE PASSED AS PROP ONCE LANGUAGES ARE IMPLEMENTED
-                    body: JSON.stringify({ language : 'java', subject : unitName})
-                };
-                const response = await fetch('/completion/', requestOptions);
-                console.log(response);
+            if (currentQ === 3) {
+                async function fetchData() {
+                    const requestOptions = {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        // CHANGE TO LANGUAGE PASSED AS PROP ONCE LANGUAGES ARE IMPLEMENTED
+                        body: JSON.stringify({language: 'java', subject: unitName})
+                    };
+                    const response = await fetch('/completion/', requestOptions);
+                    console.log(response);
+                }
+
+                if (!complete) {
+                    fetchData();
+                } else {
+                    console.log("already completed milestone");
+                }
+                setIsCorrect(false);
             }
-            if (!complete) {
-                fetchData();
-            } else {
-                console.log("already completed milestone");
-            }
+            setIsCorrect(false);
         }
     };
 
@@ -67,6 +73,13 @@ const Milestone: React.FC<MilestoneProps> = ({unitName, onComplete, complete} : 
         onComplete();
     }
 
+    /**
+     * Handles the completion of the current question.
+     */
+    const handleAnsweredCorrectly = () => {
+        setIsCorrect(true);
+    };
+
     return (
         <div className='page'>
             <div className='question-header'>
@@ -79,9 +92,9 @@ const Milestone: React.FC<MilestoneProps> = ({unitName, onComplete, complete} : 
                 </div>
             </div>
             <div className='question-content'>
-                {currentQ === 1 && <ShortAnswer  solution={solution} updateSolution={updateSolution} unit={unitName} difficulty={1} submitRef={submitRef} />}
-                {currentQ === 2 && <ShortAnswer  solution={solution} updateSolution={updateSolution} unit={unitName} difficulty={2} submitRef={submitRef} />}
-                {currentQ === 3 && <ShortAnswer  solution={solution} updateSolution={updateSolution} unit={unitName} difficulty={3} submitRef={submitRef} />}
+                {currentQ === 1 && <ShortAnswer  solution={solution} updateSolution={updateSolution} unit={unitName} difficulty={1} submitRef={submitRef} handleAnsweredCorrectly={handleAnsweredCorrectly} />}
+                {currentQ === 2 && <ShortAnswer  solution={solution} updateSolution={updateSolution} unit={unitName} difficulty={2} submitRef={submitRef} handleAnsweredCorrectly={handleAnsweredCorrectly} />}
+                {currentQ === 3 && <ShortAnswer  solution={solution} updateSolution={updateSolution} unit={unitName} difficulty={3} submitRef={submitRef} handleAnsweredCorrectly={handleAnsweredCorrectly} />}
                 {currentQ === 4 && <Completed />}
             </div>
             <div className="question-footer">

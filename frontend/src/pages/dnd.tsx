@@ -36,13 +36,14 @@ interface DragDropProps {
     difficulty: number
     solution: string
     updateSolution: (newValue: string) => void
+    handleAnsweredCorrectly: () => void
 }
 
 /**
  * Drag and Drop component.
  * Renders a drag and drop interaction with a prompt and draggable items.
  */
-const DragDrop: React.FC<DragDropProps> = ({solution, updateSolution, submitRef, unit, difficulty}) => {
+const DragDrop: React.FC<DragDropProps> = ({solution, updateSolution, submitRef, unit, difficulty, handleAnsweredCorrectly}) => {
     /**
      * State variables for drag and drop functionality.
      */
@@ -136,6 +137,7 @@ const DragDrop: React.FC<DragDropProps> = ({solution, updateSolution, submitRef,
 
         if (JSON.stringify(ordering) === JSON.stringify(originalOrdering)) {
             setIsCorrect(true);
+            handleAnsweredCorrectly();
         } else {
             setIsCorrect(false);
         }
