@@ -3,6 +3,7 @@ import './shortanswer.css';
 
 interface ShortAnswerProps {
     submitRef : React.RefObject<HTMLButtonElement>;
+    language: string;
     unit: string
     difficulty: number
     solution: string
@@ -36,7 +37,7 @@ const emptyShortAnswerData: shortAnswerData = {
  * Short Answer component.
  * Renders a short answer component that allows free response.
  */
-const ShortAnswer: React.FC<ShortAnswerProps> = ({solution, updateSolution, submitRef, unit, difficulty, handleAnsweredCorrectly}) => {
+const ShortAnswer: React.FC<ShortAnswerProps> = ({solution, updateSolution, submitRef, language, unit, difficulty, handleAnsweredCorrectly}) => {
     /**
      * Tracks the short answer data.
      */
@@ -47,7 +48,7 @@ const ShortAnswer: React.FC<ShortAnswerProps> = ({solution, updateSolution, subm
      */
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch("/content/java/" + unit + "/short_response/" + difficulty + "/1")
+            const response = await fetch("/content/" + language + "/" + unit + "/short_response/" + difficulty + "/1")
             const data = await response.json();
             setshortAnwswer(data)
             console.log(data)

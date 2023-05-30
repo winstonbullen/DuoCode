@@ -7,12 +7,13 @@ import Completed from './completed';
 
 
 interface MilestoneProps {
+    language: string;
     unitName: string;
     onComplete: () => void;
     complete: boolean;
 }
 
-const Milestone: React.FC<MilestoneProps> = ({unitName, onComplete, complete} : MilestoneProps) => {
+const Milestone: React.FC<MilestoneProps> = ({language, unitName, onComplete, complete} : MilestoneProps) => {
     const [currentQ, setCurrentQ] = useState<number>(1);
     const [currentProgress, setCurrentProgress] = useState(0);
     const [solution, setSolution] = useState('No Solution Available');
@@ -40,22 +41,18 @@ const Milestone: React.FC<MilestoneProps> = ({unitName, onComplete, complete} : 
 
             if (currentQ === 3) {
                 async function fetchData() {
-                    const requestOptions = {
-                        method: 'POST',
-                        headers: {'Content-Type': 'application/json'},
-                        // CHANGE TO LANGUAGE PASSED AS PROP ONCE LANGUAGES ARE IMPLEMENTED
-                        body: JSON.stringify({language: 'java', subject: unitName})
-                    };
-                    const response = await fetch('/completion/', requestOptions);
-                    console.log(response);
+                  const requestOptions = {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ language : language, subject : unitName})
+                  };
+                  await fetch('/completion/', requestOptions);
                 }
-
-                if (!complete) {
-                    fetchData();
-                } else {
-                    console.log("already completed milestone");
-                }
-                setIsCorrect(false);
+            }
+            if (!complete) {
+                fetchData();
+            } else {
+                console.log("already completed milestone");
             }
             setIsCorrect(false);
         }
@@ -92,9 +89,9 @@ const Milestone: React.FC<MilestoneProps> = ({unitName, onComplete, complete} : 
                 </div>
             </div>
             <div className='question-content'>
-                {currentQ === 1 && <ShortAnswer  solution={solution} updateSolution={updateSolution} unit={unitName} difficulty={1} submitRef={submitRef} handleAnsweredCorrectly={handleAnsweredCorrectly} />}
-                {currentQ === 2 && <ShortAnswer  solution={solution} updateSolution={updateSolution} unit={unitName} difficulty={2} submitRef={submitRef} handleAnsweredCorrectly={handleAnsweredCorrectly} />}
-                {currentQ === 3 && <ShortAnswer  solution={solution} updateSolution={updateSolution} unit={unitName} difficulty={3} submitRef={submitRef} handleAnsweredCorrectly={handleAnsweredCorrectly} />}
+                {currentQ === 1 && <ShortAnswer  solution={solution} updateSolution={updateSolution} language={language} unit={unitName} difficulty={1} submitRef={submitRef} handleAnsweredCorrectly={handleAnsweredCorrectly} />}
+                {currentQ === 2 && <ShortAnswer  solution={solution} updateSolution={updateSolution} language={language} unit={unitName} difficulty={2} submitRef={submitRef} handleAnsweredCorrectly={handleAnsweredCorrectly} />}
+                {currentQ === 3 && <ShortAnswer  solution={solution} updateSolution={updateSolution} language={language} unit={unitName} difficulty={3} submitRef={submitRef} handleAnsweredCorrectly={handleAnsweredCorrectly} />}
                 {currentQ === 4 && <Completed />}
             </div>
             <div className="question-footer">

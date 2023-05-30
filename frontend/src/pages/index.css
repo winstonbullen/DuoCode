@@ -301,6 +301,10 @@
     font-size: 15px;
   }
 
+  .resources-link:link, .resources-link:visited, .resources-link:hover, .resources-link:active {
+    color: white;
+  }
+
   .variables {
     position: absolute;
     margin-top: 45px;

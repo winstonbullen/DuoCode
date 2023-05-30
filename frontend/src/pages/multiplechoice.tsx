@@ -35,6 +35,7 @@ type Option = {
 
 interface MultipleChoiceProps {
     submitRef : React.RefObject<HTMLButtonElement>;
+    language: string;
     unit: string
     difficulty: number
     solution: string
@@ -47,7 +48,7 @@ interface MultipleChoiceProps {
  * Multiple Choice component.
  * Renders a multiple choice question with multiple options to select.
  */
-const MultipleChoice: React.FC<MultipleChoiceProps> = ({solution, updateSolution, submitRef, unit, difficulty, handleAnsweredCorrectly}) => {
+const MultipleChoice: React.FC<MultipleChoiceProps> = ({solution, updateSolution, submitRef, language, unit, difficulty, handleAnsweredCorrectly}) => {
     /**
      * The currently displayed question.
      */
@@ -78,7 +79,7 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({solution, updateSolution
      */
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch("/content/java/" + unit + "/multiple_choice/" + difficulty + "/1")
+            const response = await fetch("/content/" + language + "/" + unit + "/multiple_choice/" + difficulty + "/1")
             const data = await response.json();
             console.log(data)
             setQuestion(data)

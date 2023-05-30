@@ -32,6 +32,7 @@ type DragItem = {
 
 interface DragDropProps {
     submitRef : React.RefObject<HTMLButtonElement>;
+    language: string;
     unit: string
     difficulty: number
     solution: string
@@ -43,7 +44,7 @@ interface DragDropProps {
  * Drag and Drop component.
  * Renders a drag and drop interaction with a prompt and draggable items.
  */
-const DragDrop: React.FC<DragDropProps> = ({solution, updateSolution, submitRef, unit, difficulty, handleAnsweredCorrectly}) => {
+const DragDrop: React.FC<DragDropProps> = ({solution, updateSolution, submitRef, language, unit, difficulty, handleAnsweredCorrectly}) => {
     /**
      * State variables for drag and drop functionality.
      */
@@ -70,7 +71,7 @@ const DragDrop: React.FC<DragDropProps> = ({solution, updateSolution, submitRef,
      */
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch("/content/java/" + unit + "/drag_drop/" + difficulty + "/1")
+            const response = await fetch("/content/" + language + "/" + unit + "/drag_drop/" + difficulty + "/1")
             const data = await response.json();
             const shuffledOrdering = shuffleArray(data.correct_ordering);
             setDragDrop({...data, correct_ordering: shuffledOrdering});
