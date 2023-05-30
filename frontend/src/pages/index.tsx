@@ -3,19 +3,13 @@ import { Link } from 'react-router-dom';
 import Question from './question';
 import './index.css';
 import Milestone from './milestone';
-import GreenStar from 'components/GreenStar';
+import { JAVA_CONTENT, PYTHON_CONTENT } from './contentlist';
 
 /**
  * HomePage component.
  * Renders the homepage and sidebar.
  */
 const HomePage: React.FC = () => {
-    /*const [language, setLanguage] = useState<string>('Java');
-    const [dailyChallengeProgress, setDailyChallengeProgress] = useState<number>(70);
-    const handleLanguageChange = (selectedLanguage: Language) => {
-        setLanguage(selectedLanguage);
-    };*/
-
     /**
      * The currently active component.
      */
@@ -98,17 +92,58 @@ const HomePage: React.FC = () => {
     /**
      * Handles logic for language dropdown
      */
-    const [selectedOption, setSelectedOption] = useState('Java'); /* Stores selected language */
+    const [selectedLanguage, setselectedLanguage] = useState('Java'); /* Stores selected language */
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const handleOptionClick = (option: string) => {
-        setSelectedOption(option);
+        setselectedLanguage(option);
         setIsMenuOpen(false);
     };
 
     const toggleMenu = () => {
         setIsMenuOpen(prevState => !prevState);
     };
+
+    /**
+     * create checkpoints
+     */
+    const createCheckpoints = (unitName : string) => {
+        return (<div className="checkpoints">
+            <div className="checkpoint1" onClick={() => handleLessonClick(unitName, 1)}
+                style = {completionData.has(selectedLanguage.toLowerCase() + "_" + unitName + "_1") ? {backgroundColor : '#0ADD08'} : {}}>
+                <img src={require("./images/whitestar.png")} alt="whitestar"/>
+            </div>
+            <div className="checkpoint2" onClick={() => handleLessonClick(unitName, 2)}
+                style = {completionData.has(selectedLanguage.toLowerCase() + "_" + unitName + "_2") ? {backgroundColor : '#0ADD08'} : {}}>
+                <img src={require("./images/whitestar.png")} alt="whitestar" />
+            </div>
+            <div className="checkpoint3" onClick={() => handleLessonClick(unitName, 3)}
+                style = {completionData.has(selectedLanguage.toLowerCase() + "_" + unitName + "_3") ? {backgroundColor : '#0ADD08'} : {}}>
+                <img src={require("./images/whitestar.png")} alt="whitestar" />
+            </div>
+            <div className="checkpoint4" onClick={() => handleMilestoneClick(unitName)}
+                style = {completionData.has(selectedLanguage.toLowerCase() + "_" + unitName) ? {backgroundColor : '#0ADD08'} : {}}>
+                <img src={require("./images/whiteflag.png")} alt="flag" />
+            </div>
+        </div> );
+    }
+
+    // shouldn't these really be their own components?
+    /**
+     * create unit
+     */
+    const createUnit = (unitName: string, unitNum: number, link: string) => {
+        // each key must be unique, so this works supposing unit names always unique
+        return (<div className={`unit1-container`} key={unitName}>
+            <div className={`unit1`}>
+                <h3>Unit {unitNum}</h3>
+                <p className="resources"><a href={link} className="resources-link" target="_blank" rel="noopener noreferrer">Resources</a></p>
+                <p className="variables">{unitName}</p>
+            </div>
+            {createCheckpoints(unitName)}
+        </div>);
+    }
+
 
     /**
      * Fetches completion data on component mount.
@@ -120,7 +155,7 @@ const HomePage: React.FC = () => {
 
     return (
         <>
-        {activeComponent === 'home' && 
+        {activeComponent === 'home' &&
             <div className="container">
                 <nav className={isExpanded ? "sidebar" : "sidebar sidebar-close"}>
                     <header>
@@ -159,60 +194,18 @@ const HomePage: React.FC = () => {
                     </div>
                 </nav>
                 <div className="middlepane">
-                <div className="unit1-container">
-                    <div className="unit1">
-                        <h3>Unit 1</h3>
-                        <p className="resources">Resources</p>
-                        <p className="variables">Variables</p>
-                    </div>
-                    <div className="checkpoints">
-                        <div className="checkpoint1" onClick={() => handleLessonClick("variables", 1)}>
-                            {/* FIX THIS TO NOT HARD CODE */}
-                            {completionData.has("java_variables_1") ? (
-                                <GreenStar/>) : <img src={require("./images/whitestar.png")} alt="whitestar"/> 
-                            }
-                        </div>
-                        <div className="checkpoint2" onClick={() => handleLessonClick("variables", 2)}>
-                            <img src={require("./images/whitestar.png")} alt="whitestar" />
-                        </div>
-                        <div className="checkpoint3" onClick={() => handleLessonClick("variables", 3)}>
-                            <img src={require("./images/whitestar.png")} alt="whitestar" />
-                        </div>
-                        <div className="checkpoint4" onClick={() => handleMilestoneClick("variables")}>
-                            <img src={require("./images/whiteflag.png")} alt="flag" />
-                        </div>
-                    </div>
-                </div>
-                <div className="unit2-container">
-                    <div className="unit2">
-                        <h3>Unit 2</h3>
-                        <p className="resources">Resources</p>
-                        <p className="operators">Operators</p>
-                    </div>
-                    <div className="checkpoints">
-                        <div className="checkpoint1">
-                            <Link to='/'>
-                            <img src={require("./images/blackstar.png")} alt="blackstar" /></Link>
-                        </div>
-                        <div className="checkpoint2">
-                            <Link to='/'>
-                            <img src={require("./images/lock.png")} alt="lock" /></Link>
-                        </div>
-                        <div className="checkpoint3">
-                            <Link to='/'>
-                            <img src={require("./images/lock.png")} alt="lock" /></Link>
-                        </div>
-                        <div className="checkpoint4">
-                            <Link to='/'>
-                            <img src={require("./images/flag.png")} alt="flag" /></Link>
-                        </div>
-                    </div>
-                </div>
+                {selectedLanguage.toLowerCase() === 'java' ? (
+                        // the i + 1 makes unit numbering start at 1
+                        JAVA_CONTENT.map((u, i) => createUnit(u.unitName, i + 1, u.resource_link))
+                    ) : (
+                        PYTHON_CONTENT.map((u, i) => createUnit(u.unitName, i + 1, u.resource_link))
+                    )
+                }
                 </div>
                 <div className="rightpane">
                 <div className={`select-menu${isMenuOpen ? ' active' : ''}`}>
                     <div className="select-btn" onClick={toggleMenu}>
-                        <span className="sBtn-text">{selectedOption}</span>
+                        <span className="sBtn-text">{selectedLanguage}</span>
                         <i className="bx bx-chevron-down"></i>
                     </div>
                     <ul className="options">
@@ -220,7 +213,7 @@ const HomePage: React.FC = () => {
                             <i className="bx bxl-java"></i>
                             <span className="option-text">Java</span>
                         </li>
-                        <li className="option" value="Java" onClick={() => handleOptionClick('Python')}>
+                        <li className="option" value="Python" onClick={() => handleOptionClick('Python')}>
                             <i className="bx bxl-python"></i>
                             <span className="option-text">Python</span>
                         </li>
@@ -229,32 +222,15 @@ const HomePage: React.FC = () => {
                 </div>
             </div>
 
-            
+
         }
-        {/* FIX HARD CODE LANGUAGE ONCE IMPLEMENTED */}
-        {activeComponent==='question' && <Question unitName={curUnit} difficulty={curDifficulty} onComplete={() => handleReload()} 
-            complete={completionData.has("java_" + curUnit + "_" + curDifficulty)}/>}
-        {activeComponent==='milestone' && <Milestone unitName={curUnit} onComplete={() => setActiveComponent('home')}
-            complete={completionData.has("java_" + curUnit)}/>}
+
+        {activeComponent==='question' && <Question language={selectedLanguage.toLowerCase()} unitName={curUnit} difficulty={curDifficulty} onComplete={() => handleReload()}
+            complete={completionData.has(selectedLanguage.toLowerCase() + "_" + curUnit + "_" + curDifficulty)}/>}
+        {activeComponent==='milestone' && <Milestone language={selectedLanguage.toLowerCase()} unitName={curUnit} onComplete={() => handleReload()}
+            complete={completionData.has(selectedLanguage.toLowerCase() + "_" + curUnit)}/>}
         </>
     );
 };
-
-/*
- <div className="home-page-container">
-            <div className="language-dropdown">
-                <select value={language} onChange={(e) => handleLanguageChange(e.target.value as Language)}>
-                    <option value="Java">Java</option>
-                    <option value="Python">Python</option>
-                </select>
-            </div>
-            <div className="daily-challenge">
-                <p>Daily Challenge</p>
-                <div className="progress-bar">
-                    <div className="progress" style={{ width: `${dailyChallengeProgress}%` }}></div>
-                </div>
-            </div>
-        </div>
-*/
 
 export default HomePage;

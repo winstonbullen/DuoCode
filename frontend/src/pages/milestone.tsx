@@ -7,12 +7,13 @@ import Completed from './completed';
 
 
 interface MilestoneProps {
+    language: string;
     unitName: string;
     onComplete: () => void;
     complete: boolean;
 }
 
-const Milestone: React.FC<MilestoneProps> = ({unitName, onComplete, complete} : MilestoneProps) => {
+const Milestone: React.FC<MilestoneProps> = ({language, unitName, onComplete, complete} : MilestoneProps) => {
     const [currentQ, setCurrentQ] = useState<number>(1);
     const [currentProgress, setCurrentProgress] = useState(0);
     const [solution, setSolution] = useState('No Solution Available');
@@ -41,11 +42,9 @@ const Milestone: React.FC<MilestoneProps> = ({unitName, onComplete, complete} : 
                 const requestOptions = {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
-                    // CHANGE TO LANGUAGE PASSED AS PROP ONCE LANGUAGES ARE IMPLEMENTED
-                    body: JSON.stringify({ language : 'java', subject : unitName})
+                    body: JSON.stringify({ language : language, subject : unitName})
                 };
-                const response = await fetch('/completion/', requestOptions);
-                console.log(response);
+                await fetch('/completion/', requestOptions);
             }
             if (!complete) {
                 fetchData();
@@ -79,9 +78,9 @@ const Milestone: React.FC<MilestoneProps> = ({unitName, onComplete, complete} : 
                 </div>
             </div>
             <div className='question-content'>
-                {currentQ === 1 && <ShortAnswer  solution={solution} updateSolution={updateSolution} unit={unitName} difficulty={1} submitRef={submitRef} />}
-                {currentQ === 2 && <ShortAnswer  solution={solution} updateSolution={updateSolution} unit={unitName} difficulty={2} submitRef={submitRef} />}
-                {currentQ === 3 && <ShortAnswer  solution={solution} updateSolution={updateSolution} unit={unitName} difficulty={3} submitRef={submitRef} />}
+                {currentQ === 1 && <ShortAnswer  solution={solution} updateSolution={updateSolution} language={language} unit={unitName} difficulty={1} submitRef={submitRef} />}
+                {currentQ === 2 && <ShortAnswer  solution={solution} updateSolution={updateSolution} language={language} unit={unitName} difficulty={2} submitRef={submitRef} />}
+                {currentQ === 3 && <ShortAnswer  solution={solution} updateSolution={updateSolution} language={language} unit={unitName} difficulty={3} submitRef={submitRef} />}
                 {currentQ === 4 && <Completed />}
             </div>
             <div className="question-footer">
