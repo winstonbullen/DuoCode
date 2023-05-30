@@ -59,18 +59,21 @@ const Question: React.FC<QuestionProps> = ({language, unitName, difficulty, onCo
             setshowSolution(false)
 
             if (currentQ === 3) {
-              async function fetchData() {
-                const requestOptions = {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({ language : language, subject : unitName, level : difficulty})
-                };
-                await fetch('/completion/', requestOptions);
-            }
-            if (!complete) {
-                fetchData();
-            } else {
-                console.log("already completed lesson");
+                async function fetchData() {
+                    const requestOptions = {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({ language : language, subject : unitName, level : difficulty})
+                    };
+                    await fetch('/completion/', requestOptions);
+                }
+                
+                if (!complete) {
+                    fetchData();
+                } else {
+                    console.log("already completed lesson");
+                }
+                setIsCorrect(false);
             }
             setIsCorrect(false);
         }

@@ -41,18 +41,20 @@ const Milestone: React.FC<MilestoneProps> = ({language, unitName, onComplete, co
 
             if (currentQ === 3) {
                 async function fetchData() {
-                  const requestOptions = {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({ language : language, subject : unitName})
-                  };
-                  await fetch('/completion/', requestOptions);
+                    const requestOptions = {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({ language : language, subject : unitName})
+                    };
+                    await fetch('/completion/', requestOptions);
                 }
-            }
-            if (!complete) {
-                fetchData();
-            } else {
-                console.log("already completed milestone");
+                
+                if (!complete) {
+                    fetchData();
+                } else {
+                    console.log("already completed lesson");
+                }
+                setIsCorrect(false);
             }
             setIsCorrect(false);
         }
