@@ -8,6 +8,7 @@ interface ShortAnswerProps {
     difficulty: number
     solution: string
     updateSolution: (newValue: string) => void
+    handleAnsweredCorrectly: () => void
 }
 
 /**
@@ -36,7 +37,7 @@ const emptyShortAnswerData: shortAnswerData = {
  * Short Answer component.
  * Renders a short answer component that allows free response.
  */
-const ShortAnswer: React.FC<ShortAnswerProps> = ({solution, updateSolution, submitRef, language, unit, difficulty}) => {
+const ShortAnswer: React.FC<ShortAnswerProps> = ({solution, updateSolution, submitRef, language, unit, difficulty, handleAnsweredCorrectly}) => {
     /**
      * Tracks the short answer data.
      */
@@ -93,6 +94,9 @@ const ShortAnswer: React.FC<ShortAnswerProps> = ({solution, updateSolution, subm
      */
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        if(validateAnswer()) {
+            handleAnsweredCorrectly();
+        }
         setIsValid(validateAnswer());
         setShowValidation(true);
     };
