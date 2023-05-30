@@ -1,4 +1,4 @@
-import React, { useRef, useState }from 'react';
+import React, {useEffect, useRef, useState }from 'react';
 import './question.css';
 
 import CloseBtn from '../components/CloseBtn'
@@ -110,10 +110,19 @@ const Question: React.FC<QuestionProps> = ({language, unitName, difficulty, onCo
     /**
      * Prevents user from accidently going back to menu without finishing the level.
      */
-    window.addEventListener('beforeunload', function (event) {
-        event.preventDefault();
-        event.returnValue = '';
-    });
+    useEffect(() => {
+        const handleBeforeUnload = (event: any) => {
+            event.preventDefault();
+            event.returnValue = '';
+        };
+
+        window.addEventListener('beforeunload', handleBeforeUnload);
+
+        return () => {
+            window.removeEventListener('beforeunload', handleBeforeUnload);
+        };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const handleCloseClick  = () => {
         const confirmDialog = window.confirm('Are you sure you want to exit the level? Your progress will not be saved.');
