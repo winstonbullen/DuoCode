@@ -4,7 +4,7 @@
 
 #### `/` - landing page endpoint
 - Method: `GET`
-- returns the login page if the user if not logged in, otherwise the app
+- returns the login page if the user is not logged in, otherwise the app
 
 #### `/help` - help page endpoint
 - Method: `GET`
@@ -12,7 +12,7 @@
 
 #### `/app` - the app itself
 - Method: `GET`
-- returns the app's web content!
+- returns the app's web content if the user is logged in, otherwise the login page
 - Response:
   - 200 - success
   - 401 - user is unauthorized
@@ -55,7 +55,8 @@
     "language": "java",
     "subject": "arrays",
     "type": "drag_drop",
-    "difficulty": 1,
+    "difficulty": "1",
+    "id": "1",
     "prompt": "Drag and drop the following blocks to create an empty int array of length 8 called myInts.",
     "correct_ordering": ["int[]", "myInts", "=", "new", "int[8]", ";"]
 }
