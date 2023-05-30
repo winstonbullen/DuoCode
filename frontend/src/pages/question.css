@@ -84,17 +84,17 @@
 }
 
 .popup {
-    font-family: Nunito, serif;
-    font-weight: bold;
-    text-align: center;
+    bottom: 26%;
+    font-family: Nunito,serif;
     font-size: 24px;
-    position: fixed;
-    bottom: 17%;
-    left: 11%;
-    width: 20%;
-    height: 5%;
-    z-index: 9999;
+    font-weight: 700;
+    height: 3%;
+    right: 27%;
     padding: 20px;
+    position: fixed;
+    text-align: center;
+    width: 100%;
+    z-index: 9999;
 }
 
 
@@ -183,15 +183,42 @@
         padding: 15px 70px;
         transition: background-color .2s;
     }
+
+    .popup {
+        bottom: 20%;
+        font-size: 20px;
+        height: 3%;
+        padding: 20px;
+        position: fixed;
+        right: 30%;
+        text-align: center;
+        width: 100%;
+        z-index: 9999;
+    }
+
 }
 
-@media (max-width: 1440px) {
+@media (min-width: 1281px) and (max-width: 1440px) {
     .question-footer {
-        bottom: 0;
+        bottom: 8%;
         display: flex;
         height: 200px;
         justify-content: center;
         position: absolute;
         width: 100%;
+    }
+
+    .popup {
+        bottom: 19.5%;
+        font-family: Nunito,serif;
+        font-size: 20px;
+        font-weight: 700;
+        height: 3%;
+        right: 36%;
+        padding: 20px;
+        position: fixed;
+        text-align: center;
+        width: 100%;
+        z-index: 9999;
     }
 }
