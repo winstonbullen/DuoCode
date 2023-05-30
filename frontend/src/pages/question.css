@@ -34,6 +34,7 @@
 }
 
 .question-next{
+    min-width: 272px;
     margin-top: 16%;
     font-family: Nunito, serif;
     font-weight: bold;
@@ -142,6 +143,25 @@
     margin-right: 10px;
 }
 
+.refresh-button{
+    position: absolute;
+    font-family: Nunito, serif;
+    font-weight: bold;
+    background-color: #0096FF;
+    margin-top: 250px;
+    color: #fff;
+    padding: 15px 70px;
+    border: none;
+    border-radius: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.refresh-button:hover{
+    background-color: #0062ff;
+}
+
 @media (max-width: 1280px) {
     .question-footer {
         bottom: 50px;
@@ -165,7 +185,7 @@
 
     .button-group {
         display: flex;
-        gap: 20%;
+        gap: 13%;
         justify-content: center;
     }
 

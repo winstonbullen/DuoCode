@@ -66,21 +66,22 @@ const DragDrop: React.FC<DragDropProps> = ({solution, updateSolution, submitRef,
      */
     const [originalOrdering, setOriginalOrdering] = useState<string[]>([]);
 
+    const [currentQuestion, setCurrentQuestion] = useState<number>(1);
+    const fetchContentData = async () => {
+        const response = await fetch("/content/" + language + "/" + unit + "/drag_drop/" + difficulty + "/" + currentQuestion);
+        const data = await response.json();
+        const shuffledOrdering = shuffleArray(data.correct_ordering);
+        setDragDrop({ ...data, correct_ordering: shuffledOrdering });
+        setOriginalOrdering(data.correct_ordering);
+    };
+
     /**
      * Fetches content data for drag and drop.
      */
     useEffect(() => {
-        async function fetchData() {
-            const response = await fetch("/content/" + language + "/" + unit + "/drag_drop/" + difficulty + "/1")
-            const data = await response.json();
-            const shuffledOrdering = shuffleArray(data.correct_ordering);
-            setDragDrop({...data, correct_ordering: shuffledOrdering});
-            setOriginalOrdering(data.correct_ordering)
-            console.log(data)
-        }
-        fetchData();
+        fetchContentData();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [currentQuestion]);
 
     /**
      * Sets the solution when new question is loaded.
@@ -157,47 +158,63 @@ const DragDrop: React.FC<DragDropProps> = ({solution, updateSolution, submitRef,
         }
         return shuffled;
     };
+    const handleRefresh = () => {
+        const dragZone = document.querySelector('.drag-drop-dragzone');
+        const draggableElements = document.querySelectorAll('.drag-drop-draggable');
+        draggableElements.forEach((element) => {
+            const draggableElement = element as HTMLElement;
+            dragZone?.appendChild(draggableElement);
+            draggableElement.style.display = 'inline-block';
+        });
+
+        setShowResult(false);
+        setIsCorrect(false);
+    };
 
     return (
-       <div>
-           <div className="drag-drop-container">
-               <div className="drag-drop-prompt">{dragDrop.prompt}</div>
-               <div className="drag-drop-horizontal-container">
-                   <div className="drag-drop-dragzone">
-                       {dragDrop.correct_ordering.map((item, index) => (
-                           <div
-                               key={index}
-                               className="drag-drop-draggable"
-                               id={`drag-${index}`}
-                               draggable
-                               onDragStart={(event) =>
-                                   handleDragStart(event, { id: `drag-${index}`, text: item })
-                               }
-                           >
-                               {item}
-                           </div>
-                       ))}
-                   </div>
-                   <div className="drag-drop-dropzone" onDragOver={handleDragOver} onDrop={handleDrop}>
-                       {Array.from({ length: dragDrop.correct_ordering.length }).map((_, index) => (
-                           <div key={index} className="drag-drop-placeholder"></div>
-                       ))}
-                   </div>
-               </div>
-               <button ref={ submitRef } className="" style={{ display: 'none' }} onClick={handleSubmit}>
-                   Submit
-               </button>
-           </div>
-           {showResult && (
-               <div className="result-message">
-                   {isCorrect ? (
-                       <p className="correct-answer drag-drop-correct">Correct!</p>
-                   ) : (
-                       <p className="incorrect-answer drag-drop-incorrect">Incorrect.</p>
-                   )}
-               </div>
-           )}
-       </div>
+        <div>
+            <div className="drag-drop-container">
+                <div className="drag-drop-prompt">{dragDrop.prompt}</div>
+                <div className="drag-drop-horizontal-container">
+                    <div className="drag-drop-dragzone">
+                        {dragDrop.correct_ordering.map((item, index) => (
+                            <div
+                                key={index}
+                                className="drag-drop-draggable"
+                                id={`drag-${index}`}
+                                draggable
+                                onDragStart={(event) =>
+                                    handleDragStart(event, { id: `drag-${index}`, text: item })
+                                }
+                            >
+                                {item}
+                            </div>
+                        ))}
+                    </div>
+                    <div className="drag-drop-dropzone" onDragOver={handleDragOver} onDrop={handleDrop}>
+                        {Array.from({ length: dragDrop.correct_ordering.length }).map((_, index) => (
+                            <div key={index} className="drag-drop-placeholder"></div>
+                        ))}
+                    </div>
+                    <button className="refresh-button" onClick={handleRefresh}>
+                        Refresh
+                    </button>
+                </div>
+
+                <button ref={ submitRef } className="" style={{ display: 'none' }} onClick={handleSubmit}>
+                    Submit
+                </button>
+            </div>
+            {showResult && (
+                <div className="result-message">
+                    {isCorrect ? (
+                        <p className="correct-answer drag-drop-correct">Correct!</p>
+                    ) : (
+                        <p className="incorrect-answer drag-drop-incorrect">Incorrect.</p>
+                    )}
+                </div>
+            )}
+        </div>
 
     );
 };

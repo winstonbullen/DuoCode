@@ -34,7 +34,6 @@ const Question: React.FC<QuestionProps> = ({language, unitName, difficulty, onCo
     const [solution, setSolution] = useState('No Solution Available');
     const [visibleSolution, setVisibleSolution] = useState('Please submit once to see solution')
     const [showSolution, setshowSolution] = useState(false);
-
     const [isCorrect, setIsCorrect] = useState<boolean>(false);
 
     /**
