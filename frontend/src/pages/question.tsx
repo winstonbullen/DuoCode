@@ -107,10 +107,25 @@ const Question: React.FC<QuestionProps> = ({language, unitName, difficulty, onCo
         setIsCorrect(true);
     };
 
+    /**
+     * Prevents user from accidently going back to menu without finishing the level.
+     */
+    window.addEventListener('beforeunload', function (event) {
+        event.preventDefault();
+        event.returnValue = '';
+    });
+
+    const handleCloseClick  = () => {
+        const confirmDialog = window.confirm('Are you sure you want to exit the level? Your progress will not be saved.');
+        if (confirmDialog) {
+            handleComplete()
+        }
+    }
+
     return (
         <div className='page'>
             <div className='question-header'>
-                <button type="submit" className="question-close" onClick={handleComplete}>
+                <button type="submit" className="question-close" onClick={handleCloseClick}>
                     <CloseBtn/>
                 </button>
 
