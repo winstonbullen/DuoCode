@@ -91,7 +91,7 @@ const HomePage: React.FC = () => {
     /**
      * Handles logic for language dropdown
      */
-    const [selectedLanguage, setselectedLanguage] = useState('lava'); /* Stores selected language */
+    const [selectedLanguage, setselectedLanguage] = useState('Java'); /* Stores selected language */
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const handleOptionClick = (option: string) => {
@@ -109,19 +109,19 @@ const HomePage: React.FC = () => {
     const createCheckpoints = (unitName : string) => {
         return (<div className="checkpoints">
             <div className="checkpoint1" onClick={() => handleLessonClick(unitName, 1)}
-                style = {completionData.has(selectedLanguage + "_" + unitName + "_1") ? {backgroundColor : '#0ADD08'} : {}}>
+                style = {completionData.has(selectedLanguage.toLowerCase() + "_" + unitName + "_1") ? {backgroundColor : '#0ADD08'} : {}}>
                 <img src={require("./images/whitestar.png")} alt="whitestar"/> 
             </div>
             <div className="checkpoint2" onClick={() => handleLessonClick(unitName, 2)}
-                style = {completionData.has(selectedLanguage + "_" + unitName + "_2") ? {backgroundColor : '#0ADD08'} : {}}>
+                style = {completionData.has(selectedLanguage.toLowerCase() + "_" + unitName + "_2") ? {backgroundColor : '#0ADD08'} : {}}>
                 <img src={require("./images/whitestar.png")} alt="whitestar" />
             </div>
             <div className="checkpoint3" onClick={() => handleLessonClick(unitName, 3)}
-                style = {completionData.has(selectedLanguage + "_" + unitName + "_3") ? {backgroundColor : '#0ADD08'} : {}}>
+                style = {completionData.has(selectedLanguage.toLowerCase() + "_" + unitName + "_3") ? {backgroundColor : '#0ADD08'} : {}}>
                 <img src={require("./images/whitestar.png")} alt="whitestar" />
             </div>
             <div className="checkpoint4" onClick={() => handleMilestoneClick(unitName)}
-                style = {completionData.has(selectedLanguage + "_" + unitName) ? {backgroundColor : '#0ADD08'} : {}}>
+                style = {completionData.has(selectedLanguage.toLowerCase() + "_" + unitName) ? {backgroundColor : '#0ADD08'} : {}}>
                 <img src={require("./images/whiteflag.png")} alt="flag" />
             </div>
         </div> );
@@ -207,11 +207,11 @@ const HomePage: React.FC = () => {
                         <i className="bx bx-chevron-down"></i>
                     </div>
                     <ul className="options">
-                        <li className="option" value="Java" onClick={() => handleOptionClick('java') }>
+                        <li className="option" value="Java" onClick={() => handleOptionClick('Java') }>
                             <i className="bx bxl-java"></i>
                             <span className="option-text">Java</span>
                         </li>
-                        <li className="option" value="Python" onClick={() => handleOptionClick('python')}>
+                        <li className="option" value="Python" onClick={() => handleOptionClick('Python')}>
                             <i className="bx bxl-python"></i>
                             <span className="option-text">Python</span>
                         </li>
