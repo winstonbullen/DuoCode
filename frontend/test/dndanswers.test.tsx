@@ -24,7 +24,7 @@ describe('Drag and Drop component with mock data', () => {
 
     it('should render the parts to be dragged received from the server', async () => {
         const buttonRef = React.createRef<HTMLButtonElement>();
-        render(<DragDrop solution={"int foo = 1;"} unit={"variables"} difficulty={1} submitRef={buttonRef}
+        render(<DragDrop language={"java"} solution={"int foo = 1;"} unit={"variables"} difficulty={1} submitRef={buttonRef}
                          updateSolution={function (newValue: string): void {
                              "int foo = 1;"
                          }} />);
