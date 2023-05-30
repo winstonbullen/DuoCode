@@ -36,6 +36,8 @@ const Question: React.FC<QuestionProps> = ({language, unitName, difficulty, onCo
 
     const [showSolution, setshowSolution] = useState(false);
 
+    const [isCorrect, setIsCorrect] = useState<boolean>(false);
+
     /**
      * Creates ref to handle question submission.
      */
@@ -51,24 +53,29 @@ const Question: React.FC<QuestionProps> = ({language, unitName, difficulty, onCo
      * post completion to backend api.
      */
     const handleNextQ = () => {
-        setCurrentQ(currentQ + 1);
-        setCurrentProgress(currentProgress + 33.33333);
-        setshowSolution(false)
+        if(isCorrect) {
+            setCurrentQ(currentQ + 1);
+            setCurrentProgress(currentProgress + 33.33333);
+            setshowSolution(false)
 
-        if (currentQ === 3) {
-            async function fetchData() {
-                const requestOptions = {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({ language : language, subject : unitName, level : difficulty})
-                };
-                await fetch('/completion/', requestOptions);
+            if (currentQ === 3) {
+                async function fetchData() {
+                    const requestOptions = {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({ language : language, subject : unitName, level : difficulty})
+                    };
+                    await fetch('/completion/', requestOptions);
+                }
+                
+                if (!complete) {
+                    fetchData();
+                } else {
+                    console.log("already completed lesson");
+                }
+                setIsCorrect(false);
             }
-            if (!complete) {
-                fetchData();
-            } else {
-                console.log("already completed lesson");
-            }
+            setIsCorrect(false);
         }
     };
 
@@ -93,6 +100,13 @@ const Question: React.FC<QuestionProps> = ({language, unitName, difficulty, onCo
         onComplete();
     }
 
+    /**
+     * Handles the completion of the current question.
+     */
+    const handleAnsweredCorrectly = () => {
+        setIsCorrect(true);
+    };
+
     return (
         <div className='page'>
             <div className='question-header'>
@@ -105,9 +119,9 @@ const Question: React.FC<QuestionProps> = ({language, unitName, difficulty, onCo
                 </div>
             </div>
             <div className='question-content'>
-                {currentQ === 1 && <MultipleChoice solution={solution} updateSolution={updateSolution} language={language} unit={unitName} difficulty={difficulty} submitRef={submitRef} />}
-                {currentQ === 2 && <DragDrop solution={solution} updateSolution={updateSolution} language={language} unit={unitName} difficulty={difficulty} submitRef={submitRef} />}
-                {currentQ === 3 && <ShortAnswer solution={solution} updateSolution={updateSolution} language={language} unit={unitName} difficulty={difficulty} submitRef={submitRef} />}
+                {currentQ === 1 && <MultipleChoice solution={solution} updateSolution={updateSolution} language={language} unit={unitName} difficulty={difficulty} submitRef={submitRef} handleAnsweredCorrectly={handleAnsweredCorrectly} />}
+                {currentQ === 2 && <DragDrop solution={solution} updateSolution={updateSolution} language={language} unit={unitName} difficulty={difficulty} submitRef={submitRef} handleAnsweredCorrectly={handleAnsweredCorrectly} />}
+                {currentQ === 3 && <ShortAnswer solution={solution} updateSolution={updateSolution} language={language} unit={unitName} difficulty={difficulty} submitRef={submitRef} handleAnsweredCorrectly={handleAnsweredCorrectly} />}
                 {currentQ === 4 && <Completed />}
             </div>
             <div className="question-footer">

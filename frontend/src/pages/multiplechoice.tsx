@@ -40,6 +40,7 @@ interface MultipleChoiceProps {
     difficulty: number
     solution: string
     updateSolution: (newValue: string) => void
+    handleAnsweredCorrectly: () => void;
 }
 
 
@@ -47,7 +48,7 @@ interface MultipleChoiceProps {
  * Multiple Choice component.
  * Renders a multiple choice question with multiple options to select.
  */
-const MultipleChoice: React.FC<MultipleChoiceProps> = ({solution, updateSolution, submitRef, language, unit, difficulty}) => {
+const MultipleChoice: React.FC<MultipleChoiceProps> = ({solution, updateSolution, submitRef, language, unit, difficulty, handleAnsweredCorrectly}) => {
     /**
      * The currently displayed question.
      */
@@ -135,6 +136,9 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({solution, updateSolution
         event.preventDefault();
         setShowResult(true);
         setIsCorrect(selectedOption === question.correct_answer);
+        if (selectedOption === question.correct_answer) {
+            handleAnsweredCorrectly();
+        }
     }
 
     /**
