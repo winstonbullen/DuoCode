@@ -88,11 +88,7 @@ const Milestone: React.FC<MilestoneProps> = ({unitName, onComplete, complete} : 
                 {currentQ === 4 && <Completed />}
             </div>
             <div className="question-footer">
-                <hr style={{
-                    background: "lightgrey",
-                    height: "3px",
-                    border: "none",
-                }}></hr>
+                <hr className = "fixed-hr"></hr>
                 <div className = "button-group">
                     {currentQ !== 4 ? (
                         <button className="question-solution" onClick={handleSolutionClick}>Solution</button>
@@ -107,7 +103,7 @@ const Milestone: React.FC<MilestoneProps> = ({unitName, onComplete, complete} : 
                     ) : null}
                     {currentQ !== 4 ? (
                         <button type="submit" className="question-next" onClick={handleNextQ}>Next</button>
-                    ) : <button type="submit" className="question-next" onClick={handleComplete}>Go Back</button>}
+                    ) : <button type="submit" className="question-complete" onClick={handleComplete}>Go Back</button>}
                 </div>
             </div>
         </div>

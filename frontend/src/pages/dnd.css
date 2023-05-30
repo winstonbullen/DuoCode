@@ -90,3 +90,12 @@
     border-bottom: 3px solid lightgrey; /* 1px solid grey border on the bottom of the element */
     margin-top: 18.6%;
 }
+
+@media (max-width: 1440px){
+    .drag-drop-prompt {
+        font-family: Nunito,serif;
+        font-size: 24px;
+        font-weight: 700;
+        text-align: center;
+    }
+}

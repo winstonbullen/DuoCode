@@ -95,3 +95,12 @@ input::placeholder{
     color: #0096FF;
     text-decoration: none;
 }
+
+@media (max-width: 1440px){
+    .short-answer-prompt {
+        font-family: Nunito,serif;
+        font-size: 24px;
+        font-weight: 700;
+        text-align: center;
+    }
+}
