@@ -91,7 +91,7 @@ const HomePage: React.FC = () => {
     /**
      * Handles logic for language dropdown
      */
-    const [selectedLanguage, setselectedLanguage] = useState('Java'); /* Stores selected language */
+    const [selectedLanguage, setselectedLanguage] = useState('lava'); /* Stores selected language */
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const handleOptionClick = (option: string) => {
@@ -207,11 +207,11 @@ const HomePage: React.FC = () => {
                         <i className="bx bx-chevron-down"></i>
                     </div>
                     <ul className="options">
-                        <li className="option" value="Java" onClick={() => handleOptionClick('Java') }>
+                        <li className="option" value="Java" onClick={() => handleOptionClick('java') }>
                             <i className="bx bxl-java"></i>
                             <span className="option-text">Java</span>
                         </li>
-                        <li className="option" value="Python" onClick={() => handleOptionClick('Python')}>
+                        <li className="option" value="Python" onClick={() => handleOptionClick('python')}>
                             <i className="bx bxl-python"></i>
                             <span className="option-text">Python</span>
                         </li>
