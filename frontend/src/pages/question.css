@@ -14,7 +14,6 @@
     width: 100%;
 }
 
-
 .question-submit{
     margin-top: 16%;
     font-family: Nunito, serif;
@@ -51,7 +50,6 @@
 .question-next:hover {
     background-color: #5bb5f8;
 }
-
 
 .question-solution {
     margin-top: 16%;
@@ -97,7 +95,6 @@
     width: 100%;
     z-index: 9999;
 }
-
 
 .question-footer {
     position: absolute;
@@ -215,7 +212,6 @@
         width: 100%;
         z-index: 9999;
     }
-
 }
 
 @media (min-width: 1281px) and (max-width: 1440px) {

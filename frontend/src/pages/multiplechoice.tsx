@@ -32,17 +32,15 @@ type Option = {
     isCorrect: boolean;
 };
 
-
 interface MultipleChoiceProps {
     submitRef : React.RefObject<HTMLButtonElement>;
     language: string;
-    unit: string
-    difficulty: number
-    solution: string
-    updateSolution: (newValue: string) => void
+    unit: string;
+    difficulty: number;
+    solution: string;
+    updateSolution: (newValue: string) => void;
     handleAnsweredCorrectly: () => void;
 }
-
 
 /**
  * Multiple Choice component.
@@ -81,7 +79,6 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({solution, updateSolution
         async function fetchData() {
             const response = await fetch("/content/" + language + "/" + unit + "/multiple_choice/" + difficulty + "/1")
             const data = await response.json();
-            console.log(data)
             setQuestion(data)
         }
         fetchData();

@@ -33,11 +33,11 @@ type DragItem = {
 interface DragDropProps {
     submitRef : React.RefObject<HTMLButtonElement>;
     language: string;
-    unit: string
-    difficulty: number
-    solution: string
-    updateSolution: (newValue: string) => void
-    handleAnsweredCorrectly: () => void
+    unit: string;
+    difficulty: number;
+    solution: string;
+    updateSolution: (newValue: string) => void;
+    handleAnsweredCorrectly: () => void;
 }
 
 /**
@@ -160,6 +160,7 @@ const DragDrop: React.FC<DragDropProps> = ({solution, updateSolution, submitRef,
         }
         return shuffled;
     };
+
     const handleRefresh = () => {
         const dragZone = document.querySelector('.drag-drop-dragzone');
         const draggableElements = document.querySelectorAll('.drag-drop-draggable');

@@ -1,5 +1,4 @@
 import React, { useRef, useState }from 'react';
-import './question.css';
 
 import CloseBtn from '../components/CloseBtn'
 import ProgressBar from '../components/ProgressBar';
@@ -7,7 +6,7 @@ import ShortAnswer from './shortanswer';
 import MultipleChoice from './multiplechoice';
 import DragDrop from './dnd';
 import Completed from './completed';
-
+import './question.css';
 
 interface QuestionProps {
     language: string;
@@ -70,8 +69,6 @@ const Question: React.FC<QuestionProps> = ({language, unitName, difficulty, onCo
 
                 if (!complete) {
                     fetchData();
-                } else {
-                    console.log("already completed lesson");
                 }
                 setIsCorrect(false);
             }
