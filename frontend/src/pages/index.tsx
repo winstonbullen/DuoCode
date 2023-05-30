@@ -104,6 +104,31 @@ const HomePage: React.FC = () => {
     };
 
     /**
+     * create checkpoints
+     */
+    const createCheckpoints = (unitName : string) => {
+        return (<div className="checkpoints">
+            <div className="checkpoint1" onClick={() => handleLessonClick(unitName, 1)}
+                style = {completionData.has(selectedLanguage + "_" + unitName + "_1") ? {backgroundColor : '#0ADD08'} : {}}>
+                <img src={require("./images/whitestar.png")} alt="whitestar"/> 
+            </div>
+            <div className="checkpoint2" onClick={() => handleLessonClick(unitName, 2)}
+                style = {completionData.has(selectedLanguage + "_" + unitName + "_2") ? {backgroundColor : '#0ADD08'} : {}}>
+                <img src={require("./images/whitestar.png")} alt="whitestar" />
+            </div>
+            <div className="checkpoint3" onClick={() => handleLessonClick(unitName, 3)}
+                style = {completionData.has(selectedLanguage + "_" + unitName + "_3") ? {backgroundColor : '#0ADD08'} : {}}>
+                <img src={require("./images/whitestar.png")} alt="whitestar" />
+            </div>
+            <div className="checkpoint4" onClick={() => handleMilestoneClick(unitName)}
+                style = {completionData.has(selectedLanguage + "_" + unitName) ? {backgroundColor : '#0ADD08'} : {}}>
+                <img src={require("./images/whiteflag.png")} alt="flag" />
+            </div>
+        </div> );
+    }
+
+
+    /**
      * Fetches completion data on component mount.
      */
     useEffect(() => {
@@ -152,62 +177,29 @@ const HomePage: React.FC = () => {
                     </div>
                 </nav>
 
-                {/** TODO: Find a way to show only the selected language's units both on page load and on dropdown selection */}
-                {/** TODO: Find a way to list all units programmatically so there are not a ton of repeated code blocks */}
-
-                <div className="middlepane">
-                    <div className="unit1-container">
-                        <div className="unit1">
-                            <h3>Unit 1</h3>
-                            <p className="resources"><a href="https://www.w3schools.com/java/java_variables.asp" className="resources-link" target="_blank" rel="noopener noreferrer">Resources</a></p>
-                            <p className="variables">Variables</p>
+                {selectedLanguage === 'java' ? (
+                    <div className="middlepane">
+                        <div className="unit1-container">
+                            <div className="unit1">
+                                <h3>Unit 1</h3>
+                                <p className="resources"><a href="https://www.w3schools.com/java/java_variables.asp" className="resources-link" target="_blank" rel="noopener noreferrer">Resources</a></p>
+                                <p className="variables">Variables</p>
+                            </div>
+                            {createCheckpoints('variables')}
                         </div>
-                        <div className="checkpoints">
-                            <div className="checkpoint1" onClick={() => handleLessonClick("variables", 1)}
-                                style = {completionData.has("java_variables_1") ? {backgroundColor : '#0ADD08'} : {}}>
-                                <img src={require("./images/whitestar.png")} alt="whitestar"/> 
+                    </div> ) : (
+                    <div className="middlepane">
+                        <div className="unit1-container">
+                            <div className="unit1">
+                                <h3>Unit 1</h3>
+                                <p className="resources"><a href="https://www.w3schools.com/python/python_variables.asp" className="resources-link" target="_blank" rel="noopener noreferrer">Resources</a></p>
+                                <p className="variables">Variables</p>
                             </div>
-                            <div className="checkpoint2" onClick={() => handleLessonClick("variables", 2)}
-                                style = {completionData.has("java_variables_2") ? {backgroundColor : '#0ADD08'} : {}}>
-                                <img src={require("./images/whitestar.png")} alt="whitestar" />
-                            </div>
-                            <div className="checkpoint3" onClick={() => handleLessonClick("variables", 3)}
-                                style = {completionData.has("java_variables_3") ? {backgroundColor : '#0ADD08'} : {}}>
-                                <img src={require("./images/whitestar.png")} alt="whitestar" />
-                            </div>
-                            <div className="checkpoint4" onClick={() => handleMilestoneClick("variables")}
-                                style = {completionData.has("java_variables") ? {backgroundColor : '#0ADD08'} : {}}>
-                                <img src={require("./images/whiteflag.png")} alt="flag" />
-                            </div>
+                            {createCheckpoints('variables')}
                         </div>
                     </div>
-
-                    <div className="unit1-container">
-                        <div className="unit1">
-                            <h3>Unit 1</h3>
-                            <p className="resources"><a href="https://www.w3schools.com/python/python_variables.asp" className="resources-link" target="_blank" rel="noopener noreferrer">Resources</a></p>
-                            <p className="variables">Variables</p>
-                        </div>
-                        <div className="checkpoints">
-                            <div className="checkpoint1" onClick={() => handleLessonClick("variables", 1)}
-                                style = {completionData.has("python_variables_1") ? {backgroundColor : '#0ADD08'} : {}}>
-                                <img src={require("./images/whitestar.png")} alt="whitestar"/> 
-                            </div>
-                            <div className="checkpoint2" onClick={() => handleLessonClick("variables", 2)}
-                                style = {completionData.has("python_variables_2") ? {backgroundColor : '#0ADD08'} : {}}>
-                                <img src={require("./images/whitestar.png")} alt="whitestar" />
-                            </div>
-                            <div className="checkpoint3" onClick={() => handleLessonClick("variables", 3)}
-                                style = {completionData.has("python_variables_3") ? {backgroundColor : '#0ADD08'} : {}}>
-                                <img src={require("./images/whitestar.png")} alt="whitestar" />
-                            </div>
-                            <div className="checkpoint4" onClick={() => handleMilestoneClick("variables")}
-                                style = {completionData.has("python_variables") ? {backgroundColor : '#0ADD08'} : {}}>
-                                <img src={require("./images/whiteflag.png")} alt="flag" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    )
+                }
                 <div className="rightpane">
                 <div className={`select-menu${isMenuOpen ? ' active' : ''}`}>
                     <div className="select-btn" onClick={toggleMenu}>
