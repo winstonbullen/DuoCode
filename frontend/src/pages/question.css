@@ -7,22 +7,16 @@
     height: 15vh;
     display: flex;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
 }
 
 .question-content {
     width: 100%;
 }
 
-.question-footer {
-    position: absolute;
-    bottom: 70px;
-    width: 100%;
-    height: 200px;
-}
 
 .question-submit{
-    margin-top: 4%;
+    margin-top: 16%;
     font-family: Nunito, serif;
     font-weight: bold;
     background-color: #0096FF;
@@ -40,7 +34,8 @@
 }
 
 .question-next{
-    margin-top: 4%;
+    min-width: 272px;
+    margin-top: 16%;
     font-family: Nunito, serif;
     font-weight: bold;
     background-color: white;
@@ -59,7 +54,7 @@
 
 
 .question-solution {
-    margin-top: 4%;
+    margin-top: 16%;
     font-family: Nunito, serif;
     font-weight: bold;
     background-color: white;
@@ -77,9 +72,9 @@
 }
 
 .button-group {
-    margin-left: 15%;
     display: flex;
-    gap: 20%;
+    justify-content: center;
+    gap: 40%;
 }
 
 .question-close{
@@ -90,20 +85,160 @@
 }
 
 .popup {
+    bottom: 22%;
+    font-family: Nunito,serif;
+    font-size: 24px;
+    font-weight: 700;
+    height: 3%;
+    right: 27%;
+    padding: 20px;
+    position: fixed;
+    text-align: center;
+    width: 100%;
+    z-index: 9999;
+}
+
+
+.question-footer {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    bottom: 100px;
+    width: 100%;
+    height: 200px;
+}
+
+.question-complete{
+    margin-top: 36%;
     font-family: Nunito, serif;
     font-weight: bold;
-    text-align: center;
-    font-size: 24px;
+    background-color: white;
+    color: #0096FF;
+    padding: 15px 70px;
+    height: 82px;
+    border: 3px solid #0096FF;
+    border-radius: 10px;
+    font-size: 32px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.question-complete:hover {
+    background-color: #5bb5f8;
+}
+
+.fixed-hr {
+    background: lightgrey;
+    height: 3px;
+    border: none;
+    width: 100%;
     position: fixed;
-    bottom: 17%;
-    left: 11%;
-    width: 20%;
-    height: 5%;
+    left: 0;
+    transform: translateY(1900%);
     z-index: 9999;
-    padding: 20px;
 }
 
 .mg-sm {
     margin-left: 10px;
     margin-right: 10px;
+}
+
+.refresh-button{
+    position: absolute;
+    font-family: Nunito, serif;
+    font-weight: bold;
+    background-color: #0096FF;
+    margin-top: 250px;
+    color: #fff;
+    padding: 15px 70px;
+    border: none;
+    border-radius: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.refresh-button:hover{
+    background-color: #0062ff;
+}
+
+@media (max-width: 1280px) {
+    .question-footer {
+        bottom: 50px;
+        display: flex;
+        height: 200px;
+        justify-content: center;
+        position: absolute;
+        width: 100%;
+    }
+
+    .fixed-hr{
+        background: #d3d3d3;
+        border: none;
+        height: 3px;
+        left: 0;
+        position: fixed;
+        transform: translateY(2500%);
+        width: 100%;
+        z-index: 9999;
+    }
+
+    .button-group {
+        display: flex;
+        gap: 13%;
+        justify-content: center;
+    }
+
+    .question-complete {
+        background-color: #fff;
+        border: 3px solid #0096ff;
+        border-radius: 10px;
+        color: #0096ff;
+        cursor: pointer;
+        font-family: Nunito,serif;
+        font-size: 32px;
+        font-weight: 700;
+        height: 82px;
+        margin-top: 40%;
+        padding: 15px 70px;
+        transition: background-color .2s;
+    }
+
+    .popup {
+        bottom: 20%;
+        font-size: 20px;
+        height: 3%;
+        padding: 20px;
+        position: fixed;
+        right: 30%;
+        text-align: center;
+        width: 100%;
+        z-index: 9999;
+    }
+
+}
+
+@media (min-width: 1281px) and (max-width: 1440px) {
+    .question-footer {
+        bottom: 8%;
+        display: flex;
+        height: 200px;
+        justify-content: center;
+        position: absolute;
+        width: 100%;
+    }
+
+    .popup {
+        bottom: 19.5%;
+        font-family: Nunito,serif;
+        font-size: 20px;
+        font-weight: 700;
+        height: 3%;
+        right: 36%;
+        padding: 20px;
+        position: fixed;
+        text-align: center;
+        width: 100%;
+        z-index: 9999;
+    }
 }

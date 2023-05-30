@@ -474,7 +474,6 @@
   }
 
   .rightpane .daily-challenges .progress-bar {
-    margin-top: -20px;
     position:initial;
     margin-left: 20%;
     display: flex;

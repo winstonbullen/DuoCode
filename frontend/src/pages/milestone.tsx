@@ -17,6 +17,7 @@ const Milestone: React.FC<MilestoneProps> = ({language, unitName, onComplete, co
     const [currentQ, setCurrentQ] = useState<number>(1);
     const [currentProgress, setCurrentProgress] = useState(0);
     const [solution, setSolution] = useState('No Solution Available');
+    const [visibleSolution, setVisibleSolution] = useState('Please submit once to see solution')
     const [showSolution, setshowSolution] = useState(false);
     const [isCorrect, setIsCorrect] = useState<boolean>(false);
     console.log(unitName);
@@ -24,6 +25,7 @@ const Milestone: React.FC<MilestoneProps> = ({language, unitName, onComplete, co
     // create ref to submit question-content
     const submitRef = useRef<HTMLButtonElement>(null);
     const handleSubmitRef = () => {
+        setVisibleSolution(solution)
         if (submitRef.current) {
             submitRef.current.click()
         }
@@ -37,6 +39,7 @@ const Milestone: React.FC<MilestoneProps> = ({language, unitName, onComplete, co
         if(isCorrect) {
             setshowSolution(false)
             setCurrentQ(currentQ + 1);
+            setVisibleSolution('Please submit once to see solution')
             setCurrentProgress(currentProgress + 33.33333);
 
             if (currentQ === 3) {
@@ -48,7 +51,7 @@ const Milestone: React.FC<MilestoneProps> = ({language, unitName, onComplete, co
                     };
                     await fetch('/completion/', requestOptions);
                 }
-                
+
                 if (!complete) {
                     fetchData();
                 } else {
@@ -97,18 +100,14 @@ const Milestone: React.FC<MilestoneProps> = ({language, unitName, onComplete, co
                 {currentQ === 4 && <Completed />}
             </div>
             <div className="question-footer">
-                <hr style={{
-                    background: "lightgrey",
-                    height: "3px",
-                    border: "none",
-                }}></hr>
+                <hr className = "fixed-hr"></hr>
                 <div className = "button-group">
                     {currentQ !== 4 ? (
                         <button className="question-solution" onClick={handleSolutionClick}>Solution</button>
                     ) : null}
                     {showSolution && (
                         <div className="popup">
-                            {solution}
+                            {visibleSolution}
                         </div>
                     )}
                     {currentQ !== 4 ? (
@@ -116,7 +115,7 @@ const Milestone: React.FC<MilestoneProps> = ({language, unitName, onComplete, co
                     ) : null}
                     {currentQ !== 4 ? (
                         <button type="submit" className="question-next" onClick={handleNextQ}>Next</button>
-                    ) : <button type="submit" className="question-next" onClick={handleComplete}>Go Back</button>}
+                    ) : <button type="submit" className="question-complete" onClick={handleComplete}>Go Back</button>}
                 </div>
             </div>
         </div>

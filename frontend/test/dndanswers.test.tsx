@@ -22,13 +22,18 @@ describe('Drag and Drop component with mock data', () => {
         jest.restoreAllMocks();
     });
 
-    it('should render the prompt received from the server', async () => {
+    it('should render the parts to be dragged received from the server', async () => {
         const buttonRef = React.createRef<HTMLButtonElement>();
         render(<DragDrop language={"java"} solution={"int foo = 1;"} unit={"variables"} difficulty={1} submitRef={buttonRef}
                          updateSolution={function (newValue: string): void {
                              "int foo = 1;"
                          }} />);
 
-        await screen.findByText(mockData.prompt);
+        await screen.findByText(mockData.correct_ordering[0]);
+        await screen.findByText(mockData.correct_ordering[1]);
+        await screen.findByText(mockData.correct_ordering[2]);
+        await screen.findByText(mockData.correct_ordering[3]);
+        await screen.findByText(mockData.correct_ordering[4]);
+
     });
 });

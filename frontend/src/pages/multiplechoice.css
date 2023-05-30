@@ -12,6 +12,7 @@
     font-family: Nunito, serif;
     font-weight: bold;
     font-size: 32px;
+    min-width: 900px;
 }
 
 .multiple-choice-options {
@@ -71,27 +72,6 @@
     color: #721c24;
 }
 
-.multiple-choice-button {
-    margin-top: 4.5%;
-    font-family: Nunito, serif;
-    font-weight: bold;
-    margin-left: 60.3%;
-    display: flex;
-    flex-direction: column;
-    background-color: #7f8fa6;
-    color: #fff;
-    padding: 15px 70px;
-    border: none;
-    border-radius: 10px;
-    font-size: 32px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.multiple-choice-button:hover {
-    background-color: #57606f;
-}
-
 .result-message {
     font-size: 20px;
     position: fixed;
@@ -115,8 +95,36 @@
     color: #721c24;
 }
 
-.mc-line{
-    border-bottom: 3px solid lightgrey; /* 1px solid grey border on the bottom of the element */
-    margin-top: 5.2%;
-    width: 100%;
+@media (max-width: 1440px){
+    .multiple-choice-prompt {
+        font-family: Nunito,serif;
+        font-size: 24px;
+        font-weight: 700;
+        min-width: 800px;
+        text-align: center;
+    }
+
+    .multiple-choice-options {
+        font-family: Nunito,serif;
+        font-size: 22px;
+        margin-left: 15%;
+        margin-top: 4%;
+        max-width: 70%;
+    }
+
+    .multiple-choice-label {
+        background-color: #fff;
+        border: 3px solid #d3d3d3;
+        border-radius: 10px;
+        box-shadow: 0 1px 4px rgba(0,0,0,.16);
+        box-sizing: border-box;
+        cursor: pointer;
+        display: block;
+        font-size: 20px;
+        margin-bottom: 3%;
+        padding: 10px;
+        text-align: center;
+        transition: background-color .2s;
+        width: 100%;
+    }
 }

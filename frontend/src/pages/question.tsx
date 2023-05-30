@@ -31,11 +31,9 @@ const Question: React.FC<QuestionProps> = ({language, unitName, difficulty, onCo
      * The current progress of the quiz.
      */
     const [currentProgress, setCurrentProgress] = useState(0);
-
     const [solution, setSolution] = useState('No Solution Available');
-
+    const [visibleSolution, setVisibleSolution] = useState('Please submit once to see solution')
     const [showSolution, setshowSolution] = useState(false);
-
     const [isCorrect, setIsCorrect] = useState<boolean>(false);
 
     /**
@@ -43,6 +41,7 @@ const Question: React.FC<QuestionProps> = ({language, unitName, difficulty, onCo
      */
     const submitRef = useRef<HTMLButtonElement>(null);
     const handleSubmitRef = () => {
+        setVisibleSolution(solution)
         if (submitRef.current) {
             submitRef.current.click()
         }
@@ -56,6 +55,7 @@ const Question: React.FC<QuestionProps> = ({language, unitName, difficulty, onCo
         if(isCorrect) {
             setCurrentQ(currentQ + 1);
             setCurrentProgress(currentProgress + 33.33333);
+            setVisibleSolution('Please submit once to see solution')
             setshowSolution(false)
 
             if (currentQ === 3) {
@@ -67,7 +67,7 @@ const Question: React.FC<QuestionProps> = ({language, unitName, difficulty, onCo
                     };
                     await fetch('/completion/', requestOptions);
                 }
-                
+
                 if (!complete) {
                     fetchData();
                 } else {
@@ -90,7 +90,7 @@ const Question: React.FC<QuestionProps> = ({language, unitName, difficulty, onCo
      * Changes solution to the current question's solution
      */
     const updateSolution = (newSolution: string) => {
-        setSolution(newSolution);
+        setSolution(newSolution)
     };
 
     /**
@@ -125,18 +125,14 @@ const Question: React.FC<QuestionProps> = ({language, unitName, difficulty, onCo
                 {currentQ === 4 && <Completed />}
             </div>
             <div className="question-footer">
-                <hr style={{
-                    background: "lightgrey",
-                    height: "3px",
-                    border: "none",
-                }}></hr>
+                    <hr className="fixed-hr"></hr>
                 <div className = "button-group">
                     {currentQ !== 4 ? (
                         <button className="question-solution" onClick={handleSolutionClick}>Solution</button>
                     ) : null}
                     {showSolution && (
                         <div className="popup">
-                            {solution}
+                            {visibleSolution}
                         </div>
                     )}
                     {currentQ !== 4 ? (
@@ -144,7 +140,7 @@ const Question: React.FC<QuestionProps> = ({language, unitName, difficulty, onCo
                     ) : null}
                     {currentQ !== 4 ? (
                         <button type="submit" className="question-next" onClick={handleNextQ}>Next</button>
-                    ) : <button type="submit" className="question-next" onClick={handleComplete}>Go Back</button>}
+                    ) : <button type="submit" className="question-complete" onClick={handleComplete}>Go Back</button>}
                 </div>
             </div>
         </div>

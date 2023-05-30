@@ -23,7 +23,7 @@ describe('Multiple Choice component with mock data', () => {
         jest.restoreAllMocks();
     });
 
-    it('should render prompt received from the server', async () => {
+    it('should render all possible answers received from the server', async () => {
         const buttonRef = React.createRef<HTMLButtonElement>();
         render(<MultipleChoice language={"java"} solution={"int foo = 1;"} unit={"variables"} difficulty={1} submitRef={buttonRef}
                                updateSolution={function (newValue: string): void {
