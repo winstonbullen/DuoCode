@@ -72,6 +72,8 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({solution, updateSolution
      */
     const [isCorrect, setIsCorrect] = useState<boolean>(false);
 
+    const [isOptionSelected, setIsOptionSelected] = useState<boolean>(false);
+
     /**
      * Fetches the data for the multiple-choice question.
      */
@@ -123,6 +125,7 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({solution, updateSolution
      */
     function handleOptionChange(event: React.ChangeEvent<HTMLInputElement>) {
         setSelectedOption(event.target.value);
+        setIsOptionSelected(true);
     }
 
     /**
@@ -168,7 +171,7 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({solution, updateSolution
                             </label>
                         ))}
                     </div>
-                    <button ref={ submitRef } type="submit" className="" style={{ display: 'none' }}>
+                    <button ref={ submitRef } type="submit" className="" style={{ display: 'none' }} disabled={!isOptionSelected}>
                         Solution
                     </button>
                 </form>

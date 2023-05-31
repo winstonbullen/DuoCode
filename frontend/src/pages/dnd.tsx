@@ -68,6 +68,8 @@ const DragDrop: React.FC<DragDropProps> = ({solution, updateSolution, submitRef,
 
     const [currentQuestion] = useState<number>(1);
 
+    const [isDropZoneEmpty, setIsDropZoneEmpty] = useState(true);
+
 
     const fetchContentData = async () => {
         const response = await fetch("/content/" + language + "/" + unit + "/drag_drop/" + difficulty + "/" + currentQuestion);
@@ -127,23 +129,28 @@ const DragDrop: React.FC<DragDropProps> = ({solution, updateSolution, submitRef,
             dropzone.appendChild(draggingElement);
             draggableElement.style.display = 'inline-block';
         }
+        setIsDropZoneEmpty(false);
     };
 
     /**
      * Handles the form submission.
      */
     const handleSubmit = () => {
-        const draggableElements = document.querySelectorAll('.drag-drop-draggable');
-        const ordering: string[] = [];
-        draggableElements.forEach((element) => ordering.push(element.textContent || ''));
-
-        setShowResult(true);
-
-        if (JSON.stringify(ordering) === JSON.stringify(originalOrdering)) {
-            setIsCorrect(true);
-            handleAnsweredCorrectly();
+        if(isDropZoneEmpty){
+            return;
         } else {
-            setIsCorrect(false);
+            const draggableElements = document.querySelectorAll('.drag-drop-draggable');
+            const ordering: string[] = [];
+            draggableElements.forEach((element) => ordering.push(element.textContent || ''));
+
+            setShowResult(true);
+
+            if (JSON.stringify(ordering) === JSON.stringify(originalOrdering)) {
+                setIsCorrect(true);
+                handleAnsweredCorrectly();
+            } else {
+                setIsCorrect(false);
+            }
         }
     };
 
@@ -172,6 +179,7 @@ const DragDrop: React.FC<DragDropProps> = ({solution, updateSolution, submitRef,
 
         setShowResult(false);
         setIsCorrect(false);
+        setIsDropZoneEmpty(true);
     };
 
     return (
@@ -204,7 +212,7 @@ const DragDrop: React.FC<DragDropProps> = ({solution, updateSolution, submitRef,
                     </button>
                 </div>
 
-                <button ref={ submitRef } className="" style={{ display: 'none' }} onClick={handleSubmit}>
+                <button ref={ submitRef } className="" style={{ display: 'none' }} onClick={handleSubmit} disabled={isDropZoneEmpty}>
                     Submit
                 </button>
             </div>
