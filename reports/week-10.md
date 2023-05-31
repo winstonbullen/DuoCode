@@ -34,7 +34,7 @@
 
 2. Progress
 
-    - JP Gabriel: 
+    - JP Gabriel:  Working on finishing homepage. Revamped UI for homepage, and added drop-down feature for language choices. Changed sidebar to only have functioning buttons.
 
     - Jason Gao: Added a small endpoint for user information to support some frontend features. Had an idea for how to implement rendering all of the lesson icons on the homepage and contributed a basic version of that to the frontend. Wrote some of the content for the slideshow for the reflection part of the final release assignment, and presented some of that content in the final reflection. Reviewed a few PRs.
 
