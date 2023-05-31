@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, {useEffect, useRef, useState } from 'react';
 import CloseBtn from '../components/CloseBtn'
 import ProgressBar from '../components/ProgressBar';
 import ShortAnswer from './shortanswer';
@@ -78,10 +78,34 @@ const Milestone: React.FC<MilestoneProps> = ({language, unitName, onComplete, co
         setIsCorrect(true);
     };
 
+    /**
+     * Prevents user from accidently going back to menu without finishing the level.
+     */
+    useEffect(() => {
+        const handleBeforeUnload = (event: any) => {
+            event.preventDefault();
+            event.returnValue = '';
+        };
+
+        window.addEventListener('beforeunload', handleBeforeUnload);
+
+        return () => {
+            window.removeEventListener('beforeunload', handleBeforeUnload);
+        };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    const handleCloseClick  = () => {
+        const confirmDialog = window.confirm('Are you sure you want to exit the level? Your progress will not be saved.');
+        if (confirmDialog) {
+            handleComplete()
+        }
+    }
+
     return (
         <div className='page'>
             <div className='question-header'>
-                <button type="submit" className="question-close" onClick={handleComplete}>
+                <button type="submit" className="question-close" onClick={handleCloseClick}>
                     <CloseBtn/>
                 </button>
 
