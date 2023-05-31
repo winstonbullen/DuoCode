@@ -1,9 +1,10 @@
-import React, {useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import './lesson.css';
+
 import CloseBtn from '../components/CloseBtn'
 import ProgressBar from '../components/ProgressBar';
 import ShortAnswer from './shortanswer';
 import Completed from './completed';
-import './question.css';
 
 interface MilestoneProps {
     language: string;
@@ -12,16 +13,27 @@ interface MilestoneProps {
     complete: boolean;
 }
 
+/**
+ * Milestone component.
+ */
 const Milestone: React.FC<MilestoneProps> = ({language, unitName, onComplete, complete} : MilestoneProps) => {
+    /**
+     * The current progress of the milestone.
+     */
     const [currentQ, setCurrentQ] = useState<number>(1);
     const [currentProgress, setCurrentProgress] = useState(0);
     const [solution, setSolution] = useState('No Solution Available');
     const [visibleSolution, setVisibleSolution] = useState('Please submit once to see solution')
     const [showSolution, setshowSolution] = useState(false);
     const [isCorrect, setIsCorrect] = useState<boolean>(false);
-
-    // create ref to submit question-content
+    /**
+     * Creates ref to handle question submission.
+     */
     const submitRef = useRef<HTMLButtonElement>(null);
+
+    /**
+     * Handles question submission click.
+     */
     const handleSubmitRef = () => {
         setVisibleSolution(solution)
         if (submitRef.current) {
@@ -53,20 +65,28 @@ const Milestone: React.FC<MilestoneProps> = ({language, unitName, onComplete, co
                 if (!complete) {
                     fetchData();
                 }
-                setIsCorrect(false);
             }
             setIsCorrect(false);
         }
     };
 
+    /**
+     * Handles whether solution appears after clicking solution button.
+     */
     const handleSolutionClick = (): void => {
         setshowSolution(!showSolution)
     };
 
+    /**
+     * Changes solution to the current question's solution.
+     */
     const updateSolution = (newSolution: string) => {
-        setSolution(newSolution);
+        setSolution(newSolution)
     };
 
+    /**
+     * Sends prop indicating milestone completion to homepage.
+     */
     const handleComplete = () => {
         onComplete();
     }
@@ -95,6 +115,9 @@ const Milestone: React.FC<MilestoneProps> = ({language, unitName, onComplete, co
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    /**
+     * Prompts the user for confirmation upon clicking on the close button.
+     */
     const handleCloseClick  = () => {
         const confirmDialog = window.confirm('Are you sure you want to exit the level? Your progress will not be saved.');
         if (confirmDialog) {
@@ -114,9 +137,9 @@ const Milestone: React.FC<MilestoneProps> = ({language, unitName, onComplete, co
                 </div>
             </div>
             <div className='question-content'>
-                {currentQ === 1 && <ShortAnswer  solution={solution} updateSolution={updateSolution} language={language} unit={unitName} difficulty={1} submitRef={submitRef} handleAnsweredCorrectly={handleAnsweredCorrectly} />}
-                {currentQ === 2 && <ShortAnswer  solution={solution} updateSolution={updateSolution} language={language} unit={unitName} difficulty={2} submitRef={submitRef} handleAnsweredCorrectly={handleAnsweredCorrectly} />}
-                {currentQ === 3 && <ShortAnswer  solution={solution} updateSolution={updateSolution} language={language} unit={unitName} difficulty={3} submitRef={submitRef} handleAnsweredCorrectly={handleAnsweredCorrectly} />}
+                {currentQ === 1 && <ShortAnswer updateSolution={updateSolution} language={language} unit={unitName} difficulty={1} submitRef={submitRef} handleAnsweredCorrectly={handleAnsweredCorrectly} />}
+                {currentQ === 2 && <ShortAnswer updateSolution={updateSolution} language={language} unit={unitName} difficulty={2} submitRef={submitRef} handleAnsweredCorrectly={handleAnsweredCorrectly} />}
+                {currentQ === 3 && <ShortAnswer updateSolution={updateSolution} language={language} unit={unitName} difficulty={3} submitRef={submitRef} handleAnsweredCorrectly={handleAnsweredCorrectly} />}
                 {currentQ === 4 && <Completed />}
             </div>
             <div className="question-footer">

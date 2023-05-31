@@ -4,7 +4,7 @@ import './multiplechoice.css';
 /**
  * Interface representing the multiple choice data.
  */
-type Question = {
+type multipleChoiceData = {
     language: string;
     subject: string;
     type: string;
@@ -14,13 +14,13 @@ type Question = {
     distractors: string[];
 };
 
-const emptyQuestion: Question = {
-    language: "",
-    subject: "",
-    type: "",
+const emptyMultipleChoice: multipleChoiceData = {
+    language: '',
+    subject: '',
+    type: '',
     difficulty: 0,
-    prompt: "",
-    correct_answer: "",
+    prompt: '',
+    correct_answer: '',
     distractors: []
 };
 
@@ -37,7 +37,6 @@ interface MultipleChoiceProps {
     language: string;
     unit: string;
     difficulty: number;
-    solution: string;
     updateSolution: (newValue: string) => void;
     handleAnsweredCorrectly: () => void;
 }
@@ -46,44 +45,52 @@ interface MultipleChoiceProps {
  * Multiple Choice component.
  * Renders a multiple choice question with multiple options to select.
  */
-const MultipleChoice: React.FC<MultipleChoiceProps> = ({solution, updateSolution, submitRef, language, unit, difficulty, handleAnsweredCorrectly}) => {
+const MultipleChoice: React.FC<MultipleChoiceProps> = ({updateSolution, submitRef, language, unit, difficulty, handleAnsweredCorrectly}) => {
     /**
      * The currently displayed question.
      */
-    const [question, setQuestion] = useState<Question>(emptyQuestion);
-
+    const [multipleChoice, setMultipleChoice] = useState<multipleChoiceData>(emptyMultipleChoice);
     /**
      * The available options for the question.
      */
     const [options, setOptions] = useState<Option[]>([]);
-
     /**
      * The selected option by the user.
      */
     const [selectedOption, setSelectedOption] = useState<string>('');
-
     /**
      * Flag indicating whether to show the result.
      */
     const [showResult, setShowResult] = useState<boolean>(false);
-
     /**
      * Flag indicating whether the selected option is correct.
      */
     const [isCorrect, setIsCorrect] = useState<boolean>(false);
+    /**
+     * Flag indicating whether they have selected an option.
+     */
+    const [isOptionSelected, setIsOptionSelected] = useState<boolean>(false);
 
     /**
-     * Fetches the data for the multiple-choice question.
+     * Fetches the multiple choice question data from backend api.
      */
     useEffect(() => {
         async function fetchData() {
             const response = await fetch("/content/" + language + "/" + unit + "/multiple_choice/" + difficulty + "/1")
             const data = await response.json();
-            setQuestion(data)
+            setMultipleChoice(data)
         }
         fetchData();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    /**
+     * Sets the solution when new question is loaded.
+     */
+    useEffect(() => {
+        updateSolution(multipleChoice.correct_answer)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [multipleChoice]);
 
     /**
      * Sets the options when new question is loaded.
@@ -91,15 +98,7 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({solution, updateSolution
     useEffect(() => {
         setOptions(getShuffledOptions());
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [question]);
-
-    /**
-     * Sets the solution when new question is loaded.
-     */
-    useEffect(() => {
-        updateSolution(question.correct_answer)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [question]);
+    }, [multipleChoice]);
 
     /**
      * Retrieves shuffled options for the current question.
@@ -107,8 +106,8 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({solution, updateSolution
      */
     function getShuffledOptions() {
         const options = [
-            { text: question.correct_answer, isCorrect: true },
-            ...question.distractors.map((distractor) => ({
+            { text: multipleChoice.correct_answer, isCorrect: true },
+            ...multipleChoice.distractors.map((distractor) => ({
                 text: distractor,
                 isCorrect: false,
             })),
@@ -123,6 +122,7 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({solution, updateSolution
      */
     function handleOptionChange(event: React.ChangeEvent<HTMLInputElement>) {
         setSelectedOption(event.target.value);
+        setIsOptionSelected(true);
     }
 
     /**
@@ -132,8 +132,8 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({solution, updateSolution
     function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
         setShowResult(true);
-        setIsCorrect(selectedOption === question.correct_answer);
-        if (selectedOption === question.correct_answer) {
+        setIsCorrect(selectedOption === multipleChoice.correct_answer);
+        if (selectedOption === multipleChoice.correct_answer) {
             handleAnsweredCorrectly();
         }
     }
@@ -153,7 +153,7 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({solution, updateSolution
         <div>
             <div className="multiple-choice-container">
                 <form onSubmit={handleSubmit}>
-                    <p className="multiple-choice-prompt">{question.prompt}</p>
+                    <p className="multiple-choice-prompt">{multipleChoice.prompt}</p>
                     <div className="multiple-choice-options">
                         {options.map((option, index) => (
                             <label key={index} className="multiple-choice-label" style={selectedOption === option.text ? { border: '3px solid #0096FF' } : {}}>
@@ -168,7 +168,7 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({solution, updateSolution
                             </label>
                         ))}
                     </div>
-                    <button ref={ submitRef } type="submit" className="" style={{ display: 'none' }}>
+                    <button ref={ submitRef } type="submit" className="" style={{ display: 'none' }} disabled={!isOptionSelected}>
                         Solution
                     </button>
                 </form>

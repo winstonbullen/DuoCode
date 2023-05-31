@@ -4,7 +4,7 @@ import './dnd.css';
 /**
  * Interface representing the drag and drop data.
  */
-type dragDrop = {
+type dragDropData = {
     language: string;
     subject: string;
     type: string;
@@ -13,7 +13,7 @@ type dragDrop = {
     correct_ordering: string[];
 };
 
-const emptyDragDrop: dragDrop = {
+const emptyDragDrop: dragDropData = {
     language: '',
     subject: '',
     type: '',
@@ -35,7 +35,6 @@ interface DragDropProps {
     language: string;
     unit: string;
     difficulty: number;
-    solution: string;
     updateSolution: (newValue: string) => void;
     handleAnsweredCorrectly: () => void;
 }
@@ -44,11 +43,11 @@ interface DragDropProps {
  * Drag and Drop component.
  * Renders a drag and drop interaction with a prompt and draggable items.
  */
-const DragDrop: React.FC<DragDropProps> = ({solution, updateSolution, submitRef, language, unit, difficulty, handleAnsweredCorrectly}) => {
+const DragDrop: React.FC<DragDropProps> = ({updateSolution, submitRef, language, unit, difficulty, handleAnsweredCorrectly}) => {
     /**
      * State variables for drag and drop functionality.
      */
-    const [dragDrop, setDragDrop] = useState<dragDrop>(emptyDragDrop);
+    const [dragDrop, setDragDrop] = useState<dragDropData>(emptyDragDrop);
     /**
      * The currently dragging element.
      */
@@ -65,25 +64,25 @@ const DragDrop: React.FC<DragDropProps> = ({solution, updateSolution, submitRef,
      * The original ordering of the elements.
      */
     const [originalOrdering, setOriginalOrdering] = useState<string[]>([]);
-
-    const [currentQuestion] = useState<number>(1);
-
-
-    const fetchContentData = async () => {
-        const response = await fetch("/content/" + language + "/" + unit + "/drag_drop/" + difficulty + "/" + currentQuestion);
-        const data = await response.json();
-        const shuffledOrdering = shuffleArray(data.correct_ordering);
-        setDragDrop({ ...data, correct_ordering: shuffledOrdering });
-        setOriginalOrdering(data.correct_ordering);
-    };
+    /**
+     * Flag indicating whether they have dragged an option.
+     */
+    const [isDropZoneEmpty, setIsDropZoneEmpty] = useState(true);
 
     /**
-     * Fetches content data for drag and drop.
+     * Fetches the drag and drop question data from backend api.
      */
     useEffect(() => {
-        fetchContentData();
+        async function fetchData() {
+            const response = await fetch("/content/" + language + "/" + unit + "/drag_drop/" + difficulty + "/1");
+            const data = await response.json();
+            const shuffledOrdering = shuffleArray(data.correct_ordering);
+            setDragDrop({ ...data, correct_ordering: shuffledOrdering });
+            setOriginalOrdering(data.correct_ordering);
+        }
+        fetchData();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [currentQuestion]);
+    }, []);
 
     /**
      * Sets the solution when new question is loaded.
@@ -98,7 +97,6 @@ const DragDrop: React.FC<DragDropProps> = ({solution, updateSolution, submitRef,
      * @param event - The drag event.
      * @param item - The item being dragged.
      */
-
     const handleDragStart = (event: React.DragEvent<HTMLElement>, item: DragItem) => {
         setDraggingElement(event.currentTarget);
         event.dataTransfer!.setData('text/plain', item.id);
@@ -127,23 +125,28 @@ const DragDrop: React.FC<DragDropProps> = ({solution, updateSolution, submitRef,
             dropzone.appendChild(draggingElement);
             draggableElement.style.display = 'inline-block';
         }
+        setIsDropZoneEmpty(false);
     };
 
     /**
      * Handles the form submission.
      */
     const handleSubmit = () => {
-        const draggableElements = document.querySelectorAll('.drag-drop-draggable');
-        const ordering: string[] = [];
-        draggableElements.forEach((element) => ordering.push(element.textContent || ''));
-
-        setShowResult(true);
-
-        if (JSON.stringify(ordering) === JSON.stringify(originalOrdering)) {
-            setIsCorrect(true);
-            handleAnsweredCorrectly();
+        if(isDropZoneEmpty){
+            return;
         } else {
-            setIsCorrect(false);
+            const draggableElements = document.querySelectorAll('.drag-drop-draggable');
+            const ordering: string[] = [];
+            draggableElements.forEach((element) => ordering.push(element.textContent || ''));
+
+            setShowResult(true);
+
+            if (JSON.stringify(ordering) === JSON.stringify(originalOrdering)) {
+                setIsCorrect(true);
+                handleAnsweredCorrectly();
+            } else {
+                setIsCorrect(false);
+            }
         }
     };
 
@@ -161,6 +164,9 @@ const DragDrop: React.FC<DragDropProps> = ({solution, updateSolution, submitRef,
         return shuffled;
     };
 
+    /**
+     * Handles resetting the draggable elements and pulling them out of the drag box.
+     */
     const handleRefresh = () => {
         const dragZone = document.querySelector('.drag-drop-dragzone');
         const draggableElements = document.querySelectorAll('.drag-drop-draggable');
@@ -172,6 +178,7 @@ const DragDrop: React.FC<DragDropProps> = ({solution, updateSolution, submitRef,
 
         setShowResult(false);
         setIsCorrect(false);
+        setIsDropZoneEmpty(true);
     };
 
     return (
@@ -204,7 +211,7 @@ const DragDrop: React.FC<DragDropProps> = ({solution, updateSolution, submitRef,
                     </button>
                 </div>
 
-                <button ref={ submitRef } className="" style={{ display: 'none' }} onClick={handleSubmit}>
+                <button ref={ submitRef } className="" style={{ display: 'none' }} onClick={handleSubmit} disabled={isDropZoneEmpty}>
                     Submit
                 </button>
             </div>
