@@ -78,8 +78,6 @@ const ShortAnswer: React.FC<ShortAnswerProps> = ({solution, updateSolution, subm
      */
     const [showValidation, setShowValidation] = useState(false);
 
-    const [isTextBoxEmpty, setIsTextBoxEmpty] = useState<boolean>(true);
-
     /**
      * Validates the answer by checking it with the correct answer.
      * @returns boolean - whether answer is correct.
