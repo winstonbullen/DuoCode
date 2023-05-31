@@ -1,16 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './shortanswer.css';
 
-interface ShortAnswerProps {
-    submitRef : React.RefObject<HTMLButtonElement>;
-    language: string;
-    unit: string;
-    difficulty: number;
-    solution: string;
-    updateSolution: (newValue: string) => void;
-    handleAnsweredCorrectly: () => void;
-}
-
 /**
  * Interface representing the short answer data.
  */
@@ -32,24 +22,49 @@ const emptyShortAnswerData: shortAnswerData = {
     correct_answer: '',
 };
 
+interface ShortAnswerProps {
+    submitRef : React.RefObject<HTMLButtonElement>;
+    language: string;
+    unit: string;
+    difficulty: number;
+    updateSolution: (newValue: string) => void;
+    handleAnsweredCorrectly: () => void;
+}
+
 /**
  * Short Answer component.
  * Renders a short answer component that allows free response.
  */
-const ShortAnswer: React.FC<ShortAnswerProps> = ({solution, updateSolution, submitRef, language, unit, difficulty, handleAnsweredCorrectly}) => {
+const ShortAnswer: React.FC<ShortAnswerProps> = ({updateSolution, submitRef, language, unit, difficulty, handleAnsweredCorrectly}) => {
     /**
      * Tracks the short answer data.
      */
-    const [shortAnswerData, setshortAnwswer] = useState<shortAnswerData>(emptyShortAnswerData);
+    const [shortAnswerData, setshortAnswer] = useState<shortAnswerData>(emptyShortAnswerData);
+    /**
+     * Tracks text written.
+     */
+    const [text, setText] = useState('');
+    /**
+     * Flag for checking valid answers.
+     */
+    const [isValid, setIsValid] = useState(false);
+    /**
+     * Flag for showing validation.
+     */
+    const [showValidation, setShowValidation] = useState(false);
+    /**
+     * Tracks if answer is correct.
+     */
+    const isCorrect = showValidation && isValid;
 
     /**
-     * Loads in the short answer question data from backend api.
+     * Fetches the short answer question data from backend api.
      */
     useEffect(() => {
         async function fetchData() {
             const response = await fetch("/content/" + language + "/" + unit + "/short_response/" + difficulty + "/1")
             const data = await response.json();
-            setshortAnwswer(data)
+            setshortAnswer(data)
         }
         fetchData();
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -64,21 +79,6 @@ const ShortAnswer: React.FC<ShortAnswerProps> = ({solution, updateSolution, subm
     }, [shortAnswerData]);
 
     /**
-     * Tracks text written.
-     */
-    const [text, setText] = useState('');
-
-    /**
-     * Flag for checking valid answers.
-     */
-    const [isValid, setIsValid] = useState(false);
-
-    /**
-     * Flag for showing validation.
-     */
-    const [showValidation, setShowValidation] = useState(false);
-
-    /**
      * Validates the answer by checking it with the correct answer.
      * @returns boolean - whether answer is correct.
      */
@@ -87,22 +87,17 @@ const ShortAnswer: React.FC<ShortAnswerProps> = ({solution, updateSolution, subm
     };
 
     /**
-     * Handles the form submission.
-     * @param e - submit event.
+     * Handles the form submission event.
+     * @param event - The form submission event.
      */
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
         if(validateAnswer()) {
             handleAnsweredCorrectly();
         }
         setIsValid(validateAnswer());
         setShowValidation(true);
     };
-
-    /**
-     * Tracks if answer is correct.
-     */
-    const isCorrect = showValidation && isValid;
 
     return (
         <div>

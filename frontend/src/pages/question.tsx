@@ -7,7 +7,6 @@ import ShortAnswer from './shortanswer';
 import MultipleChoice from './multiplechoice';
 import DragDrop from './dnd';
 import Completed from './completed';
-import './question.css';
 
 interface QuestionProps {
     language: string;
@@ -26,7 +25,6 @@ const Question: React.FC<QuestionProps> = ({language, unitName, difficulty, onCo
      * The current question number.
      */
     const [currentQ, setCurrentQ] = useState<number>(1);
-
     /**
      * The current progress of the quiz.
      */
@@ -35,11 +33,14 @@ const Question: React.FC<QuestionProps> = ({language, unitName, difficulty, onCo
     const [visibleSolution, setVisibleSolution] = useState('Please submit once to see solution')
     const [showSolution, setshowSolution] = useState(false);
     const [isCorrect, setIsCorrect] = useState<boolean>(false);
-
     /**
      * Creates ref to handle question submission.
      */
     const submitRef = useRef<HTMLButtonElement>(null);
+
+    /**
+     * Handles question submission click.
+     */
     const handleSubmitRef = () => {
         setVisibleSolution(solution)
         if (submitRef.current) {
@@ -71,21 +72,20 @@ const Question: React.FC<QuestionProps> = ({language, unitName, difficulty, onCo
                 if (!complete) {
                     fetchData();
                 }
-                setIsCorrect(false);
             }
             setIsCorrect(false);
         }
     };
 
     /**
-     * Handles whether solution appears after clicking solution button
+     * Handles whether solution appears after clicking solution button.
      */
     const handleSolutionClick = (): void => {
         setshowSolution(!showSolution)
     };
 
     /**
-     * Changes solution to the current question's solution
+     * Changes solution to the current question's solution.
      */
     const updateSolution = (newSolution: string) => {
         setSolution(newSolution)
@@ -122,6 +122,9 @@ const Question: React.FC<QuestionProps> = ({language, unitName, difficulty, onCo
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    /**
+     * Prompts the user for confirmation upon clicking on the close button.
+     */
     const handleCloseClick  = () => {
         const confirmDialog = window.confirm('Are you sure you want to exit the level? Your progress will not be saved.');
         if (confirmDialog) {
@@ -141,9 +144,9 @@ const Question: React.FC<QuestionProps> = ({language, unitName, difficulty, onCo
                 </div>
             </div>
             <div className='question-content'>
-                {currentQ === 1 && <MultipleChoice solution={solution} updateSolution={updateSolution} language={language} unit={unitName} difficulty={difficulty} submitRef={submitRef} handleAnsweredCorrectly={handleAnsweredCorrectly} />}
-                {currentQ === 2 && <DragDrop solution={solution} updateSolution={updateSolution} language={language} unit={unitName} difficulty={difficulty} submitRef={submitRef} handleAnsweredCorrectly={handleAnsweredCorrectly} />}
-                {currentQ === 3 && <ShortAnswer solution={solution} updateSolution={updateSolution} language={language} unit={unitName} difficulty={difficulty} submitRef={submitRef} handleAnsweredCorrectly={handleAnsweredCorrectly} />}
+                {currentQ === 1 && <MultipleChoice updateSolution={updateSolution} language={language} unit={unitName} difficulty={difficulty} submitRef={submitRef} handleAnsweredCorrectly={handleAnsweredCorrectly} />}
+                {currentQ === 2 && <DragDrop updateSolution={updateSolution} language={language} unit={unitName} difficulty={difficulty} submitRef={submitRef} handleAnsweredCorrectly={handleAnsweredCorrectly} />}
+                {currentQ === 3 && <ShortAnswer updateSolution={updateSolution} language={language} unit={unitName} difficulty={difficulty} submitRef={submitRef} handleAnsweredCorrectly={handleAnsweredCorrectly} />}
                 {currentQ === 4 && <Completed />}
             </div>
             <div className="question-footer">

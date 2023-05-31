@@ -15,12 +15,12 @@ type Question = {
 };
 
 const emptyQuestion: Question = {
-    language: "",
-    subject: "",
-    type: "",
+    language: '',
+    subject: '',
+    type: '',
     difficulty: 0,
-    prompt: "",
-    correct_answer: "",
+    prompt: '',
+    correct_answer: '',
     distractors: []
 };
 
@@ -37,7 +37,6 @@ interface MultipleChoiceProps {
     language: string;
     unit: string;
     difficulty: number;
-    solution: string;
     updateSolution: (newValue: string) => void;
     handleAnsweredCorrectly: () => void;
 }
@@ -46,36 +45,34 @@ interface MultipleChoiceProps {
  * Multiple Choice component.
  * Renders a multiple choice question with multiple options to select.
  */
-const MultipleChoice: React.FC<MultipleChoiceProps> = ({solution, updateSolution, submitRef, language, unit, difficulty, handleAnsweredCorrectly}) => {
+const MultipleChoice: React.FC<MultipleChoiceProps> = ({updateSolution, submitRef, language, unit, difficulty, handleAnsweredCorrectly}) => {
     /**
      * The currently displayed question.
      */
     const [question, setQuestion] = useState<Question>(emptyQuestion);
-
     /**
      * The available options for the question.
      */
     const [options, setOptions] = useState<Option[]>([]);
-
     /**
      * The selected option by the user.
      */
     const [selectedOption, setSelectedOption] = useState<string>('');
-
     /**
      * Flag indicating whether to show the result.
      */
     const [showResult, setShowResult] = useState<boolean>(false);
-
     /**
      * Flag indicating whether the selected option is correct.
      */
     const [isCorrect, setIsCorrect] = useState<boolean>(false);
-
+    /**
+     * Flag indicating whether they have selected an option.
+     */
     const [isOptionSelected, setIsOptionSelected] = useState<boolean>(false);
 
     /**
-     * Fetches the data for the multiple-choice question.
+     * Fetches the multiple choice question data from backend api.
      */
     useEffect(() => {
         async function fetchData() {
@@ -88,18 +85,18 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({solution, updateSolution
     }, []);
 
     /**
-     * Sets the options when new question is loaded.
-     */
-    useEffect(() => {
-        setOptions(getShuffledOptions());
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [question]);
-
-    /**
      * Sets the solution when new question is loaded.
      */
     useEffect(() => {
         updateSolution(question.correct_answer)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [question]);
+
+    /**
+     * Sets the options when new question is loaded.
+     */
+    useEffect(() => {
+        setOptions(getShuffledOptions());
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [question]);
 
