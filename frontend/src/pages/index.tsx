@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Question from './question';
-import './index.css';
-import Milestone from './milestone';
 import { JAVA_CONTENT, PYTHON_CONTENT } from './contentlist';
+
+import Question from './question';
+import Milestone from './milestone';
+import './index.css';
 
 /**
  * HomePage component.
@@ -71,9 +72,7 @@ const HomePage: React.FC = () => {
         const response = await fetch("/completion")
         const data = await response.json();
         setCompletionData(new Set(data));
-        console.log(data)
     }
-
 
     /**
      * Fetches user data from the server
@@ -83,7 +82,6 @@ const HomePage: React.FC = () => {
             const response = await fetch("/userinfo");
             const userdata = await response.json();
             setUsername(userdata.user);
-            console.log(userdata.user);
         } catch (error) {
             console.error(error);
         }
@@ -135,7 +133,11 @@ const HomePage: React.FC = () => {
     const createUnit = (unitName: string, unitNum: number, link: string) => {
         // each key must be unique, so this works supposing unit names always unique
         return (<div className={`unit1-container`} key={unitName}>
-            <div className={`unit1`}>
+            <div className={`unit1`} style={completionData.has(selectedLanguage.toLowerCase() + "_" + unitName) &&
+                completionData.has(selectedLanguage.toLowerCase() + "_" + unitName + "_1") &&
+                completionData.has(selectedLanguage.toLowerCase() + "_" + unitName + "_2") &&
+                completionData.has(selectedLanguage.toLowerCase() + "_" + unitName + "_3") ? 
+                {backgroundColor: '#0ADD08'} : {}}>
                 <h3>Unit {unitNum}</h3>
                 <p className="resources"><a href={link} className="resources-link" target="_blank" rel="noopener noreferrer">Resources</a></p>
                 <p className="variables">{unitName}</p>
@@ -143,7 +145,6 @@ const HomePage: React.FC = () => {
             {createCheckpoints(unitName)}
         </div>);
     }
-
 
     /**
      * Fetches completion data on component mount.
@@ -221,8 +222,6 @@ const HomePage: React.FC = () => {
                 </div>
                 </div>
             </div>
-
-
         }
 
         {activeComponent==='question' && <Question language={selectedLanguage.toLowerCase()} unitName={curUnit} difficulty={curDifficulty} onComplete={() => handleReload()}

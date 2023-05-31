@@ -4,11 +4,11 @@ import './shortanswer.css';
 interface ShortAnswerProps {
     submitRef : React.RefObject<HTMLButtonElement>;
     language: string;
-    unit: string
-    difficulty: number
-    solution: string
-    updateSolution: (newValue: string) => void
-    handleAnsweredCorrectly: () => void
+    unit: string;
+    difficulty: number;
+    solution: string;
+    updateSolution: (newValue: string) => void;
+    handleAnsweredCorrectly: () => void;
 }
 
 /**
@@ -32,7 +32,6 @@ const emptyShortAnswerData: shortAnswerData = {
     correct_answer: '',
 };
 
-
 /**
  * Short Answer component.
  * Renders a short answer component that allows free response.
@@ -51,7 +50,6 @@ const ShortAnswer: React.FC<ShortAnswerProps> = ({solution, updateSolution, subm
             const response = await fetch("/content/" + language + "/" + unit + "/short_response/" + difficulty + "/1")
             const data = await response.json();
             setshortAnwswer(data)
-            console.log(data)
         }
         fetchData();
         // eslint-disable-next-line react-hooks/exhaustive-deps

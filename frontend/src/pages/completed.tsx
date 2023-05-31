@@ -13,4 +13,4 @@ const completed: React.FC = () => {
     );
 };
 
-export default completed
+export default completed;
