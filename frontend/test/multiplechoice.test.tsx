@@ -25,10 +25,13 @@ describe('Multiple Choice component with mock data', () => {
 
     it('should render prompt received from the server', async () => {
         const buttonRef = React.createRef<HTMLButtonElement>();
-        render(<MultipleChoice language={"java"} solution={"int foo = 1;"} unit={"variables"} difficulty={1} submitRef={buttonRef}
+        render(<MultipleChoice language={"java"} unit={"variables"} difficulty={1} submitRef={buttonRef}
                                updateSolution={function (newValue: string): void {
                                    "int foo = 1;"
-                               }} />);
+                               }} 
+                               handleAnsweredCorrectly={
+                                  () => {}
+                               }/>);
         await screen.findByText(mockData.correct_answer);
         await screen.findByText(mockData.distractors[0]);
         await screen.findByText(mockData.distractors[1]);

@@ -10,7 +10,7 @@ afterAll(async () => {
   await UsersDB.close();
 });
 
-describe("UsersDB Atlas database", () => {
+describe("Users Atlas DB", () => {
   it("is a singleton", async () => {
     let i2 = await UsersDB.get_db();
 
