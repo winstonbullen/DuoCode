@@ -40,7 +40,7 @@
 
     - Jason Xu: 
 
-    - Jason Hua: 
+    - Jason Hua: Finished all important styling issues including scaling/styling on 4 different resolutions. Added logic to solution button to only appear after submitting. Participated in the demo as well as edit together the demo and presentation together. 
 
     - Evan Kim: 
 
