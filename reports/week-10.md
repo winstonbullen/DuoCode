@@ -36,7 +36,7 @@
 
     - JP Gabriel: 
 
-    - Jason Gao: 
+    - Jason Gao: Added a small endpoint for user information to support some frontend features. Had an idea for how to implement rendering all of the lesson icons on the homepage and contributed a basic version of that to the frontend. Wrote some of the content for the slideshow for the reflection part of the final release assignment, and presented some of that content in the final reflection. Reviewed a few PRs.
 
     - Jason Xu: 
 
