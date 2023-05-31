@@ -42,7 +42,7 @@
 
     - Jason Hua: Finished all important styling issues including scaling/styling on 4 different resolutions. Added logic to solution button to only appear after submitting. Participated in the demo as well as edit together the demo and presentation together. 
 
-    - Evan Kim: 
+    - Evan Kim: Finished progress tracking on all units and styling. Fixed bugs in question flow/missing components.
 
     - Winston Bullen: Cleaned up source code and documentation to remove redundancy. Created the updated user guide page and reworked routing logic to accommodate it. Started the final reflection presentation and participated in the demo.
 
