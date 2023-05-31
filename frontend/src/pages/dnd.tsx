@@ -4,7 +4,7 @@ import './dnd.css';
 /**
  * Interface representing the drag and drop data.
  */
-type dragDrop = {
+type dragDropData = {
     language: string;
     subject: string;
     type: string;
@@ -13,7 +13,7 @@ type dragDrop = {
     correct_ordering: string[];
 };
 
-const emptyDragDrop: dragDrop = {
+const emptyDragDrop: dragDropData = {
     language: '',
     subject: '',
     type: '',
@@ -47,7 +47,7 @@ const DragDrop: React.FC<DragDropProps> = ({updateSolution, submitRef, language,
     /**
      * State variables for drag and drop functionality.
      */
-    const [dragDrop, setDragDrop] = useState<dragDrop>(emptyDragDrop);
+    const [dragDrop, setDragDrop] = useState<dragDropData>(emptyDragDrop);
     /**
      * The currently dragging element.
      */

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { JAVA_CONTENT, PYTHON_CONTENT } from './contentlist';
-
-import Question from './question';
-import Milestone from './milestone';
 import './index.css';
+
+import Lesson from './lesson';
+import Milestone from './milestone';
 
 /**
  * HomePage component.
@@ -45,7 +45,7 @@ const HomePage: React.FC = () => {
     const handleLessonClick = (unitName : string, difficulty : number) => {
         setCurUnit(unitName);
         setCurDifficulty(difficulty);
-        setActiveComponent('question');
+        setActiveComponent('lesson');
     };
 
     const currentUrl = window.location.href;
@@ -224,7 +224,7 @@ const HomePage: React.FC = () => {
             </div>
         }
 
-        {activeComponent==='question' && <Question language={selectedLanguage.toLowerCase()} unitName={curUnit} difficulty={curDifficulty} onComplete={() => handleReload()}
+        {activeComponent==='lesson' && <Lesson language={selectedLanguage.toLowerCase()} unitName={curUnit} difficulty={curDifficulty} onComplete={() => handleReload()}
             complete={completionData.has(selectedLanguage.toLowerCase() + "_" + curUnit + "_" + curDifficulty)}/>}
         {activeComponent==='milestone' && <Milestone language={selectedLanguage.toLowerCase()} unitName={curUnit} onComplete={() => handleReload()}
             complete={completionData.has(selectedLanguage.toLowerCase() + "_" + curUnit)}/>}

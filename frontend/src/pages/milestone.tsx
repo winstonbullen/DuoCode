@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import './question.css';
+import './lesson.css';
 
 import CloseBtn from '../components/CloseBtn'
 import ProgressBar from '../components/ProgressBar';

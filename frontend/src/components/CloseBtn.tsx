@@ -1,5 +1,5 @@
 import React from 'react';
-import '../pages/question.css';
+import '../pages/lesson.css';
 
 interface CloseBtnProps {}
 

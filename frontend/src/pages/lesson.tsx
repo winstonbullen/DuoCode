@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import './question.css';
+import './lesson.css';
 
 import CloseBtn from '../components/CloseBtn'
 import ProgressBar from '../components/ProgressBar';
@@ -8,7 +8,7 @@ import MultipleChoice from './multiplechoice';
 import DragDrop from './dnd';
 import Completed from './completed';
 
-interface QuestionProps {
+interface LessonProps {
     language: string;
     unitName: string;
     difficulty: number;
@@ -17,10 +17,10 @@ interface QuestionProps {
 }
 
 /**
- * Question component.
- * Wraps all the different types of questions.
+ * Lesson component.
+ * Wraps all the different types of questions within a lesson.
  */
-const Question: React.FC<QuestionProps> = ({language, unitName, difficulty, onComplete, complete} : QuestionProps) => {
+const Lesson: React.FC<LessonProps> = ({language, unitName, difficulty, onComplete, complete} : LessonProps) => {
     /**
      * The current question number.
      */
@@ -172,4 +172,4 @@ const Question: React.FC<QuestionProps> = ({language, unitName, difficulty, onCo
     );
 };
 
-export default Question;
+export default Lesson;
