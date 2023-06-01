@@ -38,7 +38,7 @@
 
     - Jason Gao: Added a small endpoint for user information to support some frontend features. Had an idea for how to implement rendering all of the lesson icons on the homepage and contributed a basic version of that to the frontend. Wrote some of the content for the slideshow for the reflection part of the final release assignment, and presented some of that content in the final reflection. Reviewed a few PRs.
 
-    - Jason Xu: 
+    - Jason Xu: Completed logic so submit registers only on valid input. Added refresh button for drag and drop. Made next button progression only valid on correct answers.
 
     - Jason Hua: Finished all important styling issues including scaling/styling on 4 different resolutions. Added logic to solution button to only appear after submitting. Participated in the demo as well as edit together the demo and presentation together. 
 
